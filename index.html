@@ -1,43 +1,4 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -45,76 +6,39 @@
   <title>PurpleLotus - Cybersecurity Redefined</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes scaleIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes scaleIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
     .fade-in-up { animation: fadeInUp 1s ease-out; }
     .scale-in { animation: scaleIn 0.8s ease-out; }
-    .glassy {
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .scroll-animate {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    .scroll-animate.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .curved-glassy {
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 10px 20px;
-    }
-    .gradient-purple {
-      background: linear-gradient(to right, #6B46C1, #A78BFA);
-      transition: background 0.3s ease;
-    }
-    .gradient-purple:hover {
-      background: linear-gradient(to right, #553C9A, #8B5CF6);
-    }
-    .hero-background {
-      background: url('https://raw.githubusercontent.com/slvignesh05/Purple-Lotus-website/refs/heads/main/public/Gemini_Generated_Image_66dj8j66dj8j66dj.png') no-repeat center center/cover;
-      background-blend-mode: overlay;
-      position: relative;
-    }
-    .hero-background::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.6);
-      z-index: 0;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 1;
-    }
-    .pricing-button {
-      background: #4B5563; /* Default gray from bg-gray-700 */
-      transition: box-shadow 0.3s ease, background 0.3s ease;
-    }
-    .pricing-button:hover {
-      box-shadow: 0 0 15px rgba(107, 70, 193, 0.6); /* Purple glow effect */
-      background: #374151; /* Darker gray on hover from bg-gray-600 */
+    .glassy { background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+    .scroll-animate { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .scroll-animate.visible { opacity: 1; transform: translateY(0); }
+    .curved-glassy { background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 10px 20px; }
+    .gradient-purple { background: linear-gradient(to right, #6B46C1, #A78BFA); transition: background 0.3s ease; }
+    .gradient-purple:hover { background: linear-gradient(to right, #553C9A, #8B5CF6); }
+    .hero-background { background: url('https://raw.githubusercontent.com/slvignesh05/Purple-Lotus-website/refs/heads/main/public/Gemini_Generated_Image_66dj8j66dj8j66dj.png') no-repeat center center/cover; background-blend-mode: overlay; position: relative; }
+    .hero-background::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); z-index: 0; }
+    .hero-content { position: relative; z-index: 1; }
+
+    /* PurpleLotus Gradient Logo - Matches Your Brand Perfectly */
+    .purple-gradient-logo {
+      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-weight: 900;
+      font-size: clamp(5rem, 18vw, 16rem);
+      letter-spacing: -0.05em;
+      line-height: 1;
+      background: linear-gradient(135deg, #9F7AEA 0%, #D8B4FE 25%, #C084FC 50%, #A78BFA 75%, #7C3AED 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-fill-color: transparent;
+      text-shadow: 0 10px 40px rgba(139, 92, 246, 0.4);
+      filter: drop-shadow(0 6px 30px rgba(124, 58, 237, 0.5));
     }
   </style>
 </head>
 <body class="bg-black text-white font-sans">
+
   <!-- Header -->
   <header class="fixed w-full z-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -128,7 +52,7 @@
           <a href="#pricing" class="hover:text-purple-400 transition duration-300">Pricing</a>
           <a href="#faq" class="hover:text-purple-400 transition duration-300">FAQ</a>
         </nav>
-        <a href="mailto:contact@purplelotus.com" class="gradient-purple text-white font-semibold py-2 px-4 rounded transition duration-300 scale-in">Contact Us</a>
+        <a href="mailto:security@purplelotus.tech" class="gradient-purple text-white font-semibold py-2 px-4 rounded transition duration-300 scale-in">Contact Us</a>
       </div>
     </div>
   </header>
@@ -138,11 +62,11 @@
     <div class="text-center max-w-4xl mx-auto px-4 hero-content fade-in-up">
       <p class="text-orange-400 mb-4">Backed by Expertise</p>
       <h1 class="text-6xl font-bold mb-6">Because breaches aren't an option</h1>
-      <p class="text-2xl italic text-gray-300 mb-8">Don’t let your workflows work against you.</p>
+      <p class="text-2xl italic text-gray-300 mb-8">Don't let your workflows work against you.</p>
       <p class="text-gray-400 mb-8">PurpleLotus finds business logic flaws and multi-step vulnerabilities that traditional tools miss, without drowning you in noise.</p>
       <div class="space-x-4">
         <a href="#pricing" class="gradient-purple text-white font-semibold py-3 px-6 rounded scale-in">Book a Demo</a>
-        <a href="#contact" class="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 px-6 rounded scale-in">Try for Free</a>
+        <a href="mailto:security@purplelotus.tech" class="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 px-6 rounded scale-in">Try for Free</a>
       </div>
     </div>
   </section>
@@ -169,15 +93,15 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="text-4xl font-bold text-center text-white mb-12 fade-in-up scroll-animate">Penetration Testing Services</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="glassy p-6 rounded-lg shadow-lg hover:bg-purple-900 transition duration-300 fade-in-up scroll-animate">
+        <div class="glassy p-6 rounded-lg shadow-lg hover:bg-purple-900/20 transition duration-300 fade-in-up scroll-animate">
           <h3 class="text-xl font-semibold text-purple-400 mb-4">Network Penetration Testing</h3>
           <p class="text-gray-400">Simulate attacks to uncover network vulnerabilities.</p>
         </div>
-        <div class="glassy p-6 rounded-lg shadow-lg hover:bg-purple-900 transition duration-300 fade-in-up scroll-animate">
+        <div class="glassy p-6 rounded-lg shadow-lg hover:bg-purple-900/20 transition duration-300 fade-in-up scroll-animate">
           <h3 class="text-xl font-semibold text-purple-400 mb-4">Application Penetration Testing</h3>
           <p class="text-gray-400">Test web and mobile apps for security flaws.</p>
         </div>
-        <div class="glassy p-6 rounded-lg shadow-lg hover:bg-purple-900 transition duration-300 fade-in-up scroll-animate">
+        <div class="glassy p-6 rounded-lg shadow-lg hover:bg-purple-900/20 transition duration-300 fade-in-up scroll-animate">
           <h3 class="text-xl font-semibold text-purple-400 mb-4">Social Engineering Testing</h3>
           <p class="text-gray-400">Assess susceptibility to phishing and social attacks.</p>
         </div>
@@ -189,43 +113,33 @@
   <section id="pricing" class="py-20 bg-black">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="text-4xl font-bold text-center text-white mb-12 fade-in-up scroll-animate">Pricing Plans</h2>
-      <p class="text-center text-gray-400 mb-8 scroll-animate">Choose the plan that fits your needs.</p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="glassy p-6 rounded-lg shadow-lg fade-in-up scroll-animate">
-          <h3 class="text-2xl font-semibold text-white mb-4">Free</h3>
-          <p class="text-gray-400 mb-4">Price: Free</p>
-          <ul class="text-gray-400 mb-6 space-y-2">
-            <li>Scan up to 3 public repositories</li>
-            <li>Basic misconfiguration detection</li>
-            <li>Alerts for insecure workflows</li>
-            <li>CLI tool access</li>
+      <p class="text-center text-gray-400 mb-12 scroll-animate">Choose the plan that fits your security needs.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+        <div class="glassy p-8 rounded-lg shadow-lg fade-in-up scroll-animate text-center border border-purple-500/30">
+          <h3 class="text-3xl font-semibold text-purple-400 mb-4">Free</h3>
+          <div class="mb-6"><span class="text-5xl font-bold">$0</span><span class="text-gray-400"> / forever</span></div>
+          <ul class="text-gray-400 mb-8 space-y-3 text-left">
+            <li>Basic CI/CD pipeline scanning</li>
+            <li>Up to 3 GitHub repositories</li>
             <li>Community support</li>
+            <li>Weekly security summary</li>
+            <li>Limited vulnerability detection</li>
           </ul>
-          <a href="#contact" class="pricing-button text-white font-semibold py-2 px-4 rounded w-full text-center block scale-in">Get Started</a>
+          <a href="mailto:security@purplelotus.tech" class="bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 px-6 rounded w-full block transition duration-300 scale-in">Get Started Free</a>
         </div>
-        <div class="glassy p-6 rounded-lg shadow-lg fade-in-up scroll-animate">
-          <h3 class="text-2xl font-semibold text-white mb-4">Pro – $99/month</h3>
-          <p class="text-gray-400 mb-4">Price: $99/month</p>
-          <ul class="text-gray-400 mb-6 space-y-2">
+        <div class="glassy p-8 rounded-lg shadow-lg fade-in-up scroll-animate text-center ring-2 ring-purple-500 relative">
+          <div class="absolute -top-4 left-1/2 transform -translate-x-1/2"><span class="bg-purple-600 text-white text-sm font-semibold px-4 py-1 rounded-full">Most Popular</span></div>
+          <h3 class="text-3xl font-semibold text-purple-400 mb-4 mt-4">Purple Plus</h3>
+          <div class="mb-6"><span class="text-4xl font-bold">Custom</span><br><span class="text-gray-400">Contact us for pricing</span></div>
+          <ul class="text-gray-400 mb-8 space-y-3 text-left">
+            <li>Full-scope web application pentesting</li>
             <li>Unlimited private/public repo scanning</li>
             <li>GitHub PR bot for fixes</li>
             <li>Advanced misconfig detection engine</li>
             <li>Custom detection rules</li>
             <li>Priority support</li>
           </ul>
-          <a href="#contact" class="pricing-button text-white font-semibold py-2 px-4 rounded w-full text-center block scale-in">Subscribe</a>
-        </div>
-        <div class="glassy p-6 rounded-lg shadow-lg fade-in-up scroll-animate">
-          <h3 class="text-2xl font-semibold text-white mb-4">Purple+ – $499/month</h3>
-          <p class="text-gray-400 mb-4">Price: $499/month</p>
-          <ul class="text-gray-400 mb-6 space-y-2">
-            <li>Full-scope web application pentesting</li>
-            <li>Manual testing of external assets (domains, subdomains, APIs)</li>
-            <li>Recon & exploitation of misconfigured services</li>
-            <li>Audit-ready vulnerability reports with CVSS scoring</li>
-            <li>Remediation guidance from security experts</li>
-          </ul>
-          <a href="#contact" class="pricing-button text-white font-semibold py-2 px-4 rounded w-full text-center block scale-in">Book Assessment</a>
+          <a href="mailto:security@purplelotus.tech" class="gradient-purple text-white font-semibold py-3 px-6 rounded w-full block scale-in hover:scale-105 transition">Contact Us for Details</a>
         </div>
       </div>
     </div>
@@ -264,46 +178,39 @@
     </div>
   </section>
 
+  <!-- Laravel-Style Backed By Section with GORGEOUS Purple Gradient Logo -->
+  <section class="py-32 bg-black">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <p class="text-gray-500 text-xl mb-20 scroll-animate">Backed by researchers from</p>
+
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-8 text-gray-600 text-lg mb-32 scroll-animate">
+        <div class="opacity-60 hover:opacity-100 transition duration-200">Sanctum</div>
+        <div class="opacity-60 hover:opacity-100 transition duration-200">Socialite</div>
+        <div class="opacity-60 hover:opacity-100 transition duration-200">Telescope</div>
+        <div class="opacity-60 hover:opacity-100 transition duration-200">Pulse</div>
+        <div class="opacity-60 hover:opacity-100 transition duration-200">Reverb</div>
+        <div class="opacity-60 hover:opacity-100 transition duration-200">Echo</div>
+        <div class="opacity-60 hover:opacity-100 transition duration-200">Jobs</div>
+        <div class="opacity-60 hover:opacity-100 transition duration-200">Trust</div>
+        <div class="opacity-60 hover:opacity-100 transition duration-200">Careers</div>
+        <div class="opacity-60 hover:opacity-100 transition duration-200">More Partners</div>
+      </div>
+
+      <!-- PurpleLotus Logo in Beautiful Gradient -->
+      <div class="flex justify-center scroll-animate">
+        <h1 class="purple-gradient-logo">PurpleLotus</h1>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
-  <footer class="bg-black py-6">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center scroll-animate">
-      <p class="text-gray-400 mt-4">Security that ships with your code.</p>
-      <p class="text-gray-400 mt-2">© 2025 PurpleLotus, Inc.</p>
+  <footer class="bg-black py-12 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-6 text-center scroll-animate">
+      <p class="text-gray-400 text-lg">Security that ships with your code.</p>
+      <p class="text-gray-400 mt-2">© 2025 PurpleLotus, Inc. All rights reserved.</p>
     </div>
   </footer>
 
-  <script type="text/javascript">
-    var gk_isXlsx = false;
-    var gk_xlsxFileLookup = {};
-    var gk_fileData = {};
-    function filledCell(cell) {
-      return cell !== '' && cell != null;
-    }
-    function loadFileData(filename) {
-      if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-        try {
-          var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-          var firstSheetName = workbook.SheetNames[0];
-          var worksheet = workbook.Sheets[firstSheetName];
-          var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-          var filteredData = jsonData.filter(row => row.some(filledCell));
-          var headerRowIndex = filteredData.findIndex((row, index) =>
-            row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-          );
-          if (headerRowIndex === -1 || headerRowIndex > 25) {
-            headerRowIndex = 0;
-          }
-          var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex));
-          csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-          return csv;
-        } catch (e) {
-          console.error(e);
-          return "";
-        }
-      }
-      return gk_fileData[filename] || "";
-    }
-  </script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const elements = document.querySelectorAll('.scroll-animate');
@@ -315,7 +222,7 @@
           }
         });
       }, { threshold: 0.1 });
-      elements.forEach(element => observer.observe(element));
+      elements.forEach(el => observer.observe(el));
     });
   </script>
 </body>
