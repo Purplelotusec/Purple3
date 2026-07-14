@@ -1,0 +1,49 @@
+name: Update AI incident digest
+
+on:
+  schedule:
+    # Runs daily at 07:00 UTC (offset from the advisory feed job)
+    - cron: '0 7 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update-digest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install Ollama (open source, runs the model locally)
+        run: curl -fsSL https://ollama.com/install.sh | sh
+
+      - name: Start Ollama server
+        run: |
+          ollama serve &
+          # give the server a moment to come up before we hit it
+          for i in $(seq 1 15); do
+            curl -sf http://localhost:11434/api/tags && break
+            sleep 2
+          done
+
+      - name: Pull local model
+        run: ollama pull llama3.2:3b
+
+      - name: Generate incident digest
+        run: python fetch_incident_digest.py
+
+      - name: Commit updated digest
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore: update AI incident digest'
+          file_pattern: data/incident_digest.json
