@@ -8,8 +8,11 @@
   ],
   "routes": [
     {
-      "src": "/data/(.*)",
-      "dest": "/data/$1"
+      "src": "/threat-feed",
+      "dest": "/threat-feed.html"
+    },
+    {
+      "handle": "filesystem"
     },
     {
       "src": "/(.*)",
