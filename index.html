@@ -6,52 +6,8 @@
   <title>PurpleLotus — Supply Chain Security</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <style>
-    :root {
-      --cream: #fdf6e3;
-      --cream-dark: #f5ead0;
-      --ink: #1a1208;
-      --ink-mid: #3d2e10;
-      --purple: #5c1f8a;
-      --purple-light: #8b44c8;
-      --purple-pale: #ecdff7;
-      --orange: #c94f0c;
-      --gray-text: #6b5c3e;
-      --border: rgba(92,31,138,0.15);
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--cream); color: var(--ink);
-      font-family: 'DM Mono', monospace; font-size: 15px;
-      line-height: 1.6; overflow-x: hidden;
-    }
-    body::before {
-      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0.05;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-      background-size: 180px 180px;
-    }
-
-    /* HEADER */
-    header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(253,246,227,0.93); backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--border);
-    }
-    .header-inner {
-      max-width: 1200px; margin: 0 auto; padding: 0 2rem;
-      height: 60px; display: flex; align-items: center; justify-content: space-between;
-    }
-    .logo { font-family: 'Instrument Serif', serif; font-size: 1.35rem; color: var(--purple); text-decoration: none; letter-spacing: -0.01em; }
-    .logo span { color: var(--orange); }
-    nav { display: flex; gap: 2rem; align-items: center; }
-    nav a { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--ink-mid); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
-    nav a:hover { color: var(--purple); }
-    .btn-primary { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; background: var(--purple); color: var(--cream); border: none; padding: 0.55rem 1.3rem; cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-block; }
-    .btn-primary:hover { background: var(--purple-light); transform: translateY(-1px); }
-    .btn-ghost { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; background: transparent; color: var(--ink); border: 1px solid currentColor; padding: 0.55rem 1.3rem; cursor: pointer; text-decoration: none; transition: all 0.2s; display: inline-block; }
-    .btn-ghost:hover { color: var(--purple); border-color: var(--purple); }
-
     /* HERO */
     .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; max-width: 1200px; margin: 0 auto; padding: 7rem 2rem 4rem; gap: 3rem; }
     .hero-tag { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); border: 1px solid var(--orange); padding: 0.25rem 0.8rem; display: inline-block; margin-bottom: 2rem; }
@@ -77,12 +33,6 @@
     .backed-item .b-name { font-family: 'Syne', sans-serif; font-size: 0.88rem; font-weight: 700; color: var(--ink); letter-spacing: 0.01em; }
     .backed-item .b-desc { font-size: 0.71rem; color: var(--gray-text); line-height: 1.5; }
 
-    /* SECTIONS */
-    .section { max-width: 1200px; margin: 0 auto; padding: 6rem 2rem; }
-    .section-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem; display: block; }
-    .section-title { font-family: 'Instrument Serif', serif; font-size: clamp(1.9rem, 3vw, 2.8rem); line-height: 1.1; letter-spacing: -0.025em; color: var(--ink); margin-bottom: 2rem; }
-    .section-title em { font-style: italic; color: var(--purple); }
-
     /* WHY */
     .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
     .why-body p { font-size: 0.9rem; color: var(--gray-text); line-height: 1.9; margin-bottom: 1.1rem; }
@@ -94,42 +44,24 @@
     .stat-num { font-family: 'Instrument Serif', serif; font-size: 2.2rem; letter-spacing: -0.04em; color: var(--purple); display: block; margin-bottom: 0.2rem; }
     .stat-label { font-size: 0.7rem; color: var(--gray-text); letter-spacing: 0.05em; }
 
-    /* THREAT FEED */
-    .feed-section { background: var(--ink); }
-    .feed-inner { max-width: 1200px; margin: 0 auto; padding: 6rem 2rem; }
-    .feed-inner .section-label { color: var(--orange); }
-    .feed-inner .section-title { color: var(--cream); }
-    .feed-inner .section-title em { color: #c8a0e8; }
-    .feed-head-row { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 1rem; }
-    .feed-sub { font-size: 0.85rem; color: rgba(253,246,227,0.55); max-width: 520px; line-height: 1.8; }
-    .feed-meta { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(253,246,227,0.4); text-align: right; white-space: nowrap; }
-    .feed-meta strong { color: #c8a0e8; }
-    .feed-table-wrap { border: 1px solid rgba(255,255,255,0.12); margin-top: 2.5rem; overflow-x: auto; }
-    table.feed-table { width: 100%; border-collapse: collapse; min-width: 720px; }
-    table.feed-table thead th {
-      text-align: left; font-family: 'DM Mono', monospace; font-size: 0.66rem; letter-spacing: 0.09em; text-transform: uppercase;
-      color: rgba(253,246,227,0.45); padding: 1rem 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.12); font-weight: 400;
+    /* THREAT FEED TEASER — compact card, not a full section, links out to /threat-feed */
+    .teaser-wrap { max-width: 1200px; margin: 0 auto; padding: 0 2rem 6rem; }
+    .teaser-card {
+      display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+      background: var(--ink); border: 1px solid rgba(255,255,255,0.1); padding: 2.25rem 2.5rem;
     }
-    table.feed-table tbody td { padding: 1.1rem 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.07); font-size: 0.82rem; color: rgba(253,246,227,0.85); vertical-align: top; }
-    table.feed-table tbody tr:last-child td { border-bottom: none; }
-    table.feed-table tbody tr:hover { background: rgba(139,68,200,0.08); }
-    .feed-pkg { font-family: 'Syne', sans-serif; font-weight: 700; color: var(--cream); }
-    .feed-eco { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase; color: #c8a0e8; }
-    .feed-summary { color: rgba(253,246,227,0.5); font-size: 0.78rem; line-height: 1.6; max-width: 320px; display: block; margin-top: 0.3rem; }
-    .feed-version { font-family: 'DM Mono', monospace; font-size: 0.78rem; }
-    .feed-version.affected { color: #e8a074; }
-    .feed-version.patched { color: #7fd4a0; }
-    .feed-sev { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.25rem 0.6rem; display: inline-block; border: 1px solid; }
-    .feed-sev.critical { color: #ff8a6b; border-color: #ff8a6b; background: rgba(255,138,107,0.1); }
-    .feed-sev.high { color: #e8a074; border-color: #e8a074; background: rgba(232,160,116,0.1); }
-    .feed-sev.moderate, .feed-sev.medium { color: #d4c470; border-color: #d4c470; background: rgba(212,196,112,0.1); }
-    .feed-sev.low, .feed-sev.unknown { color: rgba(253,246,227,0.5); border-color: rgba(253,246,227,0.3); background: transparent; }
-    .feed-link { color: #c8a0e8; text-decoration: none; font-size: 0.72rem; letter-spacing: 0.04em; }
-    .feed-link:hover { text-decoration: underline; }
-    .feed-empty, .feed-loading { padding: 3rem 1.25rem; text-align: center; color: rgba(253,246,227,0.4); font-size: 0.85rem; }
-    .feed-disclaimer { display: flex; gap: 0.75rem; align-items: flex-start; margin-top: 1.75rem; padding: 1rem 1.25rem; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); }
-    .feed-disclaimer .flag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); flex-shrink: 0; padding-top: 0.1rem; }
-    .feed-disclaimer p { font-size: 0.76rem; color: rgba(253,246,227,0.5); line-height: 1.7; }
+    .teaser-text { max-width: 620px; }
+    .teaser-badge { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: #7fd4a0; margin-bottom: 0.75rem; }
+    .teaser-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: #7fd4a0; box-shadow: 0 0 8px #7fd4a0; }
+    .teaser-title { font-family: 'Instrument Serif', serif; font-size: 1.5rem; color: var(--cream); margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+    .teaser-sub { font-size: 0.82rem; color: rgba(253,246,227,0.55); line-height: 1.7; }
+    .teaser-cta { flex-shrink: 0; }
+    .teaser-cta a {
+      font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase;
+      background: var(--cream); color: var(--ink); border: none; padding: 0.8rem 1.6rem; text-decoration: none;
+      display: inline-block; transition: opacity 0.2s;
+    }
+    .teaser-cta a:hover { opacity: 0.85; }
 
     /* PRODUCT */
     .product-section { background: var(--cream-dark); }
@@ -201,17 +133,6 @@
     .newsletter-form button { background: var(--purple); border: none; color: var(--cream); padding: 0.9rem 1.5rem; font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
     .newsletter-form button:hover { background: var(--purple-light); }
 
-    /* WORDMARK + FOOTER */
-    .wordmark-section { padding: 4rem 2rem 2rem; text-align: center; overflow: hidden; }
-    .big-wordmark { font-family: 'Instrument Serif', serif; font-size: clamp(4rem, 15vw, 14rem); letter-spacing: -0.05em; line-height: 1; color: transparent; -webkit-text-stroke: 1px var(--purple); opacity: 0.12; user-select: none; }
-    footer { border-top: 1px solid var(--border); padding: 2rem; display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
-    footer p { font-size: 0.74rem; color: var(--gray-text); }
-    footer a { color: var(--purple); text-decoration: none; }
-
-    /* SCROLL REVEAL */
-    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
-
     /* RESPONSIVE */
     @media (max-width: 768px) {
       .hero { grid-template-columns: 1fr; padding-top: 5.5rem; gap: 2rem; }
@@ -220,9 +141,7 @@
       .why-grid, .product-hero-grid, .services-grid, .feature-grid, .pricing-grid, .backed-grid { grid-template-columns: 1fr; }
       .service-card, .feature-card { border-right: none; border-bottom: 1px solid var(--border); }
       .stat-row { grid-template-columns: 1fr 1fr; }
-      nav { display: none; }
-      .feed-head-row { flex-direction: column; align-items: flex-start; }
-      .feed-meta { text-align: left; }
+      .teaser-card { padding: 1.75rem; }
     }
   </style>
 </head>
@@ -231,9 +150,9 @@
   <!-- HEADER -->
   <header>
     <div class="header-inner">
-      <a href="#" class="logo">Purple<span>Lotus</span></a>
+      <a href="/" class="logo">Purple<span>Lotus</span></a>
       <nav>
-        <a href="#threat-feed">Threat Feed</a>
+        <a href="/threat-feed">Threat Feed</a>
         <a href="#product">Product</a>
         <a href="#services">Services</a>
         <a href="#pricing">Pricing</a>
@@ -474,39 +393,16 @@
     </div>
   </div>
 
-  <!-- THREAT FEED -->
-  <div class="feed-section" id="threat-feed">
-    <div class="feed-inner">
-      <div class="feed-head-row">
-        <div>
-          <span class="section-label reveal">Live Threat Feed</span>
-          <h2 class="section-title reveal">Ongoing supply chain <em>attacks</em> this month.</h2>
-          <p class="feed-sub reveal">Pulled automatically from the GitHub Advisory Database — real advisories affecting npm, PyPI, Go, RubyGems, Maven, crates.io and GitHub Actions, updated daily. No LLM in the loop: names and version ranges come straight from the advisory record.</p>
-        </div>
-        <div class="feed-meta reveal" id="feed-meta">Loading feed status…</div>
+  <!-- THREAT FEED TEASER -->
+  <div class="teaser-wrap">
+    <div class="teaser-card reveal">
+      <div class="teaser-text">
+        <div class="teaser-badge"><span class="dot"></span>Live Threat Feed</div>
+        <div class="teaser-title">See what's compromised right now.</div>
+        <p class="teaser-sub">Daily-refreshed advisory data plus an AI-generated incident digest, on its own dedicated page.</p>
       </div>
-
-      <div class="feed-table-wrap reveal">
-        <table class="feed-table">
-          <thead>
-            <tr>
-              <th>Package</th>
-              <th>Ecosystem</th>
-              <th>Affected</th>
-              <th>Patched</th>
-              <th>Severity</th>
-              <th>Advisory</th>
-            </tr>
-          </thead>
-          <tbody id="feed-rows">
-            <tr><td colspan="6" class="feed-loading">Fetching latest advisories…</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="feed-disclaimer reveal">
-        <span class="flag">Disclaimer</span>
-        <p>These results are sourced from the public web — specifically the GitHub Advisory Database — and are surfaced here automatically without manual verification by PurpleLotus. Advisory data can be incomplete, disputed, or updated after this page was generated. Always confirm affected/patched versions against the linked upstream advisory before taking action on your own systems.</p>
+      <div class="teaser-cta">
+        <a href="/threat-feed">View Live Feed →</a>
       </div>
     </div>
   </div>
@@ -646,7 +542,7 @@
       </div>
       <div class="faq-item">
         <div class="faq-q">Where does the Live Threat Feed data come from? <span class="faq-toggle">+</span></div>
-        <div class="faq-a">Directly from the GitHub Advisory Database's public API, refreshed daily by an automated job. It's the same free, open data source that powers Dependabot — no paid data feed, no LLM-generated summaries.</div>
+        <div class="faq-a">See the dedicated <a href="/threat-feed" style="color:var(--purple);">Threat Feed page</a> — it's refreshed daily from the GitHub Advisory Database, plus an AI-generated digest of public reporting on notable incidents.</div>
       </div>
     </div>
   </div>
@@ -692,63 +588,6 @@
         if (!open) item.classList.add('open');
       });
     });
-
-    // THREAT FEED — fetches the static JSON generated by the daily GitHub Action
-    (function loadThreatFeed() {
-      const rowsEl = document.getElementById('feed-rows');
-      const metaEl = document.getElementById('feed-meta');
-
-      const sevClass = (sev) => {
-        const s = (sev || 'unknown').toLowerCase();
-        return ['critical', 'high', 'moderate', 'medium', 'low'].includes(s) ? s : 'unknown';
-      };
-
-      const escapeHtml = (str) => String(str ?? '').replace(/[&<>"']/g, (c) => (
-        { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
-      ));
-
-      const fmtDate = (iso) => {
-        if (!iso) return '—';
-        try {
-          return new Date(iso).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
-        } catch (e) { return iso; }
-      };
-
-      fetch('data/attacks.json', { cache: 'no-store' })
-        .then((r) => {
-          if (!r.ok) throw new Error('Feed request failed: ' + r.status);
-          return r.json();
-        })
-        .then((data) => {
-          const advisories = data.advisories || [];
-
-          metaEl.innerHTML = `<strong>${advisories.length}</strong> advisories &middot; last ${data.window_days || 30} days<br>updated ${fmtDate(data.generated_at)}`;
-
-          if (!advisories.length) {
-            rowsEl.innerHTML = '<tr><td colspan="6" class="feed-empty">No advisories matched the current window. Check back soon.</td></tr>';
-            return;
-          }
-
-          rowsEl.innerHTML = advisories.map((a) => `
-            <tr>
-              <td>
-                <span class="feed-pkg">${escapeHtml(a.name)}</span>
-                <span class="feed-summary">${escapeHtml(a.summary || '')}</span>
-              </td>
-              <td><span class="feed-eco">${escapeHtml(a.ecosystem)}</span></td>
-              <td><span class="feed-version affected">${escapeHtml(a.affected_range)}</span></td>
-              <td><span class="feed-version patched">${escapeHtml(a.patched_version)}</span></td>
-              <td><span class="feed-sev ${sevClass(a.severity)}">${escapeHtml(a.severity)}</span></td>
-              <td>${a.source_url ? `<a class="feed-link" href="${escapeHtml(a.source_url)}" target="_blank" rel="noopener">${escapeHtml(a.ghsa_id || 'View →')}</a>` : '—'}</td>
-            </tr>
-          `).join('');
-        })
-        .catch((err) => {
-          console.error(err);
-          rowsEl.innerHTML = '<tr><td colspan="6" class="feed-empty">Couldn\'t load the threat feed right now. Try refreshing, or view advisories directly at github.com/advisories.</td></tr>';
-          metaEl.textContent = 'Feed unavailable';
-        });
-    })();
   </script>
 </body>
 </html>
