@@ -54,11 +54,24 @@ def normalize(advisory: dict) -> list[dict]:
     cve_id = advisory.get("cve_id")
 
     for vuln in advisory.get("vulnerabilities") or []:
+        if not isinstance(vuln, dict):
+            continue
         pkg = vuln.get("package") or {}
+        if not isinstance(pkg, dict):
+            pkg = {}
         ecosystem = (pkg.get("ecosystem") or "").lower()
         if ecosystem not in RELEVANT_ECOSYSTEMS:
             continue
-        first_patched = (vuln.get("first_patched_version") or {}).get("identifier")
+
+        # GitHub's API has been observed returning first_patched_version as
+        # either {"identifier": "..."} or a bare string — handle both.
+        fpv = vuln.get("first_patched_version")
+        if isinstance(fpv, dict):
+            first_patched = fpv.get("identifier")
+        elif isinstance(fpv, str):
+            first_patched = fpv
+        else:
+            first_patched = None
         rows.append({
             "name": pkg.get("name", "unknown"),
             "ecosystem": pkg.get("ecosystem", "unknown"),
