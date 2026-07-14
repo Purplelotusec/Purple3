@@ -3,227 +3,752 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PurpleLotus - Cybersecurity Redefined</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>PurpleLotus — Supply Chain Security</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes scaleIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-    .fade-in-up { animation: fadeInUp 1s ease-out; }
-    .scale-in { animation: scaleIn 0.8s ease-out; }
-    .glassy { background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
-    .scroll-animate { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-    .scroll-animate.visible { opacity: 1; transform: translateY(0); }
-    .curved-glassy { background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 10px 20px; }
-    .gradient-purple { background: linear-gradient(to right, #6B46C1, #A78BFA); transition: background 0.3s ease; }
-    .gradient-purple:hover { background: linear-gradient(to right, #553C9A, #8B5CF6); }
-    .hero-background { background: url('https://raw.githubusercontent.com/slvignesh05/Purple-Lotus-website/refs/heads/main/public/Gemini_Generated_Image_66dj8j66dj8j66dj.png') no-repeat center center/cover; background-blend-mode: overlay; position: relative; }
-    .hero-background::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); z-index: 0; }
-    .hero-content { position: relative; z-index: 1; }
+    :root {
+      --cream: #fdf6e3;
+      --cream-dark: #f5ead0;
+      --ink: #1a1208;
+      --ink-mid: #3d2e10;
+      --purple: #5c1f8a;
+      --purple-light: #8b44c8;
+      --purple-pale: #ecdff7;
+      --orange: #c94f0c;
+      --gray-text: #6b5c3e;
+      --border: rgba(92,31,138,0.15);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream); color: var(--ink);
+      font-family: 'DM Mono', monospace; font-size: 15px;
+      line-height: 1.6; overflow-x: hidden;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0.05;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 180px 180px;
+    }
 
-    /* PurpleLotus Gradient Logo - Matches Your Brand Perfectly */
-    .purple-gradient-logo {
-      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      font-weight: 900;
-      font-size: clamp(5rem, 18vw, 16rem);
-      letter-spacing: -0.05em;
-      line-height: 1;
-      background: linear-gradient(135deg, #9F7AEA 0%, #D8B4FE 25%, #C084FC 50%, #A78BFA 75%, #7C3AED 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-fill-color: transparent;
-      text-shadow: 0 10px 40px rgba(139, 92, 246, 0.4);
-      filter: drop-shadow(0 6px 30px rgba(124, 58, 237, 0.5));
+    /* HEADER */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(253,246,227,0.93); backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+      height: 60px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { font-family: 'Instrument Serif', serif; font-size: 1.35rem; color: var(--purple); text-decoration: none; letter-spacing: -0.01em; }
+    .logo span { color: var(--orange); }
+    nav { display: flex; gap: 2rem; align-items: center; }
+    nav a { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--ink-mid); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+    nav a:hover { color: var(--purple); }
+    .btn-primary { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; background: var(--purple); color: var(--cream); border: none; padding: 0.55rem 1.3rem; cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-block; }
+    .btn-primary:hover { background: var(--purple-light); transform: translateY(-1px); }
+    .btn-ghost { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; background: transparent; color: var(--ink); border: 1px solid currentColor; padding: 0.55rem 1.3rem; cursor: pointer; text-decoration: none; transition: all 0.2s; display: inline-block; }
+    .btn-ghost:hover { color: var(--purple); border-color: var(--purple); }
+
+    /* HERO */
+    .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; max-width: 1200px; margin: 0 auto; padding: 7rem 2rem 4rem; gap: 3rem; }
+    .hero-tag { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); border: 1px solid var(--orange); padding: 0.25rem 0.8rem; display: inline-block; margin-bottom: 2rem; }
+    .hero-title { font-family: 'Instrument Serif', serif; font-size: clamp(2.6rem, 4.5vw, 4.2rem); line-height: 1.07; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 1.2rem; }
+    .hero-title em { font-style: italic; color: var(--purple); }
+    .hero-italic { font-family: 'Instrument Serif', serif; font-size: 1.2rem; font-style: italic; color: var(--gray-text); margin-bottom: 1.2rem; }
+    .hero-sub { font-size: 0.87rem; color: var(--gray-text); max-width: 460px; line-height: 1.85; margin-bottom: 2.5rem; }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    /* PIXEL BLACKBUCK */
+    .hero-right { display: flex; justify-content: center; align-items: center; position: relative; }
+    .blackbuck-wrap { position: relative; width: 100%; max-width: 480px; }
+    .blackbuck-glow { position: absolute; top: 55%; left: 50%; transform: translate(-50%,-50%); width: 320px; height: 240px; background: radial-gradient(ellipse, rgba(139,68,200,0.2) 0%, transparent 70%); pointer-events: none; }
+    .pixel-canvas { position: relative; z-index: 2; width: 100%; image-rendering: pixelated; image-rendering: crisp-edges; filter: drop-shadow(0 8px 30px rgba(92,31,138,0.3)); }
+    .blackbuck-wrap::after { content: ''; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); background-size: 120px 120px; opacity: 0.09; pointer-events: none; z-index: 3; }
+
+    /* BACKED BY */
+    .backed-section { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--cream-dark); }
+    .backed-inner { max-width: 1200px; margin: 0 auto; padding: 2.5rem 2rem; }
+    .backed-header { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray-text); margin-bottom: 1.5rem; }
+    .backed-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem 2rem; }
+    .backed-item { display: flex; flex-direction: column; gap: 0.3rem; }
+    .backed-item .b-name { font-family: 'Syne', sans-serif; font-size: 0.88rem; font-weight: 700; color: var(--ink); letter-spacing: 0.01em; }
+    .backed-item .b-desc { font-size: 0.71rem; color: var(--gray-text); line-height: 1.5; }
+
+    /* SECTIONS */
+    .section { max-width: 1200px; margin: 0 auto; padding: 6rem 2rem; }
+    .section-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem; display: block; }
+    .section-title { font-family: 'Instrument Serif', serif; font-size: clamp(1.9rem, 3vw, 2.8rem); line-height: 1.1; letter-spacing: -0.025em; color: var(--ink); margin-bottom: 2rem; }
+    .section-title em { font-style: italic; color: var(--purple); }
+
+    /* WHY */
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .why-body p { font-size: 0.9rem; color: var(--gray-text); line-height: 1.9; margin-bottom: 1.1rem; }
+    .why-body strong { color: var(--ink); font-weight: 500; }
+    .breach-box { border-left: 3px solid var(--purple); padding: 1.2rem 1.5rem; background: var(--purple-pale); margin-top: 2rem; }
+    .breach-box p { font-family: 'Instrument Serif', serif; font-size: 1.15rem; font-style: italic; color: var(--purple); line-height: 1.6; }
+    .stat-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    .stat-block { border: 1px solid var(--border); padding: 1.25rem; background: var(--cream); text-align: center; }
+    .stat-num { font-family: 'Instrument Serif', serif; font-size: 2.2rem; letter-spacing: -0.04em; color: var(--purple); display: block; margin-bottom: 0.2rem; }
+    .stat-label { font-size: 0.7rem; color: var(--gray-text); letter-spacing: 0.05em; }
+
+    /* THREAT FEED */
+    .feed-section { background: var(--ink); }
+    .feed-inner { max-width: 1200px; margin: 0 auto; padding: 6rem 2rem; }
+    .feed-inner .section-label { color: var(--orange); }
+    .feed-inner .section-title { color: var(--cream); }
+    .feed-inner .section-title em { color: #c8a0e8; }
+    .feed-head-row { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 1rem; }
+    .feed-sub { font-size: 0.85rem; color: rgba(253,246,227,0.55); max-width: 520px; line-height: 1.8; }
+    .feed-meta { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(253,246,227,0.4); text-align: right; white-space: nowrap; }
+    .feed-meta strong { color: #c8a0e8; }
+    .feed-table-wrap { border: 1px solid rgba(255,255,255,0.12); margin-top: 2.5rem; overflow-x: auto; }
+    table.feed-table { width: 100%; border-collapse: collapse; min-width: 720px; }
+    table.feed-table thead th {
+      text-align: left; font-family: 'DM Mono', monospace; font-size: 0.66rem; letter-spacing: 0.09em; text-transform: uppercase;
+      color: rgba(253,246,227,0.45); padding: 1rem 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.12); font-weight: 400;
+    }
+    table.feed-table tbody td { padding: 1.1rem 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.07); font-size: 0.82rem; color: rgba(253,246,227,0.85); vertical-align: top; }
+    table.feed-table tbody tr:last-child td { border-bottom: none; }
+    table.feed-table tbody tr:hover { background: rgba(139,68,200,0.08); }
+    .feed-pkg { font-family: 'Syne', sans-serif; font-weight: 700; color: var(--cream); }
+    .feed-eco { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase; color: #c8a0e8; }
+    .feed-summary { color: rgba(253,246,227,0.5); font-size: 0.78rem; line-height: 1.6; max-width: 320px; display: block; margin-top: 0.3rem; }
+    .feed-version { font-family: 'DM Mono', monospace; font-size: 0.78rem; }
+    .feed-version.affected { color: #e8a074; }
+    .feed-version.patched { color: #7fd4a0; }
+    .feed-sev { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.25rem 0.6rem; display: inline-block; border: 1px solid; }
+    .feed-sev.critical { color: #ff8a6b; border-color: #ff8a6b; background: rgba(255,138,107,0.1); }
+    .feed-sev.high { color: #e8a074; border-color: #e8a074; background: rgba(232,160,116,0.1); }
+    .feed-sev.moderate, .feed-sev.medium { color: #d4c470; border-color: #d4c470; background: rgba(212,196,112,0.1); }
+    .feed-sev.low, .feed-sev.unknown { color: rgba(253,246,227,0.5); border-color: rgba(253,246,227,0.3); background: transparent; }
+    .feed-link { color: #c8a0e8; text-decoration: none; font-size: 0.72rem; letter-spacing: 0.04em; }
+    .feed-link:hover { text-decoration: underline; }
+    .feed-empty, .feed-loading { padding: 3rem 1.25rem; text-align: center; color: rgba(253,246,227,0.4); font-size: 0.85rem; }
+    .feed-disclaimer { display: flex; gap: 0.75rem; align-items: flex-start; margin-top: 1.75rem; padding: 1rem 1.25rem; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); }
+    .feed-disclaimer .flag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); flex-shrink: 0; padding-top: 0.1rem; }
+    .feed-disclaimer p { font-size: 0.76rem; color: rgba(253,246,227,0.5); line-height: 1.7; }
+
+    /* PRODUCT */
+    .product-section { background: var(--cream-dark); }
+    .product-inner { max-width: 1200px; margin: 0 auto; padding: 6rem 2rem; }
+    .product-hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; margin-bottom: 3rem; align-items: center; }
+    .product-hero-text .section-title { margin-bottom: 1rem; }
+    .product-hero-text p { font-size: 0.88rem; color: var(--gray-text); line-height: 1.85; margin-bottom: 1rem; }
+    .tag-row { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .product-tag { font-family: 'DM Mono', monospace; font-size: 0.67rem; letter-spacing: 0.06em; text-transform: uppercase; border: 1px solid var(--border); padding: 0.25rem 0.7rem; color: var(--purple-light); background: var(--cream); }
+    .sw-card { border: 1px solid var(--border); padding: 2rem; background: var(--cream); position: relative; overflow: hidden; }
+    .sw-card::before { content: '2020'; position: absolute; right: -0.5rem; top: -0.5rem; font-family: 'Instrument Serif', serif; font-size: 5rem; color: var(--purple); opacity: 0.06; letter-spacing: -0.05em; line-height: 1; }
+    .sw-card .sw-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--orange); margin-bottom: 0.75rem; }
+    .sw-card h4 { font-family: 'Instrument Serif', serif; font-size: 1.2rem; color: var(--ink); margin-bottom: 0.75rem; }
+    .sw-card p { font-size: 0.82rem; color: var(--gray-text); line-height: 1.8; }
+    .feature-grid { display: grid; grid-template-columns: repeat(3,1fr); border: 1px solid var(--border); }
+    .feature-card { padding: 2rem; border-right: 1px solid var(--border); transition: background 0.2s; }
+    .feature-card:last-child { border-right: none; }
+    .feature-card:hover { background: var(--purple-pale); }
+    .feature-num { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--gray-text); letter-spacing: 0.1em; margin-bottom: 1rem; }
+    .feature-card h4 { font-family: 'Instrument Serif', serif; font-size: 1.1rem; color: var(--ink); margin-bottom: 0.6rem; }
+    .feature-card p { font-size: 0.82rem; color: var(--gray-text); line-height: 1.75; }
+
+    /* SERVICES */
+    .services-grid { display: grid; grid-template-columns: repeat(3,1fr); border: 1px solid var(--border); margin-top: 3rem; }
+    .service-card { padding: 2.5rem; border-right: 1px solid var(--border); transition: background 0.2s; }
+    .service-card:last-child { border-right: none; }
+    .service-card:hover { background: var(--purple-pale); }
+    .service-num { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; color: var(--gray-text); margin-bottom: 1.5rem; }
+    .service-card h3 { font-family: 'Instrument Serif', serif; font-size: 1.25rem; color: var(--ink); margin-bottom: 0.75rem; }
+    .service-card p { font-size: 0.83rem; color: var(--gray-text); line-height: 1.8; }
+
+    /* PRICING */
+    .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; max-width: 860px; }
+    .pricing-card { border: 1px solid var(--border); padding: 2.5rem; background: var(--cream); position: relative; transition: border-color 0.2s; }
+    .pricing-card:hover { border-color: var(--purple); }
+    .pricing-card.featured { border-color: var(--purple); background: var(--ink); }
+    .pricing-badge { position: absolute; top: -1px; right: 2rem; background: var(--purple); color: var(--cream); font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.6rem; }
+    .price-tier { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple-light); margin-bottom: 1rem; }
+    .pricing-card.featured .price-tier { color: var(--purple-pale); }
+    .price-amount { font-family: 'Instrument Serif', serif; font-size: 3.5rem; line-height: 1; color: var(--ink); margin-bottom: 0.25rem; letter-spacing: -0.04em; }
+    .pricing-card.featured .price-amount { color: var(--cream); }
+    .price-sub { font-size: 0.78rem; color: var(--gray-text); margin-bottom: 2rem; }
+    .pricing-card.featured .price-sub { color: rgba(253,246,227,0.45); }
+    .price-features { list-style: none; margin-bottom: 2rem; }
+    .price-features li { font-size: 0.81rem; color: var(--gray-text); padding: 0.5rem 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 0.6rem; }
+    .pricing-card.featured .price-features li { color: rgba(253,246,227,0.65); border-bottom-color: rgba(255,255,255,0.07); }
+    .price-features li::before { content: '→'; color: var(--purple-light); flex-shrink: 0; font-size: 0.7rem; margin-top: 0.15rem; }
+    .btn-inv { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; background: var(--cream); color: var(--ink); border: none; padding: 0.75rem 1.5rem; cursor: pointer; text-decoration: none; display: block; width: 100%; text-align: center; transition: opacity 0.2s; }
+    .btn-inv:hover { opacity: 0.8; }
+
+    /* FAQ */
+    .faq-list { margin-top: 3rem; max-width: 720px; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q { font-family: 'Instrument Serif', serif; font-size: 1.08rem; color: var(--ink); padding: 1.35rem 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; transition: color 0.2s; }
+    .faq-q:hover { color: var(--purple); }
+    .faq-toggle { color: var(--purple); font-size: 1rem; flex-shrink: 0; transition: transform 0.3s; font-family: 'DM Mono', monospace; }
+    .faq-item.open .faq-toggle { transform: rotate(45deg); }
+    .faq-a { font-size: 0.85rem; color: var(--gray-text); line-height: 1.85; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; }
+    .faq-item.open .faq-a { max-height: 200px; padding-bottom: 1.4rem; }
+
+    /* NEWSLETTER */
+    .newsletter-section { background: var(--ink); padding: 5rem 2rem; }
+    .newsletter-inner { max-width: 560px; margin: 0 auto; text-align: center; }
+    .newsletter-inner .section-label { color: rgba(253,246,227,0.4); }
+    .newsletter-inner .section-title { color: var(--cream); font-size: 1.9rem; margin-top: 0.5rem; }
+    .newsletter-form { display: flex; margin-top: 2rem; border: 1px solid rgba(255,255,255,0.15); }
+    .newsletter-form input { flex: 1; background: transparent; border: none; outline: none; padding: 0.9rem 1.2rem; font-family: 'DM Mono', monospace; font-size: 0.82rem; color: var(--cream); letter-spacing: 0.03em; }
+    .newsletter-form input::placeholder { color: rgba(253,246,227,0.28); }
+    .newsletter-form button { background: var(--purple); border: none; color: var(--cream); padding: 0.9rem 1.5rem; font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+    .newsletter-form button:hover { background: var(--purple-light); }
+
+    /* WORDMARK + FOOTER */
+    .wordmark-section { padding: 4rem 2rem 2rem; text-align: center; overflow: hidden; }
+    .big-wordmark { font-family: 'Instrument Serif', serif; font-size: clamp(4rem, 15vw, 14rem); letter-spacing: -0.05em; line-height: 1; color: transparent; -webkit-text-stroke: 1px var(--purple); opacity: 0.12; user-select: none; }
+    footer { border-top: 1px solid var(--border); padding: 2rem; display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+    footer p { font-size: 0.74rem; color: var(--gray-text); }
+    footer a { color: var(--purple); text-decoration: none; }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; padding-top: 5.5rem; gap: 2rem; }
+      .hero-right { order: -1; }
+      .blackbuck-wrap { max-width: 300px; margin: 0 auto; }
+      .why-grid, .product-hero-grid, .services-grid, .feature-grid, .pricing-grid, .backed-grid { grid-template-columns: 1fr; }
+      .service-card, .feature-card { border-right: none; border-bottom: 1px solid var(--border); }
+      .stat-row { grid-template-columns: 1fr 1fr; }
+      nav { display: none; }
+      .feed-head-row { flex-direction: column; align-items: flex-start; }
+      .feed-meta { text-align: left; }
     }
   </style>
 </head>
-<body class="bg-black text-white font-sans">
+<body>
 
-  <!-- Header -->
-  <header class="fixed w-full z-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="curved-glassy flex items-center justify-between h-16">
-        <div class="flex items-center space-x-2 fade-in-up">
-          <span class="text-purple-400">Purple</span><span class="text-indigo-400">Lotus</span>
-        </div>
-        <nav class="flex space-x-6">
-          <a href="#product" class="hover:text-purple-400 transition duration-300">Product</a>
-          <a href="#services" class="hover:text-purple-400 transition duration-300">Services</a>
-          <a href="#pricing" class="hover:text-purple-400 transition duration-300">Pricing</a>
-          <a href="#faq" class="hover:text-purple-400 transition duration-300">FAQ</a>
-        </nav>
-        <a href="mailto:security@purplelotus.tech" class="gradient-purple text-white font-semibold py-2 px-4 rounded transition duration-300 scale-in">Contact Us</a>
-      </div>
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <a href="#" class="logo">Purple<span>Lotus</span></a>
+      <nav>
+        <a href="#threat-feed">Threat Feed</a>
+        <a href="#product">Product</a>
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a href="mailto:security@purplelotus.tech" class="btn-primary">Contact Us</a>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="min-h-screen flex items-center justify-center pt-16 hero-background">
-    <div class="text-center max-w-4xl mx-auto px-4 hero-content fade-in-up">
-      <p class="text-orange-400 mb-4">Backed by Expertise</p>
-      <h1 class="text-6xl font-bold mb-6">Because breaches aren't an option</h1>
-      <p class="text-2xl italic text-gray-300 mb-8">Don't let your workflows work against you.</p>
-      <p class="text-gray-400 mb-8">PurpleLotus finds business logic flaws and multi-step vulnerabilities that traditional tools miss, without drowning you in noise.</p>
-      <div class="space-x-4">
-        <a href="#pricing" class="gradient-purple text-white font-semibold py-3 px-6 rounded scale-in">Book a Demo</a>
-        <a href="mailto:security@purplelotus.tech" class="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 px-6 rounded scale-in">Try for Free</a>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-tag reveal">Backed by Expertise · Open Source Security</div>
+      <h1 class="hero-title reveal">Because breaches aren't <em>an option.</em></h1>
+      <p class="hero-italic reveal">Don't let your workflows work against you.</p>
+      <p class="hero-sub reveal">PurpleLotus finds business logic flaws and multi-step vulnerabilities that traditional tools miss — without drowning you in noise. Built for open source teams who ship fast and can't look away.</p>
+      <div class="hero-cta reveal">
+        <a href="#pricing" class="btn-primary">Book a Demo</a>
+        <a href="mailto:security@purplelotus.tech" class="btn-ghost">Try for Free</a>
+      </div>
+    </div>
+
+    <!-- MINECRAFT / PIXEL-ART BLACKBUCK — TRUE LEFT-FACING SIDE PROFILE -->
+    <!-- Grid: 80 wide × 56 tall. Each unit = 1 Minecraft voxel block. -->
+    <div class="hero-right reveal">
+      <div class="blackbuck-wrap">
+        <div class="blackbuck-glow"></div>
+        <svg class="pixel-canvas" viewBox="0 0 80 56" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+
+          <!-- ══ HORNS (left-facing, twisted spiral rising upward-right from head) ══ -->
+          <!-- Horn base at head top -->
+          <rect x="14" y="6"  width="2" height="2" fill="#4a1870"/>
+          <rect x="16" y="6"  width="2" height="2" fill="#5c1f8a"/>
+          <rect x="14" y="4"  width="2" height="2" fill="#5c1f8a"/>
+          <!-- Spiral twist outward -->
+          <rect x="16" y="4"  width="2" height="2" fill="#6b2fa0"/>
+          <rect x="18" y="4"  width="2" height="2" fill="#5c1f8a"/>
+          <rect x="18" y="2"  width="2" height="2" fill="#5c1f8a"/>
+          <rect x="20" y="2"  width="2" height="2" fill="#6b2fa0"/>
+          <rect x="22" y="2"  width="2" height="2" fill="#5c1f8a"/>
+          <rect x="22" y="0"  width="2" height="2" fill="#6b2fa0"/>
+          <rect x="24" y="0"  width="2" height="2" fill="#7b3fb8"/>
+          <rect x="26" y="0"  width="2" height="2" fill="#5c1f8a"/>
+          <rect x="24" y="2"  width="2" height="2" fill="#4a1870"/>
+          <!-- Horn ridge highlight blocks (Minecraft dither) -->
+          <rect x="17" y="5"  width="1" height="1" fill="#9b5fcc"/>
+          <rect x="19" y="3"  width="1" height="1" fill="#9b5fcc"/>
+          <rect x="21" y="1"  width="1" height="1" fill="#9b5fcc"/>
+          <rect x="23" y="1"  width="1" height="1" fill="#8b44c8"/>
+          <rect x="25" y="1"  width="1" height="1" fill="#7b3fb8"/>
+          <!-- Horn tip -->
+          <rect x="27" y="0"  width="2" height="2" fill="#3d1260"/>
+
+          <!-- ══ HEAD — blocky Minecraft cube ══ -->
+          <rect x="10" y="8"  width="14" height="10" fill="#5c1f8a"/>
+          <!-- Head top shade -->
+          <rect x="10" y="8"  width="14" height="2"  fill="#7b3fb8"/>
+          <!-- Head front-face highlight (leftmost column) -->
+          <rect x="10" y="10" width="2"  height="8"  fill="#7b3fb8"/>
+          <!-- Head bottom shadow -->
+          <rect x="10" y="16" width="14" height="2"  fill="#4a1870"/>
+          <!-- Snout block -->
+          <rect x="6"  y="12" width="6"  height="5"  fill="#6b2fa0"/>
+          <rect x="4"  y="13" width="4"  height="4"  fill="#7b3fb8"/>
+          <!-- Nostril pixel -->
+          <rect x="4"  y="16" width="2"  height="1"  fill="#3d1260"/>
+          <!-- Mouth line -->
+          <rect x="5"  y="17" width="4"  height="1"  fill="#3d1260"/>
+          <!-- EYE — 3×3 sclera, 2×2 pupil, 1×1 glint -->
+          <rect x="18" y="10" width="4"  height="4"  fill="#d4b0ee"/>
+          <rect x="19" y="11" width="2"  height="2"  fill="#1a1208"/>
+          <rect x="20" y="11" width="1"  height="1"  fill="#ffffff" opacity="0.9"/>
+          <!-- Ear -->
+          <rect x="22" y="8"  width="4"  height="5"  fill="#7b3fb8"/>
+          <rect x="24" y="6"  width="3"  height="4"  fill="#9b5fcc"/>
+          <rect x="23" y="5"  width="2"  height="2"  fill="#6b2fa0"/>
+
+          <!-- ══ NECK — rectangular column ══ -->
+          <rect x="22" y="16" width="8"  height="10" fill="#5c1f8a"/>
+          <rect x="22" y="16" width="2"  height="10" fill="#6b2fa0"/>
+          <rect x="28" y="16" width="2"  height="10" fill="#4a1870"/>
+
+          <!-- ══ BODY — main rectangular torso block ══ -->
+          <rect x="28" y="20" width="36" height="20" fill="#5c1f8a"/>
+          <!-- Body top highlight -->
+          <rect x="28" y="20" width="36" height="3"  fill="#6b2fa0"/>
+          <!-- Body bottom shadow -->
+          <rect x="28" y="37" width="36" height="3"  fill="#4a1870"/>
+          <!-- Belly underside — white/pale (blackbuck marking) -->
+          <rect x="30" y="32" width="28" height="5"  fill="#7b3fb8"/>
+          <rect x="32" y="34" width="24" height="3"  fill="#9b6fd8"/>
+          <rect x="34" y="35" width="20" height="2"  fill="#c8a0e8"/>
+          <!-- Shoulder definition -->
+          <rect x="28" y="23" width="8"  height="7"  fill="#6b2fa0"/>
+          <!-- Haunch definition -->
+          <rect x="56" y="24" width="8"  height="8"  fill="#4a1870"/>
+          <!-- Spine pixel highlight row -->
+          <rect x="30" y="20" width="32" height="1"  fill="#7b3fb8"/>
+
+          <!-- ══ FRONT LEGS ══ -->
+          <!-- Front-left (leading leg, fully visible) -->
+          <rect x="30" y="40" width="5"  height="10" fill="#5c1f8a"/>
+          <rect x="30" y="44" width="5"  height="6"  fill="#4a1870"/>
+          <rect x="29" y="48" width="6"  height="4"  fill="#3d1260"/>
+          <!-- Hoof block -->
+          <rect x="29" y="52" width="7"  height="2"  fill="#1a1208"/>
+          <!-- Front-right (trailing, slightly behind) -->
+          <rect x="38" y="40" width="5"  height="9"  fill="#4a1870"/>
+          <rect x="38" y="46" width="5"  height="3"  fill="#3d1260"/>
+          <rect x="37" y="49" width="6"  height="2"  fill="#1a1208"/>
+
+          <!-- ══ BACK LEGS ══ -->
+          <!-- Back-left (hock joint = stepped pixels = Minecraft style) -->
+          <rect x="52" y="40" width="5"  height="7"  fill="#5c1f8a"/>
+          <!-- Hock step outward -->
+          <rect x="49" y="45" width="6"  height="4"  fill="#4a1870"/>
+          <rect x="49" y="49" width="6"  height="4"  fill="#3d1260"/>
+          <rect x="48" y="52" width="7"  height="2"  fill="#1a1208"/>
+          <!-- Back-right (trailing) -->
+          <rect x="58" y="40" width="5"  height="6"  fill="#4a1870"/>
+          <rect x="56" y="44" width="5"  height="4"  fill="#3d1260"/>
+          <rect x="55" y="47" width="6"  height="3"  fill="#3d1260"/>
+          <rect x="55" y="50" width="6"  height="2"  fill="#1a1208"/>
+
+          <!-- ══ TAIL (fluffy, raised) ══ -->
+          <rect x="62" y="22" width="4"  height="8"  fill="#7b3fb8"/>
+          <rect x="64" y="20" width="4"  height="6"  fill="#9b5fcc"/>
+          <rect x="66" y="18" width="3"  height="5"  fill="#c8a0e8"/>
+          <rect x="68" y="17" width="2"  height="4"  fill="#d4b0ee"/>
+
+          <!-- ══ BLACKBUCK WHITE BODY MARKINGS ══ -->
+          <!-- White flank patch (mid-body) -->
+          <rect x="40" y="28" width="8"  height="4"  fill="#d4b0ee" opacity="0.3"/>
+          <!-- White inner-leg markings -->
+          <rect x="31" y="42" width="2"  height="5"  fill="#c8a0e8" opacity="0.4"/>
+          <rect x="53" y="42" width="2"  height="5"  fill="#c8a0e8" opacity="0.4"/>
+          <!-- Facial white ring near eye -->
+          <rect x="17" y="10" width="1"  height="5"  fill="#d4b0ee" opacity="0.5"/>
+
+          <!-- ══ MINECRAFT DITHER / GRAIN PIXELS ══ -->
+          <!-- Randomised bright/dark single pixels across body surface -->
+          <rect x="29" y="21" width="1" height="1" fill="#ffffff" opacity="0.10"/>
+          <rect x="33" y="24" width="1" height="1" fill="#000000" opacity="0.09"/>
+          <rect x="37" y="22" width="1" height="1" fill="#ffffff" opacity="0.08"/>
+          <rect x="41" y="25" width="1" height="1" fill="#000000" opacity="0.10"/>
+          <rect x="45" y="21" width="1" height="1" fill="#ffffff" opacity="0.09"/>
+          <rect x="49" y="23" width="1" height="1" fill="#000000" opacity="0.08"/>
+          <rect x="53" y="22" width="1" height="1" fill="#ffffff" opacity="0.10"/>
+          <rect x="57" y="25" width="1" height="1" fill="#000000" opacity="0.09"/>
+          <rect x="61" y="23" width="1" height="1" fill="#ffffff" opacity="0.08"/>
+          <rect x="35" y="30" width="1" height="1" fill="#ffffff" opacity="0.12"/>
+          <rect x="43" y="33" width="1" height="1" fill="#000000" opacity="0.08"/>
+          <rect x="47" y="31" width="1" height="1" fill="#ffffff" opacity="0.10"/>
+          <rect x="55" y="29" width="1" height="1" fill="#000000" opacity="0.09"/>
+          <rect x="31" y="35" width="1" height="1" fill="#ffffff" opacity="0.09"/>
+          <rect x="39" y="36" width="1" height="1" fill="#000000" opacity="0.07"/>
+          <rect x="51" y="34" width="1" height="1" fill="#ffffff" opacity="0.10"/>
+          <rect x="59" y="32" width="1" height="1" fill="#000000" opacity="0.09"/>
+          <rect x="13" y="9"  width="1" height="1" fill="#ffffff" opacity="0.10"/>
+          <rect x="11" y="14" width="1" height="1" fill="#000000" opacity="0.08"/>
+          <rect x="23" y="19" width="1" height="1" fill="#ffffff" opacity="0.09"/>
+          <rect x="63" y="26" width="1" height="1" fill="#ffffff" opacity="0.09"/>
+        </svg>
       </div>
     </div>
   </section>
 
-  <!-- Product Section -->
-  <section id="product" class="py-20 bg-black">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-4xl font-bold text-center text-white mb-12 fade-in-up scroll-animate">Our Flagship Product</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="glassy p-6 rounded-lg shadow-lg fade-in-up scroll-animate">
-          <h3 class="text-2xl font-semibold text-purple-400 mb-4">SecureCI/CD</h3>
-          <p class="text-gray-400">Protect your GitHub CI/CD pipelines with real-time threat detection, automated security checks, and robust access controls for a secure software lifecycle.</p>
+  <!-- BACKED BY -->
+  <div class="backed-section">
+    <div class="backed-inner">
+      <p class="backed-header reveal">Backed by Expertise — researchers, advisors &amp; allies</p>
+      <div class="backed-grid reveal">
+        <div class="backed-item">
+          <span class="b-name">Microsoft HoF</span>
+          <span class="b-desc">Recognized for responsibly disclosing critical vulnerabilities in Microsoft's cloud &amp; identity infrastructure</span>
         </div>
-        <div class="glassy p-6 rounded-lg shadow-lg fade-in-up scroll-animate">
-          <h3 class="text-2xl font-semibold text-purple-400 mb-4">Why It Matters</h3>
-          <p class="text-gray-400">The 2020 SolarWinds attack inserted malicious code into a software update, impacting thousands. SecureCI/CD prevents such supply chain attacks.</p>
+        <div class="backed-item">
+          <span class="b-name">GitHub Security</span>
+          <span class="b-desc">Listed in GitHub's Security Hall of Fame for responsible disclosure in core platform features</span>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section id="services" class="py-20 bg-black">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-4xl font-bold text-center text-white mb-12 fade-in-up scroll-animate">Penetration Testing Services</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="glassy p-6 rounded-lg shadow-lg hover:bg-purple-900/20 transition duration-300 fade-in-up scroll-animate">
-          <h3 class="text-xl font-semibold text-purple-400 mb-4">Network Penetration Testing</h3>
-          <p class="text-gray-400">Simulate attacks to uncover network vulnerabilities.</p>
+        <div class="backed-item">
+          <span class="b-name">OWASP Standards</span>
+          <span class="b-desc">All assessments follow OWASP Testing Guide v4.2 and Top 10 methodology across every engagement</span>
         </div>
-        <div class="glassy p-6 rounded-lg shadow-lg hover:bg-purple-900/20 transition duration-300 fade-in-up scroll-animate">
-          <h3 class="text-xl font-semibold text-purple-400 mb-4">Application Penetration Testing</h3>
-          <p class="text-gray-400">Test web and mobile apps for security flaws.</p>
+        <div class="backed-item">
+          <span class="b-name">CREST Certified</span>
+          <span class="b-desc">Internationally recognised penetration testing standards, ethics, and professional conduct</span>
         </div>
-        <div class="glassy p-6 rounded-lg shadow-lg hover:bg-purple-900/20 transition duration-300 fade-in-up scroll-animate">
-          <h3 class="text-xl font-semibold text-purple-400 mb-4">Social Engineering Testing</h3>
-          <p class="text-gray-400">Assess susceptibility to phishing and social attacks.</p>
+        <div class="backed-item">
+          <span class="b-name">CVE Programme</span>
+          <span class="b-desc">Active CVE contributors — we find, report, and help patch real vulnerabilities in widely-used software</span>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pricing Section -->
-  <section id="pricing" class="py-20 bg-black">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-4xl font-bold text-center text-white mb-12 fade-in-up scroll-animate">Pricing Plans</h2>
-      <p class="text-center text-gray-400 mb-12 scroll-animate">Choose the plan that fits your security needs.</p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-        <div class="glassy p-8 rounded-lg shadow-lg fade-in-up scroll-animate text-center border border-purple-500/30">
-          <h3 class="text-3xl font-semibold text-purple-400 mb-4">Free</h3>
-          <div class="mb-6"><span class="text-5xl font-bold">$0</span><span class="text-gray-400"> / forever</span></div>
-          <ul class="text-gray-400 mb-8 space-y-3 text-left">
-            <li>Basic CI/CD pipeline scanning</li>
-            <li>Up to 3 GitHub repositories</li>
-            <li>Community support</li>
-            <li>Weekly security summary</li>
-            <li>Limited vulnerability detection</li>
-          </ul>
-          <a href="mailto:security@purplelotus.tech" class="bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 px-6 rounded w-full block transition duration-300 scale-in">Get Started Free</a>
+        <div class="backed-item">
+          <span class="b-name">Bug Bounty Elite</span>
+          <span class="b-desc">Top-ranked researchers across HackerOne, Bugcrowd and Intigriti with critical-severity findings</span>
         </div>
-        <div class="glassy p-8 rounded-lg shadow-lg fade-in-up scroll-animate text-center ring-2 ring-purple-500 relative">
-          <div class="absolute -top-4 left-1/2 transform -translate-x-1/2"><span class="bg-purple-600 text-white text-sm font-semibold px-4 py-1 rounded-full">Most Popular</span></div>
-          <h3 class="text-3xl font-semibold text-purple-400 mb-4 mt-4">Purple Plus</h3>
-          <div class="mb-6"><span class="text-4xl font-bold">Custom</span><br><span class="text-gray-400">Contact us for pricing</span></div>
-          <ul class="text-gray-400 mb-8 space-y-3 text-left">
-            <li>Full-scope web application pentesting</li>
-            <li>Unlimited private/public repo scanning</li>
-            <li>GitHub PR bot for fixes</li>
-            <li>Advanced misconfig detection engine</li>
-            <li>Custom detection rules</li>
-            <li>Priority support</li>
-          </ul>
-          <a href="mailto:security@purplelotus.tech" class="gradient-purple text-white font-semibold py-3 px-6 rounded w-full block scale-in hover:scale-105 transition">Contact Us for Details</a>
+        <div class="backed-item">
+          <span class="b-name">Open Source Trust</span>
+          <span class="b-desc">Trusted by maintainers of widely-used npm, PyPI, and Go packages to audit before major releases</span>
+        </div>
+        <div class="backed-item">
+          <span class="b-name">OpenSSF Supply Chain SIG</span>
+          <span class="b-desc">Contributing members of the Open Source Security Foundation's Supply Chain Security working group</span>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- FAQ Section -->
-  <section id="faq" class="py-20 bg-black">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-4xl font-bold text-center text-white mb-12 fade-in-up scroll-animate">FAQs – PurpleLotus</h2>
-      <div class="max-w-2xl mx-auto space-y-6">
-        <div class="glassy p-6 rounded-lg fade-in-up scroll-animate">
-          <h3 class="text-xl font-semibold text-purple-400 mb-2">What types of pentesting does PurpleLotus offer?</h3>
-          <p class="text-gray-400">We offer web, mobile, cloud, network, and CI/CD pentesting tailored to modern threat landscapes.</p>
-        </div>
-        <div class="glassy p-6 rounded-lg fade-in-up scroll-animate">
-          <h3 class="text-xl font-semibold text-purple-400 mb-2">How are PurpleLotus pentests different from others?</h3>
-          <p class="text-gray-400">We go beyond checklists — focusing on real-world exploitation paths, misconfigurations, and chained logic flaws.</p>
-        </div>
-        <div class="glassy p-6 rounded-lg fade-in-up scroll-animate">
-          <h3 class="text-xl font-semibold text-purple-400 mb-2">Do you provide a detailed vulnerability report?</h3>
-          <p class="text-gray-400">Yes, every engagement includes a prioritized, developer-friendly report with reproduction steps and remediation guidance.</p>
-        </div>
-        <div class="glassy p-6 rounded-lg fade-in-up scroll-animate">
-          <h3 class="text-xl font-semibold text-purple-400 mb-2">Are your tests manual or automated?</h3>
-          <p class="text-gray-400">We combine automated scanning with expert-driven manual testing to uncover deep vulnerabilities tools often miss.</p>
-        </div>
-        <div class="glassy p-6 rounded-lg fade-in-up scroll-animate">
-          <h3 class="text-xl font-semibold text-purple-400 mb-2">Is PurpleLotus certified or recognized?</h3>
-          <p class="text-gray-400">Yes, our researchers are listed in top security halls of fame, including Microsoft and GitHub, and follow OWASP/CREST standards.</p>
+  <!-- WHY -->
+  <div class="section">
+    <span class="section-label reveal">Why PurpleLotus</span>
+    <div class="why-grid">
+      <div>
+        <h2 class="section-title reveal">Open source is the new <em>attack surface.</em></h2>
+        <div class="stat-row reveal">
+          <div class="stat-block">
+            <span class="stat-num">96%</span>
+            <span class="stat-label">of codebases contain open source components</span>
+          </div>
+          <div class="stat-block">
+            <span class="stat-num">8×</span>
+            <span class="stat-label">supply chain attacks YoY since 2020</span>
+          </div>
+          <div class="stat-block">
+            <span class="stat-num">742</span>
+            <span class="stat-label">avg. days to detect a supply chain breach</span>
+          </div>
         </div>
       </div>
-      <div class="mt-12 text-center scroll-animate">
-        <input type="email" placeholder="sam.grep@acme.com" class="p-3 rounded-l bg-gray-800 border border-gray-700 text-white w-64">
-        <button class="bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-6 rounded-r scale-in">Sign up for Newsletter</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Laravel-Style Backed By Section with GORGEOUS Purple Gradient Logo -->
-  <section class="py-32 bg-black">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <p class="text-gray-500 text-xl mb-20 scroll-animate">Backed by researchers from</p>
-
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-8 text-gray-600 text-lg mb-32 scroll-animate">
-        <div class="opacity-60 hover:opacity-100 transition duration-200">Sanctum</div>
-        <div class="opacity-60 hover:opacity-100 transition duration-200">Socialite</div>
-        <div class="opacity-60 hover:opacity-100 transition duration-200">Telescope</div>
-        <div class="opacity-60 hover:opacity-100 transition duration-200">Pulse</div>
-        <div class="opacity-60 hover:opacity-100 transition duration-200">Reverb</div>
-        <div class="opacity-60 hover:opacity-100 transition duration-200">Echo</div>
-        <div class="opacity-60 hover:opacity-100 transition duration-200">Jobs</div>
-        <div class="opacity-60 hover:opacity-100 transition duration-200">Trust</div>
-        <div class="opacity-60 hover:opacity-100 transition duration-200">Careers</div>
-        <div class="opacity-60 hover:opacity-100 transition duration-200">More Partners</div>
-      </div>
-
-      <!-- PurpleLotus Logo in Beautiful Gradient -->
-      <div class="flex justify-center scroll-animate">
-        <h1 class="purple-gradient-logo">PurpleLotus</h1>
+      <div class="why-body reveal">
+        <p>Modern software is assembled, not written. Every package you pull is a door you're leaving ajar. Traditional scanners see the doors — PurpleLotus sees <strong>who's walking through them and how they chain attacks together.</strong></p>
+        <p>We find business logic flaws and multi-step vulnerabilities that automated tools fundamentally cannot detect. The kind that turn a low-severity misconfiguration into a full supply chain compromise.</p>
+        <p>Our researchers have been there. They've exploited the same classes of bugs in production at scale. That experience is why Microsoft and GitHub trust us enough to list us in their halls of fame.</p>
+        <div class="breach-box">
+          <p>"Because breaches aren't an option. Don't let your workflows work against you."</p>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Footer -->
-  <footer class="bg-black py-12 border-t border-gray-800">
-    <div class="max-w-7xl mx-auto px-6 text-center scroll-animate">
-      <p class="text-gray-400 text-lg">Security that ships with your code.</p>
-      <p class="text-gray-400 mt-2">© 2025 PurpleLotus, Inc. All rights reserved.</p>
+  <!-- THREAT FEED -->
+  <div class="feed-section" id="threat-feed">
+    <div class="feed-inner">
+      <div class="feed-head-row">
+        <div>
+          <span class="section-label reveal">Live Threat Feed</span>
+          <h2 class="section-title reveal">Ongoing supply chain <em>attacks</em> this month.</h2>
+          <p class="feed-sub reveal">Pulled automatically from the GitHub Advisory Database — real advisories affecting npm, PyPI, Go, RubyGems, Maven, crates.io and GitHub Actions, updated daily. No LLM in the loop: names and version ranges come straight from the advisory record.</p>
+        </div>
+        <div class="feed-meta reveal" id="feed-meta">Loading feed status…</div>
+      </div>
+
+      <div class="feed-table-wrap reveal">
+        <table class="feed-table">
+          <thead>
+            <tr>
+              <th>Package</th>
+              <th>Ecosystem</th>
+              <th>Affected</th>
+              <th>Patched</th>
+              <th>Severity</th>
+              <th>Advisory</th>
+            </tr>
+          </thead>
+          <tbody id="feed-rows">
+            <tr><td colspan="6" class="feed-loading">Fetching latest advisories…</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="feed-disclaimer reveal">
+        <span class="flag">Disclaimer</span>
+        <p>These results are sourced from the public web — specifically the GitHub Advisory Database — and are surfaced here automatically without manual verification by PurpleLotus. Advisory data can be incomplete, disputed, or updated after this page was generated. Always confirm affected/patched versions against the linked upstream advisory before taking action on your own systems.</p>
+      </div>
     </div>
+  </div>
+
+  <!-- PRODUCT -->
+  <div class="product-section" id="product">
+    <div class="product-inner">
+      <span class="section-label reveal">Our Flagship Product</span>
+      <div class="product-hero-grid reveal">
+        <div class="product-hero-text">
+          <h2 class="section-title">SecureCI/CD — <em>supply chain security</em> that ships with your code.</h2>
+          <p>Protect your GitHub CI/CD pipelines with real-time threat detection, automated security checks, and robust access controls for a secure software lifecycle. PurpleLotus integrates directly into your pull request workflow — no dashboard-switching, no alert fatigue.</p>
+          <p>We scan for dependency confusion, typosquatting, malicious package injections, secrets leakage, and pipeline privilege escalation — the exact vectors attackers use to poison open source at the source.</p>
+          <div class="tag-row">
+            <span class="product-tag">GitHub Native</span>
+            <span class="product-tag">PR Bot</span>
+            <span class="product-tag">Zero Config</span>
+            <span class="product-tag">Real-time</span>
+            <span class="product-tag">Open Source Ready</span>
+          </div>
+        </div>
+        <div class="sw-card reveal">
+          <div class="sw-label">Case Study · Why It Matters</div>
+          <h4>The SolarWinds Playbook</h4>
+          <p>The 2020 SolarWinds attack inserted malicious code into a software update, impacting thousands of organisations including US government agencies. Attackers didn't break in — they were <em>invited through a poisoned build pipeline.</em></p>
+          <p style="margin-top:0.75rem;">SecureCI/CD is engineered specifically to detect and block this class of supply chain attack before your update ships to users.</p>
+        </div>
+      </div>
+
+      <div class="feature-grid reveal">
+        <div class="feature-card">
+          <div class="feature-num">01 — Detection</div>
+          <h4>Dependency Poisoning</h4>
+          <p>Real-time scanning for dependency confusion, typosquatting, and malicious package injections across npm, PyPI, Maven and Go modules at every PR.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-num">02 — Pipeline</div>
+          <h4>CI/CD Integrity</h4>
+          <p>Monitors GitHub Actions workflows for secrets exposure, permission escalation, and unpinned third-party actions across your entire organisation.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-num">03 — Response</div>
+          <h4>PR-Level Remediation</h4>
+          <p>Automated PR comments with reproduction steps, fix suggestions and severity scoring — so developers act without ever leaving GitHub.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <div class="section" id="services">
+    <span class="section-label reveal">Services</span>
+    <h2 class="section-title reveal">Penetration Testing Services</h2>
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <h3>Network Penetration Testing</h3>
+        <p>Simulate attacks to uncover network vulnerabilities. We go beyond automated checklists to find the chained multi-step paths adversaries actually exploit in the real world.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <h3>Application Penetration Testing</h3>
+        <p>Test web and mobile apps for security flaws — business logic bypasses, authentication weaknesses, and deep injection vulnerabilities that scanners consistently miss.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <h3>Social Engineering Testing</h3>
+        <p>Assess susceptibility to phishing and social attacks with realistic simulation campaigns that surface your human attack surface before adversaries find it first.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRICING -->
+  <div class="section" id="pricing" style="border-top:1px solid var(--border);">
+    <span class="section-label reveal">Pricing</span>
+    <h2 class="section-title reveal">Choose the plan that fits your security needs.</h2>
+    <div class="pricing-grid reveal">
+      <div class="pricing-card">
+        <div class="price-tier">Free</div>
+        <div class="price-amount">$0</div>
+        <div class="price-sub">forever · no credit card required</div>
+        <ul class="price-features">
+          <li>Basic CI/CD pipeline scanning</li>
+          <li>Up to 3 GitHub repositories</li>
+          <li>Community support</li>
+          <li>Weekly security summary</li>
+          <li>Limited vulnerability detection</li>
+        </ul>
+        <a href="mailto:security@purplelotus.tech" class="btn-ghost" style="width:100%;text-align:center;">Get Started Free</a>
+      </div>
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Most Popular</div>
+        <div class="price-tier">Purple Plus</div>
+        <div class="price-amount" style="font-size:2.1rem;letter-spacing:-0.03em;">Custom</div>
+        <div class="price-sub">Contact us for pricing</div>
+        <ul class="price-features">
+          <li>Full-scope web application pentesting</li>
+          <li>Unlimited private/public repo scanning</li>
+          <li>GitHub PR bot for AI-powered fix suggestions</li>
+          <li>Advanced misconfiguration detection engine</li>
+          <li>Custom detection rules per repo</li>
+          <li>Priority support &amp; dedicated engineer</li>
+        </ul>
+        <a href="mailto:security@purplelotus.tech" class="btn-inv">Contact Us for Details</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section" id="faq" style="border-top:1px solid var(--border);">
+    <span class="section-label reveal">FAQ</span>
+    <h2 class="section-title reveal">FAQs — PurpleLotus</h2>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <div class="faq-q">What types of pentesting does PurpleLotus offer? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">We offer web, mobile, cloud, network, and CI/CD pentesting tailored to modern threat landscapes — with a particular focus on supply chain and open source pipeline security.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How are PurpleLotus pentests different from others? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">We go beyond checklists — focusing on real-world exploitation paths, misconfigurations, and chained logic flaws. Our researchers find the paths that automated tools fundamentally cannot detect.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do you provide a detailed vulnerability report? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">Yes. Every engagement includes a prioritized, developer-friendly report with reproduction steps, CVSS scoring, and actionable remediation guidance written for your specific stack.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Are your tests manual or automated? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">We combine automated scanning with expert-driven manual testing to uncover deep vulnerabilities. Automation finds the breadth; our humans find the depth and the business logic flaws.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is PurpleLotus certified or recognised? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">Yes. Our researchers are listed in top security halls of fame including Microsoft and GitHub, and we follow OWASP and CREST standards throughout every engagement.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do you support open source projects? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">Absolutely. SecureCI/CD is free for qualifying open source projects. We believe the open source ecosystem deserves first-class security tooling — reach out with your project details.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Where does the Live Threat Feed data come from? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">Directly from the GitHub Advisory Database's public API, refreshed daily by an automated job. It's the same free, open data source that powers Dependabot — no paid data feed, no LLM-generated summaries.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div class="newsletter-section">
+    <div class="newsletter-inner reveal">
+      <span class="section-label">Newsletter</span>
+      <h2 class="section-title">Security that ships<br>with your code.</h2>
+      <div class="newsletter-form">
+        <input type="email" placeholder="sam.grep@acme.com">
+        <button>Sign Up for Newsletter</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- WORDMARK -->
+  <div class="wordmark-section">
+    <div class="big-wordmark">PurpleLotus</div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Security that ships with your code. © 2025 PurpleLotus, Inc. All rights reserved.</p>
+    <p><a href="mailto:security@purplelotus.tech">security@purplelotus.tech</a></p>
   </footer>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const elements = document.querySelectorAll('.scroll-animate');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-      elements.forEach(el => observer.observe(el));
+    // Scroll reveal
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.07 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.parentElement;
+        const open = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!open) item.classList.add('open');
+      });
     });
+
+    // THREAT FEED — fetches the static JSON generated by the daily GitHub Action
+    (function loadThreatFeed() {
+      const rowsEl = document.getElementById('feed-rows');
+      const metaEl = document.getElementById('feed-meta');
+
+      const sevClass = (sev) => {
+        const s = (sev || 'unknown').toLowerCase();
+        return ['critical', 'high', 'moderate', 'medium', 'low'].includes(s) ? s : 'unknown';
+      };
+
+      const escapeHtml = (str) => String(str ?? '').replace(/[&<>"']/g, (c) => (
+        { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
+      ));
+
+      const fmtDate = (iso) => {
+        if (!iso) return '—';
+        try {
+          return new Date(iso).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+        } catch (e) { return iso; }
+      };
+
+      fetch('data/attacks.json', { cache: 'no-store' })
+        .then((r) => {
+          if (!r.ok) throw new Error('Feed request failed: ' + r.status);
+          return r.json();
+        })
+        .then((data) => {
+          const advisories = data.advisories || [];
+
+          metaEl.innerHTML = `<strong>${advisories.length}</strong> advisories &middot; last ${data.window_days || 30} days<br>updated ${fmtDate(data.generated_at)}`;
+
+          if (!advisories.length) {
+            rowsEl.innerHTML = '<tr><td colspan="6" class="feed-empty">No advisories matched the current window. Check back soon.</td></tr>';
+            return;
+          }
+
+          rowsEl.innerHTML = advisories.map((a) => `
+            <tr>
+              <td>
+                <span class="feed-pkg">${escapeHtml(a.name)}</span>
+                <span class="feed-summary">${escapeHtml(a.summary || '')}</span>
+              </td>
+              <td><span class="feed-eco">${escapeHtml(a.ecosystem)}</span></td>
+              <td><span class="feed-version affected">${escapeHtml(a.affected_range)}</span></td>
+              <td><span class="feed-version patched">${escapeHtml(a.patched_version)}</span></td>
+              <td><span class="feed-sev ${sevClass(a.severity)}">${escapeHtml(a.severity)}</span></td>
+              <td>${a.source_url ? `<a class="feed-link" href="${escapeHtml(a.source_url)}" target="_blank" rel="noopener">${escapeHtml(a.ghsa_id || 'View →')}</a>` : '—'}</td>
+            </tr>
+          `).join('');
+        })
+        .catch((err) => {
+          console.error(err);
+          rowsEl.innerHTML = '<tr><td colspan="6" class="feed-empty">Couldn\'t load the threat feed right now. Try refreshing, or view advisories directly at github.com/advisories.</td></tr>';
+          metaEl.textContent = 'Feed unavailable';
+        });
+    })();
   </script>
 </body>
 </html>
