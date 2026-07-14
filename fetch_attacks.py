@@ -8,6 +8,7 @@ Docs: https://docs.github.com/en/rest/security-advisories/global-advisories
 """
 import json
 import os
+import re
 import sys
 from datetime import datetime, timedelta, timezone
 from urllib.request import Request, urlopen
@@ -26,22 +27,44 @@ RELEVANT_ECOSYSTEMS = {
     "actions", "rust", "erlang", "swift", "pub"
 }
 
+LINK_NEXT_RE = re.compile(r'<([^>]+)>;\s*rel="next"')
 
-def fetch_page(page: int, token: str | None):
-    url = f"{API_URL}?per_page={PER_PAGE}&page={page}&sort=published&direction=desc"
-    req = Request(url, headers={
-        "Accept": "application/vnd.github+json",
-        "X-GitHub-Api-Version": "2022-11-28",
-        "User-Agent": "purplelotus-threat-feed",
-    })
-    if token:
-        req.add_header("Authorization", f"Bearer {token}")
-    try:
-        with urlopen(req, timeout=20) as resp:
-            return json.loads(resp.read().decode())
-    except HTTPError as e:
-        print(f"GitHub API error on page {page}: {e.code} {e.reason}", file=sys.stderr)
-        return []
+
+def fetch_advisories(token: str | None) -> list[dict]:
+    """Walks the GitHub Advisories API using the Link header for pagination.
+
+    GitHub's advisories endpoint uses cursor-based pagination (a `Link:
+    rel="next"` header pointing at the next request URL) rather than a plain
+    `?page=N` you can increment yourself — passing your own page number is
+    silently ignored and just returns the first page every time, which is
+    why an earlier version of this script produced duplicate rows.
+    """
+    url = f"{API_URL}?per_page={PER_PAGE}&sort=published&direction=desc"
+    advisories: list[dict] = []
+
+    for _ in range(MAX_PAGES):
+        req = Request(url, headers={
+            "Accept": "application/vnd.github+json",
+            "X-GitHub-Api-Version": "2022-11-28",
+            "User-Agent": "purplelotus-threat-feed",
+        })
+        if token:
+            req.add_header("Authorization", f"Bearer {token}")
+
+        try:
+            with urlopen(req, timeout=20) as resp:
+                advisories.extend(json.loads(resp.read().decode()))
+                link_header = resp.headers.get("Link", "")
+        except HTTPError as e:
+            print(f"GitHub API error: {e.code} {e.reason}", file=sys.stderr)
+            break
+
+        match = LINK_NEXT_RE.search(link_header)
+        if not match:
+            break
+        url = match.group(1)
+
+    return advisories
 
 
 def normalize(advisory: dict) -> list[dict]:
@@ -72,10 +95,16 @@ def normalize(advisory: dict) -> list[dict]:
             first_patched = fpv
         else:
             first_patched = None
+
+        name = pkg.get("name", "unknown")
+        affected_range = vuln.get("vulnerable_version_range", "unknown")
+
         rows.append({
-            "name": pkg.get("name", "unknown"),
+            # dedupe_key isn't written to the output file — see main()
+            "_dedupe_key": (ghsa_id, name, affected_range),
+            "name": name,
             "ecosystem": pkg.get("ecosystem", "unknown"),
-            "affected_range": vuln.get("vulnerable_version_range", "unknown"),
+            "affected_range": affected_range,
             "patched_version": first_patched or "No fix yet",
             "severity": severity,
             "summary": summary,
@@ -91,25 +120,24 @@ def main():
     token = os.environ.get("GITHUB_TOKEN")
     cutoff = datetime.now(timezone.utc) - timedelta(days=DAYS_BACK)
 
+    advisories = fetch_advisories(token)
+
     all_rows = []
-    for page in range(1, MAX_PAGES + 1):
-        advisories = fetch_page(page, token)
-        if not advisories:
-            break
+    seen = set()
+    for adv in advisories:
+        pub_raw = adv.get("published_at")
+        if not pub_raw:
+            continue
+        pub_dt = datetime.fromisoformat(pub_raw.replace("Z", "+00:00"))
+        if pub_dt < cutoff:
+            continue
 
-        stop = False
-        for adv in advisories:
-            pub_raw = adv.get("published_at")
-            if not pub_raw:
+        for row in normalize(adv):
+            key = row.pop("_dedupe_key")
+            if key in seen:
                 continue
-            pub_dt = datetime.fromisoformat(pub_raw.replace("Z", "+00:00"))
-            if pub_dt < cutoff:
-                stop = True
-                continue
-            all_rows.extend(normalize(adv))
-
-        if stop:
-            break
+            seen.add(key)
+            all_rows.append(row)
 
     # Sort newest first, cap output size
     all_rows.sort(key=lambda r: r["published"], reverse=True)
