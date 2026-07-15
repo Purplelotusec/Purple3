@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-07-15T05:26:04.522018+00:00",
+  "generated_at": "2026-07-15T09:16:48.505571+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "Here's a summary of the article:\n\n**Malicious SDKs on npm and PyPI**\n\n* 17 malicious packages were published on npm and PyPI, impersonating official software development kits for Paysafe, Skrill, and Neteller.\n* The packages looked like payment SDKs, exposed expected methods, and returned convincing success responses.\n* The threat actor harvested API keys, AWS credentials, GitHub tokens, and environment variables, shipping them to a command-and-control endpoint.\n\n**Impact**\n\n* Developers who installed the affected packages were targeted, with the malicious code searching for secrets such as tokens, passwords, and API keys.\n* The exfiltrated data included Paysafe API keys, AWS keys, GitHub tokens, npm tokens, hostname, username, and metadata about API usage.\n* The malware was designed to steal credentials without requiring a Paysafe API key.\n\n**Recommendations**\n\n* Developers who installed the affected packages should remove them immediately and treat affected systems as compromised.\n* Revoking and regenerating Telegram bot tokens, rotating credentials, and performing other security measures are recommended.\n\n**Other Malicious Packages**\n\n* A separate campaign targeted Python developers building Telegram bots with trojanized Pyrogram forks that allowed attackers to read arbitrary files on compromised servers.\n* The malicious packages were published on PyPI between November 2025 and June 2026.\n\n**Compliance Implications**\n\n* The EU Cyber Resilience Act, NIS2, PCI DSS 4.0, and the US federal secure software attestation regime all require developers to install legitimate software development kits.\n* Installing malicious packages can be considered a compliance failure with a paper trail.\n\n**Prevention Measures**\n\n* Developers should regularly update their dependencies and monitor package releases for suspicious activity.\n* Implementing security measures such as code reviews, vulnerability scanning, and penetration testing can help prevent similar attacks in the future.",
+  "digest_markdown": "Here is a summary of the article in bullet points:\n\n**Malicious SDKs on npm and PyPI**\n\n* A coordinated campaign published 17 malicious packages on npm and PyPI, impersonating official software development kits for Paysafe, Skrill, and Neteller.\n* The packages looked like payment SDKs, exposed expected APIs, and returned convincing success responses.\n* The threat actor harvested API keys, AWS credentials, GitHub tokens, and environment variables, shipping the haul over HTTPS to a command-and-control endpoint.\n\n**Impact on Developers**\n\n* Developers who installed affected packages should remove them immediately and treat affected systems as compromised.\n* Recommended response includes revoking and regenerating Telegram bot tokens, rotating credentials, and updating dependencies.\n\n**Why Payment-Brand Impersonation is Attractive**\n\n* The campaign required no compromise of legitimate maintainers, no stolen credentials, and no zero-day exploits.\n* The attacker simply registered plausible names that three major payment brands had left unclaimed on public registries and waited for developers to install them.\n\n**Compliance Failure**\n\n* The EU Cyber Resilience Act, NIS2, PCI DSS 4.0, and the US federal secure software attestation regime all require developers to keep their dependencies up-to-date.\n* Installing malicious packages can be considered a compliance failure with a paper trail.\n\n**Telegram Bot Servers**\n\n* A separate campaign published malicious Pyrogram forks that allowed attackers to read arbitrary files on compromised Telegram bot servers.\n* The threat actor used trojanized Pyrogram forks to gain control of Telegram bot servers, exposing transitive users who may not have installed the affected packages directly.",
   "sources": [
     {
-      "title": "Update: Ongoing Checkmarx Supply Chain Security Incident",
-      "url": "https://checkmarx.com/blog/ongoing-security-updates/"
+      "title": "Cordyceps Supply Chain Flaw Impacts Code Repositories Across ...",
+      "url": "https://cyberpress.org/critical-cordyceps-supply-chain-bug/"
     },
     {
-      "title": "North Korean Hackers Target Open Source Developers in Supply Chain Attacks - SecurityWeek",
-      "url": "https://www.securityweek.com/north-korean-hackers-target-open-source-developers-in-supply-chain-attacks/"
+      "title": "Cordyceps Supply Chain Flaw Impacting Code Repositories at ...",
+      "url": "https://cybersecuritynews.com/cordyceps-supply-chain-flaw-impacting-code-repositories/"
     },
     {
-      "title": "Software supply chain attacks: check your dependencies | National Cyber Security Centre",
-      "url": "https://www.ncsc.gov.uk/blogs/software-supply-chain-attacks-check-your-dependencies"
+      "title": "North Korea-Linked PolinRider Campaign Hits 108 Open Source ...",
+      "url": "https://cyberpress.org/polinrider-supply-chain-attack/"
     },
     {
-      "title": "npm v12 Ships This Month, Blocking Install Scripts That Enabled Year of Supply Chain Attacks",
-      "url": "https://www.techtimes.com/articles/319890/20260708/npm-v12-ships-this-month-blocking-install-scripts-that-enabled-year-supply-chain-attacks.htm"
+      "title": "Supply Chain Attack Incident Catalog | supplychainattack.org",
+      "url": "https://supplychainattack.org/"
     },
     {
       "title": "Hackers backdoor Jscrambler npm package with infostealer malware",
@@ -45,12 +45,12 @@
       "url": "https://compliancehub.wiki/npm-pypi-stealer-packages-payment-apps-supply-chain-2026/"
     },
     {
-      "title": "Fake Paysafe, Skrill SDKs on NPM and PyPi steal credentials",
-      "url": "https://www.bleepingcomputer.com/news/security/fake-paysafe-skrill-sdks-on-npm-and-pypi-steal-credentials/"
-    },
-    {
       "title": "Malicious PyPI Packages Let Hackers Control Telegram Bot Servers",
       "url": "https://windowsreport.com/malicious-pypi-packages-let-hackers-control-telegram-bot-servers/"
+    },
+    {
+      "title": "Fake Paysafe, Skrill SDKs on NPM and PyPi steal credentials",
+      "url": "https://www.bleepingcomputer.com/news/security/fake-paysafe-skrill-sdks-on-npm-and-pypi-steal-credentials/"
     }
   ]
 }
