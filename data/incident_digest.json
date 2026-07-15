@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-07-14T16:17:29.743058+00:00",
+  "generated_at": "2026-07-15T05:26:04.522018+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "The local summarizer was unavailable this run. Raw sources are listed below.",
+  "digest_markdown": "Here's a summary of the article:\n\n**Malicious SDKs on npm and PyPI**\n\n* 17 malicious packages were published on npm and PyPI, impersonating official software development kits for Paysafe, Skrill, and Neteller.\n* The packages looked like payment SDKs, exposed expected methods, and returned convincing success responses.\n* The threat actor harvested API keys, AWS credentials, GitHub tokens, and environment variables, shipping them to a command-and-control endpoint.\n\n**Impact**\n\n* Developers who installed the affected packages were targeted, with the malicious code searching for secrets such as tokens, passwords, and API keys.\n* The exfiltrated data included Paysafe API keys, AWS keys, GitHub tokens, npm tokens, hostname, username, and metadata about API usage.\n* The malware was designed to steal credentials without requiring a Paysafe API key.\n\n**Recommendations**\n\n* Developers who installed the affected packages should remove them immediately and treat affected systems as compromised.\n* Revoking and regenerating Telegram bot tokens, rotating credentials, and performing other security measures are recommended.\n\n**Other Malicious Packages**\n\n* A separate campaign targeted Python developers building Telegram bots with trojanized Pyrogram forks that allowed attackers to read arbitrary files on compromised servers.\n* The malicious packages were published on PyPI between November 2025 and June 2026.\n\n**Compliance Implications**\n\n* The EU Cyber Resilience Act, NIS2, PCI DSS 4.0, and the US federal secure software attestation regime all require developers to install legitimate software development kits.\n* Installing malicious packages can be considered a compliance failure with a paper trail.\n\n**Prevention Measures**\n\n* Developers should regularly update their dependencies and monitor package releases for suspicious activity.\n* Implementing security measures such as code reviews, vulnerability scanning, and penetration testing can help prevent similar attacks in the future.",
   "sources": [
     {
       "title": "Update: Ongoing Checkmarx Supply Chain Security Incident",
@@ -21,20 +21,20 @@
       "url": "https://www.techtimes.com/articles/319890/20260708/npm-v12-ships-this-month-blocking-install-scripts-that-enabled-year-supply-chain-attacks.htm"
     },
     {
-      "title": "Miasma Malware Targets npm Packages and GitHub Actions in Supply Chain Attack",
-      "url": "https://thehackernews.com/2026/06/miasma-malware-targets-npm-packages-and.html"
-    },
-    {
       "title": "Hackers backdoor Jscrambler npm package with infostealer malware",
       "url": "https://www.bleepingcomputer.com/news/security/hackers-backdoor-jscrambler-npm-package-with-infostealer-malware/"
+    },
+    {
+      "title": "Miasma Malware Targets npm Packages and GitHub Actions in Supply Chain Attack",
+      "url": "https://thehackernews.com/2026/06/miasma-malware-targets-npm-packages-and.html"
     },
     {
       "title": "Mastra npm Supply Chain Attack: 140+ Packages Backdoored via easy-day-js Typosquat - StepSecurity",
       "url": "https://www.stepsecurity.io/blog/mastra-npm-packages-compromised-using-easy-day-js"
     },
     {
-      "title": "Compromised jscrambler 8.14.0 npm Release Drops Rust Infostealer During Install",
-      "url": "https://thehackernews.com/2026/07/compromised-jscrambler-8140-npm-release.html"
+      "title": "Compromised Injective SDK npm Package Exfiltrates Wallet Key...",
+      "url": "https://socket.dev/blog/compromised-injective-sdk-npm-package"
     },
     {
       "title": "Malicious PyPI packages give hackers control of Telegram bot servers",
