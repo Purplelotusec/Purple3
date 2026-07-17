@@ -1,56 +1,56 @@
 {
-  "generated_at": "2026-07-16T09:23:35.199494+00:00",
+  "generated_at": "2026-07-17T09:18:13.452132+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "The article discusses the growing threat of malware in the Python ecosystem, particularly on the Python Package Index (PyPI). Chainguard Libraries is a new initiative that aims to mitigate this risk by providing a malware-resistant index of packages. The authors analyzed ~3,025 malicious Python packages sourced from the Backstabber's Knife Collection and found that Chainguard Libraries would have prevented ~98% of these malicious packages from being published.\n\nThe main reason for this high percentage is that many of these malicious libraries (~92%) do not have attributable source code URLs. Instead, they have fake code bundled into the source distribution (sdist), making it difficult to track their origin. Chainguard Libraries addresses this issue by going straight to the raw Python source code from a public repository such as GitHub.\n\nThe authors also highlight the importance of supply chain security in the software development lifecycle. A recent incident involving malicious PyPI packages targeting Telegram bot developers demonstrates how a single compromised component can jeopardize an entire application or infrastructure.\n\nTo mitigate this risk, Chainguard Libraries provides several benefits:\n\n1. **Attributable source**: Chainguard Libraries ensures that each library and its full dependency tree is built from source inside their hardened infrastructure.\n2. **Source-to-artifact integrity**: They validate the integrity of the source code to ensure it matches the artifact being distributed.\n3. **Hardened infrastructure**: Their factory builds and distributes libraries in a secure environment, preventing malicious code from being introduced.\n\nThe authors conclude that Chainguard Libraries can help mitigate risk for organizations by providing a reliable and trustworthy source of Python packages. They recommend considering this solution for any organization relying on open-source software.\n\n**Practical takeaways:**\n\n1. **Use Chainguard Libraries**: Consider using Chainguard Libraries as an alternative to PyPI for your Python dependencies.\n2. **Verify source code**: Always verify the integrity of the source code before building and deploying your application.\n3. **Implement supply chain security measures**: Regularly audit and monitor your software development lifecycle to prevent supply chain attacks.\n\nBy taking these steps, organizations can reduce their risk exposure to malware in the Python ecosystem and ensure a more secure software development process.",
+  "digest_markdown": "Here's a summary of the article:\n\n**Chain Security Alert: num2words PyPI Package Shows Signs of Compromise**\n\nA security alert has been issued for the popular Python package `num2words` version 0.5.15, which was published to PyPI without a corresponding tag in the official GitHub repository.\n\n**Key Takeaways**\n\n* The compromised package may be linked to the \"Scavenger\" threat actor, known for previous supply chain attacks.\n* PyPI has removed the compromised package, preventing further installations.\n* This incident highlights the ongoing risks in the Python ecosystem's supply chain security.\n\n**Impact and Response**\n\n* Developers using `num2words` version 0.5.15 should update to a newer version immediately.\n* Automated dependency management tools had already begun creating pull requests to upgrade projects to the compromised version, demonstrating how quickly malicious packages can propagate through the ecosystem.\n* The incident serves as a reminder of the importance of monitoring package updates and being vigilant about potential supply chain attacks.\n\n**Additional Resources**\n\n* How to Detect and Recover From a Compromised PyPI Package (https://dev.to/alanwest/how-to-detect-and-recover-from-a-compromised-pypi-package-475a)\n* Finding malicious PyPI packages through static code analysis: Meet GuardDog (https://securitylabs.datadoghq.com/articles/guarddog-identify-malicious-pypi-packages/)\n* Malicious PyPI Packages Steal Developer Secrets (https://www.hexnode.com/blogs/fake-payment-sdks-turn-developer-dependencies-into-credential-theft/)",
   "sources": [
     {
-      "title": "5,718 malicious commits in 6 hours. OpenAI hit. An attack worm gets...",
-      "url": "https://www.linkedin.com/pulse/5718-malicious-commits-6-hours-openai-hit-attack-worm-gets-2ipbc"
+      "title": "Worldwide software supply chain attacks tracker (updated daily)",
+      "url": "https://www.comparitech.com/software-supply-chain-attacks/"
     },
     {
-      "title": "Software Supply Chain Attacks 2026: 48 Hours, 3 Registries",
-      "url": "https://thebytedive.com/cybersecurity/software-supply-chain-attacks-2026-48-hours-3-registries/"
+      "title": "Cordyceps Supply Chain Flaw Impacts Code Repositories Across Thousands ...",
+      "url": "https://cyberpress.org/critical-cordyceps-supply-chain-bug/"
     },
     {
-      "title": "A Timeline of SSC Attacks, Curated by Sonatype",
-      "url": "https://www.sonatype.com/resources/vulnerability-timeline"
+      "title": "Cordyceps Supply Chain Flaw Impacting Code Repositories at thousands of ...",
+      "url": "https://cybersecuritynews.com/cordyceps-supply-chain-flaw-impacting-code-repositories/"
     },
     {
-      "title": "Axios NPM Supply Chain Attack. The most dangerous open-source",
-      "url": "https://medium.com/@admissions.laxman/axios-npm-supply-chain-attack-df647fbccf33"
+      "title": "Cordyceps CI/CD Flaws Expose 300+ GitHub Repositories to Supply-Chain ...",
+      "url": "https://thehackernews.com/2026/06/cordyceps-cicd-flaws-expose-300-github.html"
+    },
+    {
+      "title": "The npm Threat Landscape: Attack Surface and Mitigations (Updated July 15)",
+      "url": "https://unit42.paloaltonetworks.com/monitoring-npm-supply-chain-attacks/"
     },
     {
       "title": "Compromised AsyncAPI npm Packages Deliver Multi-Stage Botnet Malware",
       "url": "https://thehackernews.com/2026/07/compromised-asyncapi-npm-packages.html"
     },
     {
+      "title": "Hackers backdoor Jscrambler npm package with infostealer malware",
+      "url": "https://www.bleepingcomputer.com/news/security/hackers-backdoor-jscrambler-npm-package-with-infostealer-malware/"
+    },
+    {
       "title": "AsyncAPI npm packages infected with credential-stealing malware",
       "url": "https://www.bleepingcomputer.com/news/security/-asyncapi-npm-packages-infected-with-credential-stealing-malware/"
     },
     {
-      "title": "From package to postinstall payload: Inside the Mastra npm supply chain ...",
-      "url": "https://www.microsoft.com/en-us/security/blog/2026/06/17/postinstall-payload-inside-mastra-npm-supply-chain-compromise/"
+      "title": "Supply Chain Security Alert: num2words PyPI Package... - StepSecurity",
+      "url": "https://www.stepsecurity.io/blog/supply-chain-security-alert-num2words-pypi-package-shows-signs-of-compromise"
     },
     {
-      "title": "AsyncAPI Packages Compromised with Miasma RAT",
-      "url": "https://safedep.io/asyncapi-generator-supply-chain-attack-miasma-rat/"
+      "title": "How to Detect and Recover From a Compromised PyPI Package",
+      "url": "https://dev.to/alanwest/how-to-detect-and-recover-from-a-compromised-pypi-package-475a"
     },
     {
-      "title": "Hardened PyPI Libraries - Prevent 98% of PyPi malware",
-      "url": "https://www.bing.com/aclick?ld=e8PKCSOTTvK2raft6BxP9t4DVUCUwdXRRuqEG5s0Clkl6mzZH4_9Nv6dY_oReHOVdNPcggGpVqHdgxgzaif0J72q5uTukgdeltQwokKEO_P1vWquqn6jiil2fcMh7-7VA90Vu4WVzcNcyFjVJwHj21Ua1spwHzsSIB-QlOt6AY3CZDhJUoZE0XVK1ZytCikAfBPVpA4r7W1eBIXJjwm1BAZwjLHxQ&u=aHR0cHMlM2ElMmYlMmZ3d3cuY2hhaW5ndWFyZC5kZXYlMmZ1bmNoYWluZWQlMmZtaXRpZ2F0aW5nLW1hbHdhcmUtaW4tdGhlLXB5dGhvbi1lY29zeXN0ZW0td2l0aC1jaGFpbmd1YXJkLWxpYnJhcmllcyUzZm1zY2xraWQlM2QzNTIyNDViNzBkZGIxNGIxYTUyZjJmZWZhZjU1ZGZlYiUyNnV0bV9zb3VyY2UlM2RiaW5nJTI2dXRtX21lZGl1bSUzZGNwYyUyNnV0bV9jYW1wYWlnbiUzZGJnX3NfYW1lcl9hY3FfZ2VuZXJpY19ib2YlMjZ1dG1fdGVybSUzZG1hbGljaW91cyUyNTIwcHlwaSUyNTIwcGFja2FnZXMlMjZ1dG1fY29udGVudCUzZGxpYnJhcmllc19weXBp&rlid=352245b70ddb14b1a52f2fefaf55dfeb"
+      "title": "Finding malicious PyPI packages through static code analysis: Meet...",
+      "url": "https://securitylabs.datadoghq.com/articles/guarddog-identify-malicious-pypi-packages/"
     },
     {
-      "title": "Malicious PyPI Packages: Supply Chain Attack & Response ...",
-      "url": "https://lyrarecovery.com/blog/malicious-pypi-packages-telegram-bots-supply-chain-attacks"
-    },
-    {
-      "title": "Malicious PyPI packages give hackers control of Telegram bot ...",
-      "url": "https://www.bleepingcomputer.com/news/security/malicious-pypi-packages-give-hackers-control-of-telegram-bot-servers/"
-    },
-    {
-      "title": "Malicious PyPI Packages Let Hackers Control Telegram Bot Servers",
-      "url": "https://windowsreport.com/malicious-pypi-packages-let-hackers-control-telegram-bot-servers/"
+      "title": "Malicious PyPI Packages Steal Developer Secrets",
+      "url": "https://www.hexnode.com/blogs/fake-payment-sdks-turn-developer-dependencies-into-credential-theft/"
     }
   ]
 }
