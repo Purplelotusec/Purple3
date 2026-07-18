@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-07-17T09:18:13.452132+00:00",
+  "generated_at": "2026-07-18T08:55:52.946176+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "Here's a summary of the article:\n\n**Chain Security Alert: num2words PyPI Package Shows Signs of Compromise**\n\nA security alert has been issued for the popular Python package `num2words` version 0.5.15, which was published to PyPI without a corresponding tag in the official GitHub repository.\n\n**Key Takeaways**\n\n* The compromised package may be linked to the \"Scavenger\" threat actor, known for previous supply chain attacks.\n* PyPI has removed the compromised package, preventing further installations.\n* This incident highlights the ongoing risks in the Python ecosystem's supply chain security.\n\n**Impact and Response**\n\n* Developers using `num2words` version 0.5.15 should update to a newer version immediately.\n* Automated dependency management tools had already begun creating pull requests to upgrade projects to the compromised version, demonstrating how quickly malicious packages can propagate through the ecosystem.\n* The incident serves as a reminder of the importance of monitoring package updates and being vigilant about potential supply chain attacks.\n\n**Additional Resources**\n\n* How to Detect and Recover From a Compromised PyPI Package (https://dev.to/alanwest/how-to-detect-and-recover-from-a-compromised-pypi-package-475a)\n* Finding malicious PyPI packages through static code analysis: Meet GuardDog (https://securitylabs.datadoghq.com/articles/guarddog-identify-malicious-pypi-packages/)\n* Malicious PyPI Packages Steal Developer Secrets (https://www.hexnode.com/blogs/fake-payment-sdks-turn-developer-dependencies-into-credential-theft/)",
+  "digest_markdown": "The article discusses several recent security incidents involving malicious software (malware) and compromised software development platforms. Here's a summary of the incidents:\n\n1. **LiteLLM Malware**: A maintainer's account was hacked, allowing a threat actor to upload two malicious LiteLLM versions on PyPI containing an infostealer that targets AWS, GCP, GitHub, SSH keys, crypto currency wallets, and more. Anyone who installed LiteLLM in versions 1.82.7 and 1.82.8 was affected.\n2. **Malicious Pyrogram Forks**: A campaign targeting Python developers building Telegram bots with trojanized Pyrogram forks allowed attackers to read arbitrary files on compromised servers. At least eight packages were published on PyPI with a hidden backdoor that activated when importing Pyrogram or when the bot started.\n3. **Fake Paysafe, Skrill SDKs**: Malicious packages on npm and PyPI delivered stealer malware to developers and users of Paysafe, Skrill, and Neteller payment applications. The threat actor published at least 17 malicious packages simultaneously, each tasked with exfiltrating credentials and access tokens to a command-and-control server hosted on AWS.\n4. **Operation Navy Ghost**: A campaign using malicious PyPI packages backdoored Telegram bot servers and stole files, tokens, and credentials.\n\nCommon themes among these incidents include:\n\n* Malicious software being uploaded to popular development platforms (PyPI, npm)\n* Use of hidden backdoors or trojanized software to gain access to compromised systems\n* Exfiltration of sensitive data, including credentials, API keys, and tokens\n* Targeting of developers and users in various industries, including finance, e-commerce, and gaming\n\nTo mitigate these risks, it's essential for developers to:\n\n* Regularly update dependencies and libraries\n* Use secure coding practices and validate user input\n* Monitor system logs and detect suspicious activity\n* Implement robust security measures, such as encryption and access controls\n* Stay informed about known vulnerabilities and security threats",
   "sources": [
     {
-      "title": "Worldwide software supply chain attacks tracker (updated daily)",
-      "url": "https://www.comparitech.com/software-supply-chain-attacks/"
+      "title": "5,718 malicious commits in 6 hours. OpenAI hit. An attack worm gets...",
+      "url": "https://www.linkedin.com/pulse/5718-malicious-commits-6-hours-openai-hit-attack-worm-gets-2ipbc"
     },
     {
-      "title": "Cordyceps Supply Chain Flaw Impacts Code Repositories Across Thousands ...",
-      "url": "https://cyberpress.org/critical-cordyceps-supply-chain-bug/"
+      "title": "Software Supply Chain Attacks 2026: 48 Hours, 3 Registries",
+      "url": "https://thebytedive.com/cybersecurity/software-supply-chain-attacks-2026-48-hours-3-registries/"
     },
     {
-      "title": "Cordyceps Supply Chain Flaw Impacting Code Repositories at thousands of ...",
-      "url": "https://cybersecuritynews.com/cordyceps-supply-chain-flaw-impacting-code-repositories/"
+      "title": "IronWorm Supply Chain Attack: What You Need to Know",
+      "url": "http://yourcybersafetyadvocate.cpa/2026/06/08/ironworm-supply-chain-attack-what-you-need-to-know/"
     },
     {
-      "title": "Cordyceps CI/CD Flaws Expose 300+ GitHub Repositories to Supply-Chain ...",
-      "url": "https://thehackernews.com/2026/06/cordyceps-cicd-flaws-expose-300-github.html"
+      "title": "Breakdown: Widespread npm Supply Chain Attack Puts Billions of...",
+      "url": "https://www.paloaltonetworks.com/blog/cloud-security/npm-supply-chain-attack/"
     },
     {
       "title": "The npm Threat Landscape: Attack Surface and Mitigations (Updated July 15)",
@@ -37,20 +37,20 @@
       "url": "https://www.bleepingcomputer.com/news/security/-asyncapi-npm-packages-infected-with-credential-stealing-malware/"
     },
     {
-      "title": "Supply Chain Security Alert: num2words PyPI Package... - StepSecurity",
-      "url": "https://www.stepsecurity.io/blog/supply-chain-security-alert-num2words-pypi-package-shows-signs-of-compromise"
+      "title": "Malicious LiteLLM Packages Steal AWS & Crypto Keys",
+      "url": "https://www.ox.security/blog/litellm-malware-malicious-pypi-versions-steal-cloud-and-crypto-credentials/"
     },
     {
-      "title": "How to Detect and Recover From a Compromised PyPI Package",
-      "url": "https://dev.to/alanwest/how-to-detect-and-recover-from-a-compromised-pypi-package-475a"
+      "title": "Malicious PyPI packages give hackers control of Telegram bot servers",
+      "url": "https://www.bleepingcomputer.com/news/security/malicious-pypi-packages-give-hackers-control-of-telegram-bot-servers/"
     },
     {
-      "title": "Finding malicious PyPI packages through static code analysis: Meet...",
-      "url": "https://securitylabs.datadoghq.com/articles/guarddog-identify-malicious-pypi-packages/"
+      "title": "Fake Paysafe, Skrill SDKs on NPM and PyPi steal credentials",
+      "url": "https://www.bleepingcomputer.com/news/security/fake-paysafe-skrill-sdks-on-npm-and-pypi-steal-credentials/"
     },
     {
-      "title": "Malicious PyPI Packages Steal Developer Secrets",
-      "url": "https://www.hexnode.com/blogs/fake-payment-sdks-turn-developer-dependencies-into-credential-theft/"
+      "title": "Malicious PyPI Packages Let Hackers Control Telegram Bot Servers",
+      "url": "https://windowsreport.com/malicious-pypi-packages-let-hackers-control-telegram-bot-servers/"
     }
   ]
 }
