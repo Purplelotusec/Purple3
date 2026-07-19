@@ -1,56 +1,56 @@
 {
-  "generated_at": "2026-07-18T08:55:52.946176+00:00",
+  "generated_at": "2026-07-19T09:11:26.856776+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "The article discusses several recent security incidents involving malicious software (malware) and compromised software development platforms. Here's a summary of the incidents:\n\n1. **LiteLLM Malware**: A maintainer's account was hacked, allowing a threat actor to upload two malicious LiteLLM versions on PyPI containing an infostealer that targets AWS, GCP, GitHub, SSH keys, crypto currency wallets, and more. Anyone who installed LiteLLM in versions 1.82.7 and 1.82.8 was affected.\n2. **Malicious Pyrogram Forks**: A campaign targeting Python developers building Telegram bots with trojanized Pyrogram forks allowed attackers to read arbitrary files on compromised servers. At least eight packages were published on PyPI with a hidden backdoor that activated when importing Pyrogram or when the bot started.\n3. **Fake Paysafe, Skrill SDKs**: Malicious packages on npm and PyPI delivered stealer malware to developers and users of Paysafe, Skrill, and Neteller payment applications. The threat actor published at least 17 malicious packages simultaneously, each tasked with exfiltrating credentials and access tokens to a command-and-control server hosted on AWS.\n4. **Operation Navy Ghost**: A campaign using malicious PyPI packages backdoored Telegram bot servers and stole files, tokens, and credentials.\n\nCommon themes among these incidents include:\n\n* Malicious software being uploaded to popular development platforms (PyPI, npm)\n* Use of hidden backdoors or trojanized software to gain access to compromised systems\n* Exfiltration of sensitive data, including credentials, API keys, and tokens\n* Targeting of developers and users in various industries, including finance, e-commerce, and gaming\n\nTo mitigate these risks, it's essential for developers to:\n\n* Regularly update dependencies and libraries\n* Use secure coding practices and validate user input\n* Monitor system logs and detect suspicious activity\n* Implement robust security measures, such as encryption and access controls\n* Stay informed about known vulnerabilities and security threats",
+  "digest_markdown": "The article discusses the recent supply chain attacks on PyPI (Python Package Index) packages, which have compromised over 170 npm packages and 2 PyPI packages. The attackers used various techniques to gain access to these packages, including typosquatting, account compromise, and build pipeline injection.\n\nSome of the affected packages include:\n\n* TanStack router ecosystem (42 packages)\n* Mistral AI's SDK suite (on both npm and PyPI)\n* UiPath's automation tooling (65 packages)\n* OpenSearch (1.3M weekly npm downloads)\n* Guardrails AI (PyPI)\n\nThe attackers used different payload delivery mechanisms, including:\n\n* On import, a Python dropper downloads a payload from an attacker-controlled domain\n* Using a different payload delivery mechanism than the npm packages\n\nTo detect and recover from these attacks, developers can follow these steps:\n\n1. Check if you're running a compromised version of the package by checking your installed version and looking for any suspicious activity.\n2. Rotate all credentials immediately if you've cloned or opened the repository in VS Code, Claude Code, Cursor, or Gemini CLI after the attack.\n3. Use Package Manager Guard (PMG) to protect yourself from open source software supply chain attacks using threat intelligence, install-time policy enforcement, and OS-native sandboxing.\n\nIt's essential for developers to stay vigilant and take proactive measures to protect themselves against these types of attacks.",
   "sources": [
     {
-      "title": "5,718 malicious commits in 6 hours. OpenAI hit. An attack worm gets...",
-      "url": "https://www.linkedin.com/pulse/5718-malicious-commits-6-hours-openai-hit-attack-worm-gets-2ipbc"
+      "title": "Worldwide software supply chain attacks tracker (updated ...",
+      "url": "https://www.comparitech.com/software-supply-chain-attacks/"
     },
     {
-      "title": "Software Supply Chain Attacks 2026: 48 Hours, 3 Registries",
-      "url": "https://thebytedive.com/cybersecurity/software-supply-chain-attacks-2026-48-hours-3-registries/"
+      "title": "Cordyceps Supply Chain Flaw Impacts Code Repositories Across ...",
+      "url": "https://cyberpress.org/critical-cordyceps-supply-chain-bug/"
     },
     {
-      "title": "IronWorm Supply Chain Attack: What You Need to Know",
-      "url": "http://yourcybersafetyadvocate.cpa/2026/06/08/ironworm-supply-chain-attack-what-you-need-to-know/"
+      "title": "Cordyceps Supply Chain Flaw Impacting Code Repositories at ...",
+      "url": "https://cybersecuritynews.com/cordyceps-supply-chain-flaw-impacting-code-repositories/"
     },
     {
-      "title": "Breakdown: Widespread npm Supply Chain Attack Puts Billions of...",
-      "url": "https://www.paloaltonetworks.com/blog/cloud-security/npm-supply-chain-attack/"
+      "title": "North Korea-Linked PolinRider Campaign Hits 108 Open Source ...",
+      "url": "https://cyberpress.org/polinrider-supply-chain-attack/"
     },
     {
-      "title": "The npm Threat Landscape: Attack Surface and Mitigations (Updated July 15)",
-      "url": "https://unit42.paloaltonetworks.com/monitoring-npm-supply-chain-attacks/"
+      "title": "Hackers reportedly compromise popular Axios package with malware...",
+      "url": "https://news.google.com/stories/CAAqNggKIjBDQklTSGpvSmMzUnZjbmt0TXpZd1NoRUtEd2pSb29ycEVCSHhvOWhINEV2R1FpZ0FQAQ?hl=en-GB&gl=GB&ceid=GB:en"
     },
     {
-      "title": "Compromised AsyncAPI npm Packages Deliver Multi-Stage Botnet Malware",
-      "url": "https://thehackernews.com/2026/07/compromised-asyncapi-npm-packages.html"
+      "title": "Shai-Hulud: Self-Replicating Worm Compromises 500+ NPM Packages",
+      "url": "https://www.stepsecurity.io/blog/ctrl-tinycolor-and-40-npm-packages-compromised"
     },
     {
-      "title": "Hackers backdoor Jscrambler npm package with infostealer malware",
-      "url": "https://www.bleepingcomputer.com/news/security/hackers-backdoor-jscrambler-npm-package-with-infostealer-malware/"
+      "title": "NPM packages compromised via phishing attack, malware... | LinkedIn",
+      "url": "https://www.linkedin.com/posts/felix-runye_cybersecurity-opensource-supplychainsecurity-activity-7371097175616901120-cqlZ"
     },
     {
-      "title": "AsyncAPI npm packages infected with credential-stealing malware",
-      "url": "https://www.bleepingcomputer.com/news/security/-asyncapi-npm-packages-infected-with-credential-stealing-malware/"
+      "title": "Axios npm Package Compromised: Supply Chain Attack... | Medium",
+      "url": "https://medium.com/@snyksec/axios-npm-package-compromised-supply-chain-attack-delivers-cross-platform-rat-373f81a3a169"
     },
     {
-      "title": "Malicious LiteLLM Packages Steal AWS & Crypto Keys",
-      "url": "https://www.ox.security/blog/litellm-malware-malicious-pypi-versions-steal-cloud-and-crypto-credentials/"
+      "title": "Finding malicious PyPI packages through static code analysis: Meet...",
+      "url": "https://securitylabs.datadoghq.com/articles/guarddog-identify-malicious-pypi-packages/"
     },
     {
-      "title": "Malicious PyPI packages give hackers control of Telegram bot servers",
-      "url": "https://www.bleepingcomputer.com/news/security/malicious-pypi-packages-give-hackers-control-of-telegram-bot-servers/"
+      "title": "How to Detect and Recover From a Compromised PyPI Package",
+      "url": "https://dev.to/alanwest/how-to-detect-and-recover-from-a-compromised-pypi-package-475a"
     },
     {
-      "title": "Fake Paysafe, Skrill SDKs on NPM and PyPi steal credentials",
-      "url": "https://www.bleepingcomputer.com/news/security/fake-paysafe-skrill-sdks-on-npm-and-pypi-steal-credentials/"
+      "title": "Microsoft's durabletask PyPI Package Compromised in... - StepSecurity",
+      "url": "https://www.stepsecurity.io/blog/microsofts-durabletask-pypi-package-compromised-in-supply-chain-attack?ref=404media.co"
     },
     {
-      "title": "Malicious PyPI Packages Let Hackers Control Telegram Bot Servers",
-      "url": "https://windowsreport.com/malicious-pypi-packages-let-hackers-control-telegram-bot-servers/"
+      "title": "Mass Supply Chain Attack Hits TanStack, Mistral AI npm and PyPI...",
+      "url": "https://safedep.io/mass-npm-supply-chain-attack-tanstack-mistral/"
     }
   ]
 }
