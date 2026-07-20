@@ -1,56 +1,56 @@
 {
-  "generated_at": "2026-07-19T09:11:26.856776+00:00",
+  "generated_at": "2026-07-20T10:20:36.101237+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "The article discusses the recent supply chain attacks on PyPI (Python Package Index) packages, which have compromised over 170 npm packages and 2 PyPI packages. The attackers used various techniques to gain access to these packages, including typosquatting, account compromise, and build pipeline injection.\n\nSome of the affected packages include:\n\n* TanStack router ecosystem (42 packages)\n* Mistral AI's SDK suite (on both npm and PyPI)\n* UiPath's automation tooling (65 packages)\n* OpenSearch (1.3M weekly npm downloads)\n* Guardrails AI (PyPI)\n\nThe attackers used different payload delivery mechanisms, including:\n\n* On import, a Python dropper downloads a payload from an attacker-controlled domain\n* Using a different payload delivery mechanism than the npm packages\n\nTo detect and recover from these attacks, developers can follow these steps:\n\n1. Check if you're running a compromised version of the package by checking your installed version and looking for any suspicious activity.\n2. Rotate all credentials immediately if you've cloned or opened the repository in VS Code, Claude Code, Cursor, or Gemini CLI after the attack.\n3. Use Package Manager Guard (PMG) to protect yourself from open source software supply chain attacks using threat intelligence, install-time policy enforcement, and OS-native sandboxing.\n\nIt's essential for developers to stay vigilant and take proactive measures to protect themselves against these types of attacks.",
+  "digest_markdown": "Here's a summary of the article and the threats mentioned:\n\n**Threats:**\n\n1. **NICKEL GLADSTONE**: A state-sponsored threat group focused on generating revenue for the North Korean regime. They have been linked to malware exclusively used by NICKEL GLADSTONE.\n2. **Axios attacks**: A series of attacks attributed to NICKEL GLADSTONE, which compromised PyPI packages and stole environment variables, including API keys and database credentials.\n3. **Ultralytics PyPI package compromise**: An attack on the Ultralytics PyPI package through GitHub Actions cache poisoning, resulting in cryptocurrency mining malware being injected into the package.\n4. **Miasma worm campaign**: A broader supply chain attack that has infected many repositories, including Microsoft and Azure repositories.\n\n**Recommendations:**\n\n1. Review Axios packages in your environment and determine if potentially affected versions have been installed.\n2. Update vulnerable packages to trusted versions or apply appropriate mitigations.\n3. Check for compromised packages on PyPI and review system and application logs for unusual activity that may indicate compromise.\n4. Protect yourself from PYPI supply chain attacks by:\n\t* Regularly checking for updates and patches\n\t* Using secure package managers and dependency management tools\n\t* Rotating credentials regularly\n\t* Avoiding running untrusted code within the context of the main branch if any other workflows use GitHub Actions caching\n\n**Protections and threat indicators:**\n\n1. JS/Agent-BLYB\n2. Troj/PSAgent-CN\n3. Troj/PyAgent-BZ\n4. OSX/NukeSped-CB\n5. WIN-EVA-PRC-RENAMED-POWERSHELL-1\n\n**Best practices:**\n\n1. Use secure package managers and dependency management tools.\n2. Regularly review and update packages to trusted versions or apply appropriate mitigations.\n3. Rotate credentials regularly, especially for sensitive data such as API keys and database credentials.\n4. Avoid running untrusted code within the context of the main branch if any other workflows use GitHub Actions caching.\n\n**Additional resources:**\n\n1. How to Detect and Recover From a Compromised PyPI Package (https://dev.to/alanwest/how-to-detect-and-recover-from-a-compromised-pypi-package-475a)\n2. Don't Be Fooled: Securing Your Python Projects from PyPI Supply Chain Attacks (https://bolster.ai/blog/pypi-supply-chain-attacks)\n3. Microsoft's durabletask PyPI Package Compromised in... (https://www.stepsecurity.io/blog/microsofts-durabletask-pypi-package-compromised-in-supply-chain-attack?ref=404media.co)",
   "sources": [
     {
-      "title": "Worldwide software supply chain attacks tracker (updated ...",
-      "url": "https://www.comparitech.com/software-supply-chain-attacks/"
+      "title": "5,718 malicious commits in 6 hours. OpenAI hit. An attack worm gets...",
+      "url": "https://www.linkedin.com/pulse/5718-malicious-commits-6-hours-openai-hit-attack-worm-gets-2ipbc"
     },
     {
-      "title": "Cordyceps Supply Chain Flaw Impacts Code Repositories Across ...",
-      "url": "https://cyberpress.org/critical-cordyceps-supply-chain-bug/"
+      "title": "A Timeline of SSC Attacks, Curated by Sonatype",
+      "url": "https://www.sonatype.com/resources/vulnerability-timeline"
     },
     {
-      "title": "Cordyceps Supply Chain Flaw Impacting Code Repositories at ...",
-      "url": "https://cybersecuritynews.com/cordyceps-supply-chain-flaw-impacting-code-repositories/"
+      "title": "Software Supply Chain Attacks 2026: 48 Hours, 3 Registries",
+      "url": "https://thebytedive.com/cybersecurity/software-supply-chain-attacks-2026-48-hours-3-registries/"
     },
     {
-      "title": "North Korea-Linked PolinRider Campaign Hits 108 Open Source ...",
-      "url": "https://cyberpress.org/polinrider-supply-chain-attack/"
+      "title": "IronWorm Supply Chain Attack: What You Need to Know",
+      "url": "http://yourcybersafetyadvocate.cpa/2026/06/08/ironworm-supply-chain-attack-what-you-need-to-know/"
     },
     {
-      "title": "Hackers reportedly compromise popular Axios package with malware...",
-      "url": "https://news.google.com/stories/CAAqNggKIjBDQklTSGpvSmMzUnZjbmt0TXpZd1NoRUtEd2pSb29ycEVCSHhvOWhINEV2R1FpZ0FQAQ?hl=en-GB&gl=GB&ceid=GB:en"
-    },
-    {
-      "title": "Shai-Hulud: Self-Replicating Worm Compromises 500+ NPM Packages",
-      "url": "https://www.stepsecurity.io/blog/ctrl-tinycolor-and-40-npm-packages-compromised"
-    },
-    {
-      "title": "NPM packages compromised via phishing attack, malware... | LinkedIn",
-      "url": "https://www.linkedin.com/posts/felix-runye_cybersecurity-opensource-supplychainsecurity-activity-7371097175616901120-cqlZ"
+      "title": "Google News - Axios npm package compromised - Overview",
+      "url": "https://news.google.com/stories/CAAqNggKIjBDQklTSGpvSmMzUnZjbmt0TXpZd1NoRUtEd2pSb29ycEVCRTFwdTAxT05EYWZDZ0FQAQ?hl=en-IN&gl=IN&ceid=IN:en"
     },
     {
       "title": "Axios npm Package Compromised: Supply Chain Attack... | Medium",
       "url": "https://medium.com/@snyksec/axios-npm-package-compromised-supply-chain-attack-delivers-cross-platform-rat-373f81a3a169"
     },
     {
-      "title": "Finding malicious PyPI packages through static code analysis: Meet...",
-      "url": "https://securitylabs.datadoghq.com/articles/guarddog-identify-malicious-pypi-packages/"
+      "title": "How One Phishing Email Compromised 18 npm Packages... | Strobes",
+      "url": "https://strobes.co/blog/npm-package-compromised-phishing-attack"
+    },
+    {
+      "title": "Axios npm package compromised to deploy malware | SOPHOS",
+      "url": "https://www.sophos.com/en-us/blog/axios-npm-package-compromised-to-deploy-malware"
     },
     {
       "title": "How to Detect and Recover From a Compromised PyPI Package",
       "url": "https://dev.to/alanwest/how-to-detect-and-recover-from-a-compromised-pypi-package-475a"
     },
     {
+      "title": "Don't Be Fooled: Securing Your Python Projects from PyPI... - Bolster AI",
+      "url": "https://bolster.ai/blog/pypi-supply-chain-attacks"
+    },
+    {
       "title": "Microsoft's durabletask PyPI Package Compromised in... - StepSecurity",
       "url": "https://www.stepsecurity.io/blog/microsofts-durabletask-pypi-package-compromised-in-supply-chain-attack?ref=404media.co"
     },
     {
-      "title": "Mass Supply Chain Attack Hits TanStack, Mistral AI npm and PyPI...",
-      "url": "https://safedep.io/mass-npm-supply-chain-attack-tanstack-mistral/"
+      "title": "Ultralytics PyPI Package Compromised Through GitHub Actions ..",
+      "url": "https://socket.dev/blog/ultralytics-pypi-package-compromised-through-github-actions-cache-poisoning"
     }
   ]
 }
