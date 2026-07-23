@@ -1,44 +1,40 @@
 {
-  "generated_at": "2026-07-22T09:33:52.294594+00:00",
+  "generated_at": "2026-07-23T09:33:24.055853+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "The text appears to be a compilation of security alerts and warnings related to various types of malware and vulnerabilities in popular software development platforms. Here's a summary of the key points:\n\n1. **LiteLLM Malware**: A malicious LiteLLM package was uploaded to PyPI, containing an infostealer that targets AWS, GCP, GitHub, SSH keys, crypto currency wallets, and more. Users who installed versions 1.82.7 and 1.82.8 were affected.\n2. **Telegram Bot Server Takeover**: A campaign targeting Python developers building Telegram bots with trojanized Pyrogram forks allowed attackers to read arbitrary files on compromised servers.\n3. **Paysafe and Skrill SDKs Steal Credentials**: Malicious packages on npm and PyPI delivered stealer malware to developers and users of Paysafe, Skrill, and Neteller payment applications, exfiltrating credentials and access tokens to a command-and-control server hosted on AWS.\n\nTo protect yourself from these threats:\n\n* Rotate your session tokens and API keys immediately.\n* Pin your dependencies to specific versions to avoid installing unknown versions automatically.\n* Use reputable package managers and keep them up-to-date.\n* Monitor your system logs for suspicious activity.\n* Regularly update your software and dependencies to prevent exploitation of known vulnerabilities.\n\nIt's essential to stay informed about the latest security threats and updates from trusted sources, such as the developers of the affected software and reputable cybersecurity organizations.",
+  "digest_markdown": "Based on the provided sources, it appears that there are several malicious PyPI packages that have been discovered. Here's a summary of the threats:\n\n1. **VLifeGram**: A malicious Pyrogram fork that allows attackers to read arbitrary files on compromised servers.\n2. **VLife-Gram**: Another malicious Pyrogram fork with similar capabilities to VLifeGram.\n3. **pyrogram-navy**: A malicious Pyrogram fork that includes a backdoor called secret.py, which registers hidden Telegram command handlers and enables the execution of attacker-supplied Python code or shell commands.\n4. **pyrogram-styled**: A malicious Pyrogram fork with multiple versions, all of which include the same obfuscated malicious code as pyrogram-navy.\n5. **Fake Paysafe SDKs on NPM and PyPI**: Malicious packages that steal credentials from Paysafe, Skrill, and Neteller payment applications.\n6. **Sankislayer**: A malicious package on PyPI that contains obfuscated code implementing a Telegram bot designed to join and participate in a spamming botnet.\n\nThese threats can be categorized into three main types:\n\n1. **Pyrogram-based threats**: These are malicious Pyrogram forks that allow attackers to read arbitrary files or execute attacker-supplied Python code.\n2. **Payment SDKs**: Malicious packages that steal credentials from Paysafe, Skrill, and Neteller payment applications.\n3. **Spamming botnets**: The sankislayer package is a malicious package on PyPI that implements a Telegram bot designed to join and participate in a spamming botnet.\n\nTo mitigate these threats, it's recommended that organizations:\n\n1. Review their dependencies and update vulnerable packages to trusted versions or apply appropriate mitigations.\n2. Monitor system and application logs for unusual activity that may indicate compromise.\n3. Avoid installing or using malicious PyPI packages, such as sankislayer.\n4. Remove any installed malicious packages immediately and monitor for unauthorized Telegram activity.\n5. Report malicious packages to PyPI maintainers for takedown and further investigation.\n\nIt's also essential to implement robust security measures, such as:\n\n1. Regularly updating dependencies and software.\n2. Implementing secure coding practices and code reviews.\n3. Conducting regular vulnerability assessments and penetration testing.\n4. Using reputable package managers and dependency resolution tools.\n5. Educating developers about the risks of malicious packages and the importance of secure coding practices.",
   "sources": [
     {
-      "title": "A Timeline of SSC Attacks, Curated by Sonatype",
-      "url": "https://www.sonatype.com/resources/vulnerability-timeline"
+      "title": "Update: Ongoing Checkmarx Supply Chain Security Incident",
+      "url": "https://checkmarx.com/blog/ongoing-security-updates/"
     },
     {
-      "title": "5,718 malicious commits in 6 hours. OpenAI hit. An attack worm gets...",
-      "url": "https://www.linkedin.com/pulse/5718-malicious-commits-6-hours-openai-hit-attack-worm-gets-2ipbc"
+      "title": "North Korean Hackers Target Open Source Developers in Supply Chain Attacks - SecurityWeek",
+      "url": "https://www.securityweek.com/north-korean-hackers-target-open-source-developers-in-supply-chain-attacks/"
     },
     {
-      "title": "Software Supply Chain Attacks 2026: 48 Hours, 3 Registries",
-      "url": "https://thebytedive.com/cybersecurity/software-supply-chain-attacks-2026-48-hours-3-registries/"
+      "title": "Why Open Source Is Becoming the New Software Supply Chain Battleground",
+      "url": "https://www.klogixsecurity.com/blog/why-open-source-is-becoming-the-new-software-supply-chain-battleground"
     },
     {
-      "title": "Breakdown: Widespread npm Supply Chain Attack Puts Billions of...",
-      "url": "https://www.paloaltonetworks.com/blog/cloud-security/npm-supply-chain-attack/"
+      "title": "The Weak Link: Recent Supply Chain Attacks Examined",
+      "url": "https://cyberint.com/blog/research/recent-supply-chain-attacks-examined/"
     },
     {
-      "title": "AsyncAPI npm packages infected with credential-stealing malware",
-      "url": "https://www.bleepingcomputer.com/news/security/-asyncapi-npm-packages-infected-with-credential-stealing-malware/"
+      "title": "Axios npm Package Compromised: Supply Chain Attack... | Medium",
+      "url": "https://medium.com/@snyksec/axios-npm-package-compromised-supply-chain-attack-delivers-cross-platform-rat-373f81a3a169"
     },
     {
-      "title": "Compromised AsyncAPI npm Packages Deliver Multi-Stage Botnet Malware",
-      "url": "https://thehackernews.com/2026/07/compromised-asyncapi-npm-packages.html"
+      "title": "How One Phishing Email Compromised 18 npm Packages... | Strobes",
+      "url": "https://strobes.co/blog/npm-package-compromised-phishing-attack"
     },
     {
-      "title": "Thousands of Node Developers Compromised by Malware in Popular npm Packages",
-      "url": "https://dailysecurityreview.com/security-spotlight/thousands-of-node-developers-compromised-by-malware-in-popular-npm-packages/"
+      "title": "Axios npm Package Compromised: 7 Key Facts About the... - Vulert",
+      "url": "https://vulert.com/blog/axios-npm-package-compromised/"
     },
     {
-      "title": "The npm Threat Landscape: Attack Surface and Mitigations (Updated July 15)",
-      "url": "https://unit42.paloaltonetworks.com/monitoring-npm-supply-chain-attacks/"
-    },
-    {
-      "title": "Malicious LiteLLM Packages Steal AWS & Crypto Keys",
-      "url": "https://www.ox.security/blog/litellm-malware-malicious-pypi-versions-steal-cloud-and-crypto-credentials/"
+      "title": "Axios npm package compromised to deploy malware | SOPHOS",
+      "url": "https://www.sophos.com/en-us/blog/axios-npm-package-compromised-to-deploy-malware"
     },
     {
       "title": "Malicious PyPI packages give hackers control of Telegram bot servers",
@@ -49,8 +45,12 @@
       "url": "https://www.bleepingcomputer.com/news/security/fake-paysafe-skrill-sdks-on-npm-and-pypi-steal-credentials/"
     },
     {
-      "title": "Malicious PyPI Packages Let Hackers Control Telegram Bot Servers",
-      "url": "https://windowsreport.com/malicious-pypi-packages-let-hackers-control-telegram-bot-servers/"
+      "title": "MAL-2026-10119: Malicious code in sankislayer (PyPI) - Live Threat Intelligence - Threat Radar | OffSeq.com",
+      "url": "https://radar.offseq.com/threat/mal-2026-10119-malicious-code-in-sankislayer-pypi-3c21c33b4770b70f"
+    },
+    {
+      "title": "Malicious PyPI packages give hackers control of Telegram bot servers",
+      "url": "https://www.hendryadrian.com/malicious-pypi-packages-give-hackers-control-of-telegram-bot-servers/"
     }
   ]
 }
