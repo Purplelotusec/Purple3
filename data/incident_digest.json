@@ -1,56 +1,56 @@
 {
-  "generated_at": "2026-07-25T09:06:49.372115+00:00",
+  "generated_at": "2026-07-26T09:23:27.058710+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "The article discusses recent security incidents involving malicious software packages published on PyPI (Python Package Index) and npm (Node Package Manager). These packages were designed to mimic legitimate SDKs for payment platforms, but in reality, they contained backdoors that allowed attackers to read arbitrary files, exfiltrate data, and execute shell commands.\n\n**Key Findings:**\n\n1. **Malicious Pyrogram Packages:** Researchers discovered a campaign targeting Python developers building Telegram bots, using trojanized versions of the Pyrogram library.\n2. **Supply Chain Attack:** The attack vector was a classic supply chain compromise, where attackers uploaded modified versions of the Pyrogram library, embedding malicious code within them.\n3. **Business Impact:** The breach can have severe and multifaceted consequences, including data exfiltration, credential theft, and further network penetration.\n4. **Malicious npm Packages:** A related report by Sonatype researcher Ax Sharma detailed a crypto-stealing package named crypto-encrypt-ts, found on npm.\n\n**Recommendations:**\n\n1. **Remove Malicious Packages:** Immediately remove any installed malicious packages from your systems.\n2. **Rotate Credentials:** Rotate any affected keys and credentials to prevent further exploitation.\n3. **Implement Robust Security Measures:** Organizations should move beyond perimeter defenses to secure the entire development lifecycle, including supply chain security.\n\n**Indicators of Compromise:**\n\n1. **Unusual Package Downloads:** Be cautious of packages with unusual or suspicious downloads.\n2. **Gmail SMTP Server Activity:** Malicious packages may use Gmail's SMTP servers for data exfiltration and remote command execution.\n3. **WebSockets:** Malicious packages may exploit WebSockets to hijack systems.\n\n**Mitigation Strategies:**\n\n1. **Monitor Package Updates:** Regularly monitor package updates and report any suspicious activity to the relevant authorities.\n2. **Implement EDR Systems:** Implement endpoint detection and response (EDR) systems to detect and respond to potential threats.\n3. **Rotate Credentials:** Rotate credentials regularly to prevent further exploitation.\n\nBy being aware of these security incidents and taking proactive measures, organizations can mitigate the risks associated with supply chain attacks and protect their systems from malicious software packages.",
+  "digest_markdown": "The article discusses several recent supply chain security incidents involving popular Python packages published on PyPI (Python Package Index). The incidents highlight the ongoing risks in the Python ecosystem's supply chain security. Here are the key points:\n\n1. **num2words package compromise**: A malicious version of the num2words package was published to PyPI without a corresponding tag in the official GitHub repository. Security researcher @johnk3r identified potential links to the \"Scavenger\" threat actor, known for previous supply chain attacks.\n2. **LiteLLM package compromise**: Malicious versions of the LiteLLM package were found on PyPI, which contained a payload designed to exfiltrate environment variables, including API keys and database credentials.\n3. **Xinference package compromise**: The Xinference package was compromised with hidden infostealer malware, which extracted sensitive data from infected systems, including AWS credentials, Google Cloud configurations, Kubernetes tokens, and more.\n\n**Common themes:**\n\n* Supply chain attacks against PyPI packages often involve account compromise, typosquatting, or build pipeline injection.\n* Malicious packages are frequently published without a corresponding tag in the official GitHub repository.\n* Automated tools can quickly propagate malicious packages through the ecosystem.\n* Environments with unpinned dependencies are particularly vulnerable to supply chain attacks.\n\n**Mitigation steps:**\n\n* Check if you're running a compromised version of a package and take immediate action to mitigate damage.\n* Downgrade affected packages to a safe release version (e.g., Xinference 2.5.0).\n* Rotate all potentially exposed credentials and enable multi-factor authentication (MFA) wherever possible.\n* Regularly review dependencies and ensure pinned versions are used.\n\n**Best practices:**\n\n* Use tools like `pip show` and `grep` to check installed package versions.\n* Pin dependencies in `requirements.txt`, `Pipfile.lock`, or `poetry.lock`.\n* Enable multi-factor authentication (MFA) for sensitive accounts.\n* Regularly review and update dependencies to ensure security patches are applied.\n\n**Conclusion:**\n\nSupply chain attacks against PyPI packages are a growing concern, highlighting the need for vigilance and proactive measures to protect against these types of threats. By understanding the common themes and mitigation steps outlined in this article, developers can better safeguard their Python projects and prevent potential security breaches.",
   "sources": [
     {
-      "title": "5,718 malicious commits in 6 hours. OpenAI hit. An attack worm gets...",
-      "url": "https://www.linkedin.com/pulse/5718-malicious-commits-6-hours-openai-hit-attack-worm-gets-2ipbc"
+      "title": "Worldwide software supply chain attacks tracker (updated ...",
+      "url": "https://www.comparitech.com/software-supply-chain-attacks/"
     },
     {
-      "title": "A Timeline of SSC Attacks, Curated by Sonatype",
-      "url": "https://www.sonatype.com/resources/vulnerability-timeline"
+      "title": "North Korea-Linked PolinRider Campaign Hits 108 Open Source ...",
+      "url": "https://cyberpress.org/polinrider-supply-chain-attack/"
     },
     {
-      "title": "Software Supply Chain Attacks 2026: 48 Hours, 3 Registries",
-      "url": "https://thebytedive.com/cybersecurity/software-supply-chain-attacks-2026-48-hours-3-registries/"
+      "title": "GhostAction Supply Chain Attack on GitHub Exposes 3,325 ...",
+      "url": "https://dailysecurityreview.com/cyber-security/ghostaction-supply-chain-attack-on-github-exposes-3325-secrets/"
     },
     {
-      "title": "Breakdown: Widespread npm Supply Chain Attack Puts Billions of...",
-      "url": "https://www.paloaltonetworks.com/blog/cloud-security/npm-supply-chain-attack/"
+      "title": "SleeperGem Uses Three Malicious RubyGems Packages to Target ...",
+      "url": "https://thehackernews.com/2026/07/sleepergem-uses-three-malicious.html"
     },
     {
-      "title": "Compromised AsyncAPI npm Packages Deliver Multi-Stage Botnet ...",
+      "title": "The npm Threat Landscape: Attack Surface and Mitigations (Updated July 15)",
+      "url": "https://unit42.paloaltonetworks.com/monitoring-npm-supply-chain-attacks/"
+    },
+    {
+      "title": "Compromised AsyncAPI npm Packages Deliver Multi-Stage Botnet Malware",
       "url": "https://thehackernews.com/2026/07/compromised-asyncapi-npm-packages.html"
+    },
+    {
+      "title": "Hackers backdoor Jscrambler npm package with infostealer malware",
+      "url": "https://www.bleepingcomputer.com/news/security/hackers-backdoor-jscrambler-npm-package-with-infostealer-malware/"
     },
     {
       "title": "AsyncAPI npm packages infected with credential-stealing malware",
       "url": "https://www.bleepingcomputer.com/news/security/-asyncapi-npm-packages-infected-with-credential-stealing-malware/"
     },
     {
-      "title": "Unpacking the AsyncAPI npm supply chain compromise and import ...",
-      "url": "https://www.microsoft.com/en-us/security/blog/2026/07/15/unpacking-asyncapi-npm-supply-chain-compromise-import-time-payload-delivery/"
+      "title": "Supply Chain Security Alert: num2words PyPI Package... - StepSecurity",
+      "url": "https://www.stepsecurity.io/blog/supply-chain-security-alert-num2words-pypi-package-shows-signs-of-compromise"
     },
     {
-      "title": "Hackers Compromised jscrambler With 15,800+ Weekly Downloads ...",
-      "url": "https://cybersecuritynews.com/hackers-compromised-jscrambler/"
+      "title": "How to Detect and Recover From a Compromised PyPI Package",
+      "url": "https://dev.to/alanwest/how-to-detect-and-recover-from-a-compromised-pypi-package-475a"
     },
     {
-      "title": "Malicious PyPI packages give hackers control of Telegram bot ...",
-      "url": "https://www.bleepingcomputer.com/news/security/malicious-pypi-packages-give-hackers-control-of-telegram-bot-servers/"
+      "title": "Don't Be Fooled: Securing Your Python Projects from PyPI... - Bolster AI",
+      "url": "https://bolster.ai/blog/pypi-supply-chain-attacks"
     },
     {
-      "title": "Malicious PyPI Packages: Supply Chain Attack & Response ...",
-      "url": "https://lyrarecovery.com/blog/malicious-pypi-packages-telegram-bots-supply-chain-attacks"
-    },
-    {
-      "title": "Malicious npm and PyPI Packages Target Payment Developers ...",
-      "url": "https://cyberpress.org/fake-sdks-target-developers/"
-    },
-    {
-      "title": "Malicious PyPI Packages Exploit Gmail and WebSockets to ...",
-      "url": "https://dailysecurityreview.com/security-spotlight/malicious-pypi-packages-exploit-gmail-and-websockets-to-hijack-systems/"
+      "title": "Xinference PyPI Package Compromised With Malicious Code to...",
+      "url": "https://cyberpress.org/xinference-pypi-package-compromised/"
     }
   ]
 }
