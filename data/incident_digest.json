@@ -1,56 +1,56 @@
 {
-  "generated_at": "2026-07-26T09:23:27.058710+00:00",
+  "generated_at": "2026-07-27T10:51:25.575856+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "The article discusses several recent supply chain security incidents involving popular Python packages published on PyPI (Python Package Index). The incidents highlight the ongoing risks in the Python ecosystem's supply chain security. Here are the key points:\n\n1. **num2words package compromise**: A malicious version of the num2words package was published to PyPI without a corresponding tag in the official GitHub repository. Security researcher @johnk3r identified potential links to the \"Scavenger\" threat actor, known for previous supply chain attacks.\n2. **LiteLLM package compromise**: Malicious versions of the LiteLLM package were found on PyPI, which contained a payload designed to exfiltrate environment variables, including API keys and database credentials.\n3. **Xinference package compromise**: The Xinference package was compromised with hidden infostealer malware, which extracted sensitive data from infected systems, including AWS credentials, Google Cloud configurations, Kubernetes tokens, and more.\n\n**Common themes:**\n\n* Supply chain attacks against PyPI packages often involve account compromise, typosquatting, or build pipeline injection.\n* Malicious packages are frequently published without a corresponding tag in the official GitHub repository.\n* Automated tools can quickly propagate malicious packages through the ecosystem.\n* Environments with unpinned dependencies are particularly vulnerable to supply chain attacks.\n\n**Mitigation steps:**\n\n* Check if you're running a compromised version of a package and take immediate action to mitigate damage.\n* Downgrade affected packages to a safe release version (e.g., Xinference 2.5.0).\n* Rotate all potentially exposed credentials and enable multi-factor authentication (MFA) wherever possible.\n* Regularly review dependencies and ensure pinned versions are used.\n\n**Best practices:**\n\n* Use tools like `pip show` and `grep` to check installed package versions.\n* Pin dependencies in `requirements.txt`, `Pipfile.lock`, or `poetry.lock`.\n* Enable multi-factor authentication (MFA) for sensitive accounts.\n* Regularly review and update dependencies to ensure security patches are applied.\n\n**Conclusion:**\n\nSupply chain attacks against PyPI packages are a growing concern, highlighting the need for vigilance and proactive measures to protect against these types of threats. By understanding the common themes and mitigation steps outlined in this article, developers can better safeguard their Python projects and prevent potential security breaches.",
+  "digest_markdown": "Here's a summary of the articles:\n\n**PyPI Blocks New File Uploads on 14-Day-Old Releases**\n\n* PyPI has introduced a new security measure to prevent attackers from adding malicious files to trusted Python package versions after compromising a maintainer\u2019s publishing token or release workflow.\n* The change limits file uploads to releases older than 14 days, effectively \"freezing\" the file list and closing the window for silent, retroactive tampering.\n\n**PyPI Blocks Files on 14-Day-Old Releases**\n\n* PyPI has rolled out a new security restriction that rejects file uploads to any release older than 14 days.\n* The change aims to close a long-standing gap that let attackers poison stable, previously published releases if publishing credentials or CI/CD workflows were compromised.\n\n**Malicious PyPI packages give hackers control of Telegram bot servers**\n\n* A campaign targeting Python developers building Telegram bots with trojanized Pyrogram forks has been active since November 2025.\n* The malicious packages allow attackers to read arbitrary files on compromised servers and execute attacker-supplied Python code or shell commands.\n* Researchers have identified at least eight packages published on PyPI with the hidden backdoor, including VLifeGram, VLife-Gram, pyrogram-navy, and others.\n\n**Key Takeaways**\n\n* PyPI's new security measure aims to prevent attackers from adding malicious files to trusted Python package versions after compromising a maintainer\u2019s publishing token or release workflow.\n* The change limits file uploads to releases older than 14 days, effectively \"freezing\" the file list and closing the window for silent, retroactive tampering.\n* Malicious PyPI packages have been identified that allow attackers to gain control of Telegram bot servers and execute arbitrary code or read sensitive files.\n\n**Recommendations**\n\n* Developers should ensure their Python package versions are up-to-date and use reputable sources for dependencies.\n* Maintainers should regularly review and update their package releases to prevent exploitation of vulnerabilities.\n* Users should be cautious when installing packages from PyPI and monitor their system logs for suspicious activity.",
   "sources": [
     {
       "title": "Worldwide software supply chain attacks tracker (updated ...",
       "url": "https://www.comparitech.com/software-supply-chain-attacks/"
     },
     {
+      "title": "North Korean Hackers Target Open Source Developers in Supply ...",
+      "url": "https://www.securityweek.com/north-korean-hackers-target-open-source-developers-in-supply-chain-attacks/"
+    },
+    {
       "title": "North Korea-Linked PolinRider Campaign Hits 108 Open Source ...",
       "url": "https://cyberpress.org/polinrider-supply-chain-attack/"
     },
     {
-      "title": "GhostAction Supply Chain Attack on GitHub Exposes 3,325 ...",
-      "url": "https://dailysecurityreview.com/cyber-security/ghostaction-supply-chain-attack-on-github-exposes-3325-secrets/"
+      "title": "Open VSX Access Tokens Leaked, Allowing Malicious Extensions ...",
+      "url": "https://dailysecurityreview.com/cyber-security/application-security/open-vsx-access-tokens-leaked-allowing-malicious-extensions-in-supply-chain-threat/"
     },
     {
-      "title": "SleeperGem Uses Three Malicious RubyGems Packages to Target ...",
-      "url": "https://thehackernews.com/2026/07/sleepergem-uses-three-malicious.html"
+      "title": "Shai-Hulud: Self-Replicating Worm Compromises 500+ NPM Packages",
+      "url": "https://www.stepsecurity.io/blog/ctrl-tinycolor-and-40-npm-packages-compromised"
     },
     {
-      "title": "The npm Threat Landscape: Attack Surface and Mitigations (Updated July 15)",
-      "url": "https://unit42.paloaltonetworks.com/monitoring-npm-supply-chain-attacks/"
+      "title": "Google News - Axios npm package compromised - Overview",
+      "url": "https://news.google.com/stories/CAAqNggKIjBDQklTSGpvSmMzUnZjbmt0TXpZd1NoRUtEd2pSb29ycEVCRTFwdTAxT05EYWZDZ0FQAQ?hl=en-IN&gl=IN&ceid=IN:en"
     },
     {
-      "title": "Compromised AsyncAPI npm Packages Deliver Multi-Stage Botnet Malware",
-      "url": "https://thehackernews.com/2026/07/compromised-asyncapi-npm-packages.html"
+      "title": "How One Phishing Email Hit 18 npm Packages | Strobes",
+      "url": "https://strobes.co/blog/npm-package-compromised-phishing-attack/"
     },
     {
-      "title": "Hackers backdoor Jscrambler npm package with infostealer malware",
-      "url": "https://www.bleepingcomputer.com/news/security/hackers-backdoor-jscrambler-npm-package-with-infostealer-malware/"
+      "title": "Axios npm package compromised to deploy malware | SOPHOS",
+      "url": "https://www.sophos.com/en-us/blog/axios-npm-package-compromised-to-deploy-malware"
     },
     {
-      "title": "AsyncAPI npm packages infected with credential-stealing malware",
-      "url": "https://www.bleepingcomputer.com/news/security/-asyncapi-npm-packages-infected-with-credential-stealing-malware/"
+      "title": "Be Alert On Malicious Traffic - Find Misconfigurations Fast",
+      "url": "https://www.bing.com/aclick?ld=e8iI7wv98SnXxpbBEZ3E53DTVUCUx55lTq-6583hW5oNiIQ0CLhf-AejsqQw2k2j2yvfSfpYwseAH7O1cOjquZLS-sfHLlr0adx_H883mWCFYrCrqZPdHP2tdsr9vhWxk91lo9UmBMncBoEicW4r0TKowXrByNOGQpZV9O5A60xTdfIWOp_eGiq71MXnWsJ_inHk7lUA&u=aHR0cHMlM2ElMmYlMmZtb25pdG9yLmx1bmlvLmFpJTJmdjMuMCUyZnRlbXBsYXRlJTNmYWNjaWQlM2QxNjg5NiUyNnVybGRlY29kZSUzZDElMjZrdyUzZG1hbGljaW91cyUyNTIwdHJhZmZpYyUyNm10JTNkcCUyNm53JTNkbyUyNmNwbiUzZDQyODMyOTI0MCUyNmRldmklM2RjJTI2ZGV2bSUzZCUyNmxvY3AlM2Q2NzM5MyUyNmxvY2klM2QlMjZwbCUzZCUyNmNyJTNkJTI2YWRwJTNkJTI2c2FkdCUzZCUyNnVybCUzZGh0dHBzJTI1M0ElMjUyRiUyNTJGd3d3LmRhdGFkb2docS5jb20lMjUyRmRnJTI1MkZzZWN1cml0eSUyNTJGZGV0ZWN0LW1hbGljaW91cy10cmFmZmljLXNvdXJjZXMlMjUyRiUyNTNGdXRtX3NvdXJjZSUyNTNEYmluZyUyNTI2dXRtX21lZGl1bSUyNTNEcGFpZC1zZWFyY2glMjUyNnV0bV9jYW1wYWlnbiUyNTNEZGctc2VjdXJpdHktbmEtbWFsaWNpb3VzdHJhZmZpYyUyNTI2dXRtX2tleXdvcmQlMjUzRG1hbGljaW91cyUyNTI1MjB0cmFmZmljJTI1MjZ1dG1fbWF0Y2h0eXBlJTI1M0RwJTI1MjZpZ2FhZyUyNTNEMTMwMjkyMTY0OTUxNzA5NSUyNTI2aWdhYXQlMjUzRCUyNTI2aWdhY20lMjUzRDQyODMyOTI0MCUyNTI2aWdhY3IlMjUzRCUyNTI2aWdha3clMjUzRG1hbGljaW91cyUyNTI1MjB0cmFmZmljJTI1MjZpZ2FtdCUyNTNEcCUyNTI2aWdhbnQlMjUzRG8lMjUyNnV0bV9jYW1wYWlnbmlkJTI1M0Q0MjgzMjkyNDAlMjUyNnV0bV9hZGdyb3VwaWQlMjUzRDEzMDI5MjE2NDk1MTcwOTUlMjZtc2Nsa2lkJTNkNGY3NmVhYjkyMWU0MTUxOGNkNTc4MGRlMTY0NTgwNjM&rlid=4f76eab921e41518cd5780de16458063"
     },
     {
-      "title": "Supply Chain Security Alert: num2words PyPI Package... - StepSecurity",
-      "url": "https://www.stepsecurity.io/blog/supply-chain-security-alert-num2words-pypi-package-shows-signs-of-compromise"
+      "title": "PyPI Blocks New File Uploads on 14-Day-Old Releases to ...",
+      "url": "https://cybersecuritynews.com/pypi-14-day-release-lock/"
     },
     {
-      "title": "How to Detect and Recover From a Compromised PyPI Package",
-      "url": "https://dev.to/alanwest/how-to-detect-and-recover-from-a-compromised-pypi-package-475a"
+      "title": "PyPI Blocks New Files on 14-Day-Old Releases to Prevent ...",
+      "url": "https://cyberpress.org/pypi-blocks-files-14-day-old-releases-package-poisoning/"
     },
     {
-      "title": "Don't Be Fooled: Securing Your Python Projects from PyPI... - Bolster AI",
-      "url": "https://bolster.ai/blog/pypi-supply-chain-attacks"
-    },
-    {
-      "title": "Xinference PyPI Package Compromised With Malicious Code to...",
-      "url": "https://cyberpress.org/xinference-pypi-package-compromised/"
+      "title": "Malicious PyPI packages give hackers control of Telegram bot ...",
+      "url": "https://www.bleepingcomputer.com/news/security/malicious-pypi-packages-give-hackers-control-of-telegram-bot-servers/"
     }
   ]
 }
