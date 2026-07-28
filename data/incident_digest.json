@@ -1,56 +1,56 @@
 {
-  "generated_at": "2026-07-27T10:51:25.575856+00:00",
+  "generated_at": "2026-07-28T09:42:25.049108+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "Here's a summary of the articles:\n\n**PyPI Blocks New File Uploads on 14-Day-Old Releases**\n\n* PyPI has introduced a new security measure to prevent attackers from adding malicious files to trusted Python package versions after compromising a maintainer\u2019s publishing token or release workflow.\n* The change limits file uploads to releases older than 14 days, effectively \"freezing\" the file list and closing the window for silent, retroactive tampering.\n\n**PyPI Blocks Files on 14-Day-Old Releases**\n\n* PyPI has rolled out a new security restriction that rejects file uploads to any release older than 14 days.\n* The change aims to close a long-standing gap that let attackers poison stable, previously published releases if publishing credentials or CI/CD workflows were compromised.\n\n**Malicious PyPI packages give hackers control of Telegram bot servers**\n\n* A campaign targeting Python developers building Telegram bots with trojanized Pyrogram forks has been active since November 2025.\n* The malicious packages allow attackers to read arbitrary files on compromised servers and execute attacker-supplied Python code or shell commands.\n* Researchers have identified at least eight packages published on PyPI with the hidden backdoor, including VLifeGram, VLife-Gram, pyrogram-navy, and others.\n\n**Key Takeaways**\n\n* PyPI's new security measure aims to prevent attackers from adding malicious files to trusted Python package versions after compromising a maintainer\u2019s publishing token or release workflow.\n* The change limits file uploads to releases older than 14 days, effectively \"freezing\" the file list and closing the window for silent, retroactive tampering.\n* Malicious PyPI packages have been identified that allow attackers to gain control of Telegram bot servers and execute arbitrary code or read sensitive files.\n\n**Recommendations**\n\n* Developers should ensure their Python package versions are up-to-date and use reputable sources for dependencies.\n* Maintainers should regularly review and update their package releases to prevent exploitation of vulnerabilities.\n* Users should be cautious when installing packages from PyPI and monitor their system logs for suspicious activity.",
+  "digest_markdown": "Here's a summary of the article:\n\n**Malware Campaigns on PyPI and NPM**\n\nTwo malware campaigns have been detected on the Python Package Index (PyPI) and the Node Package Manager (NPM). The campaigns are designed to steal credentials, including SSH private keys, AWS credentials, and Kubernetes configuration.\n\n**Operation Navy Ghost**\n\nThe first campaign, dubbed \"Operation Navy Ghost\", targets Pyrogram forks published on PyPI. The malicious packages, such as VLifeGram and pyrogram-navy, contain a hidden backdoor that allows attackers to read arbitrary files on compromised servers. When an infected bot launches, the attacker-supplied Python code or shell commands are executed.\n\n**Compromised mrmustard Package**\n\nThe second campaign involves a compromised PyPI package called mrmustard 0.7.4, which steals SSH private keys, AWS credentials, and Kubernetes configuration. The malicious code is injected into the published artifact only, making it difficult to detect through source code reviews.\n\n**Fake Paysafe and Skrill SDKs**\n\nThe third campaign involves fake Paysafe and Skrill SDKs on NPM and PyPI that steal credentials from developers working with these payment platforms. The malware exfiltrates credentials such as Paysafe API keys, AWS keys, GitHub tokens, and hostname metadata.\n\n**Prevention Measures**\n\nTo prevent package poisoning attacks, PyPI has introduced a new security measure that prevents users from uploading new files to package releases that are more than 14 days old.\n\n**Recommendations**\n\n* If you installed mrmustard 0.7.4, treat the host as compromised and rotate every credential.\n* Remove the package, cron job, shell startup hook, and .pth file in site-packages.\n* Block metrics.femboy.energy and femboy.energy.\n* Regularly update your dependencies to prevent exploitation of known vulnerabilities.\n\n**Best Practices**\n\n* Keep your dependencies up-to-date to prevent exploitation of known vulnerabilities.\n* Use secure package managers like pip or npm.\n* Regularly review your package versions and dependencies for security updates.\n* Implement robust security measures, such as encryption and access controls, to protect sensitive data.",
   "sources": [
     {
-      "title": "Worldwide software supply chain attacks tracker (updated ...",
-      "url": "https://www.comparitech.com/software-supply-chain-attacks/"
+      "title": "5,718 malicious commits in 6 hours. OpenAI hit. An attack worm gets...",
+      "url": "https://www.linkedin.com/pulse/5718-malicious-commits-6-hours-openai-hit-attack-worm-gets-2ipbc"
     },
     {
-      "title": "North Korean Hackers Target Open Source Developers in Supply ...",
-      "url": "https://www.securityweek.com/north-korean-hackers-target-open-source-developers-in-supply-chain-attacks/"
+      "title": "Breakdown: Widespread npm Supply Chain Attack Puts Billions of...",
+      "url": "https://www.paloaltonetworks.com/blog/cloud-security/npm-supply-chain-attack/"
     },
     {
-      "title": "North Korea-Linked PolinRider Campaign Hits 108 Open Source ...",
-      "url": "https://cyberpress.org/polinrider-supply-chain-attack/"
+      "title": "LofyGang - Software Supply Chain Attackers... - Checkmarx.com",
+      "url": "https://checkmarx.com/blog/lofygang-software-supply-chain-attackers-organized-persistent-and-operating-for-over-a-year/"
     },
     {
-      "title": "Open VSX Access Tokens Leaked, Allowing Malicious Extensions ...",
-      "url": "https://dailysecurityreview.com/cyber-security/application-security/open-vsx-access-tokens-leaked-allowing-malicious-extensions-in-supply-chain-threat/"
+      "title": "Axios Supply Chain Attack Pushes Cross-Platform RAT via...",
+      "url": "https://thehackernews.com/2026/03/axios-supply-chain-attack-pushes-cross.html"
     },
     {
-      "title": "Shai-Hulud: Self-Replicating Worm Compromises 500+ NPM Packages",
-      "url": "https://www.stepsecurity.io/blog/ctrl-tinycolor-and-40-npm-packages-compromised"
+      "title": "The npm Threat Landscape: Attack Surface and Mitigations (Updated July 15)",
+      "url": "https://unit42.paloaltonetworks.com/monitoring-npm-supply-chain-attacks/"
     },
     {
-      "title": "Google News - Axios npm package compromised - Overview",
-      "url": "https://news.google.com/stories/CAAqNggKIjBDQklTSGpvSmMzUnZjbmt0TXpZd1NoRUtEd2pSb29ycEVCRTFwdTAxT05EYWZDZ0FQAQ?hl=en-IN&gl=IN&ceid=IN:en"
+      "title": "Compromised AsyncAPI npm Packages Deliver Multi-Stage Botnet Malware",
+      "url": "https://thehackernews.com/2026/07/compromised-asyncapi-npm-packages.html"
     },
     {
-      "title": "How One Phishing Email Hit 18 npm Packages | Strobes",
-      "url": "https://strobes.co/blog/npm-package-compromised-phishing-attack/"
+      "title": "Hackers backdoor Jscrambler npm package with infostealer malware",
+      "url": "https://www.bleepingcomputer.com/news/security/hackers-backdoor-jscrambler-npm-package-with-infostealer-malware/"
     },
     {
-      "title": "Axios npm package compromised to deploy malware | SOPHOS",
-      "url": "https://www.sophos.com/en-us/blog/axios-npm-package-compromised-to-deploy-malware"
+      "title": "AsyncAPI npm packages infected with credential-stealing malware",
+      "url": "https://www.bleepingcomputer.com/news/security/-asyncapi-npm-packages-infected-with-credential-stealing-malware/"
     },
     {
-      "title": "Be Alert On Malicious Traffic - Find Misconfigurations Fast",
-      "url": "https://www.bing.com/aclick?ld=e8iI7wv98SnXxpbBEZ3E53DTVUCUx55lTq-6583hW5oNiIQ0CLhf-AejsqQw2k2j2yvfSfpYwseAH7O1cOjquZLS-sfHLlr0adx_H883mWCFYrCrqZPdHP2tdsr9vhWxk91lo9UmBMncBoEicW4r0TKowXrByNOGQpZV9O5A60xTdfIWOp_eGiq71MXnWsJ_inHk7lUA&u=aHR0cHMlM2ElMmYlMmZtb25pdG9yLmx1bmlvLmFpJTJmdjMuMCUyZnRlbXBsYXRlJTNmYWNjaWQlM2QxNjg5NiUyNnVybGRlY29kZSUzZDElMjZrdyUzZG1hbGljaW91cyUyNTIwdHJhZmZpYyUyNm10JTNkcCUyNm53JTNkbyUyNmNwbiUzZDQyODMyOTI0MCUyNmRldmklM2RjJTI2ZGV2bSUzZCUyNmxvY3AlM2Q2NzM5MyUyNmxvY2klM2QlMjZwbCUzZCUyNmNyJTNkJTI2YWRwJTNkJTI2c2FkdCUzZCUyNnVybCUzZGh0dHBzJTI1M0ElMjUyRiUyNTJGd3d3LmRhdGFkb2docS5jb20lMjUyRmRnJTI1MkZzZWN1cml0eSUyNTJGZGV0ZWN0LW1hbGljaW91cy10cmFmZmljLXNvdXJjZXMlMjUyRiUyNTNGdXRtX3NvdXJjZSUyNTNEYmluZyUyNTI2dXRtX21lZGl1bSUyNTNEcGFpZC1zZWFyY2glMjUyNnV0bV9jYW1wYWlnbiUyNTNEZGctc2VjdXJpdHktbmEtbWFsaWNpb3VzdHJhZmZpYyUyNTI2dXRtX2tleXdvcmQlMjUzRG1hbGljaW91cyUyNTI1MjB0cmFmZmljJTI1MjZ1dG1fbWF0Y2h0eXBlJTI1M0RwJTI1MjZpZ2FhZyUyNTNEMTMwMjkyMTY0OTUxNzA5NSUyNTI2aWdhYXQlMjUzRCUyNTI2aWdhY20lMjUzRDQyODMyOTI0MCUyNTI2aWdhY3IlMjUzRCUyNTI2aWdha3clMjUzRG1hbGljaW91cyUyNTI1MjB0cmFmZmljJTI1MjZpZ2FtdCUyNTNEcCUyNTI2aWdhbnQlMjUzRG8lMjUyNnV0bV9jYW1wYWlnbmlkJTI1M0Q0MjgzMjkyNDAlMjUyNnV0bV9hZGdyb3VwaWQlMjUzRDEzMDI5MjE2NDk1MTcwOTUlMjZtc2Nsa2lkJTNkNGY3NmVhYjkyMWU0MTUxOGNkNTc4MGRlMTY0NTgwNjM&rlid=4f76eab921e41518cd5780de16458063"
-    },
-    {
-      "title": "PyPI Blocks New File Uploads on 14-Day-Old Releases to ...",
-      "url": "https://cybersecuritynews.com/pypi-14-day-release-lock/"
-    },
-    {
-      "title": "PyPI Blocks New Files on 14-Day-Old Releases to Prevent ...",
-      "url": "https://cyberpress.org/pypi-blocks-files-14-day-old-releases-package-poisoning/"
-    },
-    {
-      "title": "Malicious PyPI packages give hackers control of Telegram bot ...",
+      "title": "Malicious PyPI packages give hackers control of Telegram bot servers",
       "url": "https://www.bleepingcomputer.com/news/security/malicious-pypi-packages-give-hackers-control-of-telegram-bot-servers/"
+    },
+    {
+      "title": "Compromised PyPI Package: mrmustard 0.7.4 Steals SSH, Cloud, and Kubernetes Credentials - StepSecurity",
+      "url": "https://www.stepsecurity.io/blog/compromised-pypi-mrmustard-0-7-4-credential-stealer"
+    },
+    {
+      "title": "Fake Paysafe, Skrill SDKs on NPM and PyPi steal credentials",
+      "url": "https://www.bleepingcomputer.com/news/security/fake-paysafe-skrill-sdks-on-npm-and-pypi-steal-credentials/"
+    },
+    {
+      "title": "PyPI Blocks New File Uploads on 14-Day-Old Releases to Prevent Package Poisoning Attacks",
+      "url": "https://cybersecuritynews.com/pypi-14-day-release-lock/amp/"
     }
   ]
 }
