@@ -1,56 +1,56 @@
 {
-  "generated_at": "2026-07-28T09:42:25.049108+00:00",
+  "generated_at": "2026-07-29T09:44:21.539488+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "Here's a summary of the article:\n\n**Malware Campaigns on PyPI and NPM**\n\nTwo malware campaigns have been detected on the Python Package Index (PyPI) and the Node Package Manager (NPM). The campaigns are designed to steal credentials, including SSH private keys, AWS credentials, and Kubernetes configuration.\n\n**Operation Navy Ghost**\n\nThe first campaign, dubbed \"Operation Navy Ghost\", targets Pyrogram forks published on PyPI. The malicious packages, such as VLifeGram and pyrogram-navy, contain a hidden backdoor that allows attackers to read arbitrary files on compromised servers. When an infected bot launches, the attacker-supplied Python code or shell commands are executed.\n\n**Compromised mrmustard Package**\n\nThe second campaign involves a compromised PyPI package called mrmustard 0.7.4, which steals SSH private keys, AWS credentials, and Kubernetes configuration. The malicious code is injected into the published artifact only, making it difficult to detect through source code reviews.\n\n**Fake Paysafe and Skrill SDKs**\n\nThe third campaign involves fake Paysafe and Skrill SDKs on NPM and PyPI that steal credentials from developers working with these payment platforms. The malware exfiltrates credentials such as Paysafe API keys, AWS keys, GitHub tokens, and hostname metadata.\n\n**Prevention Measures**\n\nTo prevent package poisoning attacks, PyPI has introduced a new security measure that prevents users from uploading new files to package releases that are more than 14 days old.\n\n**Recommendations**\n\n* If you installed mrmustard 0.7.4, treat the host as compromised and rotate every credential.\n* Remove the package, cron job, shell startup hook, and .pth file in site-packages.\n* Block metrics.femboy.energy and femboy.energy.\n* Regularly update your dependencies to prevent exploitation of known vulnerabilities.\n\n**Best Practices**\n\n* Keep your dependencies up-to-date to prevent exploitation of known vulnerabilities.\n* Use secure package managers like pip or npm.\n* Regularly review your package versions and dependencies for security updates.\n* Implement robust security measures, such as encryption and access controls, to protect sensitive data.",
+  "digest_markdown": "Here's a summary of the article:\n\n**Incident Summary**\n\nA supply chain attack was detected on July 28, 2025, involving the num2words package. The compromised version (0.5.15) was published to PyPI without a corresponding tag in the official GitHub repository. The attack is believed to be linked to \"Scavenger,\" a threat actor previously associated with software supply chain intrusions.\n\n**Impact**\n\nThe compromised version of num2words contained malicious code that could have extracted sensitive data from infected systems, including environment variables and API keys. Users who installed this version may have been affected.\n\n**Response**\n\nTo mitigate the impact, users are advised to:\n\n1. Check if they are running a compromised version of num2words.\n2. Downgrade to a safe version (0.5.14).\n3. Rotate all potentially exposed credentials.\n4. Enable multi-factor authentication (MFA) wherever possible.\n\n**Prevention**\n\nTo prevent similar attacks in the future, users should:\n\n1. Regularly update their dependencies to the latest versions.\n2. Use pinned dependencies to ensure that specific versions are used.\n3. Monitor their package repositories for suspicious activity.\n4. Implement security measures such as MFA and monitoring of sensitive data.\n\n**Related Incidents**\n\nSeveral other incidents have been reported, including:\n\n* Xinference PyPI Package Compromised with Malicious Code to Exfiltrate Sensitive Data\n* Ultralytics PyPI Package Compromised Through GitHub Actions Cache Poisoning\n\nThese incidents highlight the ongoing risks in the Python ecosystem's supply chain security and the importance of vigilance and proactive measures to prevent such attacks.",
   "sources": [
     {
-      "title": "5,718 malicious commits in 6 hours. OpenAI hit. An attack worm gets...",
-      "url": "https://www.linkedin.com/pulse/5718-malicious-commits-6-hours-openai-hit-attack-worm-gets-2ipbc"
+      "title": "A Timeline of SSC Attacks, Curated by Sonatype",
+      "url": "https://www.sonatype.com/resources/vulnerability-timeline"
     },
     {
-      "title": "Breakdown: Widespread npm Supply Chain Attack Puts Billions of...",
-      "url": "https://www.paloaltonetworks.com/blog/cloud-security/npm-supply-chain-attack/"
+      "title": "Software Supply Chain Attacks 2026: 48 Hours, 3 Registries",
+      "url": "https://thebytedive.com/cybersecurity/software-supply-chain-attacks-2026-48-hours-3-registries/"
     },
     {
-      "title": "LofyGang - Software Supply Chain Attackers... - Checkmarx.com",
-      "url": "https://checkmarx.com/blog/lofygang-software-supply-chain-attackers-organized-persistent-and-operating-for-over-a-year/"
+      "title": "The Axios Supply Chain Attack: How a \"Phantom Dependency...\"",
+      "url": "https://www.linkedin.com/pulse/axios-supply-chain-attack-how-phantom-dependency-millions-firat-celik-esylf"
     },
     {
-      "title": "Axios Supply Chain Attack Pushes Cross-Platform RAT via...",
-      "url": "https://thehackernews.com/2026/03/axios-supply-chain-attack-pushes-cross.html"
+      "title": "Axios NPM Supply Chain Attack. The most dangerous open-source",
+      "url": "https://medium.com/@admissions.laxman/axios-npm-supply-chain-attack-df647fbccf33"
     },
     {
-      "title": "The npm Threat Landscape: Attack Surface and Mitigations (Updated July 15)",
-      "url": "https://unit42.paloaltonetworks.com/monitoring-npm-supply-chain-attacks/"
+      "title": "Google News - Axios npm package compromised - Overview",
+      "url": "https://news.google.com/stories/CAAqNggKIjBDQklTSGpvSmMzUnZjbmt0TXpZd1NoRUtEd2pSb29ycEVCRTFwdTAxT05EYWZDZ0FQAQ?hl=en-IN&gl=IN&ceid=IN:en"
     },
     {
-      "title": "Compromised AsyncAPI npm Packages Deliver Multi-Stage Botnet Malware",
-      "url": "https://thehackernews.com/2026/07/compromised-asyncapi-npm-packages.html"
+      "title": "Axios npm Package Compromised: Supply Chain Attack... | Medium",
+      "url": "https://medium.com/@snyksec/axios-npm-package-compromised-supply-chain-attack-delivers-cross-platform-rat-373f81a3a169"
     },
     {
-      "title": "Hackers backdoor Jscrambler npm package with infostealer malware",
-      "url": "https://www.bleepingcomputer.com/news/security/hackers-backdoor-jscrambler-npm-package-with-infostealer-malware/"
+      "title": "Axios npm Package Compromised: 7 Key Facts About the... - Vulert",
+      "url": "https://vulert.com/blog/axios-npm-package-compromised/"
     },
     {
-      "title": "AsyncAPI npm packages infected with credential-stealing malware",
-      "url": "https://www.bleepingcomputer.com/news/security/-asyncapi-npm-packages-infected-with-credential-stealing-malware/"
+      "title": "Mini Shai-Hulud Strikes Again: 317 npm Packages Compromised",
+      "url": "https://safedep.io/mini-shai-hulud-strikes-again-314-npm-packages-compromised/"
     },
     {
-      "title": "Malicious PyPI packages give hackers control of Telegram bot servers",
-      "url": "https://www.bleepingcomputer.com/news/security/malicious-pypi-packages-give-hackers-control-of-telegram-bot-servers/"
+      "title": "Supply Chain Security Alert: num2words PyPI Package... - StepSecurity",
+      "url": "https://www.stepsecurity.io/blog/supply-chain-security-alert-num2words-pypi-package-shows-signs-of-compromise"
     },
     {
-      "title": "Compromised PyPI Package: mrmustard 0.7.4 Steals SSH, Cloud, and Kubernetes Credentials - StepSecurity",
-      "url": "https://www.stepsecurity.io/blog/compromised-pypi-mrmustard-0-7-4-credential-stealer"
+      "title": "How to Detect and Recover From a Compromised PyPI Package",
+      "url": "https://dev.to/alanwest/how-to-detect-and-recover-from-a-compromised-pypi-package-475a"
     },
     {
-      "title": "Fake Paysafe, Skrill SDKs on NPM and PyPi steal credentials",
-      "url": "https://www.bleepingcomputer.com/news/security/fake-paysafe-skrill-sdks-on-npm-and-pypi-steal-credentials/"
+      "title": "Xinference PyPI Package Compromised With Malicious Code to...",
+      "url": "https://cyberpress.org/xinference-pypi-package-compromised/"
     },
     {
-      "title": "PyPI Blocks New File Uploads on 14-Day-Old Releases to Prevent Package Poisoning Attacks",
-      "url": "https://cybersecuritynews.com/pypi-14-day-release-lock/amp/"
+      "title": "Ultralytics PyPI Package Compromised Through GitHub Actions ..",
+      "url": "https://socket.dev/blog/ultralytics-pypi-package-compromised-through-github-actions-cache-poisoning"
     }
   ]
 }
