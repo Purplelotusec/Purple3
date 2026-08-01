@@ -1,9 +1,33 @@
 {
-  "generated_at": "2026-07-31T22:31:57.719042+00:00",
+  "generated_at": "2026-08-01T22:26:26.247852+00:00",
   "window_days": 30,
   "source": "GitHub Advisory Database (api.github.com/advisories)",
   "count": 100,
   "advisories": [
+    {
+      "name": "github.com/gtsteffaniak/filebrowser/backend",
+      "ecosystem": "go",
+      "affected_range": "< 0.0.0-20260608182036-f3f4bbe80cb5",
+      "patched_version": "0.0.0-20260608182036-f3f4bbe80cb5",
+      "severity": "HIGH",
+      "summary": "FileBrowser Quantum's path traversal issue in subtitle handler allows any authenticated user to read arbitrary files",
+      "published": "2026-07-31T22:35:05Z",
+      "ghsa_id": "GHSA-vvp7-h4fj-m28w",
+      "cve_id": "CVE-2026-54910",
+      "source_url": "https://github.com/advisories/GHSA-vvp7-h4fj-m28w"
+    },
+    {
+      "name": "guard-livereload",
+      "ecosystem": "rubygems",
+      "affected_range": "< 2.5.2",
+      "patched_version": "2.5.2",
+      "severity": "MEDIUM",
+      "summary": "guard-livereload has a directory traversal vulnerability",
+      "published": "2026-07-31T22:33:01Z",
+      "ghsa_id": "GHSA-g65v-27r3-5p6m",
+      "cve_id": "CVE-2016-1000305",
+      "source_url": "https://github.com/advisories/GHSA-g65v-27r3-5p6m"
+    },
     {
       "name": "gemini-bridge",
       "ecosystem": "pip",
@@ -1179,30 +1203,6 @@
       "ghsa_id": "GHSA-7683-3w9x-ch42",
       "cve_id": "CVE-2026-63119",
       "source_url": "https://github.com/advisories/GHSA-7683-3w9x-ch42"
-    },
-    {
-      "name": "mcp",
-      "ecosystem": "rubygems",
-      "affected_range": "<= 0.22.0",
-      "patched_version": "0.23.0",
-      "severity": "MEDIUM",
-      "summary": "MCP Ruby SDK: Streamable HTTP transport lacks DNS-rebinding (Host/Origin) protection",
-      "published": "2026-07-30T14:41:39Z",
-      "ghsa_id": "GHSA-rjr6-rcgv-9m7m",
-      "cve_id": "CVE-2026-63118",
-      "source_url": "https://github.com/advisories/GHSA-rjr6-rcgv-9m7m"
-    },
-    {
-      "name": "github.com/OliveTin/OliveTin",
-      "ecosystem": "go",
-      "affected_range": ">= 0.0.0-20251025234746-ef5a67e7b8ea, < 0.0.0-20260708084548-995ff79736f2",
-      "patched_version": "0.0.0-20260708084548-995ff79736f2",
-      "severity": "MEDIUM",
-      "summary": "OliveTin OS Command Injection via Custom regex: Argument Type Bypassing Shell Safety Check",
-      "published": "2026-07-30T14:31:12Z",
-      "ghsa_id": "GHSA-xc5w-4v5w-7x65",
-      "cve_id": "CVE-2026-67438",
-      "source_url": "https://github.com/advisories/GHSA-xc5w-4v5w-7x65"
     }
   ]
 }
