@@ -1,56 +1,56 @@
 {
-  "generated_at": "2026-08-14T08:23:39.078026+00:00",
+  "generated_at": "2026-08-15T07:39:01.026186+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "The article discusses the growing threat of supply chain attacks in the software development industry, particularly in AI and machine learning (ML) environments. The authors analyzed the Backstabber's Knife Collection, a dataset of known malicious open-source libraries, and found that by requiring an attributable source and validating source-to-artifact integrity, a tool like Chainguard Libraries can prevent ~98% of malicious packages from being published.\n\nThe authors highlight four recent supply chain attacks that targeted PyPI and npm:\n\n1. **Miasma worm**: A variant of the Miasma worm spread across npm and PyPI, compromising over 100 packages and 471 malicious artifacts.\n2. **Fake payment SDKs**: A coordinated cluster of malicious packages across npm and PyPI, all dressed up as SDKs for well-known payment providers, was discovered.\n3. **Telnyx compromise**: TeamPCP compromised the Telnyx package on PyPI, pushing malicious versions that ran at import time and exfiltrated data over attacker-controlled infrastructure.\n4. **LiteLLM attack**: A threat actor group compromised the PyPI distribution pipeline and pushed malicious versions of the LiteLLM package, which has 95 million monthly downloads, to the package index.\n\nThe authors note that AI development environments are uniquely exposed to supply chain attacks because they blend development, research, cloud infrastructure, data access, model publishing, and automation inside the same workspace. A compromised Python package in an AI development environment can expose model weights, training data, cloud tokens, CI/CD pipeline secrets, and production API keys simultaneously.\n\nTo mitigate this risk, the authors recommend:\n\n1. Classifying package publish credentials as high-risk identities and separating maintainer tokens, CI publish tokens, and deployment secrets into explicit privileged identity classes.\n2. Pinning and verifying dependencies before execution, requiring version pinning, hash verification, and provenance checks for packages used in production builds.\n3. Inspecting import-time behavior in sensitive libraries and reviewing modules that execute on import, fetch remote content, or spawn subprocesses.\n\nOverall, the article highlights the importance of supply chain security in the software development industry, particularly in AI and ML environments, and provides recommendations for mitigating the risk of supply chain attacks.",
+  "digest_markdown": "Here's a summary of the article:\n\n**Supply Chain Attacks on AI Development Environments**\n\n* A threat actor group called TeamPCP compromised widely trusted open-source security tools, including LiteLLM, Trivy, and KICS, before moving into AI infrastructure libraries hosted on PyPI.\n* The attack chain involved obtaining the maintainer's PyPI publishing credentials, pushing malicious versions of the package, and embedding a multi-stage payload designed to harvest high-value secrets.\n* The malicious package was available for approximately three hours before quarantine, reaching tens of thousands of corporate environments.\n\n**Why AI Development Environments are Uniquely Exposed**\n\n* AI and ML environments blend development, research, cloud infrastructure, data access, model publishing, and automation inside the same workspace.\n* A compromised Python package in a standard web application might steal a database credential, but the same attack in an AI development environment can expose model weights, training data, cloud tokens, CI/CD pipeline secrets, and production API keys simultaneously.\n\n**Disrupting Supply Chain Attacks on npm and GitHub Actions**\n\n* GitHub has implemented changes to disrupt supply chain attack techniques and limit their impact, including:\n\t+ Preventive account protection for high-impact accounts on npm.\n\t+ Safeguards to prevent initial compromise of projects.\n\t+ Improvements to identify and respond to attacks.\n\n**Prevention and Mitigation**\n\n* Developers should rotate CI/CD secrets, publishing tokens, and cloud credentials accessible during the relevant exposure windows.\n* Organizations should implement a holistic approach to addressing supply chain attacks, prioritizing mitigations that break the most impactful links in the attack chain.\n* Collaboration with the security research and developer communities is crucial in staying ahead of supply chain attacks.",
   "sources": [
     {
-      "title": "Fast-Moving Shai-Hulud Attack Infects npm Packages with 2 ...",
-      "url": "https://devops.com/fast-moving-shai-hulud-attack-infects-npm-packages-with-2-billion-monthly-downloads/"
+      "title": "Amazon identifies North Korean hacker group behind open-source supply chain attacks | Amazon Web Services",
+      "url": "https://aws.amazon.com/blogs/security/amazon-identifies-north-korean-hacker-group-behind-open-source-supply-chain-attacks/"
     },
     {
-      "title": "444 NPM packages compromised in global supply chain attack ...",
+      "title": "Massive NPM supply chain attack is yet again ravaging hundreds of software packages",
       "url": "https://cybernews.com/security/npm-supply-chain-attack-shai-hulud-worm/"
+    },
+    {
+      "title": "Terabytes of credentials leaked in massive supply-chain attack - Ars Technica",
+      "url": "https://arstechnica.com/security/2026/08/terabytes-of-credentials-leaked-in-massive-supply-chain-attack/"
+    },
+    {
+      "title": "Over 2,500 Organizations Impacted by LiteLLM Supply Chain Attack - SecurityWeek",
+      "url": "https://www.securityweek.com/over-2500-organizations-impacted-by-litellm-supply-chain-attack/"
+    },
+    {
+      "title": "Major Shai Hulud campaign strikes npm again, affecting keyv ...",
+      "url": "https://research.jfrog.com/post/shai-hulud-is-back-august/"
+    },
+    {
+      "title": "Over 400 NPM Packages Infected in ChainDrop Supply Chain ...",
+      "url": "https://www.securityweek.com/over-400-npm-packages-infected-in-chaindrop-supply-chain-attack/"
     },
     {
       "title": "New Shai-Hulud Supply Chain Attack Compromised 400+ Popular ...",
       "url": "https://cybersecuritynews.com/new-npm-supply-chain-attack/"
     },
     {
-      "title": "Terabytes of credentials leaked in massive supply-chain attack",
-      "url": "https://arstechnica.com/security/2026/08/terabytes-of-credentials-leaked-in-massive-supply-chain-attack/"
+      "title": "Anthropic Incident: An AI Agent Published a Malicious Package to PyPI and 15 Real Systems Ran It - StepSecurity",
+      "url": "https://www.stepsecurity.io/blog/anthropic-incident-ai-agent-malicious-package-pypi"
     },
     {
-      "title": "Hackers reportedly compromise popular Axios package with malware...",
-      "url": "https://news.google.com/stories/CAAqNggKIjBDQklTSGpvSmMzUnZjbmt0TXpZd1NoRUtEd2pSb29ycEVCSHhvOWhINEV2R1FpZ0FQAQ?hl=en-GB&gl=GB&ceid=GB:en"
+      "title": "Malicious LiteLLM Releases Tied to Trivy Hack May Have Exposed 2,100+ Organizations",
+      "url": "https://thehackernews.com/2026/08/malicious-litellm-releases-tied-to.html"
     },
     {
-      "title": "Shai-Hulud: Self-Replicating Worm Compromises 500+ NPM Packages",
-      "url": "https://www.stepsecurity.io/blog/ctrl-tinycolor-and-40-npm-packages-compromised"
+      "title": "Anthropic's Claude breached 3 orgs, uploaded PyPI malware during tests",
+      "url": "https://www.bleepingcomputer.com/news/security/anthropics-claude-breached-3-orgs-uploaded-pypi-malware-during-tests/"
     },
     {
-      "title": "Axios npm Package Compromised: Supply Chain Attack... | Medium",
-      "url": "https://medium.com/@snyksec/axios-npm-package-compromised-supply-chain-attack-delivers-cross-platform-rat-373f81a3a169"
-    },
-    {
-      "title": "Axios npm package compromised to deploy malware | SOPHOS",
-      "url": "https://www.sophos.com/en-us/blog/axios-npm-package-compromised-to-deploy-malware"
-    },
-    {
-      "title": "Hardened PyPI Libraries - Prevent 98% of PyPi malware",
-      "url": "https://www.bing.com/aclick?ld=e8IMz3BG38AW-H4uql8zXanDVUCUy3JYrdrm8N5OPtOkWlELy3GohL4dwCW15GUKO7h3avtpmU1K018kotcBNms51yMuDP-oLT2VWkZnL6tfNUM_QZcFYb1RU_hPIcNWI4BwWHySxjGDJPHtz19hy7oibjoNvDlQjnz_QTEJmHBn408wbuElmx-4XYdSiMKQvNOXgL17aBLcHwncqlIEPkws3dxr0&u=aHR0cHMlM2ElMmYlMmZ3d3cuY2hhaW5ndWFyZC5kZXYlMmZ1bmNoYWluZWQlMmZtaXRpZ2F0aW5nLW1hbHdhcmUtaW4tdGhlLXB5dGhvbi1lY29zeXN0ZW0td2l0aC1jaGFpbmd1YXJkLWxpYnJhcmllcyUzZm1zY2xraWQlM2RiZjMyN2JlYjgzMTYxMWY3MDc0MzExOTU0Y2VmYzk1ZSUyNnV0bV9zb3VyY2UlM2RiaW5nJTI2dXRtX21lZGl1bSUzZGNwYyUyNnV0bV9jYW1wYWlnbiUzZGJnX3NfYW1lcl9hY3FfZ2VuZXJpY19ib2YlMjZ1dG1fdGVybSUzZG1hbGljaW91cyUyNTIwcHlwaSUyNTIwcGFja2FnZXMlMjZ1dG1fY29udGVudCUzZGxpYnJhcmllc19weXBp&rlid=bf327beb831611f7074311954cefc95e"
-    },
-    {
-      "title": "Four More Supply Chain Attacks Hit npm and PyPI | Shai-Hulud",
-      "url": "https://blog.gitguardian.com/shai-hulud-npm-pypi-supply-chain-attacks/"
-    },
-    {
-      "title": "PyPI package compromise: what TeamPCP\u2019s chain means for defe...",
-      "url": "https://nhimg.org/community/nhi-breaches/pypi-package-compromise-what-teampcps-chain-means-for-defenders/"
-    },
-    {
-      "title": "Python package security in 2026 | CSO Online",
+      "title": "Python package security in 2026: How supply chain attacks are targeting your AI development environment",
       "url": "https://www.csoonline.com/article/4206245/python-package-security-in-2026.html"
+    },
+    {
+      "title": "Disrupting supply chain attacks on npm and GitHub Actions - The GitHub Blog",
+      "url": "https://github.blog/security/supply-chain-security/disrupting-supply-chain-attacks-on-npm-and-github-actions/"
     }
   ]
 }
