@@ -1,56 +1,56 @@
 {
-  "generated_at": "2026-09-06T11:39:11.711871+00:00",
+  "generated_at": "2026-09-07T13:27:31.336984+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "The article discusses the recent supply chain attacks on npm and PyPI, which have compromised millions of packages and exposed sensitive information such as cloud credentials, SSH keys, and Kubernetes secrets. The attacks are attributed to the TeamPCP group and have been linked to other security tooling compromises, including Trivy and Checkmarx.\n\n**Attack Vectors:**\n\n1. **Technique - T1195.001 Supply Chain Compromise: Compromise Software Dependencies and Development Tools**\n\t* Malicious wheel files distributed via PyPI\n\t* Triggered during Python interpreter initialization via *-setup.pth files\n2. **Technique - T1204.005 User Execution: Malicious Library**\n\t* Triggered during Python interpreter initialization via *-setup.pth files\n\t* Delivers a three-stage payload designed to steal cloud credentials, SSH keys, and Kubernetes secrets\n3. **Technique - T1195.001 Supply Chain Compromise: Compromise Software Dependencies and Development Tools**\n\t* Malicious releases 1.82.7 and 1.82.8 delivered a three-stage payload designed to steal cloud credentials, SSH keys, and Kubernetes secrets\n\t* Linked to a compromised Trivy GitHub Action that exposed a personal access token\n4. **Technique - T1204.005 User Execution: Malicious Library**\n\t* Triggered during Python interpreter initialization via *-setup.pth files\n\t* Delivers a three-stage payload designed to steal cloud credentials, SSH keys, and Kubernetes secrets\n\t* Linked to a compromised Trivy GitHub Action that exposed a personal access token\n\n**Mitigation:**\n\n1. **Block identified malicious domains**\n2. **Rotate any potentially exposed credentials**\n3. **Remove LiteLLM_init.pth artifacts**\n4. **Hunt for persistence via sysmon.service systemd user unit**\n5. **Enforce hash-verified installs**\n6. **Limit or disallow unreviewed post-install behaviors**\n7. **Apply egress filtering**\n8. **Add JARM fingerprint monitoring**\n\n**Response:**\n\n1. **Isolate impacted systems**\n2. **Terminate malicious Python processes**\n3. **Remove trojanized LiteLLM packages along with any persistence files**\n4. **Rotate all harvested secrets immediately**\n5. **Deploy detections for Base64-encoded Python execution chains, .pth file drops, and anomalous HTTPS POST activity**\n\n**Keywords:**\n\n* LiteLLM\n* Supply chain attack\n* PyPI\n* TeamPCP\n* Trivy\n* Checkmarx\n* GitHub Actions\n* Kubernetes secrets\n* .pth persistence\n* Credential theft\n* RSA-4096\n* AES-256\n* Egress filtering\n* JARM fingerprinting",
+  "digest_markdown": "The article discusses several recent supply chain attacks on popular software package repositories, including npm (Node Package Manager) and PyPI (Python Package Index). These attacks aim to steal sensitive information, such as cloud credentials, SSH keys, and Kubernetes secrets, by exploiting vulnerabilities in package dependencies.\n\n**Key Findings:**\n\n1. **Trinitite**: A new Mini Shai-Hulud wave, dubbed Trinitite, was identified in npm, where 10 releases were published in about 20 minutes, compromising downstream projects.\n2. **Lazarus Group**: The Lazarus Group, a North Korea-affiliated group, is behind a sophisticated operation that has infiltrated open-source software ecosystems, including npm and PyPI.\n3. **Malicious Packages**: Several malicious packages were discovered in npm and PyPI, including ones that exploit Gmail's SMTP servers and WebSockets for data exfiltration and remote command execution.\n4. **Coffin-Codes-Pro**: A package with over 18,000 downloads was found to be malicious, using hardcoded Gmail credentials to log into the SMTP server and send reconnaissance data.\n5. **dlmm-sdk**: A PyPI package containing malicious code was found to execute during package import, exfiltrating sensitive data such as API keys and authentication tokens.\n\n**Implications:**\n\n1. **Package Trust**: The attacks highlight the importance of package trust and the need for enhanced security measures and vigilance among developers and organizations.\n2. **Credential Theft**: The attacks demonstrate how package compromise can lead to credential theft, compromising sensitive information such as cloud credentials, SSH keys, and Kubernetes secrets.\n3. **Supply Chain Integrity**: The attacks underscore the need for robust supply chain integrity measures to prevent the introduction of malicious code into popular software package repositories.\n\n**Recommendations:**\n\n1. **Regularly Update Dependencies**: Developers should regularly update their dependencies to ensure they have the latest security patches.\n2. **Use Secure Package Managers**: Developers should use secure package managers, such as npm and PyPI, that provide robust security features and monitoring.\n3. **Implement Credential Governance**: Organizations should implement credential governance policies to ensure that sensitive information, such as cloud credentials and SSH keys, are properly managed and protected.\n4. **Monitor Package Activity**: Developers and organizations should monitor package activity and report any suspicious activity to the relevant authorities.",
   "sources": [
     {
-      "title": "The State of Open Source Supply Chain Attacks - StepSecurity",
-      "url": "https://www.stepsecurity.io/blog/state-of-open-source-supply-chain-attacks"
-    },
-    {
-      "title": "What Is a Supply Chain Attack? Types and Prevention | CrowdStrike",
-      "url": "https://www.crowdstrike.com/en-us/cybersecurity-101/cyberattacks/supply-chain-attack/"
-    },
-    {
-      "title": "Amazon identifies North Korean hacker group behind open-source supply chain attacks | Amazon Web Services",
-      "url": "https://aws.amazon.com/blogs/security/amazon-identifies-north-korean-hacker-group-behind-open-source-supply-chain-attacks/"
-    },
-    {
-      "title": "Terabytes of credentials leaked in massive supply-chain attack - Ars Technica",
+      "title": "Terabytes of credentials leaked in massive supply-chain attack",
       "url": "https://arstechnica.com/security/2026/08/terabytes-of-credentials-leaked-in-massive-supply-chain-attack/"
     },
     {
-      "title": "Thousands of Node Developers Compromised by Malware in Popular npm ...",
+      "title": "Worldwide software supply chain attacks tracker (updated ...",
+      "url": "https://www.comparitech.com/software-supply-chain-attacks/"
+    },
+    {
+      "title": "Supply Chain Attack Incident Catalog",
+      "url": "https://supplychainattack.org/"
+    },
+    {
+      "title": "Over 2,500 companies exposed in major AI software supply ...",
+      "url": "https://www.cnbctv18.com/technology/over-2500-companies-exposed-in-major-ai-software-supply-chain-breach-19967620.htm"
+    },
+    {
+      "title": "npm Dependency Risk - Fix Critical Package CVEs",
+      "url": "https://www.bing.com/aclick?ld=e8wO_K2ufe-uZ8KBxyYLQryDVUCUw0A1NERMn-A1yQ2W1pgM_7PBldMo5_kO4GSkIIB36xfiDq9lEB6oQI8oMUWmNSDP3KHRr5wcnMeZpb1khN1Tw_UktJsGKHfMBL-sEukSwLZzSgAruyE-FLuGA8eMzwBSafj_OLsrfzOidfb5fFM7n_ip2yqkr2uJkgRVTZP5xasSWkEq0uctxtMLkvgpcY1vU&u=aHR0cHMlM2ElMmYlMmZhZC5kb3VibGVjbGljay5uZXQlMmZzZWFyY2hhZHMlMmZsaW5rJTJmY2xpY2slM2ZsaWQlM2Q0MzcwMDA4NDM0MTU4MDkzNCUyNmRzX3Nfa3dnaWQlM2Q1ODcwMDAwOTEyNjA4MjEyMSUyNmRzX2FfY2lkJTNkNDA1NTA3ODI5JTI2ZHNfYV9jYWlkJTNkMjQyMTQ3NzMyODclMjZkc19hX2FnaWQlM2QyMDA4ODkxODM5NzglMjZkc19hX2xpZCUzZGt3ZC0yNDgwNTgyNjA1ODczJTI2JTI2ZHNfZV9hZGlkJTNkODEwMjA0MTEwMTQ2MjglMjZkc19lX3RhcmdldF9pZCUzZGt3ZC04MTAyMDY4ODgwNjc4MSUzYWxvYy0xOTAlMjYlMjZkc19lX25ldHdvcmslM2RvJTI2ZHNfdXJsX3YlM2QyJTI2ZHNfZGVzdF91cmwlM2RodHRwcyUzYSUyZiUyZnd3dy5pYm0uY29tJTJmcHJvZHVjdHMlMmZsaWdodHdlbGwlM2Z1dG1fY29udGVudCUzZFNSQ1dXJTI2cDElM2RTZWFyY2glMjZwNCUzZDI0ODA1ODI2MDU4NzMlMjZwNSUzZHAlMjZwOSUzZDIwMDg4OTE4Mzk3OCUyNmdjbGlkJTNkM2Q1YTQ3YWZlZjI0MTZiMDlhOTQyZDMxNTQxMjMxNGIlMjZnY2xzcmMlM2QzcC5kcyUyNiUyNm1zY2xraWQlM2QzZDVhNDdhZmVmMjQxNmIwOWE5NDJkMzE1NDEyMzE0Yg&rlid=3d5a47afef2416b09a942d315412314b"
+    },
+    {
+      "title": "Best Way to Remove Malware - Free Virus Scan and Removal",
+      "url": "https://www.bing.com/aclick?ld=e8Ioljq3AkhhVYP3GRzEcDhTVUCUzp63Pmc_SXJ_DoJlNgIi255TDCC_JYF8r3-dWN6cyObZ-DYA7hhd5agKfMErrDkoEprCONv6NCqcD_xoeEic61Cx39C-fqJHIyIR4zTe4A38l2IgxopEokESgVmmXP8mTzfaqfrZw3SXiP2FP4QObQROoMG-lJSOsAsjaLBmLQZbBLrZLf9oOXLbXUWEEVGkY&u=aHR0cHMlM2ElMmYlMmZyZHQubWFja2VlcGVyLmNvbSUyZjYzMzVkMDA4NzE0OTBkMDAwMWI0MDkzMiUzZnN1YjElM2Q3OTIzMzc2NTkwMTEwNyUyNnN1YjIlM2Q1MDYwMDA0NTglMjZzdWIzJTNkYyUyNnN1YjQlM2QxMjY3NzM3ODQ0MjgyNzQzJTI2c3ViNSUzZHAlMjZ1dG1fY2FtcGFpZ24lM2RyX2Jpbmdfc2VjdXJpdHlfdXMlMjZzdWI3JTNkJTI2c3ViOCUzZG5wbSUyNTIwcGFja2FnZSUyNTIwY29tcHJvbWlzZWQlMjUyMG1hbHdhcmUlMjZzdWI5JTNka3dkLTc5MjM0MTE5NjgzOTg2JTNhbG9jLTE5MCUyNnN1YjEwJTNkeW91ciUyNTIwbWFjJTI1MjBpcyUyNTIwaW5mZWN0ZWQlMjZ1dG1fc291cmNlJTNkYmluZyUyNnV0bV9tZWRpdW0lM2RjcGMlMjZyZWZfaWQlM2QyN2JhNWEwNjEzMmMxMzIwYWQzNDMwOThhODFhZDdhOCUyNm1zY2xraWQlM2QyN2JhNWEwNjEzMmMxMzIwYWQzNDMwOThhODFhZDdhOA&rlid=27ba5a06132c1320ad343098a81ad7a8"
+    },
+    {
+      "title": "Thousands of Node Developers Compromised by Malware in ...",
       "url": "https://dailysecurityreview.com/security-spotlight/thousands-of-node-developers-compromised-by-malware-in-popular-npm-packages/"
     },
     {
-      "title": "Popular npm Package With 150K+ Weekly Downloads Hit by Credential ...",
+      "title": "Popular npm Package With 150K+ Weekly Downloads Hit by ...",
       "url": "https://cybersecuritynews.com/popular-npm-package/"
     },
     {
-      "title": "24 Malicious npm Packages Abuse Trusted Mirrors to Host ClickFix ...",
-      "url": "https://cybersecuritynews.com/24-malicious-npm-packages/"
+      "title": "Npm and PyPI supply chain attacks are stealing cloud credentials",
+      "url": "https://nhimg.org/articles/npm-and-pypi-supply-chain-attacks-are-stealing-cloud-credentials/"
     },
     {
-      "title": "ChainDrop npm Worm: 444 Packages Infected in 4 Hours",
-      "url": "https://shattered.io/chaindrop-npm-worm-444-packages-2026/"
+      "title": "New Malicious Packages in npm and PyPI Tied to Lazarus Group ...",
+      "url": "https://dailysecurityreview.com/cyber-security/new-malicious-packages-in-npm-and-pypi-tied-to-lazarus-group/"
     },
     {
-      "title": "npm and PyPI Supply Chain Attacks: How Malicious Packages Bypass Security Controls",
-      "url": "https://www.loginsoft.com/post/npm-and-pypi-supply-chain-attacks-how-malicious-packages-bypass-security-controls"
+      "title": "Malicious PyPI Packages Exploit Gmail and WebSockets to Hijack Systems",
+      "url": "https://dailysecurityreview.com/security-spotlight/malicious-pypi-packages-exploit-gmail-and-websockets-to-hijack-systems/"
     },
     {
-      "title": "PyPI Startup Hook Attack Steals Cloud Credentials",
-      "url": "https://socprime.com/active-threats/massive-pypi-supply-chain-attack-harvests-cloud-credentials-via-python-startup-hooks/"
-    },
-    {
-      "title": "LiteLLM Supply Chain Attack: PyPI Versions 1.82.7\u20131.82.8",
-      "url": "https://socprime.com/active-threats/litellm-supply-chain-attack/"
-    },
-    {
-      "title": "Malicious LiteLLM Releases Tied to Trivy Hack May Have Exposed 2,100+ Organizations",
-      "url": "https://thehackernews.com/2026/08/malicious-litellm-releases-tied-to.html"
+      "title": "Malicious code in dlmm-sdk (PyPI) | supplychainattack.org",
+      "url": "https://supplychainattack.org/incident/malicious-code-in-dlmm-sdk-pypi-1wxcan"
     }
   ]
 }
