@@ -1,40 +1,40 @@
 {
-  "generated_at": "2026-09-07T13:27:31.336984+00:00",
+  "generated_at": "2026-09-08T12:07:14.590243+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "The article discusses several recent supply chain attacks on popular software package repositories, including npm (Node Package Manager) and PyPI (Python Package Index). These attacks aim to steal sensitive information, such as cloud credentials, SSH keys, and Kubernetes secrets, by exploiting vulnerabilities in package dependencies.\n\n**Key Findings:**\n\n1. **Trinitite**: A new Mini Shai-Hulud wave, dubbed Trinitite, was identified in npm, where 10 releases were published in about 20 minutes, compromising downstream projects.\n2. **Lazarus Group**: The Lazarus Group, a North Korea-affiliated group, is behind a sophisticated operation that has infiltrated open-source software ecosystems, including npm and PyPI.\n3. **Malicious Packages**: Several malicious packages were discovered in npm and PyPI, including ones that exploit Gmail's SMTP servers and WebSockets for data exfiltration and remote command execution.\n4. **Coffin-Codes-Pro**: A package with over 18,000 downloads was found to be malicious, using hardcoded Gmail credentials to log into the SMTP server and send reconnaissance data.\n5. **dlmm-sdk**: A PyPI package containing malicious code was found to execute during package import, exfiltrating sensitive data such as API keys and authentication tokens.\n\n**Implications:**\n\n1. **Package Trust**: The attacks highlight the importance of package trust and the need for enhanced security measures and vigilance among developers and organizations.\n2. **Credential Theft**: The attacks demonstrate how package compromise can lead to credential theft, compromising sensitive information such as cloud credentials, SSH keys, and Kubernetes secrets.\n3. **Supply Chain Integrity**: The attacks underscore the need for robust supply chain integrity measures to prevent the introduction of malicious code into popular software package repositories.\n\n**Recommendations:**\n\n1. **Regularly Update Dependencies**: Developers should regularly update their dependencies to ensure they have the latest security patches.\n2. **Use Secure Package Managers**: Developers should use secure package managers, such as npm and PyPI, that provide robust security features and monitoring.\n3. **Implement Credential Governance**: Organizations should implement credential governance policies to ensure that sensitive information, such as cloud credentials and SSH keys, are properly managed and protected.\n4. **Monitor Package Activity**: Developers and organizations should monitor package activity and report any suspicious activity to the relevant authorities.",
+  "digest_markdown": "The article discusses several recent supply chain attacks on popular open-source package repositories, including npm and PyPI. These attacks use malicious code to steal sensitive information, such as cloud credentials, SSH keys, and cryptocurrency. Here are the key points from the article:\n\n**Npm Package Attack**\n\n* A malicious package was discovered in the npm registry, which was designed to steal cloud credentials and other sensitive information.\n* The package was disguised as a legitimate library, and its presence in the registry posed a significant risk to users.\n* The attack used a technique called \"trusted publishing,\" which allowed the malicious package to be published with a trusted identity.\n\n**PyPI Package Attack**\n\n* Seven malicious packages were discovered on PyPI, which used Gmail's SMTP servers and WebSockets to hijack systems.\n* The packages impersonated a legitimate package called \"Coffin,\" which integrates Jinja2 templates into Django projects.\n* The malware enabled covert remote access and data exfiltration through Gmail, and used hardcoded Gmail credentials to log into the SMTP server.\n\n**Cryptocurrency Theft**\n\n* The malware used email addresses like \"blockchain.bitcoins2020@gmail.com\" to steal cryptocurrency.\n* This method resembles past tactics used to steal Solana private keys.\n\n**Other Attacks**\n\n* A related report by Sonatype researcher Ax Sharma detailed a crypto-stealing package named \"crypto-encrypt-ts\" found on npm.\n* A compromised package called \"dlmm-sdk\" on PyPI was found to contain malicious code that executes during package import, collecting sensitive data such as API keys and authentication tokens.\n\n**Recommendations**\n\n* Developers and organizations should be vigilant when installing packages from open-source repositories.\n* It is essential to monitor package updates and remove any malicious packages immediately.\n* Developers should follow security best practices for secrets management, such as using secure storage and rotation of credentials.\n* Organizations should implement lifecycle control over credentials that are present during package install, build, and runtime execution.\n\n**Key Takeaways**\n\n* Package compromise becomes an identity problem the moment malicious code runs in a trusted build or developer environment.\n* The attack highlights the need for enhanced security measures and vigilance among developers and organizations.\n* The supply chain attack demonstrates the importance of clean install discipline and credential governance in protecting sensitive information.",
   "sources": [
     {
-      "title": "Terabytes of credentials leaked in massive supply-chain attack",
-      "url": "https://arstechnica.com/security/2026/08/terabytes-of-credentials-leaked-in-massive-supply-chain-attack/"
+      "title": "The State of Open Source Supply Chain Attacks - StepSecurity",
+      "url": "https://www.stepsecurity.io/blog/state-of-open-source-supply-chain-attacks"
     },
     {
-      "title": "Worldwide software supply chain attacks tracker (updated ...",
-      "url": "https://www.comparitech.com/software-supply-chain-attacks/"
+      "title": "What Is a Supply Chain Attack? Types and Prevention | CrowdStrike",
+      "url": "https://www.crowdstrike.com/en-us/cybersecurity-101/cyberattacks/supply-chain-attack/"
     },
     {
-      "title": "Supply Chain Attack Incident Catalog",
-      "url": "https://supplychainattack.org/"
+      "title": "Amazon identifies North Korean hacker group behind open-source supply chain attacks | Amazon Web Services",
+      "url": "https://aws.amazon.com/blogs/security/amazon-identifies-north-korean-hacker-group-behind-open-source-supply-chain-attacks/"
     },
     {
-      "title": "Over 2,500 companies exposed in major AI software supply ...",
-      "url": "https://www.cnbctv18.com/technology/over-2500-companies-exposed-in-major-ai-software-supply-chain-breach-19967620.htm"
-    },
-    {
-      "title": "npm Dependency Risk - Fix Critical Package CVEs",
-      "url": "https://www.bing.com/aclick?ld=e8wO_K2ufe-uZ8KBxyYLQryDVUCUw0A1NERMn-A1yQ2W1pgM_7PBldMo5_kO4GSkIIB36xfiDq9lEB6oQI8oMUWmNSDP3KHRr5wcnMeZpb1khN1Tw_UktJsGKHfMBL-sEukSwLZzSgAruyE-FLuGA8eMzwBSafj_OLsrfzOidfb5fFM7n_ip2yqkr2uJkgRVTZP5xasSWkEq0uctxtMLkvgpcY1vU&u=aHR0cHMlM2ElMmYlMmZhZC5kb3VibGVjbGljay5uZXQlMmZzZWFyY2hhZHMlMmZsaW5rJTJmY2xpY2slM2ZsaWQlM2Q0MzcwMDA4NDM0MTU4MDkzNCUyNmRzX3Nfa3dnaWQlM2Q1ODcwMDAwOTEyNjA4MjEyMSUyNmRzX2FfY2lkJTNkNDA1NTA3ODI5JTI2ZHNfYV9jYWlkJTNkMjQyMTQ3NzMyODclMjZkc19hX2FnaWQlM2QyMDA4ODkxODM5NzglMjZkc19hX2xpZCUzZGt3ZC0yNDgwNTgyNjA1ODczJTI2JTI2ZHNfZV9hZGlkJTNkODEwMjA0MTEwMTQ2MjglMjZkc19lX3RhcmdldF9pZCUzZGt3ZC04MTAyMDY4ODgwNjc4MSUzYWxvYy0xOTAlMjYlMjZkc19lX25ldHdvcmslM2RvJTI2ZHNfdXJsX3YlM2QyJTI2ZHNfZGVzdF91cmwlM2RodHRwcyUzYSUyZiUyZnd3dy5pYm0uY29tJTJmcHJvZHVjdHMlMmZsaWdodHdlbGwlM2Z1dG1fY29udGVudCUzZFNSQ1dXJTI2cDElM2RTZWFyY2glMjZwNCUzZDI0ODA1ODI2MDU4NzMlMjZwNSUzZHAlMjZwOSUzZDIwMDg4OTE4Mzk3OCUyNmdjbGlkJTNkM2Q1YTQ3YWZlZjI0MTZiMDlhOTQyZDMxNTQxMjMxNGIlMjZnY2xzcmMlM2QzcC5kcyUyNiUyNm1zY2xraWQlM2QzZDVhNDdhZmVmMjQxNmIwOWE5NDJkMzE1NDEyMzE0Yg&rlid=3d5a47afef2416b09a942d315412314b"
-    },
-    {
-      "title": "Best Way to Remove Malware - Free Virus Scan and Removal",
-      "url": "https://www.bing.com/aclick?ld=e8Ioljq3AkhhVYP3GRzEcDhTVUCUzp63Pmc_SXJ_DoJlNgIi255TDCC_JYF8r3-dWN6cyObZ-DYA7hhd5agKfMErrDkoEprCONv6NCqcD_xoeEic61Cx39C-fqJHIyIR4zTe4A38l2IgxopEokESgVmmXP8mTzfaqfrZw3SXiP2FP4QObQROoMG-lJSOsAsjaLBmLQZbBLrZLf9oOXLbXUWEEVGkY&u=aHR0cHMlM2ElMmYlMmZyZHQubWFja2VlcGVyLmNvbSUyZjYzMzVkMDA4NzE0OTBkMDAwMWI0MDkzMiUzZnN1YjElM2Q3OTIzMzc2NTkwMTEwNyUyNnN1YjIlM2Q1MDYwMDA0NTglMjZzdWIzJTNkYyUyNnN1YjQlM2QxMjY3NzM3ODQ0MjgyNzQzJTI2c3ViNSUzZHAlMjZ1dG1fY2FtcGFpZ24lM2RyX2Jpbmdfc2VjdXJpdHlfdXMlMjZzdWI3JTNkJTI2c3ViOCUzZG5wbSUyNTIwcGFja2FnZSUyNTIwY29tcHJvbWlzZWQlMjUyMG1hbHdhcmUlMjZzdWI5JTNka3dkLTc5MjM0MTE5NjgzOTg2JTNhbG9jLTE5MCUyNnN1YjEwJTNkeW91ciUyNTIwbWFjJTI1MjBpcyUyNTIwaW5mZWN0ZWQlMjZ1dG1fc291cmNlJTNkYmluZyUyNnV0bV9tZWRpdW0lM2RjcGMlMjZyZWZfaWQlM2QyN2JhNWEwNjEzMmMxMzIwYWQzNDMwOThhODFhZDdhOCUyNm1zY2xraWQlM2QyN2JhNWEwNjEzMmMxMzIwYWQzNDMwOThhODFhZDdhOA&rlid=27ba5a06132c1320ad343098a81ad7a8"
+      "title": "Real-time Open Source Software Supply Chain Security - Live Threat Intelligence - Threat Radar | OffSeq.com",
+      "url": "https://radar.offseq.com/threat/real-time-open-source-software-supply-chain-security-9e0b55346ac13c2a"
     },
     {
       "title": "Thousands of Node Developers Compromised by Malware in ...",
       "url": "https://dailysecurityreview.com/security-spotlight/thousands-of-node-developers-compromised-by-malware-in-popular-npm-packages/"
     },
     {
-      "title": "Popular npm Package With 150K+ Weekly Downloads Hit by ...",
-      "url": "https://cybersecuritynews.com/popular-npm-package/"
+      "title": "Shai-Hulud npm Worm Resurfaces After 111 Days and Slips Past ...",
+      "url": "https://cybersecuritynews.com/shai-hulud-npm-worm/"
+    },
+    {
+      "title": "Popular npm Package With 150K Weekly Downloads Compromised in ...",
+      "url": "https://cybersecuritynews.com/popular-npm-package-2/"
+    },
+    {
+      "title": "ChainDrop npm Worm Hits 444 Packages, 2B Installs",
+      "url": "https://tech-insider.org/chaindrop-npm-supply-chain-worm-2026/"
     },
     {
       "title": "Npm and PyPI supply chain attacks are stealing cloud credentials",
