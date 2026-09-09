@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-09-08T12:07:14.590243+00:00",
+  "generated_at": "2026-09-09T12:17:57.903262+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "The article discusses several recent supply chain attacks on popular open-source package repositories, including npm and PyPI. These attacks use malicious code to steal sensitive information, such as cloud credentials, SSH keys, and cryptocurrency. Here are the key points from the article:\n\n**Npm Package Attack**\n\n* A malicious package was discovered in the npm registry, which was designed to steal cloud credentials and other sensitive information.\n* The package was disguised as a legitimate library, and its presence in the registry posed a significant risk to users.\n* The attack used a technique called \"trusted publishing,\" which allowed the malicious package to be published with a trusted identity.\n\n**PyPI Package Attack**\n\n* Seven malicious packages were discovered on PyPI, which used Gmail's SMTP servers and WebSockets to hijack systems.\n* The packages impersonated a legitimate package called \"Coffin,\" which integrates Jinja2 templates into Django projects.\n* The malware enabled covert remote access and data exfiltration through Gmail, and used hardcoded Gmail credentials to log into the SMTP server.\n\n**Cryptocurrency Theft**\n\n* The malware used email addresses like \"blockchain.bitcoins2020@gmail.com\" to steal cryptocurrency.\n* This method resembles past tactics used to steal Solana private keys.\n\n**Other Attacks**\n\n* A related report by Sonatype researcher Ax Sharma detailed a crypto-stealing package named \"crypto-encrypt-ts\" found on npm.\n* A compromised package called \"dlmm-sdk\" on PyPI was found to contain malicious code that executes during package import, collecting sensitive data such as API keys and authentication tokens.\n\n**Recommendations**\n\n* Developers and organizations should be vigilant when installing packages from open-source repositories.\n* It is essential to monitor package updates and remove any malicious packages immediately.\n* Developers should follow security best practices for secrets management, such as using secure storage and rotation of credentials.\n* Organizations should implement lifecycle control over credentials that are present during package install, build, and runtime execution.\n\n**Key Takeaways**\n\n* Package compromise becomes an identity problem the moment malicious code runs in a trusted build or developer environment.\n* The attack highlights the need for enhanced security measures and vigilance among developers and organizations.\n* The supply chain attack demonstrates the importance of clean install discipline and credential governance in protecting sensitive information.",
+  "digest_markdown": "The Lazarus Group, a North Korea-affiliated cyber threat actor, has been linked to several malicious packages on npm and PyPI, two popular open-source software registries. These packages were designed to steal sensitive information, including cloud credentials, SSH keys, and Kubernetes secrets, from developers and organizations that use them.\n\nHere are the key points from the recent intelligence:\n\n1. **Malicious packages on npm and PyPI**: Researchers have identified several malicious packages on npm and PyPI, including \"graphalgo\" and \"Coffin-Codes-Pro\", which were designed to steal sensitive information.\n2. **Recruitment-themed phishing campaign**: The Lazarus Group has been using a recruitment-themed phishing campaign to trick developers into installing the malicious packages.\n3. **Use of Gmail and WebSockets**: The malicious packages used Gmail's SMTP servers and WebSockets to exfiltrate data and execute remote commands.\n4. **Crypto-stealing packages**: A related report by Sonatype researcher Ax Sharma detailed a crypto-stealing package named \"crypto-encrypt-ts\" found on npm.\n5. **Hades startup hook campaign**: The Hades campaign used .pth startup hooks to ship a payload that fired every time Python started, rather than once at install. This technique was also used in a previous campaign by the LiteLLM threat actor.\n6. **Combination of techniques**: The Hades campaign used a combination of techniques, including maintainer account takeover, burst patch releases, and persistence daemons, to steal sensitive information.\n7. **Indicators of cryptocurrency theft**: The malicious packages used email addresses that suggested cryptocurrency theft, such as \"blockchain.bitcoins2020@gmail.com\".\n\nTo protect against these threats, developers and organizations should:\n\n1. **Monitor package updates**: Regularly monitor package updates and remove any suspicious packages.\n2. **Use secure package managers**: Use secure package managers, such as pip and npm, to manage dependencies.\n3. **Implement security best practices**: Implement security best practices, such as using secure credentials and rotating keys.\n4. **Conduct regular security audits**: Conduct regular security audits to identify and address vulnerabilities.\n5. **Stay informed**: Stay informed about the latest threats and vulnerabilities in the software supply chain.\n\nBy taking these steps, developers and organizations can reduce their risk of being targeted by these malicious packages and protect their sensitive information.",
   "sources": [
+    {
+      "title": "Supply Chain Attacks on Open Source - Coffee House Coders",
+      "url": "https://coffeehousecoders.org/blog/usenix_2026.html"
+    },
+    {
+      "title": "The State of Open Source Supply Chain Attacks : r/blueteamsec",
+      "url": "https://www.reddit.com/r/blueteamsec/comments/1vycilz/the_state_of_open_source_supply_chain_attacks/"
+    },
+    {
+      "title": "Supply-Chain Attack: Open-Source Contributors Are Also ...",
+      "url": "https://the-tech-lead.com/2026/08/22/supply-chain-attack-open-source-contributors-are-also-targets-by-hackers/"
+    },
     {
       "title": "The State of Open Source Supply Chain Attacks - StepSecurity",
       "url": "https://www.stepsecurity.io/blog/state-of-open-source-supply-chain-attacks"
-    },
-    {
-      "title": "What Is a Supply Chain Attack? Types and Prevention | CrowdStrike",
-      "url": "https://www.crowdstrike.com/en-us/cybersecurity-101/cyberattacks/supply-chain-attack/"
-    },
-    {
-      "title": "Amazon identifies North Korean hacker group behind open-source supply chain attacks | Amazon Web Services",
-      "url": "https://aws.amazon.com/blogs/security/amazon-identifies-north-korean-hacker-group-behind-open-source-supply-chain-attacks/"
-    },
-    {
-      "title": "Real-time Open Source Software Supply Chain Security - Live Threat Intelligence - Threat Radar | OffSeq.com",
-      "url": "https://radar.offseq.com/threat/real-time-open-source-software-supply-chain-security-9e0b55346ac13c2a"
     },
     {
       "title": "Thousands of Node Developers Compromised by Malware in ...",
@@ -29,28 +29,28 @@
       "url": "https://cybersecuritynews.com/shai-hulud-npm-worm/"
     },
     {
-      "title": "Popular npm Package With 150K Weekly Downloads Compromised in ...",
-      "url": "https://cybersecuritynews.com/popular-npm-package-2/"
+      "title": "24 Malicious npm Packages Abuse Trusted Mirrors to Host ...",
+      "url": "https://cybersecuritynews.com/24-malicious-npm-packages/"
     },
     {
-      "title": "ChainDrop npm Worm Hits 444 Packages, 2B Installs",
-      "url": "https://tech-insider.org/chaindrop-npm-supply-chain-worm-2026/"
+      "title": "OpenAPI React Query Codegen npm Attack: Malicious Versions ...",
+      "url": "https://thecybersecguru.com/news/openapi-react-query-codegen-npm-compromise-mini-shai-hulud/"
+    },
+    {
+      "title": "New Malicious Packages in npm and PyPI Tied to Lazarus Group",
+      "url": "https://dailysecurityreview.com/cyber-security/new-malicious-packages-in-npm-and-pypi-tied-to-lazarus-group/"
     },
     {
       "title": "Npm and PyPI supply chain attacks are stealing cloud credentials",
       "url": "https://nhimg.org/articles/npm-and-pypi-supply-chain-attacks-are-stealing-cloud-credentials/"
     },
     {
-      "title": "New Malicious Packages in npm and PyPI Tied to Lazarus Group ...",
-      "url": "https://dailysecurityreview.com/cyber-security/new-malicious-packages-in-npm-and-pypi-tied-to-lazarus-group/"
-    },
-    {
-      "title": "Malicious PyPI Packages Exploit Gmail and WebSockets to Hijack Systems",
+      "title": "Malicious PyPI Packages Exploit Gmail and WebSockets to ...",
       "url": "https://dailysecurityreview.com/security-spotlight/malicious-pypi-packages-exploit-gmail-and-websockets-to-hijack-systems/"
     },
     {
-      "title": "Malicious code in dlmm-sdk (PyPI) | supplychainattack.org",
-      "url": "https://supplychainattack.org/incident/malicious-code-in-dlmm-sdk-pypi-1wxcan"
+      "title": "PyPI Malware and How the Hades Startup Hook Campaign Worked",
+      "url": "https://tuxcare.com/blog/pypi-malware-hades/"
     }
   ]
 }
