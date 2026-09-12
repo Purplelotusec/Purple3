@@ -1,56 +1,56 @@
 {
-  "generated_at": "2026-09-11T12:10:10.683460+00:00",
+  "generated_at": "2026-09-12T11:36:37.236623+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "The article discusses the growing threat of malicious packages in open-source software ecosystems, specifically in npm and PyPI. Here are the key points:\n\n1. **Malicious packages are on the rise**: Over 130 malicious packages were detected in a single week, with coordinated clusters, dependency confusion attacks, and repeated version flooding becoming common attacker behavior.\n2. **Package trust is an identity and supply chain problem**: Package trust is no longer just a code review problem, but a critical issue that affects identity and supply chain security.\n3. **Security teams must take action**: Security teams must reduce malicious package risk in CI/CD pipelines by using allowlisting, signed artifacts, isolated build runners, and ephemeral credentials that expire after the job completes.\n4. **Dependency confusion attacks are still effective**: Dependency confusion attacks continue to work in mature organizations because build systems often trust package names more than publisher identity.\n5. **Signs of a package campaign behaving like an attack**: Rapid version churn, repeated publishes under similar names, typosquatted namespaces, and clusters of related packages appearing across short time windows can indicate a package campaign is behaving like an attack.\n6. **Practitioner guidance**: Enforce registry allowlists and namespace reservations, detect version flooding and publish bursts, and scan for secrets at package ingest and runtime to mitigate the risks.\n\nThe article highlights the need for security teams to be vigilant and proactive in addressing the growing threat of malicious packages in open-source software ecosystems.\n\n**Key Takeaways:**\n\n1. Malicious packages are a growing threat in npm and PyPI.\n2. Package trust is an identity and supply chain problem.\n3. Security teams must take action to reduce malicious package risk.\n4. Dependency confusion attacks are still effective.\n5. Signs of a package campaign behaving like an attack can be detected.\n\n**Recommendations:**\n\n1. Enforce registry allowlists and namespace reservations.\n2. Detect version flooding and publish bursts.\n3. Scan for secrets at package ingest and runtime.\n4. Use allowlisting, signed artifacts, isolated build runners, and ephemeral credentials to mitigate risks.\n5. Stay vigilant and proactive in addressing the growing threat of malicious packages.",
+  "digest_markdown": "The article discusses a series of supply chain attacks that targeted popular Python packages on PyPI (Python Package Index) and npm (Node Package Manager). The attacks were carried out by the TeamPCP group and used various techniques, including typosquatting, to compromise the packages and steal sensitive information.\n\n**Key Findings:**\n\n1. **Typosquatting:** Attackers created packages with names similar to popular dependencies, making it difficult for developers to distinguish between legitimate and malicious packages.\n2. **Provenance:** Some packages had valid SLSA (Software Landmark Specification for Assurance) attestation, which verified the package's integrity and provenance. However, the attestation did not guarantee the package's safety.\n3. **LiteLLM Supply Chain Attack:** A specific attack targeted the LiteLLM package, which is widely used in AI and machine learning applications. The attackers compromised the package's version 1.82.7 and 1.82.8, delivering a three-stage payload that stole cloud credentials, SSH keys, and Kubernetes secrets.\n4. **TeamPCP:** The attackers were linked to the TeamPCP group, which has been involved in previous security incidents, including compromises of security tooling like Trivy and Checkmarx.\n\n**Consequences:**\n\n1. **Credential Theft:** The attackers stole sensitive information, including cloud credentials, SSH keys, and Kubernetes secrets.\n2. **Persistent Backdoor:** The attackers established a persistent backdoor in the compromised package, allowing them to exfiltrate data and pivot inside clusters.\n3. **Supply Chain Exposure:** The attack highlighted the risks of supply chain exposure, as the attackers were able to compromise multiple ecosystems, including PyPI, npm, Docker Hub, GitHub Actions, and OpenVSX.\n\n**Mitigation Strategies:**\n\n1. **Hash-Verified Installs:** Enforce hash-verified installs to ensure that packages are not tampered with during installation.\n2. **Limit Unreviewed Post-Install Behaviors:** Limit or disallow unreviewed post-install behaviors to prevent malicious code from running.\n3. **Egress Filtering:** Apply egress filtering to prevent data exfiltration.\n4. **JARM Fingerprint Monitoring:** Add JARM fingerprint monitoring to flag traffic associated with known bulletproof-hosting ASNs.\n\n**Recommendations:**\n\n1. **Validate Package Names:** Validate package names against approved dependencies to prevent typosquatting.\n2. **Review New or Unexpected Packages:** Review new or unexpected packages to ensure they are legitimate.\n3. **Use Lockfiles and Hash Verification:** Use lockfiles and hash verification to ensure that packages are not tampered with during installation.\n4. **Route Dependencies Through a Controlled Internal Registry:** Route dependencies through a controlled internal registry to prevent supply chain exposure.",
   "sources": [
     {
-      "title": "Worldwide software supply chain attacks tracker (updated daily)",
-      "url": "https://www.comparitech.com/software-supply-chain-attacks/"
+      "title": "The State of Open Source Supply Chain Attacks - StepSecurity",
+      "url": "https://www.stepsecurity.io/blog/state-of-open-source-supply-chain-attacks"
     },
     {
-      "title": "Supply Chain Attack Incident Catalog",
-      "url": "https://supplychainattack.org/"
+      "title": "Real-time Open Source Software Supply Chain Security - Live Threat Intelligence - Threat Radar | OffSeq.com",
+      "url": "https://radar.offseq.com/threat/real-time-open-source-software-supply-chain-security-9e0b55346ac13c2a"
     },
     {
-      "title": "LiteLLM Supply Chain Hack Hit 2,488 Firms; Stolen Keys Still Work Five ...",
-      "url": "https://www.techtimes.com/articles/324451/20260814/litellm-supply-chain-hack-hit-2488-firms-stolen-keys-still-work-five-months.htm"
+      "title": "Terabytes of credentials leaked in massive supply-chain attack - Ars Technica",
+      "url": "https://arstechnica.com/security/2026/08/terabytes-of-credentials-leaked-in-massive-supply-chain-attack/"
     },
     {
-      "title": "ChainDrop worm crawls into npm supply chain, evades standard defenses",
-      "url": "https://www.theregister.com/security/2026/08/15/chaindrop-worm-crawls-into-npm-supply-chain-evades-standard-defenses/5287958"
+      "title": "What Is a Supply Chain Attack? Types and Prevention | CrowdStrike",
+      "url": "https://www.crowdstrike.com/en-us/cybersecurity-101/cyberattacks/supply-chain-attack/"
     },
     {
-      "title": "npm Dependency Risk - Python Package Security",
-      "url": "https://www.bing.com/aclick?ld=e83TcJNiUcCWyHrTbbjRhfWzVUCUziPGhRjivt15fGahbvPCOxb6yfA3Yqpj-pK8RR8zyov-xZXQrax8ssTfKd5Dzyh9bwhiYPRTFNX8QJNhdXgl4nopfC8p_EjIADdPK0TkFAYqcbR3RXz29nEvx8B3OFOam8e6RSwNu4PsSWEB5coJXfXKfcW2VggsDgMiCz-NOtbDipv7OEzx7C7RGhDk5Q5CM&u=aHR0cHMlM2ElMmYlMmZhZC5kb3VibGVjbGljay5uZXQlMmZzZWFyY2hhZHMlMmZsaW5rJTJmY2xpY2slM2ZsaWQlM2Q0MzcwMDA4NDM0MTU4MDkzNyUyNmRzX3Nfa3dnaWQlM2Q1ODcwMDAwOTEyNjA4MjEyMSUyNmRzX2FfY2lkJTNkNDA1NTA3ODI5JTI2ZHNfYV9jYWlkJTNkMjQyMTQ3NzMyODclMjZkc19hX2FnaWQlM2QyMDA4ODkxODM5NzglMjZkc19hX2xpZCUzZGt3ZC00NzU3NjMzNzI1MzYlMjYlMjZkc19lX2FkaWQlM2Q4MTAyMDQxMTAxNDYyOCUyNmRzX2VfdGFyZ2V0X2lkJTNka3dkLTgxMDIwNjg4ODA2NzgyJTNhbG9jLTE5MCUyNiUyNmRzX2VfbmV0d29yayUzZG8lMjZkc191cmxfdiUzZDIlMjZkc19kZXN0X3VybCUzZGh0dHBzJTNhJTJmJTJmd3d3LmlibS5jb20lMmZwcm9kdWN0cyUyZmxpZ2h0d2VsbCUzZnV0bV9jb250ZW50JTNkU1JDV1clMjZwMSUzZFNlYXJjaCUyNnA0JTNkNDc1NzYzMzcyNTM2JTI2cDUlM2RwJTI2cDklM2QyMDA4ODkxODM5NzglMjZnY2xpZCUzZDBjZWJmZmE5ODdlZTEyYTNhZjUxOTUwYTY4ZmY5ZDYxJTI2Z2Nsc3JjJTNkM3AuZHMlMjYlMjZtc2Nsa2lkJTNkMGNlYmZmYTk4N2VlMTJhM2FmNTE5NTBhNjhmZjlkNjE&rlid=0cebffa987ee12a3af51950a68ff9d61"
-    },
-    {
-      "title": "Check if Your Mac is Infected - Instant Malware Removal",
-      "url": "https://www.bing.com/aclick?ld=e81YpQR11i301Xzval5kzLdzVUCUy3D8ek60yH_VtKtbgLHMdO7TvVbXgbWA3SV9Wn_qvGvYoixtqJEfvDd3Y3vKm-I4G2wIPU0iOdhci3kFFi-n68Q_UxYqErSNP4hMJpllmmDK_VehRP9glO1TEW3CU8MD2BJN4Vjxm1hUiQQt24FEwXf0I3FBD9fSQjNik-qdKSERb2iGbUCHrfeQBERyAAN0k&u=aHR0cHMlM2ElMmYlMmZyZHQubWFja2VlcGVyLmNvbSUyZjYzMzVkMDA4NzE0OTBkMDAwMWI0MDkzMiUzZnN1YjElM2Q3OTIzMzc2NTkwMTEwNyUyNnN1YjIlM2Q1MDYwMDA0NTglMjZzdWIzJTNkYyUyNnN1YjQlM2QxMjY3NzM3ODQ0MjgyNzQzJTI2c3ViNSUzZHAlMjZ1dG1fY2FtcGFpZ24lM2RyX2Jpbmdfc2VjdXJpdHlfdXMlMjZzdWI3JTNkJTI2c3ViOCUzZG5wbSUyNTIwcGFja2FnZSUyNTIwY29tcHJvbWlzZWQlMjUyMG1hbHdhcmUlMjZzdWI5JTNka3dkLTc5MjM0MTE5NjgzOTg2JTNhbG9jLTE5MCUyNnN1YjEwJTNkeW91ciUyNTIwbWFjJTI1MjBpcyUyNTIwaW5mZWN0ZWQlMjZ1dG1fc291cmNlJTNkYmluZyUyNnV0bV9tZWRpdW0lM2RjcGMlMjZyZWZfaWQlM2QzZmE0YjgzYTZmYTAxOTQ2OGM3ZmQyOTk4MGIxZTM5ZSUyNm1zY2xraWQlM2QzZmE0YjgzYTZmYTAxOTQ2OGM3ZmQyOTk4MGIxZTM5ZQ&rlid=3fa4b83a6fa019468c7fd29980b1e39e"
-    },
-    {
-      "title": "Thousands of Node Developers Compromised by Malware in ...",
+      "title": "Thousands of Node Developers Compromised by Malware in Popular npm Packages",
       "url": "https://dailysecurityreview.com/security-spotlight/thousands-of-node-developers-compromised-by-malware-in-popular-npm-packages/"
     },
     {
-      "title": "Popular npm Package With 150K+ Weekly Downloads Hit by ...",
+      "title": "Popular npm Package With 150K+ Weekly Downloads Hit by Credential ...",
       "url": "https://cybersecuritynews.com/popular-npm-package/"
     },
     {
-      "title": "PyPI Vulnerability Fixes - Python Package Security",
-      "url": "https://www.bing.com/aclick?ld=e8akv-zuqgLf8xHEwnXgx-ijVUCUwKALHpzrC5Bw2Dqo7JCEuxNoe1wIqcWnlM1JL_xRXAncxpAnyOQKMHuNZmFlzhiKsG5e8HEuZc-ida9zTwUd82WHPtjZ1FHUEiwmbzRVTAxkUF_ZqgeVmh5PvLIBN8jqgrqtXjgpIlZVuPWql9ku4kozlzyJV-8i0EEJv8cYq1S3zlNL_8w-Yy14R6hRckuUA&u=aHR0cHMlM2ElMmYlMmZhZC5kb3VibGVjbGljay5uZXQlMmZzZWFyY2hhZHMlMmZsaW5rJTJmY2xpY2slM2ZsaWQlM2Q0MzcwMDA4NDM0MTU4MDkzNCUyNmRzX3Nfa3dnaWQlM2Q1ODcwMDAwOTEyNjA4MjEyMSUyNmRzX2FfY2lkJTNkNDA1NTA3ODI5JTI2ZHNfYV9jYWlkJTNkMjQyMTQ3NzMyODclMjZkc19hX2FnaWQlM2QyMDA4ODkxODM5NzglMjZkc19hX2xpZCUzZGt3ZC0yNDgwNTgyNjA1ODczJTI2JTI2ZHNfZV9hZGlkJTNkODEwMjA0MTEwMTQ2MjglMjZkc19lX3RhcmdldF9pZCUzZGt3ZC04MTAyMDY4ODgwNjc4MSUzYWxvYy0xOTAlMjYlMjZkc19lX25ldHdvcmslM2RvJTI2ZHNfdXJsX3YlM2QyJTI2ZHNfZGVzdF91cmwlM2RodHRwcyUzYSUyZiUyZnd3dy5pYm0uY29tJTJmcHJvZHVjdHMlMmZsaWdodHdlbGwlM2Z1dG1fY29udGVudCUzZFNSQ1dXJTI2cDElM2RTZWFyY2glMjZwNCUzZDI0ODA1ODI2MDU4NzMlMjZwNSUzZHAlMjZwOSUzZDIwMDg4OTE4Mzk3OCUyNmdjbGlkJTNkZmI3MjQwMGNkZDcyMWUxYTRjNjQyYWFmMzI2NzMwNTYlMjZnY2xzcmMlM2QzcC5kcyUyNiUyNm1zY2xraWQlM2RmYjcyNDAwY2RkNzIxZTFhNGM2NDJhYWYzMjY3MzA1Ng&rlid=fb72400cdd721e1a4c642aaf32673056"
+      "title": "24 Malicious npm Packages Abuse Trusted Mirrors to Host ClickFix ...",
+      "url": "https://cybersecuritynews.com/24-malicious-npm-packages/"
     },
     {
-      "title": "New Malicious Packages in npm and PyPI Tied to Lazarus Group",
-      "url": "https://dailysecurityreview.com/cyber-security/new-malicious-packages-in-npm-and-pypi-tied-to-lazarus-group/"
+      "title": "OpenAPI React Query Codegen Compromised in Mini Shai-Hulud npm Supply ...",
+      "url": "https://thecybersecguru.com/news/openapi-react-query-codegen-npm-compromise-mini-shai-hulud/"
     },
     {
-      "title": "Npm and PyPI supply chain attacks are stealing cloud credentials",
-      "url": "https://nhimg.org/articles/npm-and-pypi-supply-chain-attacks-are-stealing-cloud-credentials/"
+      "title": "What Happens When You pip install a Malicious Python Package? - DEV Community",
+      "url": "https://dev.to/loginsoft/what-happens-when-you-pip-install-a-malicious-python-package-1216"
     },
     {
-      "title": "Malicious package campaigns in npm and PyPI: what teams must...",
-      "url": "https://nhimg.org/community/cybersecurity-beyond-identity/malicious-package-campaigns-in-npm-and-pypi-what-teams-must-watch/"
+      "title": "LiteLLM Supply Chain Attack: PyPI Malware Anatomy [2026]",
+      "url": "https://www.kunalganglani.com/blog/litellm-supply-chain-attack-pypi"
+    },
+    {
+      "title": "Valid Provenance, Malicious Package: What Attestations Buy You | MatrixGard",
+      "url": "https://matrixgard.com/blog/npm-pypi-provenance-attestation-supply-chain-2026/"
+    },
+    {
+      "title": "LiteLLM Supply Chain Attack: PyPI Versions 1.82.7\u20131.82.8",
+      "url": "https://socprime.com/active-threats/litellm-supply-chain-attack/"
     }
   ]
 }
