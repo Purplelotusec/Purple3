@@ -1,56 +1,56 @@
 {
-  "generated_at": "2026-09-14T13:50:53.313335+00:00",
+  "generated_at": "2026-09-15T12:37:10.845213+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "The article discusses the risks of compromised software dependencies in the Python ecosystem, specifically on the PyPI (Python Package Index) registry. Here are the main points:\n\n1. **Typosquatting**: Attackers create packages with names similar to popular PyPI dependencies, hoping developers will overlook the difference. This can lead to malicious code being installed unintentionally.\n2. **Supply chain attacks**: Attackers compromise PyPI packages, often by exploiting vulnerabilities in the packaging model or by abusing maintainer accounts. This can lead to malware being distributed through legitimate-looking packages.\n3. **Malicious packages**: Researchers have identified several instances of malicious packages on PyPI, including ones that compromise popular science-focused packages like LiteLLM and Shai-Hulud.\n4. **Evasion checks**: Some malware includes evasion checks to avoid detection in Russian environments or specific security tools like StepSecurity Harden-Runner.\n5. **Persistence**: The malware can persist through various means, including Linux systemd services, macOS LaunchAgents, GitHub workflow files, and Claude or MCP configuration files.\n6. **Credential theft**: The malware can steal credentials, including GitHub tokens, GitHub Actions secrets, npm tokens, PyPI tokens, and more.\n7. **Supply chain attacks**: The malware can also be used to compromise cloud accounts, repositories, and downstream supply-chain attacks.\n\nTo mitigate these risks, the article recommends:\n\n1. **Validate package names**: Verify package names against approved dependencies and review new or unexpected packages.\n2. **Use lockfiles and hash verification**: Use lockfiles and hash verification to ensure package integrity.\n3. **Route dependencies through a controlled internal registry**: Consider using a controlled internal registry to route dependencies and reduce the risk of typosquatting.\n4. **Rotate secrets**: Rotate all secrets and restore affected environments from safe backups if impacted packages were installed.\n5. **Monitor for suspicious activity**: Monitor for suspicious activity and report any concerns to the PyPI team or relevant authorities.",
+  "digest_markdown": "The article discusses the risks of malicious Python packages and the importance of security measures to protect against them. Here are the key points:\n\n1. **Malicious packages can be installed without issues**: A developer may install a malicious package without noticing, and the package may not crash or trigger antivirus alerts immediately.\n2. **Typosquatting is a common technique**: Attackers create packages with names similar to popular dependencies, hoping developers will overlook the difference. This can lead to dependency confusion attacks.\n3. **PyPI is not a security guarantee**: PyPI is a public package registry, not a security-vetting service. Developers should not rely solely on PyPI for package validation.\n4. **Lazarus Group's attack on npm and PyPI**: The Lazarus Group, a North Korea-affiliated group, has been detected in npm and PyPI, distributing malicious packages disguised as legitimate libraries.\n5. **Malicious package campaigns are becoming more common**: Over 130 malicious packages were detected in a single week, with coordinated clusters, dependency confusion attacks, and repeated version flooding becoming normal attacker behavior.\n6. **Security teams must take action**: Security teams must reduce malicious package risk in CI/CD pipelines by using allowlisting, signed artifacts, isolated build runners, and ephemeral credentials.\n7. **Detection and prevention are key**: Security teams should detect version flooding and publish bursts, scan for secrets at package ingest and runtime, and update allowlists and detections to prevent malicious package attacks.\n\nBest practices for protecting against malicious Python packages include:\n\n* Validating package names against approved dependencies\n* Reviewing new or unexpected packages\n* Using lockfiles and hash verification\n* Routing dependencies through a controlled internal registry\n* Enforcing registry allowlists and namespace reservations\n* Detecting version flooding and publish bursts\n* Scanning for secrets at package ingest and runtime\n\nBy taking these measures, developers and security teams can reduce the risk of malicious Python packages and protect their applications and systems.",
   "sources": [
     {
       "title": "Worldwide software supply chain attacks tracker (updated daily)",
       "url": "https://www.comparitech.com/software-supply-chain-attacks/"
     },
     {
-      "title": "Two Australians Charged Over TeamPCP Supply-Chain Attacks That Hit ...",
-      "url": "https://cybersecuritynews.com/two-australians-teampcp-supply-chain/"
-    },
-    {
-      "title": "Supply Chain Attack Incident Catalog",
-      "url": "https://supplychainattack.org/"
-    },
-    {
       "title": "GhostAction Supply Chain Attack on GitHub Exposes 3,325 Secrets",
       "url": "https://dailysecurityreview.com/cyber-security/ghostaction-supply-chain-attack-on-github-exposes-3325-secrets/"
     },
     {
-      "title": "npm Dependency Risk - Fix Critical Package CVEs",
-      "url": "https://www.bing.com/aclick?ld=e8WqEHdLMAMvTtGyz9aatKHDVUCUy096OMvwxB3kq4UyLI7LMbUoC30bE9ugR6tfSv5eRQ1zqvTMz3sZK6FBONMq1_aUhD30bsgexY7vMaDVCrFwyPhKChM-qRcYkbTrekGSynTSNzZ0CmDc-OVfzN2SqAa5YZ4svcvVpfPXmEldNy0jE-x0rpsjuGDqiiYEsTI1ESNil3KLl0FQGN2oPXisUpb-A&u=aHR0cHMlM2ElMmYlMmZhZC5kb3VibGVjbGljay5uZXQlMmZzZWFyY2hhZHMlMmZsaW5rJTJmY2xpY2slM2ZsaWQlM2Q0MzcwMDA4NDM0MTU4MDkzNCUyNmRzX3Nfa3dnaWQlM2Q1ODcwMDAwOTEyNjA4MjEyMSUyNmRzX2FfY2lkJTNkNDA1NTA3ODI5JTI2ZHNfYV9jYWlkJTNkMjQyMTQ3NzMyODclMjZkc19hX2FnaWQlM2QyMDA4ODkxODM5NzglMjZkc19hX2xpZCUzZGt3ZC0yNDgwNTgyNjA1ODczJTI2JTI2ZHNfZV9hZGlkJTNkODEwMjA0MTEwMTQ2MjglMjZkc19lX3RhcmdldF9pZCUzZGt3ZC04MTAyMDY4ODgwNjc4MSUzYWxvYy0xOTAlMjYlMjZkc19lX25ldHdvcmslM2RvJTI2ZHNfdXJsX3YlM2QyJTI2ZHNfZGVzdF91cmwlM2RodHRwcyUzYSUyZiUyZnd3dy5pYm0uY29tJTJmcHJvZHVjdHMlMmZsaWdodHdlbGwlM2Z1dG1fY29udGVudCUzZFNSQ1dXJTI2cDElM2RTZWFyY2glMjZwNCUzZDI0ODA1ODI2MDU4NzMlMjZwNSUzZHAlMjZwOSUzZDIwMDg4OTE4Mzk3OCUyNmdjbGlkJTNkYjVhOWQ5MjE5ZmM4MTQzOTJlZmFiMzg2NjRmMDdlOTElMjZnY2xzcmMlM2QzcC5kcyUyNiUyNm1zY2xraWQlM2RiNWE5ZDkyMTlmYzgxNDM5MmVmYWIzODY2NGYwN2U5MQ&rlid=b5a9d9219fc814392efab38664f07e91"
+      "title": "Two alleged TeamPCP members arrested and charged after months of ...",
+      "url": "https://cybernoz.com/two-alleged-teampcp-members-arrested-and-charged-after-months-of-software-supply-chain-chaos/"
     },
     {
-      "title": "Protection from NPM Malware - Stop Trojan NPM Packages",
-      "url": "https://www.bing.com/aclick?ld=e8uNWfm9bTYnyoE7T8_HHvFTVUCUzctPQqooRwn8cp5NR_EI3Lv8sPFlJLL2m2btXq6hutjWOXoTFSx2PBdvmt8oF8EdIsfP_s4s0c3SxrNhC5p8BS5GP1s9_YSIlWbDO1VvSMScLIkZo16Z1OHHnSn2YbN36HlrqGVQaGv6pXlG0cVVi9ar3QENmGhqZuWwHUCs28ugSQr2YIA3b4RsPMFp90EAo&u=aHR0cHMlM2ElMmYlMmZ3d3cuY2hhaW5ndWFyZC5kZXYlMmZ1bmNoYWluZWQlMmZtaXRpZ2F0aW5nLW1hbHdhcmUtaW4tdGhlLW5wbS1lY29zeXN0ZW0td2l0aC1jaGFpbmd1YXJkLWxpYnJhcmllcyUzZm1zY2xraWQlM2Q0N2I3MGMxMjU1NTQxY2RhZTVlMzY2YjVhZTZjMTQyNyUyNnV0bV9zb3VyY2UlM2RiaW5nJTI2dXRtX21lZGl1bSUzZGNwYyUyNnV0bV9jYW1wYWlnbiUzZGJnX3NfYW1lcl9hY3FfZ2VuZXJpY19ib2YlMjZ1dG1fdGVybSUzZG5wbSUyNTIwc2VjdXJpdHklMjUyMG5ld3MlMjZ1dG1fY29udGVudCUzZGxpYnJhcmllc19ucG0&rlid=47b70c1255541cdae5e366b5ae6c1427"
-    },
-    {
-      "title": "Malware Endpoint Security - Endpoint Protection for All",
-      "url": "https://www.bing.com/aclick?ld=e8-RNrLioiUIfXCgJ45STPpTVUCUxaDTDudBAbzoF85X4rwhA4ZEutojkEqoKjXSOL64gXdtgogGeABvp_1k6KO3-J9o_G8yS6twAAVdsdpK0hgeQW_KCIKeLZymFW-cgecJyNJ172vcQJuLMhYF13nylelXdGWHORmVETc78Bec5Vow56qHD6C8y5JUTYhtuthFenriVD1nU-AT2q-Dv-GqROnkc&u=aHR0cHMlM2ElMmYlMmZ3d3cuaHVudHJlc3MuY29tJTJmZWRyLWZyZWUtdHJpYWwlM2Z1dG1fc291cmNlJTNkYmluZyUyNnV0bV9tZWRpdW0lM2RjcGMlMjZ1dG1fY2FtcGFpZ24lM2RCaW5nLUJvRnUtTkEtU2VhcmNoLU5vbkJyYW5kLVBNLUVORy1Db3JlLUVEUiUyNnV0bV90ZXJtJTNkdGhyZWF0JTI1MjBkZXRlY3Rpb24lMjUyMGFuZCUyNTIwcmVtZWRpYXRpb24lMjZjYW1wYWlnbmlkJTNkNTY3OTQ2NzIzJTI2YWRncm91cGlkJTNkMTE3NDI4MDE3MDI1Nzc3OCUyNmFkaWQlM2Q3MzM5Mjc2NjQ2OTcyOSUyNmhzYV9hY2MlM2RmMTA3OXdjYiUyNmhzYV9jYW0lM2Q1Njc5NDY3MjMlMjZoc2FfZ3JwJTNkMTE3NDI4MDE3MDI1Nzc3OCUyNmhzYV9hZCUzZDczMzkyNzY2NDY5NzI5JTI2aHNhX2t3JTNkdGhyZWF0JTI1MjBkZXRlY3Rpb24lMjUyMGFuZCUyNTIwcmVtZWRpYXRpb24lMjZoc2FfbXQlM2RwJTI2aHNhX25ldCUzZEJpbmdBZHMlMjZoc2Ffc3JjJTNkbyUyNmhzYV90Z3QlM2Rrd2QtNzMzOTI5NzEzODQ4ODUlM2Fsb2MtMTkwJTI2aHNhX3ZlciUzZDMlMjZobnQlM2R1dXZic3V4dnljNWQlMjZtc2Nsa2lkJTNkN2Y2ZDVmNzBmNDRjMTM1YWM3MjczNWQ3MGY3NGUzYzQ&rlid=7f6d5f70f44c135ac72735d70f74e3c4"
+      "title": "Blog - Real-time Open Source Software Supply Chain Security",
+      "url": "https://safedep.io/blog/"
     },
     {
       "title": "Thousands of Node Developers Compromised by Malware in ...",
       "url": "https://dailysecurityreview.com/security-spotlight/thousands-of-node-developers-compromised-by-malware-in-popular-npm-packages/"
     },
     {
-      "title": "Compromise of PyTorch Lightning PyPi Package Versions - vulnerability database | Vulners.com",
-      "url": "https://vulners.com/pypa/PYPA:PYSEC-2026-3973"
+      "title": "Popular npm Package With 150K+ Weekly Downloads Hit by ...",
+      "url": "https://cybersecuritynews.com/popular-npm-package/"
     },
     {
-      "title": "What Happens When You pip install a Malicious Python Package? - DEV Community",
+      "title": "Popular npm Package With 150K Weekly Downloads Compromised in ...",
+      "url": "https://cybersecuritynews.com/popular-npm-package-2/"
+    },
+    {
+      "title": "59 Malicious npm Packages Disclosed Overnight",
+      "url": "https://installsafe.io/blog/59-malicious-npm-packages-september-6-2026/"
+    },
+    {
+      "title": "What Happens When You pip install a Malicious Python Package?",
       "url": "https://dev.to/loginsoft/what-happens-when-you-pip-install-a-malicious-python-package-1216"
     },
     {
-      "title": "LiteLLM Supply Chain Attack: PyPI Malware Anatomy [2026]",
-      "url": "https://www.kunalganglani.com/blog/litellm-supply-chain-attack-pypi"
+      "title": "New Malicious Packages in npm and PyPI Tied to Lazarus Group",
+      "url": "https://dailysecurityreview.com/cyber-security/new-malicious-packages-in-npm-and-pypi-tied-to-lazarus-group/"
     },
     {
-      "title": "New Shai-Hulud attack trojanizes 19 science-focused PyPI packages",
-      "url": "https://www.hexnode.com/threat-watch/shai-hulud-pypi-science-packages-credential-theft/"
+      "title": "Malicious package campaigns in npm and PyPI: what teams must...",
+      "url": "https://nhimg.org/community/cybersecurity-beyond-identity/malicious-package-campaigns-in-npm-and-pypi-what-teams-must-watch/"
+    },
+    {
+      "title": "The Python Package Index Blog",
+      "url": "https://blog.pypi.org/"
     }
   ]
 }
