@@ -1,12 +1,16 @@
 {
-  "generated_at": "2026-09-15T12:37:10.845213+00:00",
+  "generated_at": "2026-09-16T12:35:03.256516+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "The article discusses the risks of malicious Python packages and the importance of security measures to protect against them. Here are the key points:\n\n1. **Malicious packages can be installed without issues**: A developer may install a malicious package without noticing, and the package may not crash or trigger antivirus alerts immediately.\n2. **Typosquatting is a common technique**: Attackers create packages with names similar to popular dependencies, hoping developers will overlook the difference. This can lead to dependency confusion attacks.\n3. **PyPI is not a security guarantee**: PyPI is a public package registry, not a security-vetting service. Developers should not rely solely on PyPI for package validation.\n4. **Lazarus Group's attack on npm and PyPI**: The Lazarus Group, a North Korea-affiliated group, has been detected in npm and PyPI, distributing malicious packages disguised as legitimate libraries.\n5. **Malicious package campaigns are becoming more common**: Over 130 malicious packages were detected in a single week, with coordinated clusters, dependency confusion attacks, and repeated version flooding becoming normal attacker behavior.\n6. **Security teams must take action**: Security teams must reduce malicious package risk in CI/CD pipelines by using allowlisting, signed artifacts, isolated build runners, and ephemeral credentials.\n7. **Detection and prevention are key**: Security teams should detect version flooding and publish bursts, scan for secrets at package ingest and runtime, and update allowlists and detections to prevent malicious package attacks.\n\nBest practices for protecting against malicious Python packages include:\n\n* Validating package names against approved dependencies\n* Reviewing new or unexpected packages\n* Using lockfiles and hash verification\n* Routing dependencies through a controlled internal registry\n* Enforcing registry allowlists and namespace reservations\n* Detecting version flooding and publish bursts\n* Scanning for secrets at package ingest and runtime\n\nBy taking these measures, developers and security teams can reduce the risk of malicious Python packages and protect their applications and systems.",
+  "digest_markdown": "Here are 5 bullet points about notable open-source software supply chain attacks or compromises:\n\n* A supply chain attack targeting GitHub repositories, known as GhostAction, has been confirmed, exposing 3,325 secrets, including tokens and keys across widely used platforms. [3]\n* A malicious campaign linked to the Mini Shai-Hulud activity compromised the @7nohe/openapi-react-query-codegen PyPI package, which receives roughly 150,000 weekly downloads, and stole developer credentials. [8][9]\n* Two alleged TeamPCP members were arrested and charged for their alleged roles in inserting malicious code into widely used open-source software, compromising more than 1,000 organizations worldwide. [4]\n* A new Shai-Hulud software supply-chain campaign compromised multiple scientific and bioinformatics packages hosted on PyPI, exposing a risk that extends far beyond individual developer workstations. [12]\n* A typosquatted package on PyPI was created to abuse Python's startup mechanisms, allowing the malware to execute automatically in environments where affected packages are installed, including development systems, notebook environments, and CI/CD pipelines. [11]",
   "sources": [
     {
       "title": "Worldwide software supply chain attacks tracker (updated daily)",
       "url": "https://www.comparitech.com/software-supply-chain-attacks/"
+    },
+    {
+      "title": "Supply Chain Attack Incident Catalog",
+      "url": "https://supplychainattack.org/"
     },
     {
       "title": "GhostAction Supply Chain Attack on GitHub Exposes 3,325 Secrets",
@@ -17,40 +21,36 @@
       "url": "https://cybernoz.com/two-alleged-teampcp-members-arrested-and-charged-after-months-of-software-supply-chain-chaos/"
     },
     {
-      "title": "Blog - Real-time Open Source Software Supply Chain Security",
-      "url": "https://safedep.io/blog/"
+      "title": "Malicious npm Package Steals GitHub, Cloud, and CI/CD Secrets and Spreads to Other Packages",
+      "url": "https://gbhackers.com/npm-supply-chain-attack-2/"
     },
     {
-      "title": "Thousands of Node Developers Compromised by Malware in ...",
-      "url": "https://dailysecurityreview.com/security-spotlight/thousands-of-node-developers-compromised-by-malware-in-popular-npm-packages/"
-    },
-    {
-      "title": "Popular npm Package With 150K+ Weekly Downloads Hit by ...",
+      "title": "Popular npm Package With 150K+ Weekly Downloads Hit by Credential-Stealing Supply-Chain Worm",
       "url": "https://cybersecuritynews.com/popular-npm-package/"
     },
     {
-      "title": "Popular npm Package With 150K Weekly Downloads Compromised in ...",
-      "url": "https://cybersecuritynews.com/popular-npm-package-2/"
+      "title": "Malicious npm Packages Deploy AI-Powered RedC2 Linux Implant to Steal Credentials and Pivot Networks",
+      "url": "https://cybersecuritynews.com/malicious-npm-packages/"
     },
     {
-      "title": "59 Malicious npm Packages Disclosed Overnight",
-      "url": "https://installsafe.io/blog/59-malicious-npm-packages-september-6-2026/"
+      "title": "Popular npm Package With 150K Weekly Downloads Hit by Credential-Stealing Worm",
+      "url": "https://cyberpress.org/npm-worm-steals-dev-credentials/"
     },
     {
-      "title": "What Happens When You pip install a Malicious Python Package?",
+      "title": "Compromise of PyTorch Lightning PyPi Package Versions - vulnerability database | Vulners.com",
+      "url": "https://vulners.com/pypa/PYPA:PYSEC-2026-3973"
+    },
+    {
+      "title": "What Happens When You pip install a Malicious Python Package? - DEV Community",
       "url": "https://dev.to/loginsoft/what-happens-when-you-pip-install-a-malicious-python-package-1216"
     },
     {
-      "title": "New Malicious Packages in npm and PyPI Tied to Lazarus Group",
-      "url": "https://dailysecurityreview.com/cyber-security/new-malicious-packages-in-npm-and-pypi-tied-to-lazarus-group/"
+      "title": "LiteLLM Supply Chain Attack: PyPI Malware Anatomy [2026]",
+      "url": "https://www.kunalganglani.com/blog/litellm-supply-chain-attack-pypi"
     },
     {
-      "title": "Malicious package campaigns in npm and PyPI: what teams must...",
-      "url": "https://nhimg.org/community/cybersecurity-beyond-identity/malicious-package-campaigns-in-npm-and-pypi-what-teams-must-watch/"
-    },
-    {
-      "title": "The Python Package Index Blog",
-      "url": "https://blog.pypi.org/"
+      "title": "New Shai-Hulud attack trojanizes 19 science-focused PyPI packages",
+      "url": "https://www.hexnode.com/threat-watch/shai-hulud-pypi-science-packages-credential-theft/"
     }
   ]
 }
