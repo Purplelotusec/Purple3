@@ -1,56 +1,24 @@
 {
-  "generated_at": "2026-09-16T12:35:03.256516+00:00",
+  "generated_at": "2026-09-17T12:33:50.197366+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "Here are 5 bullet points about notable open-source software supply chain attacks or compromises:\n\n* A supply chain attack targeting GitHub repositories, known as GhostAction, has been confirmed, exposing 3,325 secrets, including tokens and keys across widely used platforms. [3]\n* A malicious campaign linked to the Mini Shai-Hulud activity compromised the @7nohe/openapi-react-query-codegen PyPI package, which receives roughly 150,000 weekly downloads, and stole developer credentials. [8][9]\n* Two alleged TeamPCP members were arrested and charged for their alleged roles in inserting malicious code into widely used open-source software, compromising more than 1,000 organizations worldwide. [4]\n* A new Shai-Hulud software supply-chain campaign compromised multiple scientific and bioinformatics packages hosted on PyPI, exposing a risk that extends far beyond individual developer workstations. [12]\n* A typosquatted package on PyPI was created to abuse Python's startup mechanisms, allowing the malware to execute automatically in environments where affected packages are installed, including development systems, notebook environments, and CI/CD pipelines. [11]",
+  "digest_markdown": "\u2022 56 distinct supply chain attacks were tracked and alerted on by the StepSecurity threat intelligence team over the last 12 months, with every incident being a real compromise. [1]\n\u2022 Software supply chain attacks target components that organizations and developers already trusted, compromising next versions of trusted packages or existing versions where the ecosystem allows tags to be silently repointed. [2]\n\u2022 A supply chain attack can infect as many victims as possible, while hardware supply chain attacks compromise physical components for the same purpose. [2]\n\u2022 The average software project has 203 dependencies, and a single compromised dependency can compromise every business that downloads from the vendor, resulting in exponential growth of victims. [2]\n\u2022 A poisoned LiteLLM version on PyPI exposed 2,488 companies and 434,000 CI/CD pipelines on March 24, 2026. [4]",
   "sources": [
     {
-      "title": "Worldwide software supply chain attacks tracker (updated daily)",
-      "url": "https://www.comparitech.com/software-supply-chain-attacks/"
+      "title": "The State of Open Source Supply Chain Attacks - StepSecurity",
+      "url": "https://www.stepsecurity.io/blog/state-of-open-source-supply-chain-attacks"
     },
     {
-      "title": "Supply Chain Attack Incident Catalog",
-      "url": "https://supplychainattack.org/"
+      "title": "What Is a Supply Chain Attack? Types and Prevention | CrowdStrike",
+      "url": "https://www.crowdstrike.com/en-us/cybersecurity-101/cyberattacks/supply-chain-attack/"
     },
     {
-      "title": "GhostAction Supply Chain Attack on GitHub Exposes 3,325 Secrets",
-      "url": "https://dailysecurityreview.com/cyber-security/ghostaction-supply-chain-attack-on-github-exposes-3325-secrets/"
+      "title": "Real-time Open Source Software Supply Chain Security - Live Threat Intelligence - Threat Radar | OffSeq.com",
+      "url": "https://radar.offseq.com/threat/real-time-open-source-software-supply-chain-security-9e0b55346ac13c2a"
     },
     {
-      "title": "Two alleged TeamPCP members arrested and charged after months of ...",
-      "url": "https://cybernoz.com/two-alleged-teampcp-members-arrested-and-charged-after-months-of-software-supply-chain-chaos/"
-    },
-    {
-      "title": "Malicious npm Package Steals GitHub, Cloud, and CI/CD Secrets and Spreads to Other Packages",
-      "url": "https://gbhackers.com/npm-supply-chain-attack-2/"
-    },
-    {
-      "title": "Popular npm Package With 150K+ Weekly Downloads Hit by Credential-Stealing Supply-Chain Worm",
-      "url": "https://cybersecuritynews.com/popular-npm-package/"
-    },
-    {
-      "title": "Malicious npm Packages Deploy AI-Powered RedC2 Linux Implant to Steal Credentials and Pivot Networks",
-      "url": "https://cybersecuritynews.com/malicious-npm-packages/"
-    },
-    {
-      "title": "Popular npm Package With 150K Weekly Downloads Hit by Credential-Stealing Worm",
-      "url": "https://cyberpress.org/npm-worm-steals-dev-credentials/"
-    },
-    {
-      "title": "Compromise of PyTorch Lightning PyPi Package Versions - vulnerability database | Vulners.com",
-      "url": "https://vulners.com/pypa/PYPA:PYSEC-2026-3973"
-    },
-    {
-      "title": "What Happens When You pip install a Malicious Python Package? - DEV Community",
-      "url": "https://dev.to/loginsoft/what-happens-when-you-pip-install-a-malicious-python-package-1216"
-    },
-    {
-      "title": "LiteLLM Supply Chain Attack: PyPI Malware Anatomy [2026]",
-      "url": "https://www.kunalganglani.com/blog/litellm-supply-chain-attack-pypi"
-    },
-    {
-      "title": "New Shai-Hulud attack trojanizes 19 science-focused PyPI packages",
-      "url": "https://www.hexnode.com/threat-watch/shai-hulud-pypi-science-packages-credential-theft/"
+      "title": "LiteLLM Supply Chain Attack: What Happened and How to Avoid It",
+      "url": "https://pasqualepillitteri.it/en/news/11405/litellm-supply-chain-attack-2026"
     }
   ]
 }
