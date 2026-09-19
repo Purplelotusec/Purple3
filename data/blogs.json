@@ -1,0 +1,37 @@
+{
+  "_note": "Sample placeholder posts. Replace with your real ones. Add a \"url\" to make a card clickable; without one it shows 'Coming soon'.",
+  "posts": [
+    {
+      "title": "Why your CI/CD pipeline is the softest target in your stack",
+      "date": "2026-09-10",
+      "tag": "CI/CD",
+      "read_time": "6 min read",
+      "excerpt": "Build systems hold secrets, write access and trust. A look at how workflow misconfigurations turn into supply chain incidents.",
+      "url": ""
+    },
+    {
+      "title": "Dependency confusion: still working, still avoidable",
+      "date": "2026-08-28",
+      "tag": "Supply Chain",
+      "read_time": "8 min read",
+      "excerpt": "How internal package names leak, how attackers claim them on public registries, and the controls that shut the door.",
+      "url": ""
+    },
+    {
+      "title": "Chaining low-severity bugs into a full compromise",
+      "date": "2026-08-12",
+      "tag": "Research",
+      "read_time": "7 min read",
+      "excerpt": "Scanners rate findings one at a time. Attackers don't. Why multi-step logic flaws deserve a human look.",
+      "url": ""
+    },
+    {
+      "title": "Pinning GitHub Actions by SHA: a practical guide",
+      "date": "2026-07-30",
+      "tag": "Guides",
+      "read_time": "5 min read",
+      "excerpt": "Tags can move. Commit SHAs can't. A short walkthrough for pinning third-party actions without slowing your team down.",
+      "url": ""
+    }
+  ]
+}
