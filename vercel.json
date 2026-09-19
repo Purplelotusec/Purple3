@@ -1,6 +1,10 @@
 {
   "cleanUrls": true,
   "redirects": [
-    { "source": "/blogs/:slug", "destination": "/blog/:slug", "permanent": false }
+    {
+      "source": "/blogs/:slug",
+      "destination": "/blog/:slug",
+      "permanent": false
+    }
   ]
 }
