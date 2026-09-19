@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- 1. EDIT: page title + description (used by Google and link previews) -->
+<title>Introducing Osprey: Security Visibility for the Software Supply Chain — PurpleLotus</title>
+<meta name="description" content="Osprey generates and signs SBOMs, cross-checks them against the CISA KEV catalog, and gives teams a technical visibility layer that supports EU CRA vulnerability workflows.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  /* FONTS: change these 3 lines to match your site (and the Google Fonts <link> above) */
+  --font-display: 'Instrument Serif', serif;   /* headings, quotes, logo */
+  --font-body: 'DM Mono', monospace;           /* paragraphs, nav, labels */
+  --font-name: 'Syne', sans-serif;             /* bold names */
+      --cream: #fdf6e3;
+      --cream-dark: #f5ead0;
+      --ink: #1a1208;
+      --ink-mid: #3d2e10;
+      --purple: #5c1f8a;
+      --purple-light: #8b44c8;
+      --purple-pale: #ecdff7;
+      --orange: #c94f0c;
+      --gray-text: #6b5c3e;
+      --border: rgba(92,31,138,0.15);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream); color: var(--ink);
+      font-family: var(--font-body); font-size: 15px;
+      line-height: 1.6; overflow-x: hidden;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0.05;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 180px 180px;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(253,246,227,0.93); backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+      height: 60px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { font-family: var(--font-display); font-size: 1.35rem; color: var(--purple); text-decoration: none; letter-spacing: -0.01em; }
+    .logo span { color: var(--orange); }
+    nav { display: flex; gap: 2rem; align-items: center; }
+    nav a { font-family: var(--font-body); font-size: 0.75rem; color: var(--ink-mid); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+    nav a:hover { color: var(--purple); }
+    .btn-primary { font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; background: var(--purple); color: var(--cream); border: none; padding: 0.55rem 1.3rem; cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-block; }
+    .btn-primary:hover { background: var(--purple-light); transform: translateY(-1px); }
+    .btn-ghost { font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; background: transparent; color: var(--ink); border: 1px solid currentColor; padding: 0.55rem 1.3rem; cursor: pointer; text-decoration: none; transition: all 0.2s; display: inline-block; }
+    .btn-ghost:hover { color: var(--purple); border-color: var(--purple); }
+
+    /* SECTIONS */
+    .section { max-width: 1200px; margin: 0 auto; padding: 6rem 2rem; }
+    .section-label { font-family: var(--font-body); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem; display: block; }
+    .section-title { font-family: var(--font-display); font-size: clamp(1.9rem, 3vw, 2.8rem); line-height: 1.1; letter-spacing: -0.025em; color: var(--ink); margin-bottom: 2rem; }
+    .section-title em { font-style: italic; color: var(--purple); }
+
+    
+/* POST */
+nav a.active { color: var(--purple); }
+.post { max-width: 720px; margin: 0 auto; padding: 8.5rem 2rem 5rem; }
+.back-link { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--purple); text-decoration: none; }
+.back-link:hover { text-decoration: underline; }
+.post-tag { display: block; margin: 2.2rem 0 1rem; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); }
+.post h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(2.2rem, 4.5vw, 3.4rem); line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.2rem; }
+.post-meta { font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray-text); padding-bottom: 2rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem; }
+.post-body p, .post-body li { font-size: 0.92rem; color: var(--ink-mid); line-height: 1.95; margin-bottom: 1.2rem; }
+.post-body h2 { font-family: var(--font-display); font-weight: 400; font-size: 1.7rem; letter-spacing: -0.02em; margin: 2.8rem 0 1rem; color: var(--ink); }
+.post-body h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.25rem; margin: 2rem 0 0.6rem; }
+.post-body ul, .post-body ol { padding-left: 1.4rem; margin-bottom: 1.2rem; }
+.post-body a { color: var(--purple); }
+.post-body strong { color: var(--ink); font-weight: 500; }
+.post-body blockquote { border-left: 3px solid var(--purple); background: var(--purple-pale); padding: 1.1rem 1.5rem; margin: 1.8rem 0; font-family: var(--font-display); font-style: italic; font-size: 1.15rem; color: var(--purple); }
+.post-body code { background: var(--cream-dark); padding: 0.1rem 0.4rem; font-size: 0.84rem; }
+.post-body pre { background: var(--ink); color: var(--cream); padding: 1.2rem 1.4rem; overflow-x: auto; margin: 1.6rem 0; font-size: 0.8rem; line-height: 1.7; }
+.post-body pre code { background: none; padding: 0; }
+.post-body img { max-width: 100%; height: auto; margin: 1.5rem 0; border: 1px solid var(--border); }
+.post-body hr { border: none; border-top: 1px solid var(--border); margin: 2.8rem 0 1.8rem; }
+.post-body .callout { font-family: var(--font-display); font-size: 1.3rem; line-height: 1.5; color: var(--ink); margin: 2.5rem 0 1rem; }
+.post-body .callout strong { display: block; font-weight: 400; margin-bottom: 0.6rem; }
+.post-body .disclaimer { font-style: italic; font-size: 0.78rem; color: var(--gray-text); line-height: 1.8; }
+.post-body .references li { margin-bottom: 0.6rem; }
+.post-body table { width: 100%; border-collapse: collapse; margin: 1.6rem 0; font-size: 0.82rem; }
+.post-body th, .post-body td { text-align: left; padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+.post-body th { font-family: var(--font-body); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-text); }
+.post-body .feature-list { list-style: none; padding-left: 0; }
+.post-body .feature-list li { padding-left: 1.7rem; position: relative; }
+.post-body .feature-list li::before { content: '◆'; color: var(--orange); font-size: 0.5rem; position: absolute; left: 0; top: 0.55rem; }
+@media (max-width: 768px) { nav { display: none; } .post { padding-top: 6.5rem; } .post-body table { display: block; overflow-x: auto; } }
+/* NEWSLETTER */
+    .newsletter-section { background: var(--ink); padding: 5rem 2rem; }
+    .newsletter-inner { max-width: 560px; margin: 0 auto; text-align: center; }
+    .newsletter-inner .section-label { color: rgba(253,246,227,0.4); }
+    .newsletter-inner .section-title { color: var(--cream); font-size: 1.9rem; margin-top: 0.5rem; }
+    .newsletter-form { display: flex; margin-top: 2rem; border: 1px solid rgba(255,255,255,0.15); }
+    .newsletter-form input { flex: 1; background: transparent; border: none; outline: none; padding: 0.9rem 1.2rem; font-family: var(--font-body); font-size: 0.82rem; color: var(--cream); letter-spacing: 0.03em; }
+    .newsletter-form input::placeholder { color: rgba(253,246,227,0.28); }
+    .newsletter-form button { background: var(--purple); border: none; color: var(--cream); padding: 0.9rem 1.5rem; font-family: var(--font-body); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+    .newsletter-form button:hover { background: var(--purple-light); }
+
+    /* WORDMARK + FOOTER */
+    .wordmark-section { padding: 4rem 2rem 2rem; text-align: center; overflow: hidden; }
+    .big-wordmark { font-family: var(--font-display); font-size: clamp(4rem, 15vw, 14rem); letter-spacing: -0.05em; line-height: 1; color: transparent; -webkit-text-stroke: 1px var(--purple); opacity: 0.12; user-select: none; }
+    footer { border-top: 1px solid var(--border); padding: 2rem; display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+    footer p { font-size: 0.74rem; color: var(--gray-text); }
+    footer a { color: var(--purple); text-decoration: none; }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    </style>
+</head>
+<body>
+
+<header>
+<div class="header-inner">
+<a href="/" class="logo">Purple<span>Lotus</span></a>
+<nav>
+<a href="/threat-feed">Threat Feed</a>
+<a href="/#product">Product</a>
+<a href="/#services">Services</a>
+<a href="/blogs" class="active">Blogs</a>
+<a href="/#pricing">Pricing</a>
+<a href="/#faq">FAQ</a>
+</nav>
+<a href="mailto:security@purplelotus.tech" class="btn-primary">Contact Us</a>
+</div>
+</header>
+
+<article class="post">
+<a href="/blogs" class="back-link">&larr; All blogs</a>
+
+<span class="post-tag">Product Launch</span>
+<h1>Introducing Osprey: Security Visibility for the Software Supply Chain</h1>
+<div class="post-meta">Sep 19, 2026 &middot; 5 min read &middot; Purple Lotus</div>
+
+<div class="post-body">
+<p>Today we're launching <strong>Osprey</strong>, our open-source CLI (<code>cra</code>) for software supply chain visibility. You can find it on GitHub at <a href="https://github.com/Purplelotusec/Osprey" target="_blank" rel="noopener">Purplelotusec/Osprey</a>.</p>
+<p>Osprey builds a Software Bill of Materials (SBOM) from your project, cross-checks every component against the <strong>CISA Known Exploited Vulnerabilities (KEV)</strong> catalog, and tells you which dependencies are <em>actively exploited in the wild</em> &mdash; not merely &ldquo;have a CVE.&rdquo;</p>
+
+<h2>The Problem We Built It For</h2>
+<p>Most vulnerability tooling stops at &ldquo;this package has a CVE.&rdquo; That produces a lot of tickets and very little prioritization: a scanner that flags every CVE in your dependency tree, regardless of whether it's actually being exploited, trains teams to ignore the output. Osprey narrows the question to the one that actually matters for triage &mdash; <strong>is this specific component, at this specific version, known to be exploited right now?</strong></p>
+
+<h2>What Osprey Does</h2>
+<ul class="feature-list">
+<li><strong>KEV detection</strong> &mdash; cross-checks every component against CISA's KEV catalog.</li>
+<li><strong>Confidence tiers</strong> &mdash; <code>high</code> (PURL-backed exact match) vs. <code>low</code> (name/vendor match only), so you're never told to panic over a coincidental name match.</li>
+<li><strong>Version intelligence</strong> &mdash; uses <a href="https://osv.dev" target="_blank" rel="noopener">OSV</a> to determine whether your <em>installed</em> version is actually affected, rather than flagging the whole package.</li>
+<li><strong>Remote auditing</strong> &mdash; audit a GitHub repository without cloning it.</li>
+<li><strong>SBOM signing</strong> &mdash; Ed25519 signatures in a DSSE envelope, with tamper detection.</li>
+<li><strong>Alerting</strong> &mdash; a Slack-compatible webhook, batched into one message per run.</li>
+<li><strong>CI-ready</strong> &mdash; GitHub Actions job summary, inline annotations, and SARIF output.</li>
+</ul>
+
+<h2>How It Works</h2>
+<pre><code>Software / Repository
+        &darr;
+   Dependencies
+        &darr;
+       SBOM
+        &darr;
+ Vulnerability Analysis
+        &darr;
+    CISA KEV Match
+        &darr;
+  Security Signal
+        &darr;
+ Investigate &amp; Respond</code></pre>
+<p>Instead of treating every vulnerability as the same, Osprey adds context around the software component, affected version, and known exploitation status.</p>
+
+<h3>Running it</h3>
+<p>A single command runs the whole pipeline: generate the SBOM, poll the KEV catalog, cross-check components, and report.</p>
+<pre><code>cra --path /path/to/your/project</code></pre>
+<p>Or point it at a GitHub repository directly, without cloning it locally:</p>
+<pre><code>cra --url owner/repo</code></pre>
+<p>When something is found, Osprey names the CVE, the exact affected component and version, and whether the OSV evidence actually covers your installed version &mdash; not just the package name:</p>
+<table>
+<tr><th><code>versionStatus</code></th><th>Meaning</th></tr>
+<tr><td><code>affected</code></td><td>OSV evidence covers the installed version</td></tr>
+<tr><td><code>not_affected</code></td><td>Available evidence excludes the installed version</td></tr>
+<tr><td><code>unknown</code></td><td>Evidence couldn't be established &mdash; never treated as affected</td></tr>
+</table>
+<p><code>exploitationStatus: "known_exploited"</code> comes from CISA KEV independently of the OSV version check, so the two signals stay clearly separated rather than blended into one confidence-eroding score.</p>
+
+<h2>Why CISA KEV Matters</h2>
+<p>Vulnerability scanners can produce large numbers of findings. The <strong>CISA Known Exploited Vulnerabilities (KEV) Catalog</strong> provides an additional signal by tracking vulnerabilities known to have been exploited in the wild.</p>
+<p>Osprey correlates that information with the dependencies found in a project, helping teams identify when actively exploited vulnerabilities may affect software they build or ship.</p>
+
+<h2>How Osprey Supports the EU CRA</h2>
+<p>The <strong>EU Cyber Resilience Act (CRA)</strong> introduces requirements around cybersecurity, vulnerability handling, security updates, and vulnerability reporting for products with digital elements.</p>
+<p>The CRA creates a need for organizations to have visibility into vulnerabilities affecting their products and to respond to applicable actively exploited vulnerabilities through the relevant reporting process.</p>
+<p>Osprey is <strong>not a CRA compliance or regulatory reporting platform</strong>, and its output is not intended to be relied on, or presented to an auditor, as proof of compliance on its own. Instead, it provides a technical visibility layer that can support the workflow:</p>
+<pre><code>Know what you ship
+        &darr;
+Identify affected components
+        &darr;
+Check exploitation status
+        &darr;
+Investigate and respond
+        &darr;
+Support your security process</code></pre>
+<p>Mapped against specific CRA themes, that looks like:</p>
+<ul>
+<li><strong>Vulnerability handling</strong> &mdash; the KEV cross-check plus OSV version intelligence is the &ldquo;is one of these components vulnerable, is it being exploited, does it affect us&rdquo; workflow, not a raw CVE count.</li>
+<li><strong>Documentation integrity</strong> &mdash; SBOM signing (Ed25519 in a DSSE envelope) gives the SBOM tamper detection, so the artifact is verifiable rather than taken on trust.</li>
+<li><strong>Evidence of response</strong> &mdash; the CI-ready output (job summaries, annotations, SARIF, a versioned JSON result) gives you a record of what was checked, when, and what was found.</li>
+</ul>
+
+<hr>
+<p class="callout"><strong>Know what you ship. Know what is affected. Know what is being exploited.</strong></p>
+<p>Osprey brings software inventory and exploitation intelligence together so security teams can act with better context.</p>
+
+<h2>Built to Be Honest About Its Own Limits</h2>
+<p>We'd rather Osprey under-claim than over-claim. A few things worth knowing before you rely on it:</p>
+<ul>
+<li>Lockfile coverage today is <code>package-lock.json</code> (npm) and exact-pinned <code>requirements.txt</code> (Python) &mdash; no <code>yarn.lock</code>, <code>pnpm-lock.yaml</code>, <code>poetry.lock</code>, <code>go.sum</code>, or <code>Cargo.lock</code> yet.</li>
+<li><code>low</code>-confidence matches are name/vendor matches only, since CISA KEV's fields are free text rather than machine-precise CPE ranges. We explicitly recommend not triggering automated regulatory or incident clocks off a <code>low</code>-confidence match alone.</li>
+<li>Version intelligence via OSV is npm-only for now; Python packages don't yet get the same version-level evaluation.</li>
+<li>Signing uses local Ed25519 keys rather than Sigstore keyless signing or a transparency log &mdash; the envelope shape is designed to carry over cleanly if you move to that later.</li>
+</ul>
+
+<h2>Get Started</h2>
+<pre><code>git clone https://github.com/Purplelotusec/Osprey
+cd Osprey
+npm install
+npm link   # installs cra, cra-audit, cra-sbom, cra-kev, cra-report globally
+
+cra --path .</code></pre>
+<p>For CI, add <code>--fail-on-high</code> to exit non-zero only on high-confidence, actively exploited matches:</p>
+<pre><code>cra --path . --fail-on-high --output results.json</code></pre>
+
+<h2>Explore Osprey</h2>
+<p>Osprey is open source and available on GitHub. Full CLI reference, structured JSON output schema, and architecture notes are in the repository README.</p>
+<p><a href="https://github.com/Purplelotusec/Osprey" target="_blank" rel="noopener">View Osprey on GitHub &rarr;</a></p>
+
+<hr>
+<p class="disclaimer">This article is for general educational and product-information purposes. Osprey does not by itself establish CRA compliance, and it is not intended to be relied on &mdash; or presented to an auditor &mdash; as proof of compliance. Organizations should assess their specific obligations against the applicable EU legislation, standards, and official guidance.</p>
+</div>
+</article>
+
+<div class="newsletter-section">
+<div class="newsletter-inner">
+<span class="section-label">Newsletter</span>
+<h2 class="section-title">Security that ships<br>with your code.</h2>
+<div class="newsletter-form">
+<input type="email" placeholder="sam.grep@acme.com">
+<button>Sign Up for Newsletter</button>
+</div>
+</div>
+</div>
+
+<div class="wordmark-section"><div class="big-wordmark">PurpleLotus</div></div>
+
+<footer>
+<p>Security that ships with your code. &copy; 2025 PurpleLotus, Inc. All rights reserved.</p>
+<p><a href="mailto:security@purplelotus.tech">security@purplelotus.tech</a></p>
+</footer>
+</body>
+</html>
