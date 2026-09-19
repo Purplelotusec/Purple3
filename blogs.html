@@ -3,18 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- 1. EDIT: page title + description (used by Google and link previews) -->
-<title>EU Cybersecurity Rules: What Companies Need to Know — PurpleLotus</title>
-<meta name="description" content="How the EU is changing cybersecurity requirements and why continuous vulnerability visibility matters.">
+<title>Blogs — PurpleLotus</title>
+<meta name="description" content="Research notes, guides and write-ups on supply chain security, CI/CD hardening and business logic flaws from the PurpleLotus team.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-
 :root {
-  /* FONTS: change these 3 lines to match your site (and the Google Fonts <link> above) */
-  --font-display: 'Instrument Serif', serif;   /* headings, quotes, logo */
-  --font-body: 'DM Mono', monospace;           /* paragraphs, nav, labels */
-  --font-name: 'Syne', sans-serif;             /* bold names */
       --cream: #fdf6e3;
       --cream-dark: #f5ead0;
       --ink: #1a1208;
@@ -30,7 +24,7 @@
     html { scroll-behavior: smooth; }
     body {
       background: var(--cream); color: var(--ink);
-      font-family: var(--font-body); font-size: 15px;
+      font-family: 'DM Mono', monospace; font-size: 15px;
       line-height: 1.6; overflow-x: hidden;
     }
     body::before {
@@ -49,62 +43,65 @@
       max-width: 1200px; margin: 0 auto; padding: 0 2rem;
       height: 60px; display: flex; align-items: center; justify-content: space-between;
     }
-    .logo { font-family: var(--font-display); font-size: 1.35rem; color: var(--purple); text-decoration: none; letter-spacing: -0.01em; }
+    .logo { font-family: 'Instrument Serif', serif; font-size: 1.35rem; color: var(--purple); text-decoration: none; letter-spacing: -0.01em; }
     .logo span { color: var(--orange); }
     nav { display: flex; gap: 2rem; align-items: center; }
-    nav a { font-family: var(--font-body); font-size: 0.75rem; color: var(--ink-mid); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+    nav a { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--ink-mid); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
     nav a:hover { color: var(--purple); }
-    .btn-primary { font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; background: var(--purple); color: var(--cream); border: none; padding: 0.55rem 1.3rem; cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-block; }
+    .btn-primary { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; background: var(--purple); color: var(--cream); border: none; padding: 0.55rem 1.3rem; cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-block; }
     .btn-primary:hover { background: var(--purple-light); transform: translateY(-1px); }
-    .btn-ghost { font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; background: transparent; color: var(--ink); border: 1px solid currentColor; padding: 0.55rem 1.3rem; cursor: pointer; text-decoration: none; transition: all 0.2s; display: inline-block; }
+    .btn-ghost { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; background: transparent; color: var(--ink); border: 1px solid currentColor; padding: 0.55rem 1.3rem; cursor: pointer; text-decoration: none; transition: all 0.2s; display: inline-block; }
     .btn-ghost:hover { color: var(--purple); border-color: var(--purple); }
 
     /* SECTIONS */
     .section { max-width: 1200px; margin: 0 auto; padding: 6rem 2rem; }
-    .section-label { font-family: var(--font-body); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem; display: block; }
-    .section-title { font-family: var(--font-display); font-size: clamp(1.9rem, 3vw, 2.8rem); line-height: 1.1; letter-spacing: -0.025em; color: var(--ink); margin-bottom: 2rem; }
+    .section-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem; display: block; }
+    .section-title { font-family: 'Instrument Serif', serif; font-size: clamp(1.9rem, 3vw, 2.8rem); line-height: 1.1; letter-spacing: -0.025em; color: var(--ink); margin-bottom: 2rem; }
     .section-title em { font-style: italic; color: var(--purple); }
 
-    
-/* POST */
+    /* BLOGS */
+.blog-head { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2.5rem; }
+.blog-head .section-title { margin-bottom: 0; }
+.blog-grid { display: grid; grid-template-columns: repeat(3,1fr); border-top: 1px solid var(--border); border-left: 1px solid var(--border); }
+.blog-card { display: flex; flex-direction: column; padding: 2rem; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; background: var(--cream); transition: background 0.2s; animation: blogIn 0.5s ease both; }
+a.blog-card:hover { background: var(--purple-pale); }
+a.blog-card:hover .blog-arrow { color: var(--purple); transform: translateX(3px); }
+.blog-card.is-soon { cursor: default; }
+.blog-card.is-filler { background: var(--cream-dark); opacity: 0.55; animation: none; }
+.blog-tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 1.1rem; }
+.blog-card h3 { font-family: 'Instrument Serif', serif; font-size: 1.3rem; line-height: 1.25; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 0.75rem; font-weight: 400; }
+.blog-card p { font-size: 0.82rem; color: var(--gray-text); line-height: 1.8; margin-bottom: 1.5rem; }
+.blog-meta { margin-top: auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gray-text); padding-top: 1rem; border-top: 1px solid var(--border); }
+.blog-arrow { color: var(--purple-light); transition: transform 0.2s, color 0.2s; white-space: nowrap; }
+.blog-empty { grid-column: 1 / -1; padding: 3rem 1.5rem; text-align: center; font-size: 0.85rem; color: var(--gray-text); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+@keyframes blogIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+
+/* BLOG PAGE */
+.page-hero { max-width: 1200px; margin: 0 auto; padding: 9rem 2rem 3rem; }
+.page-title { font-family: 'Instrument Serif', serif; font-size: clamp(2.6rem, 4.5vw, 4rem); line-height: 1.07; letter-spacing: -0.03em; color: var(--ink); font-weight: 400; max-width: 760px; margin-bottom: 1.2rem; }
+.page-title em { font-style: italic; color: var(--purple); }
+.page-sub { font-size: 0.87rem; color: var(--gray-text); max-width: 520px; line-height: 1.85; }
+.filter-row { display: flex; gap: 0.6rem; flex-wrap: wrap; margin: 2.5rem 0 2rem; }
+.chip { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--border); background: var(--cream); color: var(--ink-mid); padding: 0.4rem 0.95rem; cursor: pointer; transition: all 0.2s; }
+.chip:hover { border-color: var(--purple); color: var(--purple); }
+.chip.active { background: var(--purple); border-color: var(--purple); color: var(--cream); }
+.blog-section { max-width: 1200px; margin: 0 auto; padding: 0 2rem 6rem; }
 nav a.active { color: var(--purple); }
-.post { max-width: 720px; margin: 0 auto; padding: 8.5rem 2rem 5rem; }
-.back-link { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--purple); text-decoration: none; }
-.back-link:hover { text-decoration: underline; }
-.post-tag { display: block; margin: 2.2rem 0 1rem; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); }
-.post h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(2.2rem, 4.5vw, 3.4rem); line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.2rem; }
-.post-meta { font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray-text); padding-bottom: 2rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem; }
-.post-body p, .post-body li { font-size: 0.92rem; color: var(--ink-mid); line-height: 1.95; margin-bottom: 1.2rem; }
-.post-body h2 { font-family: var(--font-display); font-weight: 400; font-size: 1.7rem; letter-spacing: -0.02em; margin: 2.8rem 0 1rem; color: var(--ink); }
-.post-body h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.25rem; margin: 2rem 0 0.6rem; }
-.post-body ul, .post-body ol { padding-left: 1.4rem; margin-bottom: 1.2rem; }
-.post-body a { color: var(--purple); }
-.post-body strong { color: var(--ink); font-weight: 500; }
-.post-body blockquote { border-left: 3px solid var(--purple); background: var(--purple-pale); padding: 1.1rem 1.5rem; margin: 1.8rem 0; font-family: var(--font-display); font-style: italic; font-size: 1.15rem; color: var(--purple); }
-.post-body code { background: var(--cream-dark); padding: 0.1rem 0.4rem; font-size: 0.84rem; }
-.post-body pre { background: var(--ink); color: var(--cream); padding: 1.2rem 1.4rem; overflow-x: auto; margin: 1.6rem 0; font-size: 0.8rem; line-height: 1.7; }
-.post-body pre code { background: none; padding: 0; }
-.post-body img { max-width: 100%; height: auto; margin: 1.5rem 0; border: 1px solid var(--border); }
-.post-body hr { border: none; border-top: 1px solid var(--border); margin: 2.8rem 0 1.8rem; }
-.post-body .callout { font-family: var(--font-display); font-size: 1.3rem; line-height: 1.5; color: var(--ink); margin: 2.5rem 0 1rem; }
-.post-body .callout strong { display: block; font-weight: 400; margin-bottom: 0.6rem; }
-.post-body .disclaimer { font-style: italic; font-size: 0.78rem; color: var(--gray-text); line-height: 1.8; }
-.post-body .references li { margin-bottom: 0.6rem; }
-@media (max-width: 768px) { nav { display: none; } .post { padding-top: 6.5rem; } }
 /* NEWSLETTER */
     .newsletter-section { background: var(--ink); padding: 5rem 2rem; }
     .newsletter-inner { max-width: 560px; margin: 0 auto; text-align: center; }
     .newsletter-inner .section-label { color: rgba(253,246,227,0.4); }
     .newsletter-inner .section-title { color: var(--cream); font-size: 1.9rem; margin-top: 0.5rem; }
     .newsletter-form { display: flex; margin-top: 2rem; border: 1px solid rgba(255,255,255,0.15); }
-    .newsletter-form input { flex: 1; background: transparent; border: none; outline: none; padding: 0.9rem 1.2rem; font-family: var(--font-body); font-size: 0.82rem; color: var(--cream); letter-spacing: 0.03em; }
+    .newsletter-form input { flex: 1; background: transparent; border: none; outline: none; padding: 0.9rem 1.2rem; font-family: 'DM Mono', monospace; font-size: 0.82rem; color: var(--cream); letter-spacing: 0.03em; }
     .newsletter-form input::placeholder { color: rgba(253,246,227,0.28); }
-    .newsletter-form button { background: var(--purple); border: none; color: var(--cream); padding: 0.9rem 1.5rem; font-family: var(--font-body); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+    .newsletter-form button { background: var(--purple); border: none; color: var(--cream); padding: 0.9rem 1.5rem; font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
     .newsletter-form button:hover { background: var(--purple-light); }
 
     /* WORDMARK + FOOTER */
     .wordmark-section { padding: 4rem 2rem 2rem; text-align: center; overflow: hidden; }
-    .big-wordmark { font-family: var(--font-display); font-size: clamp(4rem, 15vw, 14rem); letter-spacing: -0.05em; line-height: 1; color: transparent; -webkit-text-stroke: 1px var(--purple); opacity: 0.12; user-select: none; }
+    .big-wordmark { font-family: 'Instrument Serif', serif; font-size: clamp(4rem, 15vw, 14rem); letter-spacing: -0.05em; line-height: 1; color: transparent; -webkit-text-stroke: 1px var(--purple); opacity: 0.12; user-select: none; }
     footer { border-top: 1px solid var(--border); padding: 2rem; display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
     footer p { font-size: 0.74rem; color: var(--gray-text); }
     footer a { color: var(--purple); text-decoration: none; }
@@ -113,116 +110,48 @@ nav a.active { color: var(--purple); }
     .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .reveal.visible { opacity: 1; transform: none; }
 
-    </style>
+    @media (max-width: 768px) {
+.blog-grid { grid-template-columns: 1fr; }
+.blog-card.is-filler { display: none; }
+nav { display: none; }
+.page-hero { padding-top: 6.5rem; }
+}
+</style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header>
 <div class="header-inner">
-<a href="/index.html" class="logo">Purple<span>Lotus</span></a>
+<a href="/" class="logo">Purple<span>Lotus</span></a>
 <nav>
-<a href="/index.html#threat-feed">Threat Feed</a>
-<a href="/index.html#product">Product</a>
-<a href="/index.html#services">Services</a>
-<a href="/blogs.html" class="active">Blogs</a>
-<a href="/index.html#pricing">Pricing</a>
-<a href="/index.html#faq">FAQ</a>
+<a href="/threat-feed">Threat Feed</a>
+<a href="/#product">Product</a>
+<a href="/#services">Services</a>
+<a href="/blogs" class="active">Blogs</a>
+<a href="/#pricing">Pricing</a>
+<a href="/#faq">FAQ</a>
 </nav>
 <a href="mailto:security@purplelotus.tech" class="btn-primary">Contact Us</a>
 </div>
 </header>
 
-<article class="post">
-<a href="/blogs.html" class="back-link">&larr; All blogs</a>
+<!-- PAGE HERO -->
+<section class="page-hero">
+<span class="section-label">Blogs</span>
+<h1 class="page-title">Notes from the <em>research desk.</em></h1>
+<p class="page-sub">Write-ups, guides and field notes on supply chain security, CI/CD hardening and the multi-step flaws that scanners miss.</p>
+<div class="filter-row" id="filters"></div>
+</section>
 
-<span class="post-tag">Cybersecurity</span>
-<h1>EU Cybersecurity Rules: What Companies Need to Know</h1>
-<div class="post-meta">Sep 19, 2026 &middot; 4 min read &middot; Purple Lotus</div>
-
-<div class="post-body">
-<p>For years, companies have relied on security practices such as <strong>ISO 27001, NIST frameworks, vulnerability scanning, penetration testing, and incident response</strong> to protect their systems.</p>
-<p>These practices are still important.</p>
-<p>But the European Union is changing the way cybersecurity is treated.</p>
-
-<h2>From Security Practices to Regulatory Requirements</h2>
-<p>Newer EU regulations such as the <strong>Cyber Resilience Act (CRA)</strong>, <strong>NIS2</strong>, <strong>GDPR</strong>, and <strong>DORA</strong> introduce specific cybersecurity responsibilities for organizations and products within their respective scopes.</p>
-<p>The focus is moving beyond:</p>
-<blockquote>&ldquo;Do we have security controls?&rdquo;</blockquote>
-<p>towards:</p>
-<blockquote>&ldquo;Can we continuously identify, manage, respond to, and demonstrate how we handle cybersecurity risks?&rdquo;</blockquote>
-
-<h2>What the CRA Changes</h2>
-<p>The <strong>Cyber Resilience Act</strong> is particularly important for companies developing or selling products with digital elements.</p>
-<p>It introduces requirements around areas such as:</p>
-<ul>
-<li>Secure product development</li>
-<li>Cybersecurity risk management</li>
-<li>Vulnerability handling</li>
-<li>Security updates</li>
-<li>Product documentation</li>
-<li>Vulnerability and incident reporting</li>
-</ul>
-<p>This means cybersecurity becomes part of the <strong>product lifecycle</strong>, rather than something addressed only after a vulnerability is discovered.</p>
-
-<h2>Why Software Supply Chains Matter</h2>
-<p>Modern applications depend on hundreds of third-party and open-source components.</p>
-<p>An <strong>SBOM (Software Bill of Materials)</strong> helps organizations understand what components exist inside their software.</p>
-<p>But knowing what you use is only the beginning.</p>
-<p>Companies also need to know:</p>
-<ul>
-<li><strong>Is one of these components vulnerable?</strong></li>
-<li><strong>Is it being actively exploited?</strong></li>
-<li><strong>Does it affect our product?</strong></li>
-<li><strong>What action have we taken?</strong></li>
-</ul>
-
-<h2>From Vulnerability Alerts to Continuous Visibility</h2>
-<p>A typical vulnerability workflow can generate large numbers of alerts:</p>
-<pre><code>Vulnerability discovered
-        &darr;
-Scanner detects it
-        &darr;
-Ticket created
-        &darr;
-Developer investigates
-        &darr;
-More vulnerabilities arrive</code></pre>
-<p>The challenge is determining which vulnerabilities require immediate attention.</p>
-<p>Threat-intelligence sources such as the <strong>CISA Known Exploited Vulnerabilities (KEV) Catalog</strong> can provide additional context by identifying vulnerabilities known to be exploited in the wild.</p>
-<p>Combining this information with software inventory or SBOM data allows organizations to focus on vulnerabilities that actually affect their products.</p>
-
-<h2>What Companies Should Do</h2>
-<p>Companies preparing for the evolving EU cybersecurity landscape should:</p>
-<ul>
-<li>Understand which regulations apply to them.</li>
-<li>Maintain an accurate software and product inventory.</li>
-<li>Use SBOMs where appropriate.</li>
-<li>Continuously monitor vulnerabilities.</li>
-<li>Track actively exploited vulnerabilities.</li>
-<li>Establish clear response and escalation processes.</li>
-<li>Maintain evidence of security and remediation activities.</li>
-</ul>
-
-<h2>Where Purple Lotus Fits</h2>
-<p>Purple Lotus is built around this shift toward <strong>continuous cybersecurity visibility</strong>.</p>
-<p>The goal is simple:</p>
-<blockquote><strong>Know what you have. Know what is vulnerable. Know what is being exploited. Know what you did about it.</strong></blockquote>
-<p>By connecting software inventories, SBOMs, vulnerability intelligence, and response workflows, organizations can build a more structured approach to modern cybersecurity.</p>
-
-<hr>
-<p class="callout"><strong>Security is no longer just about finding vulnerabilities.</strong> It is about knowing which vulnerabilities matter, responding to them, and maintaining visibility throughout the product lifecycle.</p>
-
-<h2>References</h2>
-<ul class="references">
-<li>European Commission &mdash; <strong>Cyber Resilience Act</strong><br>
-<a href="https://digital-strategy.ec.europa.eu/en/policies/cyber-resilience-act" target="_blank" rel="noopener">Cyber Resilience Act &mdash; European Commission</a></li>
-</ul>
-
-<hr>
-<p class="disclaimer">This article is for general educational purposes and is not legal or regulatory advice. Organizations should assess their specific obligations against the applicable EU legislation and official guidance.</p>
+<!-- POSTS -->
+<section class="blog-section">
+<div class="blog-grid" id="blog-list">
+<div class="blog-empty">Loading posts&hellip;</div>
 </div>
-</article>
+</section>
 
+<!-- NEWSLETTER -->
 <div class="newsletter-section">
 <div class="newsletter-inner">
 <span class="section-label">Newsletter</span>
@@ -234,11 +163,75 @@ More vulnerabilities arrive</code></pre>
 </div>
 </div>
 
-<div class="wordmark-section"><div class="big-wordmark">PurpleLotus</div></div>
+<!-- WORDMARK -->
+<div class="wordmark-section">
+<div class="big-wordmark">PurpleLotus</div>
+</div>
 
+<!-- FOOTER -->
 <footer>
-<p>Security that ships with your code. &copy; 2025 PurpleLotus, Inc. All rights reserved.</p>
+<p>Security that ships with your code. © 2025 PurpleLotus, Inc. All rights reserved.</p>
 <p><a href="mailto:security@purplelotus.tech">security@purplelotus.tech</a></p>
 </footer>
+
+<script>
+// BLOGS — shared card renderer, reads data/blogs.json
+window.PLBlogs = (function () {
+  const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const safeUrl = (u) => (/^(https?:\/\/|\/|[\w-]+(\.html)?(#.*)?$)/.test(u || '') ? u : '');
+  const fmt = (iso) => { try { return new Date(iso).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }); } catch (e) { return iso || ''; } };
+  const card = (p, i) => {
+    const url = safeUrl(p.url);
+    const ext = /^https?:\/\//.test(url) ? ' target="_blank" rel="noopener"' : '';
+    const inner = `
+      <span class="blog-tag">${esc(p.tag || 'Blog')}</span>
+      <h3>${esc(p.title)}</h3>
+      <p>${esc(p.excerpt)}</p>
+      <div class="blog-meta"><span>${esc(fmt(p.date))}${p.read_time ? ' · ' + esc(p.read_time) : ''}</span><span class="blog-arrow">${url ? 'Read →' : 'Coming soon'}</span></div>`;
+    const delay = `style="animation-delay:${i * 60}ms"`;
+    return url ? `<a class="blog-card" href="${esc(url)}"${ext} ${delay}>${inner}</a>` : `<div class="blog-card is-soon" ${delay}>${inner}</div>`;
+  };
+  const load = () => fetch('/data/blogs.json', { cache: 'no-store' })
+    .then((r) => { if (!r.ok) throw new Error('blogs.json ' + r.status); return r.json(); })
+    .then((d) => (d.posts || []).slice().sort((a, b) => new Date(b.date) - new Date(a.date)));
+  const cards = (list) => list.map(card).join('') + '<div class="blog-card is-filler" aria-hidden="true"></div>'.repeat((3 - (list.length % 3)) % 3);
+  return { card, cards, load, esc };
+})();
+
+(function initBlogPage() {
+  const listEl = document.getElementById('blog-list');
+  const filtersEl = document.getElementById('filters');
+  let posts = [];
+  let active = 'All';
+
+  const draw = () => {
+    const shown = active === 'All' ? posts : posts.filter((p) => (p.tag || 'Blog') === active);
+    listEl.innerHTML = shown.length
+      ? PLBlogs.cards(shown)
+      : '<div class="blog-empty">No posts in this category yet.</div>';
+    filtersEl.querySelectorAll('.chip').forEach((c) => c.classList.toggle('active', c.dataset.tag === active));
+  };
+
+  PLBlogs.load().then((data) => {
+    posts = data;
+    if (!posts.length) {
+      listEl.innerHTML = '<div class="blog-empty">No posts yet. Check back soon.</div>';
+      return;
+    }
+    const tags = ['All', ...new Set(posts.map((p) => p.tag || 'Blog'))];
+    filtersEl.innerHTML = tags.map((t) => `<button class="chip" data-tag="${PLBlogs.esc(t)}">${PLBlogs.esc(t)}</button>`).join('');
+    filtersEl.addEventListener('click', (e) => {
+      const b = e.target.closest('.chip');
+      if (!b) return;
+      active = b.dataset.tag;
+      draw();
+    });
+    draw();
+  }).catch((err) => {
+    console.error(err);
+    listEl.innerHTML = '<div class="blog-empty">Couldn\'t load posts right now. Try refreshing.</div>';
+  });
+})();
+</script>
 </body>
 </html>
