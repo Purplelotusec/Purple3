@@ -1,25 +1,6 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "**/*",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/threat-feed",
-      "dest": "/threat-feed.html"
-    },
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
-  ],
-  {
-  "cleanUrls": true
-}
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/blogs/:slug", "destination": "/blog/:slug", "permanent": false }
+  ]
 }
