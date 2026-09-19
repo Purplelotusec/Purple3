@@ -8,6 +8,14 @@
   "read_time": "4 min read",
   "excerpt": "How the EU is changing cybersecurity requirements and why continuous vulnerability visibility matters.",
   "url": "/blog/eu-cybersecurity-rules"
+},
+    {
+  "title": "Introducing Osprey: Security Visibility for the Software Supply Chain",
+  "date": "2026-09-19",
+  "tag": "Product Launch",
+  "read_time": "5 min read",
+  "excerpt": "Introducing Osprey, PurpleLotus's open-source security CLI for SBOM generation, vulnerability intelligence and known exploited vulnerabilities.",
+  "url": "/blog/introducing-osprey"
 }
   ]
 }
