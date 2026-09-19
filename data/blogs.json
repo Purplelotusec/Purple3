@@ -32,6 +32,14 @@
       "read_time": "5 min read",
       "excerpt": "Tags can move. Commit SHAs can't. A short walkthrough for pinning third-party actions without slowing your team down.",
       "url": ""
-    }
+    },
+    {
+  "title": "EU Cybersecurity Rules: What Companies Need to Know",
+  "date": "2026-09-19",
+  "tag": "Cybersecurity",
+  "read_time": "4 min read",
+  "excerpt": "How the EU is changing cybersecurity requirements and why continuous vulnerability visibility matters.",
+  "url": "/blog/eu-cybersecurity-rules"
+}
   ]
 }
