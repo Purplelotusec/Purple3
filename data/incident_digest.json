@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-09-20T12:13:14.862499+00:00",
+  "generated_at": "2026-09-21T13:50:33.305551+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "The article discusses the importance of security in the Python ecosystem, particularly in regards to the Python Package Index (PyPI). Here are the main points:\n\n1. **Malware in PyPI**: Malicious Python packages have been growing in severity and frequency, with many tainted packages appearing on PyPI each year.\n2. **Chainguard Libraries**: Chainguard has announced Chainguard Libraries for Python, a malware-resistant index of packages that builds each library and its full dependency tree from source inside a hardened infrastructure.\n3. **Mitigation**: Chainguard Libraries would have prevented ~98% of malicious packages from being published, mainly due to the lack of attributable source code URLs.\n4. **Typosquatting**: Attackers can create packages with similar names to popular PyPI dependencies, making it difficult for developers to distinguish between legitimate and malicious packages.\n5. **PyPI as a registry, not a security guarantee**: PyPI is a public package registry, not a security-vetting service, and its role is to distribute Python packages, not to independently verify their safety.\n6. **Lazarus Group's phishing campaign**: The Lazarus Group has been detected in the npm and PyPI registries, distributing malicious packages disguised as legitimate libraries to ensnare unsuspecting users.\n7. **Importance of security measures**: The article emphasizes the need for enhanced security measures and vigilance among developers and organizations to identify and mitigate such threats.\n\nOverall, the article highlights the importance of security in the Python ecosystem and the need for developers and organizations to be aware of the risks associated with PyPI and other open-source software ecosystems.",
+  "digest_markdown": "\u2022 Up to 18,000 customers installed a malicious Orion update, allowing hackers to access and imitate victims' accounts/users, and access system files, going undetected even by antivirus software. [1]\n\u2022 A known Shai-Hulud worm payload was dormant for 111 days, then republished to npm, right past the malware scanning meant to catch it. [2]\n\u2022 A supply chain attack compromised popular Rust crates, arrayref, append-only-vec, and internment, injecting a dependency on the malicious proc-macro1 package that downloads and executes a remote payload at build time. [2]\n\u2022 A new supply chain attack targeting GitHub repositories, now identified as GhostAction, has been confirmed by GitGuardian researchers, exposing 3,325 secrets, including PyPI tokens, npm tokens, DockerHub tokens, and AWS access keys. [4]\n\u2022 A supply chain attack compromised nine npm packages and 15 PyPI packages, raising concerns that malicious or trojanized versions could be released if the exposed secrets are not revoked. [4]",
   "sources": [
     {
       "title": "Worldwide software supply chain attacks tracker (updated daily)",
@@ -17,40 +17,8 @@
       "url": "https://threat.wiki/ops/stepsecurity-state-of-open-source-supply-chain-attacks-2026/"
     },
     {
-      "title": "Supply Chain of Distrust - Microsoft/GitHub Supply-Chain Compromise ...",
-      "url": "https://securityboulevard.com/2026/09/supply-chain-of-distrust-microsoft-github-supply-chain-compromise-targets-ai-developers/"
-    },
-    {
-      "title": "npm Dependency Risk - Lightwell Package Catalog",
-      "url": "https://www.bing.com/aclick?ld=e859hkDRPNagsx7qZx7WQX2jVUCUzPHNGD8DGNVnvcT2-iJ3pz_HzdAtMKwpFzSRM0zh5NEqzaQZ-ye_zozC8ekZNtJWVi4z1FKjzorORemOQP3v2gdvEWug2My9ex0R_HO2p7kUg5qKS-LPl_4O9iuGGPOQ3m4-iJ3NvL6Lv2H1638DeE-zK6OpeYt5K3gIyMVEiZnqb-zpk3-daqiqS4vhTwLMw&u=aHR0cHMlM2ElMmYlMmZhZC5kb3VibGVjbGljay5uZXQlMmZzZWFyY2hhZHMlMmZsaW5rJTJmY2xpY2slM2ZsaWQlM2Q0MzcwMDA4NDM0MTU4MDkzNCUyNmRzX3Nfa3dnaWQlM2Q1ODcwMDAwOTEyNjA4MjEyMSUyNmRzX2FfY2lkJTNkNDA1NTA3ODI5JTI2ZHNfYV9jYWlkJTNkMjQyMTQ3NzMyODclMjZkc19hX2FnaWQlM2QyMDA4ODkxODM5NzglMjZkc19hX2xpZCUzZGt3ZC0yNDgwNTgyNjA1ODczJTI2JTI2ZHNfZV9hZGlkJTNkODEwMjA0MTEwMTQ2MjglMjZkc19lX3RhcmdldF9pZCUzZGt3ZC04MTAyMDY4ODgwNjc4MSUzYWxvYy0xOTAlMjYlMjZkc19lX25ldHdvcmslM2RvJTI2ZHNfdXJsX3YlM2QyJTI2ZHNfZGVzdF91cmwlM2RodHRwcyUzYSUyZiUyZnd3dy5pYm0uY29tJTJmcHJvZHVjdHMlMmZsaWdodHdlbGwlM2Z1dG1fY29udGVudCUzZFNSQ1dXJTI2cDElM2RTZWFyY2glMjZwNCUzZDI0ODA1ODI2MDU4NzMlMjZwNSUzZHAlMjZwOSUzZDIwMDg4OTE4Mzk3OCUyNmdjbGlkJTNkMTc5NDJmNGYxODY5MWZhNzhjMTY0NWUwZDUzMDFkNjklMjZnY2xzcmMlM2QzcC5kcyUyNiUyNm1zY2xraWQlM2QxNzk0MmY0ZjE4NjkxZmE3OGMxNjQ1ZTBkNTMwMWQ2OQ&rlid=17942f4f18691fa78c1645e0d5301d69"
-    },
-    {
-      "title": "Protection from NPM Malware - Stop Trojan NPM Packages",
-      "url": "https://www.bing.com/aclick?ld=e8gFFhphchiRRWkJzkHXqk_TVUCUzMpA63s861KMu46395NzMYxWeoBCIRd75Sle4YmvSp9m0W8m80D2m1N7F83s0S03BB1qXmn5fxoHtRgrkGRFIaZCBlGZMYwl23--ivFbV7qZp8EYjIHUUa1E6-d9nZR3GAXzBMTbI7BbguTnmz5ggCKlu4nf_ETR0h67Kv-q-83Ofy9qBn0NK1_-mBgPAPYEM&u=aHR0cHMlM2ElMmYlMmZ3d3cuY2hhaW5ndWFyZC5kZXYlMmZ1bmNoYWluZWQlMmZtaXRpZ2F0aW5nLW1hbHdhcmUtaW4tdGhlLW5wbS1lY29zeXN0ZW0td2l0aC1jaGFpbmd1YXJkLWxpYnJhcmllcyUzZm1zY2xraWQlM2Q4NDhlOGViNjExYmIxNTVlMGNhZGU0MTlkY2UyZGQxOSUyNnV0bV9zb3VyY2UlM2RiaW5nJTI2dXRtX21lZGl1bSUzZGNwYyUyNnV0bV9jYW1wYWlnbiUzZGJnX3NfYW1lcl9hY3FfZ2VuZXJpY19ib2YlMjZ1dG1fdGVybSUzZG5wbSUyNTIwbWFsd2FyZSUyNTIwYXR0YWNrJTI2dXRtX2NvbnRlbnQlM2RsaWJyYXJpZXNfbnBt&rlid=848e8eb611bb155e0cade419dce2dd19"
-    },
-    {
-      "title": "Free Virus & Malware Scan - Free Virus Check And Removal",
-      "url": "https://www.bing.com/aclick?ld=e8JYLHc29OnDOY0wUkU3NQIzVUCUytrPSaR9xa6Y1s03oaGDr7YYEePmj3qsKzBM2t2DFvdf_cAylbbK1yL7tmaELVsrGed1MfbK0c60y2kpYqPn7FsBSLWIjVIcbOrcJXH7xL4PFEs16U6ghtUSvZ0KKqlS2y9mqKKPw-IS_gdPvIvFKjvj_IodNVbvCYYZYGcUeIXzHINICwELm8WMoJVQj4j3k&u=aHR0cHMlM2ElMmYlMmZyZHQubWFja2VlcGVyLmNvbSUyZjYzMzVkMDA4NzE0OTBkMDAwMWI0MDkzMiUzZnN1YjElM2Q3OTIzMzc0ODkwMjYzNSUyNnN1YjIlM2Q1MDYwMDA0NTglMjZzdWIzJTNkYyUyNnN1YjQlM2QxMjY3NzM3ODQ0MjgyNzQzJTI2c3ViNSUzZHAlMjZ1dG1fY2FtcGFpZ24lM2RyX2Jpbmdfc2VjdXJpdHlfdXMlMjZzdWI3JTNkJTI2c3ViOCUzZG5wbSUyNTIwcGFja2FnZSUyNTIwY29tcHJvbWlzZWQlMjUyMG1hbHdhcmUlMjZzdWI5JTNka3dkLTc5MjM0MTE5NjgzOTg2JTNhbG9jLTE5MCUyNnN1YjEwJTNkeW91ciUyNTIwbWFjJTI1MjBpcyUyNTIwaW5mZWN0ZWQlMjZ1dG1fc291cmNlJTNkYmluZyUyNnV0bV9tZWRpdW0lM2RjcGMlMjZyZWZfaWQlM2RmNDA1N2ZmYzc0YjMxNGYwNTBiZTE1NTNiOWVhNGE2YiUyNm1zY2xraWQlM2RmNDA1N2ZmYzc0YjMxNGYwNTBiZTE1NTNiOWVhNGE2Yg&rlid=f4057ffc74b314f050be1553b9ea4a6b"
-    },
-    {
-      "title": "Thousands of Node Developers Compromised by Malware in ...",
-      "url": "https://dailysecurityreview.com/security-spotlight/thousands-of-node-developers-compromised-by-malware-in-popular-npm-packages/"
-    },
-    {
-      "title": "Maven & PyPI Coverage - Lightwell Package Catalog",
-      "url": "https://www.bing.com/aclick?ld=e8oQ6qXCNhliBVu0MBIhYVujVUCUyrf7wdR1H2JOZaNjkAAhNJIII2LpEQxVRJcQTIgnm-e7VNeQBIiqNEFo_e5CYeuGXzzjULMQfv3rdS3JTwJQAYuvJW4T_7uVjGGX10TboupgK_KCfyNJoKdkgE9lw8T_Q2Pr1Ormc-e9NkIQ_YYQTrpygGfOd9WGDNISRZatWZ3EetEkGBYRvAZYcINAIdipQ&u=aHR0cHMlM2ElMmYlMmZhZC5kb3VibGVjbGljay5uZXQlMmZzZWFyY2hhZHMlMmZsaW5rJTJmY2xpY2slM2ZsaWQlM2Q0MzcwMDA4NDM0MTU4MDkzNCUyNmRzX3Nfa3dnaWQlM2Q1ODcwMDAwOTEyNjA4MjEyMSUyNmRzX2FfY2lkJTNkNDA1NTA3ODI5JTI2ZHNfYV9jYWlkJTNkMjQyMTQ3NzMyODclMjZkc19hX2FnaWQlM2QyMDA4ODkxODM5NzglMjZkc19hX2xpZCUzZGt3ZC0yNDgwNTgyNjA1ODczJTI2JTI2ZHNfZV9hZGlkJTNkODEwMjA0MTEwMTQ2MjglMjZkc19lX3RhcmdldF9pZCUzZGt3ZC04MTAyMDY4ODgwNjc4MSUzYWxvYy0xOTAlMjYlMjZkc19lX25ldHdvcmslM2RvJTI2ZHNfdXJsX3YlM2QyJTI2ZHNfZGVzdF91cmwlM2RodHRwcyUzYSUyZiUyZnd3dy5pYm0uY29tJTJmcHJvZHVjdHMlMmZsaWdodHdlbGwlM2Z1dG1fY29udGVudCUzZFNSQ1dXJTI2cDElM2RTZWFyY2glMjZwNCUzZDI0ODA1ODI2MDU4NzMlMjZwNSUzZHAlMjZwOSUzZDIwMDg4OTE4Mzk3OCUyNmdjbGlkJTNkMmU1ZTQyZWY0MzYzMWU0NWE5NTYyODQwOGUwMmQ4MjclMjZnY2xzcmMlM2QzcC5kcyUyNiUyNm1zY2xraWQlM2QyZTVlNDJlZjQzNjMxZTQ1YTk1NjI4NDA4ZTAyZDgyNw&rlid=2e5e42ef43631e45a95628408e02d827"
-    },
-    {
-      "title": "Hardened PyPI Libraries - CVE-Free Python Libraries",
-      "url": "https://www.bing.com/aclick?ld=e8zbVT4w5hi7BznzdQar0ENDVUCUwGIs3_5jjNpnzEY_avrK8pb4RVmicVV09spjwkjBfezktrGeoVmVyU9_QotzXPAKTdZtgdXIyP8gNhnLvzah6WJbu597KRDus0NpLI1_dfClW0ZIbFT7xMGSoNrn1yxgWJbNAVw3XE9uablk2yzzp4etp3tbVIelnn2anwmR-mYWl8abjbYb1ucO5ooBzeetE&u=aHR0cHMlM2ElMmYlMmZ3d3cuY2hhaW5ndWFyZC5kZXYlMmZ1bmNoYWluZWQlMmZtaXRpZ2F0aW5nLW1hbHdhcmUtaW4tdGhlLXB5dGhvbi1lY29zeXN0ZW0td2l0aC1jaGFpbmd1YXJkLWxpYnJhcmllcyUzZm1zY2xraWQlM2RhMzZkMWNhYmNlODcxMWQwMTgyODc2MDQwM2U2ZTA5NSUyNnV0bV9zb3VyY2UlM2RiaW5nJTI2dXRtX21lZGl1bSUzZGNwYyUyNnV0bV9jYW1wYWlnbiUzZGJnX3NfYW1lcl9hY3FfZ2VuZXJpY19ib2YlMjZ1dG1fdGVybSUzZHNlY3VyZSUyNTIwcHlwaSUyNTIwZGVwZW5kZW5jaWVzJTI2dXRtX2NvbnRlbnQlM2RsaWJyYXJpZXNfcHlwaQ&rlid=a36d1cabce8711d01828760403e6e095"
-    },
-    {
-      "title": "What Happens When You pip install a Malicious Python Package?",
-      "url": "https://dev.to/loginsoft/what-happens-when-you-pip-install-a-malicious-python-package-1216"
-    },
-    {
-      "title": "New Malicious Packages in npm and PyPI Tied to Lazarus Group",
-      "url": "https://dailysecurityreview.com/cyber-security/new-malicious-packages-in-npm-and-pypi-tied-to-lazarus-group/"
+      "title": "GhostAction Supply Chain Attack on GitHub Exposes 3,325 Secrets",
+      "url": "https://dailysecurityreview.com/cyber-security/ghostaction-supply-chain-attack-on-github-exposes-3325-secrets/"
     }
   ]
 }
