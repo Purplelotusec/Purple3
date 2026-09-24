@@ -1,56 +1,56 @@
 {
-  "generated_at": "2026-09-23T12:44:15.359220+00:00",
+  "generated_at": "2026-09-24T12:41:34.627930+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "The article discusses the security risks associated with the Python Package Index (PyPI), a public package registry that distributes Python packages. The main security issues with PyPI servers include:\n\n1. **Dependency confusion**: Malicious packages can be uploaded to PyPI, which can lead to dependency confusion, where a developer installs a malicious package instead of the intended package.\n2. **Malicious package upload**: Attackers can upload malicious packages to PyPI, which can be installed by developers.\n3. **Credential theft**: Attackers can steal credentials from maintainers, which can be used to upload malicious packages to PyPI.\n4. **Weak controls on publishing**: PyPI does not have strong controls on who can publish packages, which can lead to malicious packages being uploaded.\n5. **Secrets exposure**: Build scripts, configuration files, or package metadata can leak tokens, API keys, or other sensitive material, which can be used by attackers.\n\nThe article also discusses other security issues, including:\n\n1. **Typosquatting**: Attackers can create package names that closely resemble popular PyPI dependencies, which can lead to dependency confusion.\n2. **Supply chain abuse**: Attackers can compromise a maintainer account or publishing pipeline and release malicious code under the name of a legitimate, trusted project.\n\nTo mitigate these risks, the article recommends:\n\n1. **Validate package names**: Validate package names against approved dependencies to prevent typosquatting.\n2. **Review new or unexpected packages**: Review new or unexpected packages to ensure they are legitimate.\n3. **Use lockfiles and hash verification**: Use lockfiles and hash verification to ensure the integrity of packages.\n4. **Route dependencies through a controlled internal registry**: Route dependencies through a controlled internal registry to prevent malicious packages from being installed.\n\nOverall, the article emphasizes the importance of treating every package as untrusted until its integrity, provenance, and safety are proven.",
+  "digest_markdown": "The MemTensor packages compromised in the recent supply chain attack are:\n\n1. `@memtensor/memos-cloud-openclaw-plugin` on npm, with malicious versions 0.1.21, 0.1.23, and 0.1.25.\n2. `MemoryOS` on PyPI, with a malicious version 2.0.34.\n\nThe compromised packages contain a cross-platform Go implant called `sckit` that:\n\n* Collects credentials from the user's home directory, including package manager credentials, Git credentials, SSH private keys, vault tokens, and cached tokens.\n* Exfiltrates the stolen credentials to multiple attacker-controlled domains under `skyleen.fr`.\n* Has code to copy itself into other repositories and packages accessible with stolen credentials.\n* Modifies CI environment variables to execute a signed payload that steals publishing tokens from GitHub Actions environments.\n* Deletes its binary after execution to evade detection.\n\nTo mitigate this attack, users are advised to:\n\n* Rotate their credentials, including npm and PyPI tokens, GitHub and GitLab tokens, SSH keys, cloud CLI tokens, and .env style secrets in files under `$HOME`.\n* Look for the state directories and processes in the IOC section.\n* Pin dependency versions to track incidents like this one.\n* Use tools like daily.dev to vet dependencies before installing.\n\nNote: The attack is a supply-chain compromise with clear malicious intent targeting credential theft and propagation.",
   "sources": [
-    {
-      "title": "Worldwide software supply chain attacks tracker (updated daily)",
-      "url": "https://www.comparitech.com/software-supply-chain-attacks/"
-    },
     {
       "title": "Supply Chain Security News: Latest Attacks & Vulnerabilities",
       "url": "https://www.aikido.dev/software-supply-chain-news"
+    },
+    {
+      "title": "Worldwide software supply chain attacks tracker (updated daily)",
+      "url": "https://www.comparitech.com/software-supply-chain-attacks/"
     },
     {
       "title": "GHAPPIER Supply Chain Attack Compromises 65 GitHub Repositories and ...",
       "url": "https://cybersecuritynews.com/ghappier-supply-chain-attack/"
     },
     {
-      "title": "CrowdSec Confirms Source Code Stolen in Supply Chain Attack",
-      "url": "https://www.securityweek.com/crowdsec-confirms-source-code-stolen-in-supply-chain-attack/"
+      "title": "GhostAction Supply Chain Attack on GitHub Exposes 3,325 Secrets",
+      "url": "https://dailysecurityreview.com/cyber-security/ghostaction-supply-chain-attack-on-github-exposes-3325-secrets/"
     },
     {
-      "title": "Malicious npm Package With 2 Million Downloads Hides Malware ...",
-      "url": "https://cybersecuritynews.com/malicious-npm-package/"
+      "title": "Malicious npm Package Poses as Twilio Bug-Bounty Probe, Can Exfiltrate Credentials",
+      "url": "https://thehackernews.com/2026/09/malicious-npm-package-poses-as-twilio.html"
+    },
+    {
+      "title": "Malicious npm Package indexed-btree Hid Its Loader in Runtime Code Before Removal",
+      "url": "https://thehackernews.com/2026/09/malicious-npm-package-indexed-btree-hid.html"
     },
     {
       "title": "Malicious npm packages evade install-script defenses at runtime",
       "url": "https://www.bleepingcomputer.com/news/security/malicious-npm-packages-evade-install-script-defenses-at-runtime/"
     },
     {
-      "title": "Malicious npm Package indexed-btree Hid Its Loader in Runtime ...",
-      "url": "https://thehackernews.com/2026/09/malicious-npm-package-indexed-btree-hid.html"
+      "title": "Popular npm Package With 150K Weekly Downloads Compromised in Mini Shai-Hulud Supply-Chain Attack",
+      "url": "https://cybersecuritynews.com/popular-npm-package-2/"
     },
     {
-      "title": "Malicious npm packages evade install-script defenses at...",
-      "url": "https://daily.dev/posts/malicious-npm-packages-evade-install-script-defenses-at-runtime-w4iq1yy8m"
+      "title": "Malicious code in memoryos (PyPI) - Live Threat Intelligence - Threat Radar | OffSeq.com",
+      "url": "https://radar.offseq.com/threat/malicious-code-in-memoryos-pypi-3a824a5001d9ddca"
+    },
+    {
+      "title": "Compromised MemTensor Packages Deliver sckit Credential Stealer via npm and PyPI",
+      "url": "https://thehackernews.com/2026/09/compromised-memtensor-packages-deliver.html"
     },
     {
       "title": "MemTensor npm and PyPI Packages Compromised in Credential-Stealing Supply Chain Attack | daily.dev",
       "url": "https://daily.dev/posts/memtensor-npm-and-pypi-packages-compromised-in-credential-stealing-supply-chain-attack-mll5czpri"
     },
     {
-      "title": "What Is PyPI Server? Definition & Examples",
-      "url": "https://nhimg.org/glossary/pypi-server/"
-    },
-    {
-      "title": "MemTensor npm and PyPI hit by \"supplychain.local\" malware",
-      "url": "https://www.aikido.dev/blog/supplychain-local-memtensor-npm-pypi"
-    },
-    {
-      "title": "What Happens When You pip install a Malicious Python Package? - DEV Community",
-      "url": "https://dev.to/loginsoft/what-happens-when-you-pip-install-a-malicious-python-package-1216"
+      "title": "MemTensor npm and PyPI Packages Hit by a Go Worm - Real-time Open Source Software Supply Chain Security",
+      "url": "https://safedep.io/memtensor-sckit-worm-npm-pypi/"
     }
   ]
 }
