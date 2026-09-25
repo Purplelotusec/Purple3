@@ -1,56 +1,56 @@
 {
-  "generated_at": "2026-09-24T12:41:34.627930+00:00",
+  "generated_at": "2026-09-25T12:43:41.285548+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "The MemTensor packages compromised in the recent supply chain attack are:\n\n1. `@memtensor/memos-cloud-openclaw-plugin` on npm, with malicious versions 0.1.21, 0.1.23, and 0.1.25.\n2. `MemoryOS` on PyPI, with a malicious version 2.0.34.\n\nThe compromised packages contain a cross-platform Go implant called `sckit` that:\n\n* Collects credentials from the user's home directory, including package manager credentials, Git credentials, SSH private keys, vault tokens, and cached tokens.\n* Exfiltrates the stolen credentials to multiple attacker-controlled domains under `skyleen.fr`.\n* Has code to copy itself into other repositories and packages accessible with stolen credentials.\n* Modifies CI environment variables to execute a signed payload that steals publishing tokens from GitHub Actions environments.\n* Deletes its binary after execution to evade detection.\n\nTo mitigate this attack, users are advised to:\n\n* Rotate their credentials, including npm and PyPI tokens, GitHub and GitLab tokens, SSH keys, cloud CLI tokens, and .env style secrets in files under `$HOME`.\n* Look for the state directories and processes in the IOC section.\n* Pin dependency versions to track incidents like this one.\n* Use tools like daily.dev to vet dependencies before installing.\n\nNote: The attack is a supply-chain compromise with clear malicious intent targeting credential theft and propagation.",
+  "digest_markdown": "Here is a bullet digest of the article:\n\n**Malicious Packages in npm and PyPI**\n\n* The Lazarus Group, a North Korea-affiliated group, has compromised several packages in the npm and PyPI registries.\n* The malicious packages are disguised as legitimate libraries and can execute remote commands, siphon sensitive information, or deploy additional malware.\n* The packages are camouflaged under reputable-sounding names, leveraging the inherent trust that developers place in well-maintained repositories.\n\n**MemTensor Packages**\n\n* MemTensor packages on npm and PyPI have been compromised, delivering a Go-based sckit implant across Windows, Linux, and macOS.\n* The implant harvests cloud, source-code, registry, and developer credentials, exfiltrating them to skyleen[.]fr.\n* The malicious packages are part of MemOS Cloud, which connects the OpenClaw agent runtime to a memory service.\n\n**GitHub Action Supply Chain Attack**\n\n* A serious supply chain attack targeting the tj-actions/changed-files GitHub Action has exposed CI/CD secrets from thousands of repositories.\n* The attack involved a malicious commit that dumped CI/CD secrets from the Runner Worker process into the repositories of projects using the action.\n* The vulnerability was particularly impactful because publicly accessible workflow logs made these stolen secrets easily viewable.\n\n**Recommendations**\n\n* Pin the npm package to version 0.1.20 and the PyPI package to version 2.0.33.\n* Rotate exposed secrets.\n* Kill any sckit process.\n* Block skyleen[.]fr and all subdomains.\n\n**Implications**\n\n* The discovery of these packages underscores the persistent threat from sophisticated state-sponsored actors who leverage open-source ecosystems to further their objectives.\n* The attack highlights the need for enhanced security measures and vigilance among developers and organizations.",
   "sources": [
     {
-      "title": "Supply Chain Security News: Latest Attacks & Vulnerabilities",
-      "url": "https://www.aikido.dev/software-supply-chain-news"
+      "title": "What Is a Supply Chain Attack? Types and Prevention | CrowdStrike",
+      "url": "https://www.crowdstrike.com/en-us/cybersecurity-101/cyberattacks/supply-chain-attack/"
     },
     {
-      "title": "Worldwide software supply chain attacks tracker (updated daily)",
-      "url": "https://www.comparitech.com/software-supply-chain-attacks/"
+      "title": "Supply Chain Attacks: Recent Examples, Trends & How to Prevent Them in 2027",
+      "url": "https://secureframe.com/blog/supply-chain-attacks"
     },
     {
-      "title": "GHAPPIER Supply Chain Attack Compromises 65 GitHub Repositories and ...",
-      "url": "https://cybersecuritynews.com/ghappier-supply-chain-attack/"
+      "title": "Real-time Open Source Software Supply Chain Security - Live Threat Intelligence - Threat Radar | OffSeq.com",
+      "url": "https://radar.offseq.com/threat/real-time-open-source-software-supply-chain-security-9e0b55346ac13c2a"
     },
     {
-      "title": "GhostAction Supply Chain Attack on GitHub Exposes 3,325 Secrets",
-      "url": "https://dailysecurityreview.com/cyber-security/ghostaction-supply-chain-attack-on-github-exposes-3325-secrets/"
-    },
-    {
-      "title": "Malicious npm Package Poses as Twilio Bug-Bounty Probe, Can Exfiltrate Credentials",
-      "url": "https://thehackernews.com/2026/09/malicious-npm-package-poses-as-twilio.html"
-    },
-    {
-      "title": "Malicious npm Package indexed-btree Hid Its Loader in Runtime Code Before Removal",
-      "url": "https://thehackernews.com/2026/09/malicious-npm-package-indexed-btree-hid.html"
+      "title": "2026 Supply Chain Vulnerability Report | Black Kite",
+      "url": "https://blackkite.com/reports/2026-supply-chain-vulnerability-report"
     },
     {
       "title": "Malicious npm packages evade install-script defenses at runtime",
       "url": "https://www.bleepingcomputer.com/news/security/malicious-npm-packages-evade-install-script-defenses-at-runtime/"
     },
     {
-      "title": "Popular npm Package With 150K Weekly Downloads Compromised in Mini Shai-Hulud Supply-Chain Attack",
-      "url": "https://cybersecuritynews.com/popular-npm-package-2/"
-    },
-    {
-      "title": "Malicious code in memoryos (PyPI) - Live Threat Intelligence - Threat Radar | OffSeq.com",
-      "url": "https://radar.offseq.com/threat/malicious-code-in-memoryos-pypi-3a824a5001d9ddca"
+      "title": "Malicious npm Package indexed-btree Hid Its Loader in Runtime Code Before Removal",
+      "url": "https://thehackernews.com/2026/09/malicious-npm-package-indexed-btree-hid.html"
     },
     {
       "title": "Compromised MemTensor Packages Deliver sckit Credential Stealer via npm and PyPI",
       "url": "https://thehackernews.com/2026/09/compromised-memtensor-packages-deliver.html"
     },
     {
-      "title": "MemTensor npm and PyPI Packages Compromised in Credential-Stealing Supply Chain Attack | daily.dev",
-      "url": "https://daily.dev/posts/memtensor-npm-and-pypi-packages-compromised-in-credential-stealing-supply-chain-attack-mll5czpri"
+      "title": "Popular npm Package With 150K Weekly Downloads Compromised in Mini Shai-Hulud Supply-Chain Attack",
+      "url": "https://cybersecuritynews.com/popular-npm-package-2/"
     },
     {
-      "title": "MemTensor npm and PyPI Packages Hit by a Go Worm - Real-time Open Source Software Supply Chain Security",
-      "url": "https://safedep.io/memtensor-sckit-worm-npm-pypi/"
+      "title": "MemTensor npm and PyPI Packages Compromised in ... - Socket",
+      "url": "https://socket.dev/blog/memtensor-compromise"
+    },
+    {
+      "title": "New Malicious Packages in npm and PyPI Tied to Lazarus Group",
+      "url": "https://dailysecurityreview.com/cyber-security/new-malicious-packages-in-npm-and-pypi-tied-to-lazarus-group/"
+    },
+    {
+      "title": "MemTensor npm, PyPI packages push credential-stealing malware",
+      "url": "https://bitnewsbot.com/memtensor-npm-pypi-packages-push-credential-stealing-malware/"
+    },
+    {
+      "title": "GitHub Action Supply Chain Attack Exposes CI/CD Secrets",
+      "url": "https://dailysecurityreview.com/security-spotlight/github-action-supply-chain-attack-exposes-ci-cd-secrets/"
     }
   ]
 }
