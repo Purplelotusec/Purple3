@@ -1,44 +1,40 @@
 {
-  "generated_at": "2026-09-27T12:55:35.784599+00:00",
+  "generated_at": "2026-09-28T15:15:19.401444+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "The article discusses a supply chain attack on MemTensor's AI memory toolchain, which compromised two legitimate packages on npm and PyPI repositories. The affected packages, memtensor/memos-cloud-openclaw-plugin and MemoryOS, contain cross-platform Go binaries that execute upon import or when the OpenClaw gateway is launched. The malicious code, dubbed sckit, steals developer credentials, including npm/PyPI tokens, GitHub/GitLab credentials, AWS keys, SSH keys, API tokens, and environment variables, and exfiltrates the data to attacker-controlled servers.\n\n**Key Findings:**\n\n1. **Compromised packages:** memtensor/memos-cloud-openclaw-plugin (npm versions 0.1.21, 0.1.23, 0.1.25) and MemoryOS (PyPI version 2.0.34) were compromised.\n2. **Malicious code:** sckit, a cross-platform Go binary, was embedded in the compromised packages.\n3. **Attack vector:** The malicious code executes when the agent gateway starts and whenever the plugin handles a memory-recall event.\n4. **Credential theft:** The implant collects various credential files from the user's home directory and exfiltrates them to attacker-controlled servers under skyleen.fr.\n5. **Propagation:** The implant has functionality to propagate itself into other repositories and packages accessible with the stolen credentials.\n6. **Encryption:** The implant uses encrypted communication with its command-and-control servers and deletes itself after execution.\n\n**Potential Impact:**\n\n1. **Credential theft:** The implant steals a wide range of sensitive credentials from the user's home directory, including package manager credentials, Git credentials, SSH private keys, vault tokens, and cached tokens.\n2. **Supply chain compromise:** The CI environment token theft allows attackers to hijack downstream package publishing workflows, increasing the scope of the supply-chain compromise.\n3. **Difficulty in detection:** The implant's self-deletion and encrypted communications make detection and analysis more difficult.\n\n**Mitigation Recommendations:**\n\n1. **Uninstall or downgrade:** Uninstall or downgrade to secure versions (npm 0.1.20, PyPI 2.0.33).\n2. **Terminate sckit processes:** Terminate related sckit processes.\n3. **Block associated infrastructure:** Block associated infrastructure.\n4. **Investigate network activity:** Investigate network activity.\n5. **Rotate credentials:** Rotate all credentials in affected environments.",
+  "digest_markdown": "The article discusses a recent supply chain attack on the MemTensor AI memory toolchain, which compromised two legitimate packages on the npm and PyPI repositories. The attack used a cross-platform Go-based implant called sckit, which stole credentials and exfiltrated data from cloud services, source-code platforms, package registries, and developer tools.\n\n**Key Findings:**\n\n1. **Compromised packages:** MemTensor's AI memory toolchain was compromised, with malicious code embedded in PyPI version 2.0.34 of MemoryOS and npm versions 0.1.21, 0.1.23, and 0.1.25 of memtensor/memos-cloud-openclaw-plugin.\n2. **sckit implant:** The implant is a cross-platform Go-based binary that collects various credential files from the user's home directory and exfiltrates them to attacker-controlled servers under skyleen.fr.\n3. **Propagation:** The implant can propagate itself into other repositories and packages accessible with the stolen credentials.\n4. **Build backend:** The package's build backend can steal CI environment publishing tokens, enabling further compromise of downstream package publishing.\n\n**Potential Impact:**\n\n1. **Credential theft:** The implant steals a wide range of sensitive credentials from the user's home directory, including package manager credentials, Git credentials, SSH private keys, vault tokens, and cached tokens.\n2. **Supply chain compromise:** The attack increases the scope of the supply-chain compromise, as it can hijack downstream package publishing workflows.\n3. **Difficulty in detection:** The implant's self-deletion and encrypted communications make detection and analysis more difficult.\n\n**Mitigation Recommendations:**\n\n1. **Uninstall or downgrade:** Users are advised to uninstall or downgrade to secure versions (npm 0.1.20, PyPI 2.0.33) of the affected packages.\n2. **Terminate sckit processes:** Users should terminate related sckit processes.\n3. **Block associated infrastructure:** Users should block associated infrastructure.\n4. **Investigate network activity:** Users should investigate network activity.\n5. **Rotate credentials:** Users should rotate all credentials in affected environments.\n\n**Conclusion:**\n\nThe article highlights the growing risks in AI-powered infrastructure and the importance of security in software supply chains. The attack demonstrates the potential for malicious code to be embedded in legitimate packages, highlighting the need for robust security measures and regular updates to prevent such attacks.",
   "sources": [
     {
-      "title": "Worldwide software supply chain attacks tracker (updated ...",
+      "title": "Worldwide software supply chain attacks tracker (updated daily)",
       "url": "https://www.comparitech.com/software-supply-chain-attacks/"
     },
     {
-      "title": "GHAPPIER Supply Chain Attack Compromises 65 GitHub ...",
-      "url": "https://cybersecuritynews.com/ghappier-supply-chain-attack/"
-    },
-    {
-      "title": "TanStack Supply Chain Attack Lets Hackers Steal 170 Private ...",
-      "url": "https://cybersecuritynews.com/tanstack-supply-chain-attack/"
-    },
-    {
-      "title": "An Undercover Google Analyst Infiltrated a Notorious Supply ...",
+      "title": "An Undercover Google Analyst Infiltrated a Notorious Supply-Chain ...",
       "url": "https://www.wired.com/story/an-undercover-google-analyst-infiltrated-a-notorious-supply-chain-hacking-gang/"
     },
     {
-      "title": "Malicious npm Package With 2 Million Downloads Hides Malware in Runtime ...",
-      "url": "https://cybersecuritynews.com/malicious-npm-package/"
+      "title": "GhostAction Supply Chain Attack on GitHub Exposes 3,325 Secrets",
+      "url": "https://dailysecurityreview.com/cyber-security/ghostaction-supply-chain-attack-on-github-exposes-3325-secrets/"
     },
     {
-      "title": "Malicious npm Package indexed-btree Hid Its Loader in Runtime Code ...",
+      "title": "GHAPPIER Supply Chain Attack Compromises 65 GitHub Repositories and ...",
+      "url": "https://cybersecuritynews.com/ghappier-supply-chain-attack/"
+    },
+    {
+      "title": "Malicious npm Package Poses as Twilio Bug-Bounty Probe, Can Exfiltrate Credentials",
+      "url": "https://thehackernews.com/2026/09/malicious-npm-package-poses-as-twilio.html"
+    },
+    {
+      "title": "Malicious npm packages evade install-script defenses at runtime",
+      "url": "https://www.bleepingcomputer.com/news/security/malicious-npm-packages-evade-install-script-defenses-at-runtime/"
+    },
+    {
+      "title": "Malicious npm Package indexed-btree Hid Its Loader in Runtime Code Before Removal",
       "url": "https://thehackernews.com/2026/09/malicious-npm-package-indexed-btree-hid.html"
     },
     {
-      "title": "Thousands of Node Developers Compromised by Malware in Popular npm Packages",
-      "url": "https://dailysecurityreview.com/security-spotlight/thousands-of-node-developers-compromised-by-malware-in-popular-npm-packages/"
-    },
-    {
-      "title": "npm 'btree' Malware Campaign Affects Millions of Downloads, No Need for ...",
-      "url": "https://checkmarx.com/zero-post/npm-btree-malware-campaign-affects-millions-of-downloads-no-need-for-install-script/"
-    },
-    {
-      "title": "MemTensor npm and PyPI Packages Compromised in Credential-Stealing Supply Chain Attack | Socket",
-      "url": "https://socket.dev/blog/memtensor-compromise"
+      "title": "Popular npm Package With 150K Weekly Downloads Compromised in Mini Shai-Hulud Supply-Chain Attack",
+      "url": "https://cybersecuritynews.com/popular-npm-package-2/"
     },
     {
       "title": "Compromised MemTensor Packages Deliver sckit Credential Stealer via npm and PyPI",
@@ -51,6 +47,10 @@
     {
       "title": "Malicious code in memoryos (PyPI) - Live Threat Intelligence - Threat Radar | OffSeq.com",
       "url": "https://radar.offseq.com/threat/malicious-code-in-memoryos-pypi-3a824a5001d9ddca"
+    },
+    {
+      "title": "Compromise of PyTorch Lightning PyPi Package Versions - vulnerability database | Vulners.com",
+      "url": "https://vulners.com/pypa/PYPA:PYSEC-2026-3973"
     }
   ]
 }
