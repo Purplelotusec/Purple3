@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-09-29T13:56:04.618748+00:00",
+  "generated_at": "2026-09-30T13:33:37.504389+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "Based on the provided sources, here is a summary of the attack:\n\n**Attack Overview**\n\nThe attack involves a supply chain compromise of MemTensor's AI memory toolchain, specifically the OpenClaw plugin and the MemOS Python library. Malicious code was embedded in the packages, which execute cross-platform Go binaries that steal credentials and exfiltrate data.\n\n**Affected Packages**\n\n* MemTensor's OpenClaw plugin on npm (versions 0.1.21, 0.1.23, and 0.1.25)\n* MemOS Python library on PyPI (version 2.0.34)\n\n**Malicious Code**\n\nThe malicious code is a Go implant named sckit, which runs a background binary that collects various credential files from the user's home directory and exfiltrates them to attacker-controlled servers under skyleen.fr. The implant also includes functionality to propagate itself into other repositories and packages accessible with the stolen credentials.\n\n**Impact**\n\nThe attack steals a wide range of sensitive credentials, including package manager credentials, Git credentials, SSH private keys, vault tokens, and cached tokens. These stolen credentials are sent to attacker-controlled infrastructure, enabling further compromise of developer environments and potentially other repositories and packages.\n\n**Mitigation Recommendations**\n\n* Uninstall or downgrade to secure versions (npm 0.1.20, PyPI 2.0.33)\n* Terminate related sckit processes\n* Block associated infrastructure\n* Investigate network activity\n* Rotate all credentials in affected environments\n\n**Additional Threats**\n\n* GitHub Actions Supply Chain Attack: Mini Shai-Hulud Malware Reactivated in 2026\n* Attackers compromised GitHub Actions repositories on May 18, 2026, injecting malicious code that harvested CI/CD credentials and exfiltrated them to attacker-controlled servers. When the repositories were re-enabled on September 16, 2026, the malicious code remained intact, automatically resuming execution in workflows that referenced version tags, creating ongoing supply chain compromise without requiring new attacker actions.\n\n**Recommendations**\n\n* Implement SHA pinning and comprehensive secret rotation for CI/CD automation tools\n* Use robust CI/CD security practices, such as code integrity verification and secure dependency management\n* Regularly monitor and analyze network activity for signs of suspicious activity\n* Rotate credentials in affected environments to minimize the impact of the attack",
+  "digest_markdown": "The article discusses the risks of malicious npm packages and GitHub Actions, highlighting several recent examples of compromised packages and workflows that have been re-enabled, putting thousands of repositories at risk.\n\n**Malicious npm Packages:**\n\n*   The article mentions the example of the axios package, which was compromised in March 2026, and how the malicious actor published new versions of the package with malicious dependencies.\n*   It highlights the growing threat of malicious packages, even with stronger security controls in place.\n*   The article notes that malicious packages are a subset of malware and can cause data theft, ransomware, and other damaging attacks.\n\n**GitHub Actions:**\n\n*   The article discusses the example of two compromised GitHub Actions, issues-helper and maintain-one-comment, which were re-enabled on September 16, 2026, without cleaning up the malicious code.\n*   It highlights the risk of supply chain attacks, where an attacker gets one commit in and the project's own pipeline builds and publishes it via GitHub Actions, fully signed and attested.\n*   The article notes that signing proves who built it, never what it does, and that a second gate between merge and publish is needed to catch this type of attack.\n\n**Best Practices:**\n\n*   The article emphasizes the importance of code review and provenance checks to stay separate from attestation.\n*   It highlights the need for developers to harden CI/CD pipelines and follow supply chain security guidance.\n*   The article notes that pinning GitHub Actions dependencies by commit SHA instead of by tag is important for security, as it prevents a compromised or re-enabled action from silently serving malicious code.\n\nOverall, the article highlights the importance of being aware of the risks of malicious npm packages and GitHub Actions, and taking steps to harden CI/CD pipelines and follow supply chain security guidance to prevent supply chain attacks.",
   "sources": [
     {
       "title": "Worldwide software supply chain attacks tracker (updated daily)",
       "url": "https://www.comparitech.com/software-supply-chain-attacks/"
     },
     {
-      "title": "An Undercover Google Analyst Infiltrated a Notorious Supply-Chain ...",
+      "title": "An undercover Google analyst infiltrated a notorious supply-chain ...",
       "url": "https://www.wired.com/story/an-undercover-google-analyst-infiltrated-a-notorious-supply-chain-hacking-gang/"
     },
     {
@@ -17,40 +17,40 @@
       "url": "https://cybersecuritynews.com/ghappier-supply-chain-attack/"
     },
     {
-      "title": "TanStack Supply Chain Attack Lets Hackers Steal 170 Private CrowdSec ...",
-      "url": "https://cybersecuritynews.com/tanstack-supply-chain-attack/"
+      "title": "SafeDep - Real-time Open Source Software Supply Chain Security",
+      "url": "https://safedep.io/"
     },
     {
-      "title": "Malicious npm packages evade install-script defenses at runtime",
-      "url": "https://www.bleepingcomputer.com/news/security/malicious-npm-packages-evade-install-script-defenses-at-runtime/"
+      "title": "Npm Supply Chain Attacks: How to Stop Them - Xygeni",
+      "url": "https://xygeni.io/blog/npm-supply-chain-attacks-biggest-incidents/"
     },
     {
-      "title": "Detect npm Encrypted Loader Malware in Dependencies | CallMissed",
-      "url": "https://www.callmissed.com/blog/detect-npm-encrypted-loader-malware-dependencies"
+      "title": "Malicious npm Package indexed-btree Hid Its Loader in ...",
+      "url": "https://thehackernews.com/2026/09/malicious-npm-package-indexed-btree-hid.html"
     },
     {
-      "title": "Compromised MemTensor Packages Deliver sckit Credential Stealer via npm and PyPI",
-      "url": "https://thehackernews.com/2026/09/compromised-memtensor-packages-deliver.html"
+      "title": "Malicious npm Packages That Evade Defenses This is an ...",
+      "url": "https://www.facebook.com/bruce.schneier/posts/malicious-npm-packages-that-evade-defensesthis-is-an-impressive-piece-of-malware/1654155632945571/"
     },
     {
-      "title": "Malicious npm Package Steals GitHub, Cloud, and CI/CD Secrets and Spreads to Other Packages",
-      "url": "https://gbhackers.com/npm-supply-chain-attack-2/"
+      "title": "Malicious package detection | Cloudsmith Docs",
+      "url": "https://docs.cloudsmith.com/supply-chain-security/risk-detection/malicious-packages"
     },
     {
-      "title": "MemTensor AI memory component compromised; malicious code executed via PyPI/npm packages | KuCoin",
-      "url": "https://www.kucoin.com/news/flash/memtensor-ai-memory-component-compromised-malicious-code-executed-via-pypi-npm-packages"
+      "title": "Compromised GitHub Actions Came Back Online and ...",
+      "url": "https://thehackernews.com/2026/09/compromised-github-actions-came-back.html"
     },
     {
-      "title": "Malicious code in memoryos (PyPI) - Live Threat Intelligence - Threat Radar | OffSeq.com",
-      "url": "https://radar.offseq.com/threat/malicious-code-in-memoryos-pypi-3a824a5001d9ddca"
+      "title": "Feross on X: \"The scariest supply chain attack I've seen lately ...",
+      "url": "https://x.com/feross/status/2100239309232112050"
     },
     {
-      "title": "MemTensor npm and PyPI Packages Hit by a Go Worm - Real-time Open Source Software Supply Chain Security",
-      "url": "https://safedep.io/memtensor-sckit-worm-npm-pypi/"
+      "title": "GitHub Actions re-enabled with Mini Shai-Hulud payload still ...",
+      "url": "https://www.reddit.com/r/pwnhub/comments/1wqzxkf/github_actions_reenabled_with_mini_shaihulud/"
     },
     {
-      "title": "GitHub Actions Supply Chain Attack: Mini Shai-Hulud Malware Reactivated in 2026",
-      "url": "https://aviatrix.ai/threat-research-center/compromised-github-actions-mini-shai-hulud-malware-2026/"
+      "title": "Re-Enabled GitHub Actions Expose Thousands of... - daily.dev",
+      "url": "https://daily.dev/posts/re-enabled-github-actions-expose-thousands-of-repositories-to-mini-shai-hulud-gbszftbdt"
     }
   ]
 }
