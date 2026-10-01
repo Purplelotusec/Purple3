@@ -47,6 +47,50 @@
     nav { display: flex; gap: 2rem; align-items: center; }
     nav a { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--ink-mid); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
     nav a:hover { color: var(--purple); }
+
+    /* PRODUCTS DROPDOWN */
+    .nav-dropdown { position: relative; }
+    .dropdown-toggle {
+      font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--ink-mid);
+      letter-spacing: 0.06em; text-transform: uppercase; background: none; border: none;
+      cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0; transition: color 0.2s;
+    }
+    .dropdown-toggle:hover, .nav-dropdown.open .dropdown-toggle { color: var(--purple); }
+    .dropdown-caret { font-size: 0.6rem; transition: transform 0.2s; }
+    .nav-dropdown.open .dropdown-caret,
+    .nav-dropdown:hover .dropdown-caret { transform: rotate(180deg); }
+    .dropdown-menu {
+      position: absolute; top: 100%; left: -1rem; min-width: 270px; padding-top: 1.1rem;
+      opacity: 0; visibility: hidden; transform: translateY(6px);
+      transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+    }
+    .dropdown-menu-inner {
+      background: var(--cream); border: 1px solid var(--border);
+      box-shadow: 0 14px 40px rgba(26,18,8,0.14);
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu,
+    .nav-dropdown.open .dropdown-menu { opacity: 1; visibility: visible; transform: none; }
+    .dropdown-item {
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+      padding: 1rem 1.25rem; border-bottom: 1px solid var(--border);
+      text-decoration: none; color: var(--ink); transition: background 0.2s;
+    }
+    .dropdown-item:last-child { border-bottom: none; }
+    a.dropdown-item:hover { background: var(--purple-pale); }
+    a.dropdown-item:hover .di-arrow { transform: translateX(3px); color: var(--purple); }
+    .di-text { display: flex; flex-direction: column; gap: 0.15rem; }
+    .di-name { font-family: 'Syne', sans-serif; font-size: 0.88rem; font-weight: 700; letter-spacing: 0.01em; text-transform: none; color: var(--ink); }
+    .di-desc { font-size: 0.68rem; color: var(--gray-text); letter-spacing: 0.02em; text-transform: none; }
+    .di-arrow { color: var(--purple-light); transition: transform 0.2s, color 0.2s; }
+    .dropdown-item.is-soon { cursor: default; }
+    .dropdown-item.is-soon .di-name { color: var(--gray-text); }
+    .di-badge {
+      font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--orange); border: 1px solid var(--orange); padding: 0.15rem 0.5rem; white-space: nowrap;
+    }
+
     .btn-primary { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; background: var(--purple); color: var(--cream); border: none; padding: 0.55rem 1.3rem; cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-block; }
     .btn-primary:hover { background: var(--purple-light); transform: translateY(-1px); }
     .btn-ghost { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; background: transparent; color: var(--ink); border: 1px solid currentColor; padding: 0.55rem 1.3rem; cursor: pointer; text-decoration: none; transition: all 0.2s; display: inline-block; }
@@ -162,23 +206,23 @@
     .service-card p { font-size: 0.83rem; color: var(--gray-text); line-height: 1.8; }
 
     /* BLOGS */
-.blog-head { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2.5rem; }
-.blog-head .section-title { margin-bottom: 0; }
-.blog-grid { display: grid; grid-template-columns: repeat(3,1fr); border-top: 1px solid var(--border); border-left: 1px solid var(--border); }
-.blog-card { display: flex; flex-direction: column; padding: 2rem; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; background: var(--cream); transition: background 0.2s; animation: blogIn 0.5s ease both; }
-a.blog-card:hover { background: var(--purple-pale); }
-a.blog-card:hover .blog-arrow { color: var(--purple); transform: translateX(3px); }
-.blog-card.is-soon { cursor: default; }
-.blog-card.is-filler { background: var(--cream-dark); opacity: 0.55; animation: none; }
-.blog-tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 1.1rem; }
-.blog-card h3 { font-family: 'Instrument Serif', serif; font-size: 1.3rem; line-height: 1.25; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 0.75rem; font-weight: 400; }
-.blog-card p { font-size: 0.82rem; color: var(--gray-text); line-height: 1.8; margin-bottom: 1.5rem; }
-.blog-meta { margin-top: auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gray-text); padding-top: 1rem; border-top: 1px solid var(--border); }
-.blog-arrow { color: var(--purple-light); transition: transform 0.2s, color 0.2s; white-space: nowrap; }
-.blog-empty { grid-column: 1 / -1; padding: 3rem 1.5rem; text-align: center; font-size: 0.85rem; color: var(--gray-text); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-@keyframes blogIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+    .blog-head { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2.5rem; }
+    .blog-head .section-title { margin-bottom: 0; }
+    .blog-grid { display: grid; grid-template-columns: repeat(3,1fr); border-top: 1px solid var(--border); border-left: 1px solid var(--border); }
+    .blog-card { display: flex; flex-direction: column; padding: 2rem; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; background: var(--cream); transition: background 0.2s; animation: blogIn 0.5s ease both; }
+    a.blog-card:hover { background: var(--purple-pale); }
+    a.blog-card:hover .blog-arrow { color: var(--purple); transform: translateX(3px); }
+    .blog-card.is-soon { cursor: default; }
+    .blog-card.is-filler { background: var(--cream-dark); opacity: 0.55; animation: none; }
+    .blog-tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 1.1rem; }
+    .blog-card h3 { font-family: 'Instrument Serif', serif; font-size: 1.3rem; line-height: 1.25; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 0.75rem; font-weight: 400; }
+    .blog-card p { font-size: 0.82rem; color: var(--gray-text); line-height: 1.8; margin-bottom: 1.5rem; }
+    .blog-meta { margin-top: auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gray-text); padding-top: 1rem; border-top: 1px solid var(--border); }
+    .blog-arrow { color: var(--purple-light); transition: transform 0.2s, color 0.2s; white-space: nowrap; }
+    .blog-empty { grid-column: 1 / -1; padding: 3rem 1.5rem; text-align: center; font-size: 0.85rem; color: var(--gray-text); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    @keyframes blogIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 
-/* PRICING */
+    /* PRICING */
     .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; max-width: 860px; }
     .pricing-card { border: 1px solid var(--border); padding: 2.5rem; background: var(--cream); position: relative; transition: border-color 0.2s; }
     .pricing-card:hover { border-color: var(--purple); }
@@ -235,7 +279,7 @@ a.blog-card:hover .blog-arrow { color: var(--purple); transform: translateX(3px)
       .hero-right { order: -1; }
       .blackbuck-wrap { max-width: 300px; margin: 0 auto; }
       .why-grid, .product-hero-grid, .services-grid, .feature-grid, .pricing-grid, .backed-grid, .blog-grid { grid-template-columns: 1fr; }
-.blog-card.is-filler { display: none; }
+      .blog-card.is-filler { display: none; }
       .service-card, .feature-card { border-right: none; border-bottom: 1px solid var(--border); }
       .stat-row { grid-template-columns: 1fr 1fr; }
       nav { display: none; }
@@ -252,9 +296,34 @@ a.blog-card:hover .blog-arrow { color: var(--purple); transform: translateX(3px)
       <a href="#" class="logo">Purple<span>Lotus</span></a>
       <nav>
         <a href="#threat-feed">Threat Feed</a>
-        <a href="#product">Product</a>
+
+        <!-- PRODUCTS DROPDOWN -->
+        <div class="nav-dropdown" id="products-dropdown">
+          <button type="button" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="products-menu">
+            Products <span class="dropdown-caret">&#9662;</span>
+          </button>
+          <div class="dropdown-menu" id="products-menu">
+            <div class="dropdown-menu-inner">
+              <a href="https://osprey.purplelotus.space" class="dropdown-item">
+                <span class="di-text">
+                  <span class="di-name">Osprey</span>
+                  <span class="di-desc">osprey.purplelotus.space</span>
+                </span>
+                <span class="di-arrow">&rarr;</span>
+              </a>
+              <span class="dropdown-item is-soon" aria-disabled="true">
+                <span class="di-text">
+                  <span class="di-name">Petal</span>
+                  <span class="di-desc">In the works</span>
+                </span>
+                <span class="di-badge">Coming soon</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
         <a href="#services">Services</a>
-<a href="blogs.html">Blogs</a>
+        <a href="blogs.html">Blogs</a>
         <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
       </nav>
@@ -599,20 +668,20 @@ a.blog-card:hover .blog-arrow { color: var(--purple); transform: translateX(3px)
   </div>
 
   <!-- BLOGS -->
-<div class="section" id="blogs" style="border-top:1px solid var(--border);">
-<div class="blog-head">
-<div>
-<span class="section-label reveal">Blogs</span>
-<h2 class="section-title reveal">Notes from the <em>research desk.</em></h2>
-</div>
-<a href="blogs.html" class="btn-primary reveal">View All Blogs &rarr;</a>
-</div>
-<div class="blog-grid" id="blog-preview">
-<div class="blog-empty">Loading posts&hellip;</div>
-</div>
-</div>
+  <div class="section" id="blogs" style="border-top:1px solid var(--border);">
+    <div class="blog-head">
+      <div>
+        <span class="section-label reveal">Blogs</span>
+        <h2 class="section-title reveal">Notes from the <em>research desk.</em></h2>
+      </div>
+      <a href="blogs.html" class="btn-primary reveal">View All Blogs &rarr;</a>
+    </div>
+    <div class="blog-grid" id="blog-preview">
+      <div class="blog-empty">Loading posts&hellip;</div>
+    </div>
+  </div>
 
-<!-- PRICING -->
+  <!-- PRICING -->
   <div class="section" id="pricing" style="border-top:1px solid var(--border);">
     <span class="section-label reveal">Pricing</span>
     <h2 class="section-title reveal">Choose the plan that fits your security needs.</h2>
@@ -716,6 +785,23 @@ a.blog-card:hover .blog-arrow { color: var(--purple); transform: translateX(3px)
     }, { threshold: 0.07 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
+    // Products dropdown (hover works via CSS; this adds click/keyboard support)
+    (function productsDropdown() {
+      const dd = document.getElementById('products-dropdown');
+      if (!dd) return;
+      const btn = dd.querySelector('.dropdown-toggle');
+      const setOpen = (open) => {
+        dd.classList.toggle('open', open);
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      };
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        setOpen(!dd.classList.contains('open'));
+      });
+      document.addEventListener('click', (e) => { if (!dd.contains(e.target)) setOpen(false); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+    })();
+
     // FAQ accordion
     document.querySelectorAll('.faq-q').forEach(q => {
       q.addEventListener('click', () => {
@@ -782,42 +868,42 @@ a.blog-card:hover .blog-arrow { color: var(--purple); transform: translateX(3px)
           metaEl.textContent = 'Feed unavailable';
         });
     })();
-  
-// BLOGS — shared card renderer, reads data/blogs.json
-window.PLBlogs = (function () {
-  const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-  const safeUrl = (u) => (/^(https?:\/\/|\/|[\w-]+(\.html)?(#.*)?$)/.test(u || '') ? u : '');
-  const fmt = (iso) => { try { return new Date(iso).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }); } catch (e) { return iso || ''; } };
-  const card = (p, i) => {
-    const url = safeUrl(p.url);
-    const ext = /^https?:\/\//.test(url) ? ' target="_blank" rel="noopener"' : '';
-    const inner = `
-      <span class="blog-tag">${esc(p.tag || 'Blog')}</span>
-      <h3>${esc(p.title)}</h3>
-      <p>${esc(p.excerpt)}</p>
-      <div class="blog-meta"><span>${esc(fmt(p.date))}${p.read_time ? ' · ' + esc(p.read_time) : ''}</span><span class="blog-arrow">${url ? 'Read →' : 'Coming soon'}</span></div>`;
-    const delay = `style="animation-delay:${i * 60}ms"`;
-    return url ? `<a class="blog-card" href="${esc(url)}"${ext} ${delay}>${inner}</a>` : `<div class="blog-card is-soon" ${delay}>${inner}</div>`;
-  };
-  const load = () => fetch('data/blogs.json', { cache: 'no-store' })
-    .then((r) => { if (!r.ok) throw new Error('blogs.json ' + r.status); return r.json(); })
-    .then((d) => (d.posts || []).slice().sort((a, b) => new Date(b.date) - new Date(a.date)));
-  const cards = (list) => list.map(card).join('') + '<div class="blog-card is-filler" aria-hidden="true"></div>'.repeat((3 - (list.length % 3)) % 3);
-  return { card, cards, load, esc };
-})();
 
-(function renderBlogPreview() {
-  const el = document.getElementById('blog-preview');
-  if (!el) return;
-  PLBlogs.load().then((posts) => {
-    el.innerHTML = posts.length
-      ? PLBlogs.cards(posts.slice(0, 3))
-      : '<div class="blog-empty">No posts yet. Check back soon.</div>';
-  }).catch((err) => {
-    console.error(err);
-    el.innerHTML = '<div class="blog-empty">Couldn\'t load posts right now. <a href="blogs.html" style="color:var(--purple)">Open the blog page &rarr;</a></div>';
-  });
-})();
-</script>
+    // BLOGS — shared card renderer, reads data/blogs.json
+    window.PLBlogs = (function () {
+      const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+      const safeUrl = (u) => (/^(https?:\/\/|\/|[\w-]+(\.html)?(#.*)?$)/.test(u || '') ? u : '');
+      const fmt = (iso) => { try { return new Date(iso).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }); } catch (e) { return iso || ''; } };
+      const card = (p, i) => {
+        const url = safeUrl(p.url);
+        const ext = /^https?:\/\//.test(url) ? ' target="_blank" rel="noopener"' : '';
+        const inner = `
+          <span class="blog-tag">${esc(p.tag || 'Blog')}</span>
+          <h3>${esc(p.title)}</h3>
+          <p>${esc(p.excerpt)}</p>
+          <div class="blog-meta"><span>${esc(fmt(p.date))}${p.read_time ? ' · ' + esc(p.read_time) : ''}</span><span class="blog-arrow">${url ? 'Read →' : 'Coming soon'}</span></div>`;
+        const delay = `style="animation-delay:${i * 60}ms"`;
+        return url ? `<a class="blog-card" href="${esc(url)}"${ext} ${delay}>${inner}</a>` : `<div class="blog-card is-soon" ${delay}>${inner}</div>`;
+      };
+      const load = () => fetch('data/blogs.json', { cache: 'no-store' })
+        .then((r) => { if (!r.ok) throw new Error('blogs.json ' + r.status); return r.json(); })
+        .then((d) => (d.posts || []).slice().sort((a, b) => new Date(b.date) - new Date(a.date)));
+      const cards = (list) => list.map(card).join('') + '<div class="blog-card is-filler" aria-hidden="true"></div>'.repeat((3 - (list.length % 3)) % 3);
+      return { card, cards, load, esc };
+    })();
+
+    (function renderBlogPreview() {
+      const el = document.getElementById('blog-preview');
+      if (!el) return;
+      PLBlogs.load().then((posts) => {
+        el.innerHTML = posts.length
+          ? PLBlogs.cards(posts.slice(0, 3))
+          : '<div class="blog-empty">No posts yet. Check back soon.</div>';
+      }).catch((err) => {
+        console.error(err);
+        el.innerHTML = '<div class="blog-empty">Couldn\'t load posts right now. <a href="blogs.html" style="color:var(--purple)">Open the blog page &rarr;</a></div>';
+      });
+    })();
+  </script>
 </body>
 </html>
