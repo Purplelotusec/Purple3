@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-09-30T13:33:37.504389+00:00",
+  "generated_at": "2026-10-01T14:25:42.785665+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "The article discusses the risks of malicious npm packages and GitHub Actions, highlighting several recent examples of compromised packages and workflows that have been re-enabled, putting thousands of repositories at risk.\n\n**Malicious npm Packages:**\n\n*   The article mentions the example of the axios package, which was compromised in March 2026, and how the malicious actor published new versions of the package with malicious dependencies.\n*   It highlights the growing threat of malicious packages, even with stronger security controls in place.\n*   The article notes that malicious packages are a subset of malware and can cause data theft, ransomware, and other damaging attacks.\n\n**GitHub Actions:**\n\n*   The article discusses the example of two compromised GitHub Actions, issues-helper and maintain-one-comment, which were re-enabled on September 16, 2026, without cleaning up the malicious code.\n*   It highlights the risk of supply chain attacks, where an attacker gets one commit in and the project's own pipeline builds and publishes it via GitHub Actions, fully signed and attested.\n*   The article notes that signing proves who built it, never what it does, and that a second gate between merge and publish is needed to catch this type of attack.\n\n**Best Practices:**\n\n*   The article emphasizes the importance of code review and provenance checks to stay separate from attestation.\n*   It highlights the need for developers to harden CI/CD pipelines and follow supply chain security guidance.\n*   The article notes that pinning GitHub Actions dependencies by commit SHA instead of by tag is important for security, as it prevents a compromised or re-enabled action from silently serving malicious code.\n\nOverall, the article highlights the importance of being aware of the risks of malicious npm packages and GitHub Actions, and taking steps to harden CI/CD pipelines and follow supply chain security guidance to prevent supply chain attacks.",
+  "digest_markdown": "Here is a bullet digest of the article:\n\n**Compromised MemTensor Packages**\n\n* Two legitimate MemTensor packages on npm and PyPI were compromised by unknown threat actors.\n* The compromised packages are:\n\t+ @memtensor/memos-cloud-openclaw-plugin versions 0.1.21, 0.1.23, and 0.1.25 (versions 0.1.22 and 0.1.24 are clean)\n\t+ MemoryOS version 2.0.34 (project currently quarantined on PyPI)\n* The malicious packages deliver a Go-based implant named sckit, which is designed to steal credentials from cloud services, source-code platforms, package registries, and developer tools.\n\n**How the Malware Works**\n\n* The malware is launched when the agent gateway starts and whenever the plugin handles a memory-recall event.\n* The launcher passes the host process environment and, during recall, the user's prompt text directly to the malicious executable.\n* The malware starts the sckit binary as soon as the memos module is imported.\n* The sckit binary searches for credentials and reports to command and control (C2) servers under skyleen[.]fr.\n\n**Targets and Implications**\n\n* Targets include npm, PyPI, GitHub, GitLab, AWS, Vault, and SSH secrets.\n* The malware can function like a worm by self-proliferating through GitHub and direct npm and PyPI package publishing.\n* The malware collects credentials from developer machines and from CI jobs.\n* The implant also receives signed tasks from a command-and-control server and contains templates to install itself in npm packages, Python packages, and GitHub Actions workflows.\n\n**Recommendations**\n\n* Pin the npm package to version 0.1.20 and the PyPI package to version 2.0.33.\n* Rotate exposed secrets.\n* Kill any sckit process.\n* Block skyleen[.]fr and all subdomains.\n\n**Attribution**\n\n* The malicious packages are attributed to the Lazarus Group, a North Korea-affiliated group.\n* The campaign is part of a fake recruitment-themed phishing campaign that targets developers and IT professionals.",
   "sources": [
     {
       "title": "Worldwide software supply chain attacks tracker (updated daily)",
@@ -17,40 +17,40 @@
       "url": "https://cybersecuritynews.com/ghappier-supply-chain-attack/"
     },
     {
-      "title": "SafeDep - Real-time Open Source Software Supply Chain Security",
-      "url": "https://safedep.io/"
+      "title": "CrowdSec Says TanStack npm Attack Led to Copy of 170 Private GitHub ...",
+      "url": "https://thehackernews.com/2026/09/crowdsec-says-tanstack-npm-attack-led.html"
     },
     {
-      "title": "Npm Supply Chain Attacks: How to Stop Them - Xygeni",
-      "url": "https://xygeni.io/blog/npm-supply-chain-attacks-biggest-incidents/"
+      "title": "Malicious npm packages evade install-script defenses at runtime",
+      "url": "https://www.bleepingcomputer.com/news/security/malicious-npm-packages-evade-install-script-defenses-at-runtime/"
     },
     {
-      "title": "Malicious npm Package indexed-btree Hid Its Loader in ...",
+      "title": "Malicious npm Package indexed-btree Hid Its Loader in Runtime ...",
       "url": "https://thehackernews.com/2026/09/malicious-npm-package-indexed-btree-hid.html"
     },
     {
-      "title": "Malicious npm Packages That Evade Defenses This is an ...",
-      "url": "https://www.facebook.com/bruce.schneier/posts/malicious-npm-packages-that-evade-defensesthis-is-an-impressive-piece-of-malware/1654155632945571/"
+      "title": "Malicious npm Package With 2 Million Downloads Hides Malware ...",
+      "url": "https://cybersecuritynews.com/malicious-npm-package/"
     },
     {
-      "title": "Malicious package detection | Cloudsmith Docs",
-      "url": "https://docs.cloudsmith.com/supply-chain-security/risk-detection/malicious-packages"
+      "title": "npm 'btree' Malware Campaign Affects Millions of Downloads ...",
+      "url": "https://checkmarx.com/zero-post/npm-btree-malware-campaign-affects-millions-of-downloads-no-need-for-install-script/"
     },
     {
-      "title": "Compromised GitHub Actions Came Back Online and ...",
-      "url": "https://thehackernews.com/2026/09/compromised-github-actions-came-back.html"
+      "title": "MemTensor npm and PyPI Packages Compromised in ... - Socket",
+      "url": "https://socket.dev/blog/memtensor-compromise"
     },
     {
-      "title": "Feross on X: \"The scariest supply chain attack I've seen lately ...",
-      "url": "https://x.com/feross/status/2100239309232112050"
+      "title": "Compromised MemTensor Packages Deliver sckit Credential ...",
+      "url": "https://thehackernews.com/2026/09/compromised-memtensor-packages-deliver.html"
     },
     {
-      "title": "GitHub Actions re-enabled with Mini Shai-Hulud payload still ...",
-      "url": "https://www.reddit.com/r/pwnhub/comments/1wqzxkf/github_actions_reenabled_with_mini_shaihulud/"
+      "title": "MemTensor npm, PyPI packages push credential-stealing malware",
+      "url": "https://bitnewsbot.com/memtensor-npm-pypi-packages-push-credential-stealing-malware/"
     },
     {
-      "title": "Re-Enabled GitHub Actions Expose Thousands of... - daily.dev",
-      "url": "https://daily.dev/posts/re-enabled-github-actions-expose-thousands-of-repositories-to-mini-shai-hulud-gbszftbdt"
+      "title": "New Malicious Packages in npm and PyPI Tied to Lazarus Group",
+      "url": "https://dailysecurityreview.com/cyber-security/new-malicious-packages-in-npm-and-pypi-tied-to-lazarus-group/"
     }
   ]
 }
