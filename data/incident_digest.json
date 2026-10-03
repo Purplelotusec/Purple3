@@ -1,56 +1,7 @@
 {
-  "generated_at": "2026-10-02T13:46:31.560063+00:00",
+  "generated_at": "2026-10-03T12:23:55.130292+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "The article discusses a recent supply chain attack on MemTensor packages hosted on npm and PyPI. The attack compromised two MemTensor packages, @memtensor/memos-cloud-openclaw-plugin and MemoryOS, which were used by developers to integrate AI memory into their applications. The attackers added a malicious Go-based implant, dubbed \"sckit,\" to the packages, which was designed to steal credentials and sensitive data from developer machines and CI jobs.\n\nThe attack was carried out by unknown threat actors who obtained the publish tokens from MemTensor's GitHub Actions release pipelines by pushing commits that caused the workflow to hand over the npm or PyPI token. The malicious code was then launched when the agent gateway started or whenever the plugin handled a memory-recall event.\n\nThe compromised packages were:\n\n* @memtensor/memos-cloud-openclaw-plugin versions 0.1.21, 0.1.23, and 0.1.25\n* MemoryOS version 2.0.34\n\nThe attackers targeted the following ecosystems:\n\n* npm\n* PyPI\n* GitHub\n* GitLab\n* AWS\n* Vault\n* SSH secrets\n\nThe malicious code was designed to:\n\n* Steal credentials from developer machines and CI jobs\n* Collect sensitive data from cloud services, source-code platforms, package registries, and developer tools\n* Exfiltrate the data to an external server (\"skyleen[.]fr\")\n\nThe attack highlights the importance of secure software development practices, such as verifying the integrity of dependencies and using secure package management systems.\n\nTo avoid similar attacks, developers can take the following steps:\n\n* Use secure package management systems, such as Chainguard Libraries for Python, which provide proactive malware prevention and verification by default.\n* Regularly update dependencies and monitor for security vulnerabilities.\n* Use secure coding practices, such as validating user input and using secure protocols for data transmission.\n* Implement robust security measures, such as encryption and access controls, to protect sensitive data.\n\nBy taking these steps, developers can reduce the risk of supply chain attacks and protect their applications and data from malicious actors.",
-  "sources": [
-    {
-      "title": "Worldwide software supply chain attacks tracker (updated ...",
-      "url": "https://www.comparitech.com/software-supply-chain-attacks/"
-    },
-    {
-      "title": "An Undercover Google Analyst Infiltrated a Notorious Supply ...",
-      "url": "https://www.wired.com/story/an-undercover-google-analyst-infiltrated-a-notorious-supply-chain-hacking-gang/"
-    },
-    {
-      "title": "GHAPPIER Supply Chain Attack Compromises 65 GitHub ...",
-      "url": "https://cybersecuritynews.com/ghappier-supply-chain-attack/"
-    },
-    {
-      "title": "TanStack Supply Chain Attack Lets Hackers Steal 170 Private ...",
-      "url": "https://cybersecuritynews.com/tanstack-supply-chain-attack/"
-    },
-    {
-      "title": "DNSFilter - Malware Defense - Free 14 Day Trial",
-      "url": "https://www.bing.com/aclick?ld=e8YdK52TzUxIdMRUOzghPHADVUCUxV48ua6upfTX_nYpbH34AtfZo_bn5KXrX3H13-NYUA-h8RCxL2Pn7u3au6-zXk_vf_uxnK0x2QiFxRT9kP3SMlGMHqawqGQv9Hh4PhmG_iEi0DrIkwc8OiPol6WoTHVW1-jSTOc8DuscavFReolzggSvRUu2uoj7HClyXlx14FTT7nVPSB7XMxPYL_hQAVqoo&u=aHR0cHMlM2ElMmYlMmZ3d3cuZG5zZmlsdGVyLmNvbSUyZmZlYXR1cmVzJTJmY29udGVudC1maWx0ZXJpbmclM2Z1dG1fY2FtcGFpZ24lM2RkbnNmX2RnXzIwMjYtMDhfYmluZ19wYWlkLXNlYXJjaF9jb250ZW50X2ZpbHRlcmluZyUyNnV0bV9tZWRpdW0lM2RjcGMlMjZ1dG1fc291cmNlJTNkYmluZyUyNmdjbHNyYyUzZDNwLmRzJTI2JTI2dXRtX21lZGl1bSUzZGNwYyUyNnV0bV9zb3VyY2UlM2RCaW5nJTI2dXRtX2NhbXBhaWduJTNkZG5zZl9kZ18yMDI2X2JpbmdfY29udGVudF9maWx0ZXJpbmclMjZ1dG1fY29udGVudCUzZE1hbHdhcmUlMjUyMEZpbHRlcmluZyUyNnV0bV90ZXJtJTNkbWFsd2FyZSUyNTIwZGVmZW5zZSU3Y3AlN2Nrd2QtODQ0NTc1NDIxODM3MTclM2Fsb2MtMTkwJTdjYyU3YyU3Yzg0NDU2NzkzMDk2OTQyJTI2bXNjbGtpZCUzZGM4YjI5M2UwNDE3NzFhZjU2ZTM3Zjk1ZmY0NWM4Njcx&rlid=c8b293e041771af56e37f95ff45c8671"
-    },
-    {
-      "title": "Malware-Free npm Packages - Block 99.7% Of npm Malware",
-      "url": "https://www.bing.com/aclick?ld=e8rwJKziL_zt1ZlOUKZK0GwTVUCUyGRddm1OHne2AaHqmmYuNsiP90rZBQI8Y3yYaj3V2rwCprzUFjJ1FU-1UN-Osqf_BOZ7BvkOi2LM_gKQYuCIEWOlFNOijrGH0MpBsERae9I0IsTlyDW84xnQKhG5QJRIVMCbteH9lDNXbDnXFQctnpCc7FYrBj5oHw7lMIabyYCnoQch1YStlb3OqMe8Nh6bY&u=aHR0cHMlM2ElMmYlMmZ3d3cuY2hhaW5ndWFyZC5kZXYlMmZsaWJyYXJpZXMlMmZqYXZhc2NyaXB0JTNmbXNjbGtpZCUzZDZlNmNmYTFkYzBhMzE1MjFjOTkxOTBhMjc1ODhmNDM5JTI2dXRtX3NvdXJjZSUzZGJpbmclMjZ1dG1fbWVkaXVtJTNkY3BjJTI2dXRtX2NhbXBhaWduJTNkYmdfc19hbWVyX2FjcV9nZW5lcmljX2JvZiUyNnV0bV90ZXJtJTNkbnBtJTI1MjBtYWx3YXJlJTI2dXRtX2NvbnRlbnQlM2RsaWJyYXJpZXNfbnBt&rlid=6e6cfa1dc0a31521c99190a27588f439"
-    },
-    {
-      "title": "Malicious npm Package indexed-btree Hid Its Loader in Runtime ...",
-      "url": "https://thehackernews.com/2026/09/malicious-npm-package-indexed-btree-hid.html"
-    },
-    {
-      "title": "Malicious npm packages evade install-script defenses at runtime",
-      "url": "https://www.bleepingcomputer.com/news/security/malicious-npm-packages-evade-install-script-defenses-at-runtime/"
-    },
-    {
-      "title": "PyPI Vulnerability Fixes - Lightwell Package Catalog",
-      "url": "https://www.bing.com/aclick?ld=e8XRzLjr6WF-vncd39lLdBrDVUCUx7oR3NwzIrtplzItHqZnIF1IJqRjD9_ovoa8WCMfABu-V2NtVsOt-1fPHxxfWK7vnaVIwHKdyW1Ihrn8MQKo0bVtDW5qervv19OVPdbdlpVDEyAGxYuphG7lR3nrVxQXY-ytijrzuEswCSFjtf77_pjlaP7_Co4Lxbhagw3TIsnkUT5Js06_dh3lv3LCC6-f8&u=aHR0cHMlM2ElMmYlMmZhZC5kb3VibGVjbGljay5uZXQlMmZzZWFyY2hhZHMlMmZsaW5rJTJmY2xpY2slM2ZsaWQlM2Q0MzcwMDA4NDM0MTU4MDkzNCUyNmRzX3Nfa3dnaWQlM2Q1ODcwMDAwOTEyNjA4MjEyMSUyNmRzX2FfY2lkJTNkNDA1NTA3ODI5JTI2ZHNfYV9jYWlkJTNkMjQyMTQ3NzMyODclMjZkc19hX2FnaWQlM2QyMDA4ODkxODM5NzglMjZkc19hX2xpZCUzZGt3ZC0yNDgwNTgyNjA1ODczJTI2JTI2ZHNfZV9hZGlkJTNkODEwMjA0MTEwMTQ2MjglMjZkc19lX3RhcmdldF9pZCUzZGt3ZC04MTAyMDY4ODgwNjc4MSUzYWxvYy0xOTAlMjYlMjZkc19lX25ldHdvcmslM2RvJTI2ZHNfdXJsX3YlM2QyJTI2ZHNfZGVzdF91cmwlM2RodHRwcyUzYSUyZiUyZnd3dy5pYm0uY29tJTJmcHJvZHVjdHMlMmZsaWdodHdlbGwlM2Z1dG1fY29udGVudCUzZFNSQ1dXJTI2cDElM2RTZWFyY2glMjZwNCUzZDI0ODA1ODI2MDU4NzMlMjZwNSUzZHAlMjZwOSUzZDIwMDg4OTE4Mzk3OCUyNmdjbGlkJTNkYzBmMGUyYTUyZDBhMWMwMTUzMjQ4ODFhOTgyNTI0MzYlMjZnY2xzcmMlM2QzcC5kcyUyNiUyNm1zY2xraWQlM2RjMGYwZTJhNTJkMGExYzAxNTMyNDg4MWE5ODI1MjQzNg&rlid=c0f0e2a52d0a1c015324881a98252436"
-    },
-    {
-      "title": "Malware-Free PyPI Packages - CVE-Free PyPI Packages",
-      "url": "https://www.bing.com/aclick?ld=e8R2TcpF1lsc0sVWaOYC2ZWTVUCUxQ_D6mxCYz1f5Fwo_WvZVN35eyJ6dkrORQcFn8VQE3CRa_43IJBbOWDEL6bvrf5cLsNoNnWtpH8i8hWPnyuvjGI3gfK79dHI8RdMTiOX6NGgo9A8xl8292hbeFdaEYteLcDIqZG_G7UZ9l2bfL7dHBarcBsWm-D1BZKw27Swy741ujFj1R32ZWpVK_Vbd8DjA&u=aHR0cHMlM2ElMmYlMmZ3d3cuY2hhaW5ndWFyZC5kZXYlMmZsaWJyYXJpZXMlMmZweXRob24lM2Ztc2Nsa2lkJTNkMDM1NTI4OGU2NGIxMWNiMGI5Zjk0MjMxZDE5ZWE3YWQlMjZ1dG1fc291cmNlJTNkYmluZyUyNnV0bV9tZWRpdW0lM2RjcGMlMjZ1dG1fY2FtcGFpZ24lM2RiZ19zX2FtZXJfYWNxX2dlbmVyaWNfYm9mJTI2dXRtX3Rlcm0lM2RtYWxpY2lvdXMlMjUyMHB5cGklMjUyMHBhY2thZ2VzJTI2dXRtX2NvbnRlbnQlM2RsaWJyYXJpZXNfcHlwaQ&rlid=0355288e64b11cb0b9f94231d19ea7ad"
-    },
-    {
-      "title": "MemTensor npm and PyPI Packages Compromised in ... - Socket",
-      "url": "https://socket.dev/blog/memtensor-compromise"
-    },
-    {
-      "title": "Compromised MemTensor Packages Deliver sckit Credential ...",
-      "url": "https://thehackernews.com/2026/09/compromised-memtensor-packages-deliver.html"
-    }
-  ]
+  "digest_markdown": "No sources were found in this run \u2014 check back after the next scheduled run.",
+  "sources": []
 }
