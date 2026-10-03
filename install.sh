@@ -90,40 +90,41 @@ echo ""
 
 echo -e "${BLUE}[3/5]${NC} Installing dependencies..."
 
-# Install npm dependencies
-npm install || {
-    echo -e "${RED}Error: npm install failed.${NC}"
-    echo -e "Please check the error messages above."
-    exit 1
+# Install npm dependencies (suppress output)
+npm install --silent --no-progress > /dev/null 2>&1 || {
+    echo -e "${YELLOW}Silent install failed, trying verbose...${NC}"
+    npm install || {
+        echo -e "${RED}Error: npm install failed.${NC}"
+        echo -e "Please check the error messages above."
+        exit 1
+    }
 }
 
 echo -e "${GREEN}✓ Dependencies installed${NC}"
 echo ""
 
-echo -e "${BLUE}[4/5]${NC} Linking Osprey CLI globally..."
+echo -e "${BLUE}[4/5]${NC} Linking CRA CLI globally..."
 
-# Link the CLI tool globally
-npm link || {
+# Link the CLI tool globally (suppress output)
+npm link > /dev/null 2>&1 || {
     echo -e "${YELLOW}Warning: npm link failed. Trying with sudo...${NC}"
-    sudo npm link || {
-        echo -e "${RED}Error: Could not link Osprey CLI globally.${NC}"
+    sudo npm link > /dev/null 2>&1 || {
+        echo -e "${RED}Error: Could not link CRA CLI globally.${NC}"
         echo -e "You may need to run with sudo or configure npm properly."
         exit 1
     }
 }
 
-echo -e "${GREEN}✓ Osprey CLI linked globally${NC}"
+echo -e "${GREEN}✓ CRA CLI linked globally${NC}"
 echo ""
 
 echo -e "${BLUE}[5/5]${NC} Verifying installation..."
 
 # Verify the CLI is accessible
-if command -v osprey >/dev/null 2>&1; then
-    echo -e "${GREEN}✓ Osprey CLI is ready!${NC}"
-elif command -v cra >/dev/null 2>&1; then
+if command -v cra >/dev/null 2>&1; then
     echo -e "${GREEN}✓ CRA CLI is ready!${NC}"
 else
-    echo -e "${YELLOW}Warning: CLI command not found in PATH.${NC}"
+    echo -e "${YELLOW}Warning: cra command not found in PATH.${NC}"
     echo -e "You may need to restart your terminal or add npm global bin to PATH."
 fi
 
@@ -132,15 +133,14 @@ echo -e "${PURPLE}━━━━━━━━━━━━━━━━━━━━�
 echo -e "${GREEN}Installation Complete!${NC}"
 echo -e "${PURPLE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo ""
-echo -e "Osprey CLI installed at: ${BLUE}$OSPREY_DIR${NC}"
+echo -e "CRA CLI installed at: ${BLUE}$OSPREY_DIR${NC}"
 echo ""
 echo -e "${YELLOW}Quick Start:${NC}"
-echo -e "  ${GREEN}osprey --help${NC}      # Show all available commands"
-echo -e "  ${GREEN}cra --help${NC}         # Alternative command (if osprey is the CRA tool)"
+echo -e "  ${GREEN}cra --help${NC}         # Show all available commands"
 echo ""
 echo -e "${YELLOW}Example Usage:${NC}"
-echo -e "  ${GREEN}osprey scan${NC}        # Scan current project"
-echo -e "  ${GREEN}osprey init${NC}        # Initialize configuration"
+echo -e "  ${GREEN}cra scan${NC}           # Scan current project"
+echo -e "  ${GREEN}cra init${NC}           # Initialize configuration"
 echo ""
 echo -e "${YELLOW}Update Osprey:${NC}"
 echo -e "  Run this installer again to update to the latest version"
