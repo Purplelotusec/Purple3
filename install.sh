@@ -93,12 +93,79 @@ echo ""
 
 echo -e "${BLUE}[3/6]${NC} Installing Python dependencies..."
 
-# Check if pip is installed
-command -v pip3 >/dev/null 2>&1 || { echo -e "${RED}Error: pip3 is not installed.${NC} Please install pip first."; exit 1; }
+# Check if pip3 is installed, if not try to install it
+if ! command -v pip3 >/dev/null 2>&1; then
+    echo -e "${YELLOW}pip3 not found. Attempting to install...${NC}"
+
+    # Detect OS and install pip3
+    if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+        # Linux
+        if command -v apt-get >/dev/null 2>&1; then
+            # Debian/Ubuntu
+            echo -e "Installing pip3 using apt-get..."
+            sudo apt-get update -qq && sudo apt-get install -y python3-pip -qq
+        elif command -v yum >/dev/null 2>&1; then
+            # CentOS/RHEL/Fedora
+            echo -e "Installing pip3 using yum..."
+            sudo yum install -y python3-pip -q
+        elif command -v dnf >/dev/null 2>&1; then
+            # Fedora (newer)
+            echo -e "Installing pip3 using dnf..."
+            sudo dnf install -y python3-pip -q
+        elif command -v pacman >/dev/null 2>&1; then
+            # Arch Linux
+            echo -e "Installing pip3 using pacman..."
+            sudo pacman -S --noconfirm python-pip
+        else
+            echo -e "${YELLOW}! Could not detect package manager. Trying ensurepip...${NC}"
+            python3 -m ensurepip --upgrade 2>/dev/null || {
+                echo -e "${RED}Error: Could not install pip3.${NC}"
+                echo -e "Please install pip3 manually and run this script again."
+                exit 1
+            }
+        fi
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+        # macOS
+        echo -e "Installing pip3 using ensurepip..."
+        python3 -m ensurepip --upgrade 2>/dev/null || {
+            echo -e "${YELLOW}Trying with homebrew...${NC}"
+            if command -v brew >/dev/null 2>&1; then
+                brew install python3
+            else
+                echo -e "${RED}Error: Could not install pip3.${NC}"
+                echo -e "Please install pip3 manually: python3 -m ensurepip --upgrade"
+                exit 1
+            fi
+        }
+    else
+        # Try ensurepip as fallback
+        echo -e "Trying to install pip3 using ensurepip..."
+        python3 -m ensurepip --upgrade 2>/dev/null || {
+            echo -e "${RED}Error: Could not install pip3.${NC}"
+            echo -e "Please install pip3 manually and run this script again."
+            exit 1
+        }
+    fi
+
+    # Verify pip3 installation
+    if command -v pip3 >/dev/null 2>&1; then
+        echo -e "${GREEN}✓ pip3 installed successfully${NC}"
+    else
+        echo -e "${RED}Error: pip3 installation failed.${NC}"
+        echo -e "Please install pip3 manually and run this script again."
+        exit 1
+    fi
+fi
 
 # Install dependencies
 if [ -f "requirements.txt" ]; then
-    pip3 install --user -r requirements.txt -q
+    echo -e "Installing Python packages..."
+    pip3 install --user -r requirements.txt -q || {
+        echo -e "${YELLOW}! Some packages failed to install. Trying without --user flag...${NC}"
+        pip3 install -r requirements.txt -q || {
+            echo -e "${YELLOW}! Package installation had issues but continuing...${NC}"
+        }
+    }
     echo -e "${GREEN}✓ Python dependencies installed${NC}"
 else
     echo -e "${YELLOW}! requirements.txt not found, skipping Python dependencies${NC}"
