@@ -114,13 +114,14 @@ nav a.active { color: var(--purple); }
     .reveal.visible { opacity: 1; transform: none; }
 
     </style>
+<link rel="stylesheet" href="../responsive.css">
 </head>
 <body>
 
 <header>
 <div class="header-inner">
 <a href="/" class="logo">Purple<span>Lotus</span></a>
-<nav>
+<nav id="site-nav">
 <a href="/threat-feed">Threat Feed</a>
 <a href="/#product">Product</a>
 <a href="/#services">Services</a>
@@ -129,6 +130,7 @@ nav a.active { color: var(--purple); }
 <a href="/#faq">FAQ</a>
 </nav>
 <a href="mailto:security@purplelotus.tech" class="btn-primary">Contact Us</a>
+<button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
 </div>
 </header>
 
@@ -240,5 +242,6 @@ More vulnerabilities arrive</code></pre>
 <p>Security that ships with your code. &copy; 2025 PurpleLotus, Inc. All rights reserved.</p>
 <p><a href="mailto:security@purplelotus.tech">security@purplelotus.tech</a></p>
 </footer>
+<script src="../nav.js"></script>
 </body>
 </html>

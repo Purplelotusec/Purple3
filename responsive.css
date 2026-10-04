@@ -1,0 +1,163 @@
+/* Shared responsive layer — loaded after each page's own styles.
+   Breakpoints: 1024 (tablet), 960 (nav collapses), 768 (single column), 480 (small phones). */
+
+html { scroll-padding-top: 72px; -webkit-text-size-adjust: 100%; }
+img, svg, video { max-width: 100%; }
+
+/* HAMBURGER (hidden on desktop) */
+.nav-toggle {
+  display: none; flex-direction: column; justify-content: center; gap: 5px;
+  width: 40px; height: 40px; padding: 0 9px; margin-left: 0.75rem;
+  background: none; border: 1px solid var(--border); cursor: pointer; flex-shrink: 0;
+}
+.nav-toggle span { display: block; height: 1.5px; background: var(--ink); transition: transform 0.25s, opacity 0.2s; }
+header.nav-open .nav-toggle span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+header.nav-open .nav-toggle span:nth-child(2) { opacity: 0; }
+header.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* OSPREY INSTALL BOX (index) */
+.install-box { margin-top: 4rem; padding: 3rem; border: 1px solid var(--purple); background: var(--ink); text-align: center; }
+.install-box h3 { font-family: 'Instrument Serif', serif; font-size: 1.8rem; color: var(--cream); margin-bottom: 1rem; }
+.install-box > p { font-size: 0.88rem; color: rgba(253,246,227,0.65); margin: 0 auto 2rem; max-width: 600px; }
+.install-box .install-cmd { background: rgba(0,0,0,0.3); padding: 1.5rem; border: 1px solid var(--purple-light); margin: 0 auto 1.5rem; max-width: 700px; text-align: left; }
+.install-box code { font-family: 'DM Mono', monospace; font-size: 0.85rem; color: var(--cream); display: block; overflow-x: auto; user-select: all; }
+.install-box .install-req { font-size: 0.75rem; color: rgba(253,246,227,0.45); margin-bottom: 1rem; }
+.install-box .install-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.install-box .install-actions a { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--cream); padding: 0.75rem 1.5rem; text-decoration: none; transition: background 0.2s, border-color 0.2s; }
+.install-box .install-actions .ia-primary { background: var(--purple); border: 1px solid var(--purple); }
+.install-box .install-actions .ia-primary:hover { background: var(--purple-light); border-color: var(--purple-light); }
+.install-box .install-actions .ia-ghost { border: 1px solid var(--cream); }
+.install-box .install-actions .ia-ghost:hover { border-color: #c8a0e8; color: #c8a0e8; }
+
+/* "View full feed" link — only shown when the homepage feed is truncated (phones) */
+.feed-more { display: none; }
+
+/* ───────── TABLET ───────── */
+@media (max-width: 1024px) {
+  .backed-grid { grid-template-columns: repeat(2, 1fr); }
+  .why-grid { gap: 3rem; }
+  .product-hero-grid { gap: 2.5rem; }
+  .feature-card, .service-card { padding: 1.75rem; }
+}
+
+/* ───────── NAV COLLAPSE ───────── */
+@media (max-width: 960px) {
+  .header-inner { padding: 0 1.25rem; }
+  .header-inner > .btn-primary { margin-left: auto; }
+  .nav-toggle { display: inline-flex; }
+
+  nav {
+    display: none; position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 0;
+    background: var(--cream); border-bottom: 1px solid var(--border);
+    box-shadow: 0 18px 40px rgba(26,18,8,0.12);
+    padding: 0.25rem 1.25rem 1.25rem;
+    max-height: calc(100vh - 60px); max-height: calc(100dvh - 60px); overflow-y: auto;
+  }
+  header.nav-open nav { display: flex; }
+  nav > a { padding: 1rem 0; border-bottom: 1px solid var(--border); font-size: 0.8rem; }
+
+  /* Products dropdown becomes an always-open group inside the menu */
+  .nav-dropdown { border-bottom: 1px solid var(--border); padding: 1rem 0 0.75rem; }
+  .dropdown-toggle { font-size: 0.8rem; pointer-events: none; }
+  .dropdown-caret { display: none; }
+  .dropdown-menu, .nav-dropdown:hover .dropdown-menu {
+    position: static; opacity: 1; visibility: visible; transform: none;
+    min-width: 0; padding-top: 0.75rem; transition: none;
+  }
+  .dropdown-menu-inner { box-shadow: none; }
+}
+
+/* ───────── PHONE ───────── */
+@media (max-width: 768px) {
+  /* Spacing */
+  .section { padding: 4rem 1.25rem; }
+  .hero { min-height: auto; padding: 5.5rem 1.25rem 3rem; }
+  .backed-inner { padding: 2rem 1.25rem; }
+  .backed-grid { grid-template-columns: 1fr; }
+  .feed-inner, .product-inner { padding: 4rem 1.25rem; }
+  .digest-inner { padding: 3.5rem 1.25rem; }
+  .digest-body { padding: 0.75rem 1.25rem; }
+  .page-hero { padding: 6.5rem 1.25rem 1rem; }
+  .blog-section { padding: 0 1.25rem 4rem; }
+  .post { padding: 6.5rem 1.25rem 3.5rem; }
+  .feed-page-intro { padding: 6.5rem 1.25rem 1.5rem; }
+  .newsletter-section { padding: 3.5rem 1.25rem; }
+  .wordmark-section { padding: 2.5rem 1rem 1rem; }
+
+  .stat-row { grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+  .stat-block { padding: 1rem 0.5rem; }
+  .stat-num { font-size: 1.8rem; }
+
+  .services-grid, .feature-grid { border-bottom: none; }
+  .service-card, .feature-card { padding: 1.5rem; }
+  .sw-card { padding: 1.5rem; }
+  .pricing-card { padding: 2rem 1.5rem; }
+  .blog-card { padding: 1.5rem; }
+  .faq-item.open .faq-a { max-height: 600px; }
+
+  .install-box { margin-top: 2.5rem; padding: 2rem 1.25rem; }
+  .install-box .install-cmd { padding: 1rem; }
+  .install-box code { white-space: pre-wrap; word-break: break-all; font-size: 0.8rem; }
+
+  .feed-disclaimer, .digest-disclaimer { flex-direction: column; gap: 0.4rem; }
+  .post-body { overflow-wrap: break-word; }
+  .post-body blockquote { padding: 1rem 1.1rem; }
+  .post-body pre { margin-left: -1.25rem; margin-right: -1.25rem; padding: 1rem 1.25rem; }
+
+  footer { flex-direction: column; gap: 0.6rem; text-align: center; padding: 1.5rem 1.25rem; }
+
+  /* Threat feed table → stacked cards */
+  .feed-table-wrap { overflow-x: visible; }
+  table.feed-table { min-width: 0; }
+  table.feed-table thead { display: none; }
+  table.feed-table, table.feed-table tbody, table.feed-table tr, table.feed-table td { display: block; width: 100%; }
+  table.feed-table tbody tr { padding: 1.1rem 1.1rem 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  table.feed-table tbody tr:last-child { border-bottom: none; }
+  table.feed-table tbody td {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+    padding: 0.4rem 0; border-bottom: none; text-align: right;
+  }
+  table.feed-table tbody td::before {
+    content: attr(data-label); flex-shrink: 0; text-align: left;
+    font-size: 0.62rem; letter-spacing: 0.09em; text-transform: uppercase; color: rgba(253,246,227,0.4);
+  }
+  table.feed-table tbody td > * { overflow-wrap: anywhere; }
+  table.feed-table tbody td:first-child { display: block; text-align: left; padding: 0 0 0.6rem; }
+  table.feed-table tbody td:first-child::before,
+  table.feed-table tbody td[colspan]::before { content: none; }
+  table.feed-table tbody td[colspan] { display: block; text-align: center; }
+  .feed-summary { max-width: none; }
+
+  /* Homepage: show only the latest advisories, link to the full page */
+  .feed-preview tbody tr:nth-child(n+9) { display: none; }
+  .feed-more {
+    display: block; margin-top: 1rem; padding: 0.9rem; text-align: center;
+    border: 1px solid rgba(200,160,232,0.4); color: #c8a0e8; text-decoration: none;
+    font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+}
+
+/* ───────── SMALL PHONE ───────── */
+@media (max-width: 480px) {
+  body { font-size: 14px; }
+  .header-inner > .btn-primary { padding: 0.5rem 0.85rem; font-size: 0.68rem; }
+  .logo { font-size: 1.2rem; }
+
+  .hero-cta > a { flex: 1 1 auto; text-align: center; }
+  .stat-row { grid-template-columns: 1fr; }
+
+  .newsletter-form { flex-direction: column; }
+  .newsletter-form input { font-size: 16px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.15); }
+  .newsletter-form button { padding: 1rem; }
+
+  .pricing-badge { right: 1rem; }
+  .price-amount { font-size: 2.8rem; }
+  .blog-meta { flex-wrap: wrap; gap: 0.4rem 1rem; }
+  .install-box .install-actions a { flex: 1 1 100%; text-align: center; }
+}
+
+/* Prevent iOS zoom-on-focus for any text input */
+@media (max-width: 768px) {
+  input[type="email"], input[type="text"], input[type="search"] { font-size: 16px; }
+}

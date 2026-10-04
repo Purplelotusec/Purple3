@@ -117,6 +117,7 @@ nav { display: none; }
 .page-hero { padding-top: 6.5rem; }
 }
 </style>
+<link rel="stylesheet" href="responsive.css">
 </head>
 <body>
 
@@ -124,7 +125,7 @@ nav { display: none; }
 <header>
 <div class="header-inner">
 <a href="/" class="logo">Purple<span>Lotus</span></a>
-<nav>
+<nav id="site-nav">
 <a href="/threat-feed">Threat Feed</a>
 <a href="/#product">Product</a>
 <a href="/#services">Services</a>
@@ -133,6 +134,7 @@ nav { display: none; }
 <a href="/#faq">FAQ</a>
 </nav>
 <a href="mailto:security@purplelotus.tech" class="btn-primary">Contact Us</a>
+<button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
 </div>
 </header>
 
@@ -233,5 +235,6 @@ window.PLBlogs = (function () {
   });
 })();
 </script>
+<script src="nav.js"></script>
 </body>
 </html>

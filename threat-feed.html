@@ -15,6 +15,7 @@
     .feed-page-intro h1 em { font-style: italic; color: var(--purple); }
     .feed-page-intro p { font-size: 0.87rem; color: var(--gray-text); max-width: 620px; line-height: 1.85; }
   </style>
+<link rel="stylesheet" href="responsive.css">
 </head>
 <body>
 
@@ -22,7 +23,7 @@
   <header>
     <div class="header-inner">
       <a href="/" class="logo">Purple<span>Lotus</span></a>
-      <nav>
+      <nav id="site-nav">
         <a href="/threat-feed" class="active">Threat Feed</a>
         <a href="/#product">Product</a>
         <a href="/#services">Services</a>
@@ -30,6 +31,7 @@
         <a href="/#faq">FAQ</a>
       </nav>
       <a href="mailto:security@purplelotus.tech" class="btn-primary">Contact Us</a>
+      <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
     </div>
   </header>
 
@@ -153,15 +155,15 @@
 
           rowsEl.innerHTML = advisories.map((a) => `
             <tr>
-              <td>
+              <td data-label="Package">
                 <span class="feed-pkg">${escapeHtml(a.name)}</span>
                 <span class="feed-summary">${escapeHtml(a.summary || '')}</span>
               </td>
-              <td><span class="feed-eco">${escapeHtml(a.ecosystem)}</span></td>
-              <td><span class="feed-version affected">${escapeHtml(a.affected_range)}</span></td>
-              <td><span class="feed-version patched">${escapeHtml(a.patched_version)}</span></td>
-              <td><span class="feed-sev ${sevClass(a.severity)}">${escapeHtml(a.severity)}</span></td>
-              <td>${a.source_url ? `<a class="feed-link" href="${escapeHtml(a.source_url)}" target="_blank" rel="noopener">${escapeHtml(a.ghsa_id || 'View →')}</a>` : '—'}</td>
+              <td data-label="Ecosystem"><span class="feed-eco">${escapeHtml(a.ecosystem)}</span></td>
+              <td data-label="Affected"><span class="feed-version affected">${escapeHtml(a.affected_range)}</span></td>
+              <td data-label="Patched"><span class="feed-version patched">${escapeHtml(a.patched_version)}</span></td>
+              <td data-label="Severity"><span class="feed-sev ${sevClass(a.severity)}">${escapeHtml(a.severity)}</span></td>
+              <td data-label="Advisory">${a.source_url ? `<a class="feed-link" href="${escapeHtml(a.source_url)}" target="_blank" rel="noopener">${escapeHtml(a.ghsa_id || 'View →')}</a>` : '—'}</td>
             </tr>
           `).join('');
         })
@@ -225,5 +227,6 @@
         });
     })();
   </script>
+<script src="nav.js"></script>
 </body>
 </html>

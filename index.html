@@ -287,6 +287,7 @@
       .feed-meta { text-align: left; }
     }
   </style>
+<link rel="stylesheet" href="responsive.css">
 </head>
 <body>
 
@@ -294,7 +295,7 @@
   <header>
     <div class="header-inner">
       <a href="#" class="logo">Purple<span>Lotus</span></a>
-      <nav>
+      <nav id="site-nav">
         <a href="#threat-feed">Threat Feed</a>
 
         <!-- PRODUCTS DROPDOWN -->
@@ -328,6 +329,7 @@
         <a href="#faq">FAQ</a>
       </nav>
       <a href="mailto:security@purplelotus.tech" class="btn-primary">Contact Us</a>
+      <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
     </div>
   </header>
 
@@ -574,7 +576,7 @@
         <div class="feed-meta reveal" id="feed-meta">Loading feed status…</div>
       </div>
 
-      <div class="feed-table-wrap reveal">
+      <div class="feed-table-wrap feed-preview reveal">
         <table class="feed-table">
           <thead>
             <tr>
@@ -591,6 +593,7 @@
           </tbody>
         </table>
       </div>
+      <a href="threat-feed.html" class="feed-more">View the full threat feed &rarr;</a>
 
       <div class="feed-disclaimer reveal">
         <span class="flag">Disclaimer</span>
@@ -643,16 +646,16 @@
       </div>
 
       <!-- INSTALL OSPREY -->
-      <div style="margin-top:4rem;padding:3rem;border:1px solid var(--purple);background:var(--ink);text-align:center;" class="reveal">
-        <h3 style="font-family:'Instrument Serif',serif;font-size:1.8rem;color:var(--cream);margin-bottom:1rem;">Install Osprey CLI</h3>
-        <p style="font-size:0.88rem;color:rgba(253,246,227,0.65);margin-bottom:2rem;max-width:600px;margin-left:auto;margin-right:auto;">Get started with Osprey in seconds. One command installs everything you need.</p>
-        <div style="background:rgba(0,0,0,0.3);padding:1.5rem;border:1px solid var(--purple-light);margin-bottom:1.5rem;max-width:700px;margin-left:auto;margin-right:auto;">
-          <code style="font-family:'DM Mono',monospace;font-size:0.85rem;color:var(--cream);display:block;overflow-x:auto;user-select:all;">curl -fsSL https://purplelotus.space/install.sh | bash</code>
+      <div class="install-box reveal">
+        <h3>Install Osprey CLI</h3>
+        <p>Get started with Osprey in seconds. One command installs everything you need.</p>
+        <div class="install-cmd">
+          <code>curl -fsSL https://purplelotus.space/install.sh | bash</code>
         </div>
-        <p style="font-size:0.75rem;color:rgba(253,246,227,0.45);margin-bottom:1rem;">Requirements: Node.js v14+, npm, git</p>
-        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-          <a href="https://osprey.purplelotus.space" style="font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:0.06em;text-transform:uppercase;background:var(--purple);color:var(--cream);border:none;padding:0.75rem 1.5rem;cursor:pointer;text-decoration:none;transition:background 0.2s;">Learn More</a>
-          <a href="https://github.com/Purplelotusec/Osprey" style="font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:0.06em;text-transform:uppercase;background:transparent;color:var(--cream);border:1px solid var(--cream);padding:0.75rem 1.5rem;cursor:pointer;text-decoration:none;transition:all 0.2s;">View on GitHub</a>
+        <p class="install-req">Requirements: Node.js v14+, npm, git</p>
+        <div class="install-actions">
+          <a href="https://osprey.purplelotus.space" class="ia-primary">Learn More</a>
+          <a href="https://github.com/Purplelotusec/Osprey" class="ia-ghost">View on GitHub</a>
         </div>
       </div>
     </div>
@@ -864,15 +867,15 @@
 
           rowsEl.innerHTML = advisories.map((a) => `
             <tr>
-              <td>
+              <td data-label="Package">
                 <span class="feed-pkg">${escapeHtml(a.name)}</span>
                 <span class="feed-summary">${escapeHtml(a.summary || '')}</span>
               </td>
-              <td><span class="feed-eco">${escapeHtml(a.ecosystem)}</span></td>
-              <td><span class="feed-version affected">${escapeHtml(a.affected_range)}</span></td>
-              <td><span class="feed-version patched">${escapeHtml(a.patched_version)}</span></td>
-              <td><span class="feed-sev ${sevClass(a.severity)}">${escapeHtml(a.severity)}</span></td>
-              <td>${a.source_url ? `<a class="feed-link" href="${escapeHtml(a.source_url)}" target="_blank" rel="noopener">${escapeHtml(a.ghsa_id || 'View →')}</a>` : '—'}</td>
+              <td data-label="Ecosystem"><span class="feed-eco">${escapeHtml(a.ecosystem)}</span></td>
+              <td data-label="Affected"><span class="feed-version affected">${escapeHtml(a.affected_range)}</span></td>
+              <td data-label="Patched"><span class="feed-version patched">${escapeHtml(a.patched_version)}</span></td>
+              <td data-label="Severity"><span class="feed-sev ${sevClass(a.severity)}">${escapeHtml(a.severity)}</span></td>
+              <td data-label="Advisory">${a.source_url ? `<a class="feed-link" href="${escapeHtml(a.source_url)}" target="_blank" rel="noopener">${escapeHtml(a.ghsa_id || 'View →')}</a>` : '—'}</td>
             </tr>
           `).join('');
         })
@@ -919,5 +922,6 @@
       });
     })();
   </script>
+<script src="nav.js"></script>
 </body>
 </html>
