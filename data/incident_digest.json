@@ -1,56 +1,24 @@
 {
-  "generated_at": "2026-10-04T13:09:44.824163+00:00",
+  "generated_at": "2026-10-05T15:47:42.247307+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "The article discusses a recent supply chain attack on MemTensor, a company that develops open-source tooling for large language model agents. The attack involved the compromise of two MemTensor packages, @memtensor/memos-cloud-openclaw-plugin and MemoryOS, which were published on npm and PyPI, respectively.\n\nHere are the key points from the article:\n\n1. **Compromised packages**: The attack involved the publication of malicious versions of two MemTensor packages, @memtensor/memos-cloud-openclaw-plugin and MemoryOS, on npm and PyPI, respectively.\n2. **Malicious implant**: The compromised packages contained a cross-platform Go implant called sckit, which was designed to steal credentials and data from developer machines and CI runners.\n3. **Attack vector**: The implant was launched when the agent gateway started and whenever the plugin handled a memory-recall event, making it difficult to detect using traditional install-time scrutiny.\n4. **Targeted packages**: The attack targeted packages that were widely used in AI agent architecture, including OpenClaw and MemoryOS.\n5. **Credential theft**: The implant was designed to collect credentials from developer machines and CI runners, including AWS access keys, GitHub and GitLab tokens, npm and PyPI tokens, and other sensitive data.\n6. **Supply chain attack**: The attack highlighted the risks of supply chain attacks, where attackers compromise a company's packages and use them to launch attacks on other systems.\n7. **Practical steps**: The article recommends that organizations running AI memory infrastructure take practical steps to mitigate the attack, including monitoring their systems for suspicious activity, updating their dependencies, and implementing additional security measures.\n\nOverall, the article highlights the importance of security in the development and deployment of AI systems, particularly in the context of supply chain attacks.",
+  "digest_markdown": "\u2022 [1] A supply chain attack on SolarWinds in 2019 and 2020 compromised the IT monitoring system Orion, which was used by over 30,000 organizations, allowing hackers to deliver backdoor malware in an Orion software update. [1]\n\u2022 [2] A TanStack npm supply chain attack in May 2026 allowed attackers to copy about 170 private GitHub repositories, including CrowdSec's, after a former employee's account was compromised. [2]\n\u2022 [1] An undercover Google analyst infiltrated a notorious supply-chain hacking group called TeamPCP, which tainted hundreds of open-source programs with malware and stole developer accounts. [3]\n\u2022 [2] A TanStack npm attack led to the copy of 170 private GitHub repositories, including CrowdSec's, with sensitive information such as email addresses, names, and investment context of users. [4]\n\u2022 [3] The TeamPCP group released a Dune-themed self-spreading worm to automate the process of exploiting victims, breaching over a thousand companies. [3]",
   "sources": [
     {
-      "title": "Worldwide software supply chain attacks tracker (updated ...",
+      "title": "Worldwide software supply chain attacks tracker (updated daily)",
       "url": "https://www.comparitech.com/software-supply-chain-attacks/"
     },
     {
-      "title": "TanStack Supply Chain Attack Lets Hackers Steal 170 Private ...",
+      "title": "TanStack Supply Chain Attack Lets Hackers Steal 170 Private CrowdSec ...",
       "url": "https://cybersecuritynews.com/tanstack-supply-chain-attack/"
     },
     {
-      "title": "GHAPPIER Supply Chain Attack Compromises 65 GitHub ...",
-      "url": "https://cybersecuritynews.com/ghappier-supply-chain-attack/"
+      "title": "An undercover Google analyst infiltrated a notorious supply-chain ...",
+      "url": "https://www.wired.com/story/an-undercover-google-analyst-infiltrated-a-notorious-supply-chain-hacking-gang/"
     },
     {
-      "title": "CrowdSec Says TanStack npm Attack Led to Copy of 170 Private ...",
+      "title": "CrowdSec Says TanStack npm Attack Led to Copy of 170 Private GitHub ...",
       "url": "https://thehackernews.com/2026/09/crowdsec-says-tanstack-npm-attack-led.html"
-    },
-    {
-      "title": "Malicious npm Package indexed-btree Hid Its Loader in Runtime ...",
-      "url": "https://thehackernews.com/2026/09/malicious-npm-package-indexed-btree-hid.html"
-    },
-    {
-      "title": "Malicious npm packages evade install-script defenses at runtime",
-      "url": "https://www.bleepingcomputer.com/news/security/malicious-npm-packages-evade-install-script-defenses-at-runtime/"
-    },
-    {
-      "title": "Malicious npm Package With 2 Million Downloads Hides Malware ...",
-      "url": "https://cybersecuritynews.com/malicious-npm-package/"
-    },
-    {
-      "title": "Thousands of Node Developers Compromised by Malware in ...",
-      "url": "https://dailysecurityreview.com/security-spotlight/thousands-of-node-developers-compromised-by-malware-in-popular-npm-packages/"
-    },
-    {
-      "title": "Secure PyPI Packages - CVE-Free PyPI Packages",
-      "url": "https://www.bing.com/aclick?ld=e8xxwrCkmXVAu1HCFfoUdq1TVUCUxgtgAEyGx8RMIBqFrWjFj_Ye5nznRh-UVPaJUg-82GqnjCD1VYdO8ysiDdUwlhZ3GqoX3qxuiRjfDh1jsijeC8c7IC6SavWM4XU0Kghib3cfHechafCV_MFwExo2869lm4AD1dyla4_UC1QF_Of8TgyWBWIOPPtGCMh4GC0ORJKlMCnM5MK-CVNJmbzk_lntg&u=aHR0cHMlM2ElMmYlMmZ3d3cuY2hhaW5ndWFyZC5kZXYlMmZsaWJyYXJpZXMlMmZweXRob24lM2Ztc2Nsa2lkJTNkNTQxYmEzMTVhNmUwMWZmN2RhNjVjOWQ3ZTk5NDMwMWElMjZ1dG1fc291cmNlJTNkYmluZyUyNnV0bV9tZWRpdW0lM2RjcGMlMjZ1dG1fY2FtcGFpZ24lM2RiZ19zX2FtZXJfYWNxX2dlbmVyaWNfYm9mJTI2dXRtX3Rlcm0lM2RtYWx3YXJlJTI1MjBmcmVlJTI1MjBweXBpJTI1MjBkZXBlbmRlbmNpZXMlMjZ1dG1fY29udGVudCUzZGxpYnJhcmllc19weXBp&rlid=541ba315a6e01ff7da65c9d7e994301a"
-    },
-    {
-      "title": "MemTensor npm and PyPI Packages Compromised in ... - Socket",
-      "url": "https://socket.dev/blog/memtensor-compromise"
-    },
-    {
-      "title": "Compromised MemTensor Packages Deliver sckit Credential ...",
-      "url": "https://thehackernews.com/2026/09/compromised-memtensor-packages-deliver.html"
-    },
-    {
-      "title": "AI Memory, Compromised: The MemTensor Supply Chain Attack",
-      "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-memtensor-supply-chain-sckit-20260925-csa/"
     }
   ]
 }
