@@ -1,24 +1,56 @@
 {
-  "generated_at": "2026-10-05T15:47:42.247307+00:00",
+  "generated_at": "2026-10-06T14:06:56.138546+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "\u2022 [1] A supply chain attack on SolarWinds in 2019 and 2020 compromised the IT monitoring system Orion, which was used by over 30,000 organizations, allowing hackers to deliver backdoor malware in an Orion software update. [1]\n\u2022 [2] A TanStack npm supply chain attack in May 2026 allowed attackers to copy about 170 private GitHub repositories, including CrowdSec's, after a former employee's account was compromised. [2]\n\u2022 [1] An undercover Google analyst infiltrated a notorious supply-chain hacking group called TeamPCP, which tainted hundreds of open-source programs with malware and stole developer accounts. [3]\n\u2022 [2] A TanStack npm attack led to the copy of 170 private GitHub repositories, including CrowdSec's, with sensitive information such as email addresses, names, and investment context of users. [4]\n\u2022 [3] The TeamPCP group released a Dune-themed self-spreading worm to automate the process of exploiting victims, breaching over a thousand companies. [3]",
+  "digest_markdown": "The MemTensor packages @memtensor/memos-cloud-openclaw-plugin and MemoryOS have been compromised, allowing a malicious Go-based implant called sckit to be delivered to developers. The implant searches for credentials, tokens, keys, and environment secrets and reports to a server under skyleen[.]fr.\n\nHere are the key points:\n\n1. **Compromised packages**: Three npm releases and one PyPI release were affected, including versions 0.1.21, 0.1.23, 0.1.25, and 2.0.34 of @memtensor/memos-cloud-openclaw-plugin and MemoryOS, respectively.\n2. **Malicious implant**: The malicious implant is a Go program called sckit, which is compiled for Windows, Linux, and macOS on both x64 and ARM64 systems.\n3. **Credential stealing**: The implant searches for credentials, tokens, private keys, and environment secrets in home directories and related locations.\n4. **Reporting to C2 server**: The stolen material is reported to a server under skyleen[.]fr, which is likely a command and control (C2) server.\n5. **Timing**: The malicious releases appeared on September 23, 2026.\n6. **Impact**: Developers using the affected versions face possible exposure of credentials that can enable further supply chain compromise.\n7. **Supply chain attack**: The incident shows how malicious code can enter artificial intelligence development workflows through trusted package releases and avoid controls focused only on install scripts.\n\nTo mitigate this incident, users of the affected versions should:\n\n1. Treat credentials available to the package environment as exposed.\n2. Review recent publishing activity for packages that may have been reachable with those credentials.\n3. Consider updating to the latest version of the packages.\n4. Implement additional security measures, such as using secure credentials and monitoring for suspicious activity.",
   "sources": [
     {
       "title": "Worldwide software supply chain attacks tracker (updated daily)",
       "url": "https://www.comparitech.com/software-supply-chain-attacks/"
     },
     {
+      "title": "CrowdSec Says TanStack npm Attack Led to Copy of 170 Private GitHub ...",
+      "url": "https://thehackernews.com/2026/09/crowdsec-says-tanstack-npm-attack-led.html"
+    },
+    {
       "title": "TanStack Supply Chain Attack Lets Hackers Steal 170 Private CrowdSec ...",
       "url": "https://cybersecuritynews.com/tanstack-supply-chain-attack/"
     },
     {
-      "title": "An undercover Google analyst infiltrated a notorious supply-chain ...",
-      "url": "https://www.wired.com/story/an-undercover-google-analyst-infiltrated-a-notorious-supply-chain-hacking-gang/"
+      "title": "GhostAction Supply Chain Attack on GitHub Exposes 3,325 Secrets",
+      "url": "https://dailysecurityreview.com/cyber-security/ghostaction-supply-chain-attack-on-github-exposes-3325-secrets/"
     },
     {
-      "title": "CrowdSec Says TanStack npm Attack Led to Copy of 170 Private GitHub ...",
-      "url": "https://thehackernews.com/2026/09/crowdsec-says-tanstack-npm-attack-led.html"
+      "title": "Malicious npm Package indexed-btree Hid Its Loader in Runtime ...",
+      "url": "https://thehackernews.com/2026/09/malicious-npm-package-indexed-btree-hid.html"
+    },
+    {
+      "title": "npm 'btree' Malware Campaign Affects Millions of Downloads ...",
+      "url": "https://checkmarx.com/zero-post/npm-btree-malware-campaign-affects-millions-of-downloads-no-need-for-install-script/"
+    },
+    {
+      "title": "Malicious npm packages evade install-script defenses at runtime",
+      "url": "https://www.bleepingcomputer.com/news/security/malicious-npm-packages-evade-install-script-defenses-at-runtime/"
+    },
+    {
+      "title": "Malicious npm Package With 2 Million Downloads Hides Malware ...",
+      "url": "https://cybersecuritynews.com/malicious-npm-package/"
+    },
+    {
+      "title": "MemTensor npm and PyPI Packages Compromised in ... - Socket",
+      "url": "https://socket.dev/blog/memtensor-compromise"
+    },
+    {
+      "title": "Compromised MemTensor Packages Deliver sckit Credential ...",
+      "url": "https://thehackernews.com/2026/09/compromised-memtensor-packages-deliver.html"
+    },
+    {
+      "title": "New Malicious Packages in npm and PyPI Tied to Lazarus Group",
+      "url": "https://dailysecurityreview.com/cyber-security/new-malicious-packages-in-npm-and-pypi-tied-to-lazarus-group/"
+    },
+    {
+      "title": "Malicious MemTensor packages steal developer credentials ...",
+      "url": "https://www.isec.news/2026/09/24/memtensor-packages-credential-stealing-supply-chain-attack/"
     }
   ]
 }
