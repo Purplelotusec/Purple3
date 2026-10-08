@@ -1,7 +1,24 @@
 {
-  "generated_at": "2026-10-07T14:22:17.542991+00:00",
+  "generated_at": "2026-10-08T14:31:18.452419+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "No sources were found in this run \u2014 check back after the next scheduled run.",
-  "sources": []
+  "digest_markdown": "\u2022 A supply chain attack on SolarWinds' Orion IT monitoring system, used by over 30,000 organizations, allowed hackers to deliver backdoor malware in a software update, compromising approximately 18,000 customers [1].\n\u2022 An undercover Google analyst infiltrated a notorious supply-chain hacking gang, TeamPCP, and helped disrupt the group's attempts to exploit victims, allowing Google to monitor the hacking spree from the inside [2].\n\u2022 CrowdSec's private GitHub repositories were compromised when an employee's account was used to copy code, exposing 83 CrowdSec users' email addresses and 51 potential investors' information [3].\n\u2022 A GhostAction supply chain attack on GitHub repositories led to the theft of 3,325 secrets, exposing tokens and keys across widely used platforms, including PyPI, npm, DockerHub, and AWS [4].\n\u2022 The GhostAction campaign compromised at least 817 repositories, with malicious commits deployed across different projects, affecting nine npm packages and 15 PyPI packages [4].",
+  "sources": [
+    {
+      "title": "Worldwide software supply chain attacks tracker (updated daily)",
+      "url": "https://www.comparitech.com/software-supply-chain-attacks/"
+    },
+    {
+      "title": "An undercover Google analyst infiltrated a notorious supply-chain ...",
+      "url": "https://www.wired.com/story/an-undercover-google-analyst-infiltrated-a-notorious-supply-chain-hacking-gang/"
+    },
+    {
+      "title": "CrowdSec Says TanStack npm Attack Led to Copy of 170 Private GitHub ...",
+      "url": "https://thehackernews.com/2026/09/crowdsec-says-tanstack-npm-attack-led.html"
+    },
+    {
+      "title": "GhostAction Supply Chain Attack on GitHub Exposes 3,325 Secrets",
+      "url": "https://dailysecurityreview.com/cyber-security/ghostaction-supply-chain-attack-on-github-exposes-3325-secrets/"
+    }
+  ]
 }
