@@ -1,56 +1,24 @@
 {
-  "generated_at": "2026-10-09T14:19:18.236120+00:00",
+  "generated_at": "2026-10-10T13:31:13.796854+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "The article discusses a recent supply chain attack on two open-source packages, MemTensor's MemOS and @memtensor/memos-cloud-openclaw-plugin, which were compromised by the Lazarus Group, a North Korea-affiliated hacking group. The attack was carried out through the npm and PyPI registries, two popular platforms for open-source software.\n\nHere are the key points from the article:\n\n1. **Malicious packages**: The attack involved the creation of malicious packages, including MemOS and @memtensor/memos-cloud-openclaw-plugin, which were designed to steal sensitive information from developers' machines and CI jobs.\n2. **Lazarus Group involvement**: The attack was attributed to the Lazarus Group, a notorious North Korea-affiliated hacking group known for its involvement in major cyberattacks.\n3. **Recruitment-themed campaign**: The attack was carried out as part of a recruitment-themed phishing campaign, which exploited themes of employment and job offers to lure victims into downloading and integrating the malicious packages into their projects.\n4. **Supply chain attack**: The attack highlights the risks of supply chain attacks, which can compromise the integrity of open-source software and allow hackers to steal sensitive information.\n5. **Impact on software supply chain**: The attack has significant implications for the software supply chain, emphasizing the need for enhanced security measures and vigilance among developers and organizations.\n6. **Removal of malicious packages**: The cybersecurity community is urging developers and organizations to remove the malicious packages from their systems and to be vigilant in monitoring for similar threats.\n\nOverall, the article highlights the importance of security awareness and vigilance in the face of sophisticated supply chain attacks, and the need for enhanced security measures to protect against such threats.",
+  "digest_markdown": "\u2022 [1] In 2020, the SolarWinds IT monitoring system, Orion, was compromised by hackers, allowing them to deliver backdoor malware in an Orion software update, affecting approximately 18,000 customers. [1]\n\u2022 [1] In May 2026, a TanStack npm supply chain attack compromised a former employee's account, allowing an attacker to copy about 170 private GitHub repositories. [2][3]\n\u2022 [1] The TanStack npm attack also led to the theft of credentials from developers' machines, including GitHub tokens, SSH keys, and cloud credentials. [2][3]\n\u2022 [1] The attack on TanStack was tracked as CVE-2026-45321, and it is believed that the malicious package reached the former employee's laptop or was used to compromise other devices. [2][3]\n\u2022 [1] The attack on CrowdSec's private GitHub repositories also included the email addresses of 83 CrowdSec users and the names, email addresses, and investment context of 51 potential investors from 2020. [3]",
   "sources": [
     {
       "title": "Worldwide software supply chain attacks tracker (updated daily)",
       "url": "https://www.comparitech.com/software-supply-chain-attacks/"
     },
     {
-      "title": "CrowdSec Says TanStack npm Attack Led to Copy of 170 Private GitHub ...",
-      "url": "https://thehackernews.com/2026/09/crowdsec-says-tanstack-npm-attack-led.html"
+      "title": "An Undercover Google Analyst Infiltrated a Notorious Supply-Chain ...",
+      "url": "https://www.wired.com/story/an-undercover-google-analyst-infiltrated-a-notorious-supply-chain-hacking-gang/"
     },
     {
       "title": "TanStack Supply Chain Attack Lets Hackers Steal 170 Private CrowdSec ...",
       "url": "https://cybersecuritynews.com/tanstack-supply-chain-attack/"
     },
     {
-      "title": "An Undercover Google Analyst Infiltrated a Notorious Supply-Chain ...",
-      "url": "https://www.wired.com/story/an-undercover-google-analyst-infiltrated-a-notorious-supply-chain-hacking-gang/"
-    },
-    {
-      "title": "npm 'btree' Malware Campaign Affects Millions of Downloads ...",
-      "url": "https://checkmarx.com/zero-post/npm-btree-malware-campaign-affects-millions-of-downloads-no-need-for-install-script/"
-    },
-    {
-      "title": "Malicious npm Package indexed-btree Hid Its Loader in Runtime ...",
-      "url": "https://thehackernews.com/2026/09/malicious-npm-package-indexed-btree-hid.html"
-    },
-    {
-      "title": "Malicious npm packages evade install-script defenses at runtime",
-      "url": "https://www.bleepingcomputer.com/news/security/malicious-npm-packages-evade-install-script-defenses-at-runtime/"
-    },
-    {
-      "title": "Malicious npm Package With 2 Million Downloads Hides Malware ...",
-      "url": "https://cybersecuritynews.com/malicious-npm-package/"
-    },
-    {
-      "title": "Malware-Free PyPI Packages - CVE-Free PyPI Packages",
-      "url": "https://www.bing.com/aclick?ld=e8VTJU3G5TakEF80cdkBqolzVUCUwGpiZfbzcd3W0awN4HAyxuAAwNZeY64Hmw0DpavIq3GLVLhV8MsmLE8DWKlHW9DVujHnEcvOYlBX8B8oaNp8WBUrX06PUus-s5nh3a-HaDPEZpH-GCQ1C9R0aY2tk8kjv0wSeqL3_sboZ6Ql_HKGkuSlv-1vN1zT-lCDC1HkyEEiQ1PI19vKpKxvRQUwkZqYE&u=aHR0cHMlM2ElMmYlMmZ3d3cuY2hhaW5ndWFyZC5kZXYlMmZsaWJyYXJpZXMlMmZweXRob24lM2Ztc2Nsa2lkJTNkYjIxZmRjZjFhZGY3MThjOTI0NDBiNjM5NWE5OGM1NDQlMjZ1dG1fc291cmNlJTNkYmluZyUyNnV0bV9tZWRpdW0lM2RjcGMlMjZ1dG1fY2FtcGFpZ24lM2RiZ19zX2FtZXJfYWNxX2dlbmVyaWNfYm9mJTI2dXRtX3Rlcm0lM2RweXBpJTI1MjBtYWx3YXJlJTI2dXRtX2NvbnRlbnQlM2RsaWJyYXJpZXNfcHlwaQ&rlid=b21fdcf1adf718c92440b6395a98c544"
-    },
-    {
-      "title": "MemTensor npm and PyPI Packages Compromised in ... - Socket",
-      "url": "https://socket.dev/blog/memtensor-compromise"
-    },
-    {
-      "title": "Compromised MemTensor Packages Deliver sckit Credential ...",
-      "url": "https://thehackernews.com/2026/09/compromised-memtensor-packages-deliver.html"
-    },
-    {
-      "title": "New Malicious Packages in npm and PyPI Tied to Lazarus Group",
-      "url": "https://dailysecurityreview.com/cyber-security/new-malicious-packages-in-npm-and-pypi-tied-to-lazarus-group/"
+      "title": "CrowdSec Says TanStack npm Attack Led to Copy of 170 Private GitHub ...",
+      "url": "https://thehackernews.com/2026/09/crowdsec-says-tanstack-npm-attack-led.html"
     }
   ]
 }
