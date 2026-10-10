@@ -16,6 +16,14 @@
   "read_time": "5 min read",
   "excerpt": "Introducing Osprey, PurpleLotus's open-source security CLI for SBOM generation, vulnerability intelligence and known exploited vulnerabilities.",
   "url": "/blog/introducing-osprey"
-}
+},
+        {
+      "title": "Slopsquatting: How AI Hallucinations Create Software Supply-Chain Risks",
+      "date": "2026-10-10",
+      "tag": "AI Security",
+      "read_time": "5 min read",
+      "excerpt": "How attackers exploit package names hallucinated by AI coding assistants, what recent research shows, and how to protect your software supply chain.",
+      "url": "/blog/slopsquatting-ai-hallucinations"
+    }
   ]
 }
