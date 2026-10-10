@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slopsquatting: How AI Hallucinations Create Software Supply-Chain Risks — PurpleLotus</title>
+  <meta name="description" content="Learn how slopsquatting exploits AI-generated package names, explore recent research, and discover how to protect your software supply chain.">
+  <link rel="canonical" href="https://www.purplelotus.space/blog/slopsquatting-ai-hallucinations">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Slopsquatting: How AI Hallucinations Create Software Supply-Chain Risks">
+  <meta property="og:description" content="Learn how slopsquatting exploits AI-generated package names, explore recent research, and discover how to protect your software supply chain.">
+  <meta property="og:url" content="https://www.purplelotus.space/blog/slopsquatting-ai-hallucinations">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Slopsquatting: How AI Hallucinations Create Software Supply-Chain Risks",
+    "description": "Learn how slopsquatting exploits AI-generated package names, explore recent research, and discover how to protect your software supply chain.",
+    "datePublished": "2026-10-10",
+    "author": { "@type": "Organization", "name": "PurpleLotus" },
+    "publisher": { "@type": "Organization", "name": "PurpleLotus" },
+    "mainEntityOfPage": "https://www.purplelotus.space/blog/slopsquatting-ai-hallucinations"
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #fdf6e3;
+      --cream-dark: #f5ead0;
+      --ink: #1a1208;
+      --ink-mid: #3d2e10;
+      --purple: #5c1f8a;
+      --purple-light: #8b44c8;
+      --purple-pale: #ecdff7;
+      --orange: #c94f0c;
+      --gray-text: #6b5c3e;
+      --border: rgba(92,31,138,0.15);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream); color: var(--ink);
+      font-family: 'DM Mono', monospace; font-size: 15px;
+      line-height: 1.6; overflow-x: hidden;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0.05;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 180px 180px;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(253,246,227,0.93); backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+      height: 60px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { font-family: 'Instrument Serif', serif; font-size: 1.35rem; color: var(--purple); text-decoration: none; letter-spacing: -0.01em; }
+    .logo span { color: var(--orange); }
+    nav { display: flex; gap: 2rem; align-items: center; }
+    nav a { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--ink-mid); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+    nav a:hover, nav a.active { color: var(--purple); }
+    .btn-primary { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; background: var(--purple); color: var(--cream); border: none; padding: 0.55rem 1.3rem; cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-block; }
+    .btn-primary:hover { background: var(--purple-light); transform: translateY(-1px); }
+    .btn-ghost { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; background: transparent; color: var(--ink); border: 1px solid currentColor; padding: 0.55rem 1.3rem; text-decoration: none; transition: all 0.2s; display: inline-block; }
+    .btn-ghost:hover { color: var(--purple); border-color: var(--purple); }
+
+    /* ARTICLE */
+    .post-wrap { max-width: 760px; margin: 0 auto; padding: 8rem 2rem 4rem; }
+    .back-link { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-text); text-decoration: none; display: inline-block; margin-bottom: 2.5rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--purple); }
+    .post-tags { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .post-tag { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); border: 1px solid var(--orange); padding: 0.2rem 0.7rem; }
+    .post-title { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.08; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 1.5rem; }
+    .post-title em { font-style: italic; color: var(--purple); }
+    .post-meta { display: flex; gap: 1.25rem; flex-wrap: wrap; font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray-text); padding: 1rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 3rem; }
+    .post-meta strong { color: var(--purple); font-weight: 500; }
+
+    .post-body h2 { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: clamp(1.6rem, 3vw, 2.1rem); line-height: 1.15; letter-spacing: -0.02em; color: var(--ink); margin: 3rem 0 1rem; }
+    .post-body h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; color: var(--purple); margin: 2rem 0 0.75rem; letter-spacing: 0.01em; }
+    .post-body p { font-size: 0.92rem; color: var(--gray-text); line-height: 1.95; margin-bottom: 1.1rem; }
+    .post-body strong { color: var(--ink); font-weight: 500; }
+    .post-body a { color: var(--purple); text-underline-offset: 3px; }
+    .post-body a:hover { color: var(--purple-light); }
+    /* Buttons inside the article keep their own colours (fixes invisible CTA text) */
+    .post-body a.btn-primary { color: var(--cream); text-decoration: none; }
+    .post-body a.btn-primary:hover { color: var(--cream); background: var(--purple-light); }
+    .post-cta .btn-primary { padding: 0.75rem 1.6rem; }
+    .post-body code { font-family: 'DM Mono', monospace; font-size: 0.85em; background: var(--purple-pale); color: var(--purple); padding: 0.1rem 0.4rem; }
+    .post-body ul, .post-body ol { margin: 0 0 1.4rem 0; padding: 0; list-style: none; }
+    .post-body li { font-size: 0.9rem; color: var(--gray-text); line-height: 1.85; padding: 0.55rem 0 0.55rem 1.6rem; border-bottom: 1px solid var(--border); position: relative; }
+    .post-body li:last-child { border-bottom: none; }
+    .post-body ul li::before { content: '→'; position: absolute; left: 0; top: 0.6rem; color: var(--purple-light); font-size: 0.75rem; }
+    .post-body ol { counter-reset: step; }
+    .post-body ol li { counter-increment: step; }
+    .post-body ol li::before { content: counter(step, decimal-leading-zero); position: absolute; left: 0; top: 0.7rem; color: var(--orange); font-size: 0.68rem; letter-spacing: 0.05em; }
+    .post-body ol li { padding-left: 2.2rem; }
+
+    .callout { border-left: 3px solid var(--purple); background: var(--purple-pale); padding: 1.1rem 1.4rem; margin: 1.5rem 0; }
+    .callout p { margin: 0; color: var(--ink-mid); font-size: 0.86rem; line-height: 1.8; }
+    .callout.note { border-left-color: var(--orange); background: var(--cream-dark); }
+    .source { font-size: 0.78rem !important; }
+    .pull-quote { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 1.5rem; line-height: 1.4; color: var(--purple); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 1.75rem 0; margin: 3rem 0; }
+
+    .evidence { border: 1px solid var(--border); background: var(--cream); padding: 1.5rem 1.75rem; margin: 1.5rem 0; }
+    .evidence h3 { margin-top: 0; }
+    .evidence p:last-child { margin-bottom: 0; }
+
+    .tool-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border); border-left: 1px solid var(--border); margin: 1.5rem 0; }
+    .tool-grid div { padding: 1.25rem 1.4rem; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--cream); }
+    .tool-grid .t-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.85rem; color: var(--ink); display: block; margin-bottom: 0.25rem; }
+    .tool-grid .t-desc { font-size: 0.8rem; color: var(--gray-text); line-height: 1.7; }
+
+    .references { margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+    .references h2 { margin-top: 0; font-size: 1.4rem; }
+    .editorial { font-size: 0.78rem; font-style: italic; color: var(--gray-text); margin-top: 2rem; }
+
+    .post-cta { background: var(--ink); padding: 2.5rem; margin-top: 3.5rem; }
+    .post-cta h3 { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: 1.6rem; color: var(--cream); margin: 0 0 0.75rem; letter-spacing: -0.01em; }
+    .post-cta p { color: rgba(253,246,227,0.6); font-size: 0.85rem; margin-bottom: 1.5rem; }
+
+    /* NEWSLETTER */
+    .newsletter-section { background: var(--ink); padding: 5rem 2rem; border-top: 1px solid rgba(255,255,255,0.08); }
+    .newsletter-inner { max-width: 560px; margin: 0 auto; text-align: center; }
+    .section-label { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(253,246,227,0.4); display: block; margin-bottom: 0.5rem; }
+    .newsletter-inner h2 { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: 1.9rem; line-height: 1.1; letter-spacing: -0.025em; color: var(--cream); }
+    .newsletter-form { display: flex; margin-top: 2rem; border: 1px solid rgba(255,255,255,0.15); }
+    .newsletter-form input { flex: 1; min-width: 0; background: transparent; border: none; outline: none; padding: 0.9rem 1.2rem; font-family: 'DM Mono', monospace; font-size: 0.82rem; color: var(--cream); }
+    .newsletter-form input::placeholder { color: rgba(253,246,227,0.28); }
+    .newsletter-form button { background: var(--purple); border: none; color: var(--cream); padding: 0.9rem 1.5rem; font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+    .newsletter-form button:hover { background: var(--purple-light); }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; max-width: 1200px; margin: 0 auto; }
+    footer p { font-size: 0.74rem; color: var(--gray-text); }
+    footer a { color: var(--purple); text-decoration: none; }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .post-wrap { padding: 6.5rem 1.25rem 3rem; }
+      .tool-grid { grid-template-columns: 1fr; }
+      .post-cta { padding: 1.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <a href="/" class="logo">Purple<span>Lotus</span></a>
+      <nav>
+        <a href="/threat-feed">Threat Feed</a>
+        <a href="/#product">Product</a>
+        <a href="/#services">Services</a>
+        <a href="/blogs" class="active">Blogs</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/#faq">FAQ</a>
+      </nav>
+      <a href="mailto:security@purplelotus.tech" class="btn-primary">Contact Us</a>
+    </div>
+  </header>
+
+  <main>
+    <article class="post-wrap">
+      <a href="/blogs" class="back-link">&larr; All blogs</a>
+
+      <div class="post-tags">
+        <span class="post-tag">Cybersecurity</span>
+        <span class="post-tag">AI Security</span>
+        <span class="post-tag">Software Supply Chain</span>
+      </div>
+
+      <h1 class="post-title">Slopsquatting: How AI Hallucinations Create <em>Software Supply-Chain Risks</em></h1>
+
+      <div class="post-meta">
+        <span>By <strong>PurpleLotus Research</strong></span>
+        <span>Oct 10, 2026</span>
+        <span>4–5 min read</span>
+      </div>
+
+      <div class="post-body">
+
+        <h2>What Is Slopsquatting?</h2>
+        <p>AI coding assistants help developers write code faster, but they can sometimes recommend software packages that do not exist.</p>
+        <p>This becomes a security risk when an attacker registers one of these invented package names and publishes a malicious version. If a developer or AI coding agent installs it, the package could introduce malicious code into the development environment.</p>
+        <p>This technique is known as <strong>slopsquatting</strong>. Unlike traditional typosquatting, which exploits spelling mistakes, slopsquatting targets package names hallucinated by AI systems.</p>
+
+        <h2>How Does a Slopsquatting Attack Work?</h2>
+        <p>A typical attack follows four steps:</p>
+        <ol>
+          <li><strong>AI generates a package name:</strong> A coding assistant recommends a library that does not exist.</li>
+          <li><strong>An attacker registers it:</strong> The attacker publishes a package under that name on a registry such as npm or PyPI.</li>
+          <li><strong>A developer installs it:</strong> The developer trusts the AI-generated recommendation and runs the installation command.</li>
+          <li><strong>Malicious code executes:</strong> Depending on the package and its permissions, it may attempt to steal credentials, access sensitive files, or compromise a build pipeline.</li>
+        </ol>
+        <div class="pull-quote">An AI-generated recommendation is not proof that a package is legitimate.</div>
+
+        <h2>Recent Research and Real-World Evidence</h2>
+
+        <div class="evidence">
+          <h3>1. USENIX Security 2025: Package hallucinations</h3>
+          <p>Research presented at USENIX Security 2025 examined 576,000 code samples generated by 16 language models. The researchers reported hallucinated-package rates of at least 5.2% for the commercial models studied and 21.7% for the open-source models studied.</p>
+          <p>The research demonstrates that nonexistent package recommendations are a measurable problem. These figures describe generated code, not the percentage of malicious packages or compromised systems.</p>
+          <p class="source">Source: <a href="https://www.usenix.org/conference/usenixsecurity25/presentation/spracklen" target="_blank" rel="noopener">USENIX Security 2025 research</a></p>
+        </div>
+
+        <div class="evidence">
+          <h3>2. January 2026: The <code>react-codeshift</code> case</h3>
+          <p>Aikido Security researcher Charlie Eriksen reported that the nonexistent npm package <code>react-codeshift</code> appeared in 237 GitHub repositories through AI-generated agent-skill instructions and their copies.</p>
+          <p>The researcher registered the package defensively after discovering that AI agents were attempting to install it. The case demonstrated how hallucinated package names can spread and trigger real installation attempts.</p>
+          <div class="callout note"><p><strong>Important:</strong> The registered package was a safe placeholder. The report did not establish a malware infection or successful compromise.</p></div>
+          <p class="source">Source: <a href="https://www.aikido.dev/blog/agent-skills-spreading-hallucinated-npx-commands" target="_blank" rel="noopener">Aikido Security investigation</a></p>
+        </div>
+
+        <h3>What do these findings mean?</h3>
+        <p>AI-generated package names can spread across repositories and automated development workflows. If attackers register those names first, developers may unknowingly install malicious dependencies.</p>
+        <p>The evidence supports treating dependency verification as a necessary security control, rather than assuming every AI recommendation is trustworthy.</p>
+
+        <h2>Why Traditional Security Scanners May Miss It</h2>
+        <p>Traditional vulnerability scanners often focus on known CVEs and documented security weaknesses. A newly published malicious package might have no known CVE and may not appear in vulnerability databases.</p>
+        <p>An SBOM can accurately record that package without determining whether it is trustworthy. Similarly, a KEV check may return no match because the package is not associated with a listed exploited vulnerability.</p>
+        <p>Each tool serves a different purpose:</p>
+        <div class="tool-grid">
+          <div><span class="t-name">SBOM</span><span class="t-desc">Identifies software components.</span></div>
+          <div><span class="t-name">Vulnerability scanning</span><span class="t-desc">Detects known vulnerabilities.</span></div>
+          <div><span class="t-name">KEV monitoring</span><span class="t-desc">Identifies vulnerabilities listed as known exploited.</span></div>
+          <div><span class="t-name">Slopsquatting detection</span><span class="t-desc">Investigates suspicious or untrusted dependencies, including those introduced through AI-generated recommendations.</span></div>
+        </div>
+        <p>These controls complement one another.</p>
+
+        <h2>How Organizations Can Prevent Slopsquatting</h2>
+        <p>Organizations can reduce the risk by introducing several practical controls.</p>
+        <ul>
+          <li><strong>Verify package identity:</strong> Check registry existence, package ownership, version, and source repository.</li>
+          <li><strong>Investigate suspicious packages:</strong> Review unfamiliar names, publication history, maintainers, and provenance.</li>
+          <li><strong>Use lockfiles and integrity checks:</strong> Reduce unexpected dependency changes and verify package contents against recorded integrity information.</li>
+          <li><strong>Inspect installation behavior:</strong> Review lifecycle scripts and restrict unnecessary filesystem and network access.</li>
+          <li><strong>Secure CI/CD pipelines:</strong> Scan new dependencies in pull requests and require approval for suspicious packages.</li>
+          <li><strong>Restrict AI agents:</strong> Require verification before agents install dependencies or execute untrusted commands.</li>
+        </ul>
+        <div class="callout"><p>A newly published package is not automatically malicious. Security decisions should be based on multiple indicators and supporting evidence.</p></div>
+
+        <h2>How PurpleLotus Can Address This Risk</h2>
+        <p>At PurpleLotus, our software supply-chain security approach focuses on identifying risks that may be missed when security tools operate independently.</p>
+        <p>A proposed <strong>AI Dependency Risk Scanner</strong> could complement SBOM generation and vulnerability monitoring by checking newly introduced packages for:</p>
+        <ul>
+          <li>Suspicious package-name similarities.</li>
+          <li>Registry and publisher information.</li>
+          <li>Publication history and provenance.</li>
+          <li>Known malicious-package indicators.</li>
+          <li>Suspicious installation scripts and behavior.</li>
+        </ul>
+        <p>Findings could be connected to the project's SBOM and surfaced in pull requests, helping developers investigate questionable dependencies before they enter production.</p>
+        <p>The scanner should explain why a package was flagged and distinguish suspected risks from confirmed malicious activity.</p>
+
+        <h2>Slopsquatting and the Cyber Resilience Act</h2>
+        <p>The EU Cyber Resilience Act establishes cybersecurity requirements for products with digital elements, including vulnerability handling and lifecycle security.</p>
+        <p>Slopsquatting is relevant to software supply-chain risk management, but detecting it alone does not establish CRA compliance. Organizations must assess the applicable requirements and maintain appropriate security, vulnerability-handling, and reporting processes.</p>
+
+        <h2>Conclusion</h2>
+        <p>Slopsquatting demonstrates how an AI-generated mistake can become a software supply-chain security risk.</p>
+        <p>Recent research and the <code>react-codeshift</code> investigation show why package verification matters, particularly as AI coding agents increasingly automate development tasks.</p>
+        <p>Organizations should combine SBOM management, dependency verification, vulnerability intelligence, and CI/CD security controls to reduce the risk of installing untrusted packages.</p>
+        <div class="pull-quote">AI can accelerate software development, but dependency trust must always be independently verified.</div>
+        <p>At PurpleLotus, we believe supply-chain security starts before an untrusted dependency becomes part of a product.</p>
+
+        <div class="references">
+          <h2>References</h2>
+          <ol>
+            <li><a href="https://www.usenix.org/conference/usenixsecurity25/presentation/spracklen" target="_blank" rel="noopener">USENIX Security 2025 — Package Hallucinations</a></li>
+            <li><a href="https://www.aikido.dev/blog/agent-skills-spreading-hallucinated-npx-commands" target="_blank" rel="noopener">Aikido Security — Hallucinated npm Commands</a></li>
+            <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Software_Supply_Chain_Security_Cheat_Sheet.html" target="_blank" rel="noopener">OWASP — Software Supply Chain Security</a></li>
+            <li><a href="https://digital-strategy.ec.europa.eu/en/policies/cyber-resilience-act" target="_blank" rel="noopener">European Commission — Cyber Resilience Act</a></li>
+          </ol>
+          <p class="editorial">Editorial note: The <code>react-codeshift</code> case involved defensive package registration and installation attempts, not a confirmed malware infection.</p>
+        </div>
+
+        <div class="post-cta">
+          <h3>Want your dependencies checked before they ship?</h3>
+          <p>Talk to PurpleLotus about supply-chain security that runs in your pull requests.</p>
+          <a href="mailto:security@purplelotus.tech" class="btn-primary">Contact Us</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!-- NEWSLETTER -->
+  <div class="newsletter-section">
+    <div class="newsletter-inner reveal">
+      <span class="section-label">Newsletter</span>
+      <h2>Security that ships<br>with your code.</h2>
+      <div class="newsletter-form">
+        <input type="email" placeholder="sam.grep@acme.com" aria-label="Email address">
+        <button type="button">Sign Up for Newsletter</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Security that ships with your code. © 2025 PurpleLotus, Inc. All rights reserved.</p>
+    <p><a href="mailto:security@purplelotus.tech">security@purplelotus.tech</a></p>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.07 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
