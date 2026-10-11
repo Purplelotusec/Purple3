@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-10-10T13:31:13.796854+00:00",
+  "generated_at": "2026-10-11T13:55:23.346591+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "\u2022 [1] In 2020, the SolarWinds IT monitoring system, Orion, was compromised by hackers, allowing them to deliver backdoor malware in an Orion software update, affecting approximately 18,000 customers. [1]\n\u2022 [1] In May 2026, a TanStack npm supply chain attack compromised a former employee's account, allowing an attacker to copy about 170 private GitHub repositories. [2][3]\n\u2022 [1] The TanStack npm attack also led to the theft of credentials from developers' machines, including GitHub tokens, SSH keys, and cloud credentials. [2][3]\n\u2022 [1] The attack on TanStack was tracked as CVE-2026-45321, and it is believed that the malicious package reached the former employee's laptop or was used to compromise other devices. [2][3]\n\u2022 [1] The attack on CrowdSec's private GitHub repositories also included the email addresses of 83 CrowdSec users and the names, email addresses, and investment context of 51 potential investors from 2020. [3]",
+  "digest_markdown": "\u2022 [1] A software supply chain attack compromised SolarWinds' Orion IT monitoring system, allowing hackers to deliver backdoor malware in a software update, affecting approximately 18,000 customers. [1]\n\u2022 [1] A GHAPPIER supply chain attack compromised 65 GitHub repositories, infecting 73 files across 22 accounts, using a legitimate npm package to distribute a malicious loader to users. [2]\n\u2022 [1] An undercover Google analyst infiltrated a notorious supply-chain hacking gang called TeamPCP, allowing Google to monitor the hacking spree from the inside and warn breach targets. [3]\n\u2022 [1] A GlassWorm-linked supply chain campaign abused Visual Studio Code color themes to distribute malicious loaders, hiding malware inside seemingly harmless extensions. [4]\n\u2022 [1] The GlassWorm campaign used a staged malware loader tied to the campaign, containing a Solana address and an AES key, which allowed operators to rotate command-and-control destinations without publishing a new extension version. [4]",
   "sources": [
     {
       "title": "Worldwide software supply chain attacks tracker (updated daily)",
       "url": "https://www.comparitech.com/software-supply-chain-attacks/"
     },
     {
+      "title": "GHAPPIER Supply Chain Attack Compromises 65 GitHub Repositories and ...",
+      "url": "https://cybersecuritynews.com/ghappier-supply-chain-attack/"
+    },
+    {
       "title": "An Undercover Google Analyst Infiltrated a Notorious Supply-Chain ...",
       "url": "https://www.wired.com/story/an-undercover-google-analyst-infiltrated-a-notorious-supply-chain-hacking-gang/"
     },
     {
-      "title": "TanStack Supply Chain Attack Lets Hackers Steal 170 Private CrowdSec ...",
-      "url": "https://cybersecuritynews.com/tanstack-supply-chain-attack/"
-    },
-    {
-      "title": "CrowdSec Says TanStack npm Attack Led to Copy of 170 Private GitHub ...",
-      "url": "https://thehackernews.com/2026/09/crowdsec-says-tanstack-npm-attack-led.html"
+      "title": "GlassWorm Supply Chain Attack Hides Malware Inside VS Code ... - GBHackers",
+      "url": "https://gbhackers.com/glassworm-supply-chain/"
     }
   ]
 }
