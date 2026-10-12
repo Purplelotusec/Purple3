@@ -1,24 +1,56 @@
 {
-  "generated_at": "2026-10-11T13:55:23.346591+00:00",
+  "generated_at": "2026-10-12T16:40:29.483267+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "\u2022 [1] A software supply chain attack compromised SolarWinds' Orion IT monitoring system, allowing hackers to deliver backdoor malware in a software update, affecting approximately 18,000 customers. [1]\n\u2022 [1] A GHAPPIER supply chain attack compromised 65 GitHub repositories, infecting 73 files across 22 accounts, using a legitimate npm package to distribute a malicious loader to users. [2]\n\u2022 [1] An undercover Google analyst infiltrated a notorious supply-chain hacking gang called TeamPCP, allowing Google to monitor the hacking spree from the inside and warn breach targets. [3]\n\u2022 [1] A GlassWorm-linked supply chain campaign abused Visual Studio Code color themes to distribute malicious loaders, hiding malware inside seemingly harmless extensions. [4]\n\u2022 [1] The GlassWorm campaign used a staged malware loader tied to the campaign, containing a Solana address and an AES key, which allowed operators to rotate command-and-control destinations without publishing a new extension version. [4]",
+  "digest_markdown": "Here is a summary of the article in bullet points:\n\n**MemTensor Packages Compromised**\n\n* MemTensor's MemOS, an open source memory framework for large language models (LLMs) and AI agents, has been compromised.\n* The compromise affects two packages: @memtensor/memos-cloud-openclaw-plugin (npm) and MemoryOS (PyPI).\n* Malicious releases of these packages were published on npm and PyPI, respectively, on September 23, 2026.\n\n**Malicious Behavior**\n\n* The compromised packages bundle a Go binary named sckit, which is built for Linux, macOS, and Windows.\n* The binary searches for credentials in the user's home directory and reports to command and control (C2) servers under skyleen[.]fr.\n* The malicious code first appeared in commits to MemTensor's GitHub repositories, not only in the registry artifacts.\n\n**Lazarus Group Involvement**\n\n* The compromise is attributed to the North Korea-affiliated Lazarus Group.\n* The campaign is part of a fake recruitment-themed phishing campaign that targets developers and IT professionals.\n* The campaign has been operational since May 2025 and has been detected in both npm and PyPI registries.\n\n**Implications**\n\n* The discovery of these packages underscores the persistent threat from sophisticated state-sponsored actors who leverage open-source ecosystems to further their objectives.\n* The cybersecurity community faces a critical challenge in identifying and mitigating such threats, emphasizing the need for enhanced security measures and vigilance among developers and organizations.",
   "sources": [
     {
-      "title": "Worldwide software supply chain attacks tracker (updated daily)",
+      "title": "Worldwide software supply chain attacks tracker (updated ...",
       "url": "https://www.comparitech.com/software-supply-chain-attacks/"
     },
     {
-      "title": "GHAPPIER Supply Chain Attack Compromises 65 GitHub Repositories and ...",
+      "title": "GHAPPIER Supply Chain Attack Compromises 65 GitHub ...",
       "url": "https://cybersecuritynews.com/ghappier-supply-chain-attack/"
     },
     {
-      "title": "An Undercover Google Analyst Infiltrated a Notorious Supply-Chain ...",
+      "title": "An Undercover Google Analyst Infiltrated a Notorious Supply ...",
       "url": "https://www.wired.com/story/an-undercover-google-analyst-infiltrated-a-notorious-supply-chain-hacking-gang/"
     },
     {
-      "title": "GlassWorm Supply Chain Attack Hides Malware Inside VS Code ... - GBHackers",
-      "url": "https://gbhackers.com/glassworm-supply-chain/"
+      "title": "CrowdSec Says TanStack npm Attack Led to Copy of 170 Private ...",
+      "url": "https://thehackernews.com/2026/09/crowdsec-says-tanstack-npm-attack-led.html"
+    },
+    {
+      "title": "Malicious npm Package With 2 Million Downloads Hides Malware ...",
+      "url": "https://cybersecuritynews.com/malicious-npm-package/"
+    },
+    {
+      "title": "npm 'btree' Malware Campaign Affects Millions of Downloads ...",
+      "url": "https://checkmarx.com/zero-post/npm-btree-malware-campaign-affects-millions-of-downloads-no-need-for-install-script/"
+    },
+    {
+      "title": "MALFEX npm Malware Hides Executables in PNG Files to Infect ...",
+      "url": "https://cybersecuritynews.com/malfex-npm-malware/"
+    },
+    {
+      "title": "MALFEX npm Malware Campaign: Three Payloads And An Adversary ...",
+      "url": "https://checkmarx.com/zero-post/malfex-npm-malware-campaign-three-payloads-and-an-adversary-that-signs-their-work/"
+    },
+    {
+      "title": "PyPI Vulnerability Fixes - Lightwell Package Catalog",
+      "url": "https://www.bing.com/aclick?ld=e8jEQWNg0j2CllrUP-j1FJFDVUCUwnOP0aUR72nMma_MWjkbuVatChIoJ5kU3hOGf-Z-x2pBQQBu7VylEvYk6uChMKXz6lfxXlrg1jwFrI8akBta1q5jdaETw7r48MXAjZ5sWbNzGmDmr2sIRK2Jire9ARpvPSJAdA8k2O_PIGqvTwskJdeEKGjxR3MPFcktPn-zVDB7GPlmnGY2ARemLwYs5JV48&u=aHR0cHMlM2ElMmYlMmZhZC5kb3VibGVjbGljay5uZXQlMmZzZWFyY2hhZHMlMmZsaW5rJTJmY2xpY2slM2ZsaWQlM2Q0MzcwMDA4NDM0MTU4MDkzNCUyNmRzX3Nfa3dnaWQlM2Q1ODcwMDAwOTEyNjA4MjEyMSUyNmRzX2FfY2lkJTNkNDA1NTA3ODI5JTI2ZHNfYV9jYWlkJTNkMjQyMTQ3NzMyODclMjZkc19hX2FnaWQlM2QyMDA4ODkxODM5NzglMjZkc19hX2xpZCUzZGt3ZC0yNDgwNTgyNjA1ODczJTI2JTI2ZHNfZV9hZGlkJTNkODEwMjA0MTEwMTQ2MjglMjZkc19lX3RhcmdldF9pZCUzZGt3ZC04MTAyMDY4ODgwNjc4MSUzYWxvYy0xOTAlMjYlMjZkc19lX25ldHdvcmslM2RvJTI2ZHNfdXJsX3YlM2QyJTI2ZHNfZGVzdF91cmwlM2RodHRwcyUzYSUyZiUyZnd3dy5pYm0uY29tJTJmcHJvZHVjdHMlMmZsaWdodHdlbGwlM2Z1dG1fY29udGVudCUzZFNSQ1dXJTI2cDElM2RTZWFyY2glMjZwNCUzZDI0ODA1ODI2MDU4NzMlMjZwNSUzZHAlMjZwOSUzZDIwMDg4OTE4Mzk3OCUyNmdjbGlkJTNkNzUzYTBmYzMzNzkxMWM1Y2MzYmQ2NTBlM2E5ODY5OWMlMjZnY2xzcmMlM2QzcC5kcyUyNiUyNm1zY2xraWQlM2Q3NTNhMGZjMzM3OTExYzVjYzNiZDY1MGUzYTk4Njk5Yw&rlid=753a0fc337911c5cc3bd650e3a98699c"
+    },
+    {
+      "title": "Compromised MemTensor Packages Deliver sckit Credential ...",
+      "url": "https://thehackernews.com/2026/09/compromised-memtensor-packages-deliver.html"
+    },
+    {
+      "title": "MemTensor npm and PyPI Packages Compromised in ... - Socket",
+      "url": "https://socket.dev/blog/memtensor-compromise"
+    },
+    {
+      "title": "New Malicious Packages in npm and PyPI Tied to Lazarus Group",
+      "url": "https://dailysecurityreview.com/cyber-security/new-malicious-packages-in-npm-and-pypi-tied-to-lazarus-group/"
     }
   ]
 }
