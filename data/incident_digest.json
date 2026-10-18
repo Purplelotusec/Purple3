@@ -1,12 +1,16 @@
 {
-  "generated_at": "2026-10-17T11:32:27.094600+00:00",
+  "generated_at": "2026-10-18T12:02:34.083555+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "\u2022 Up to 18,000 customers installed a malicious SolarWinds Orion software update, allowing hackers to access and imitate victims' accounts and system files. [1]\n\u2022 A supply chain attack, tracked as GHAPPIER, compromised 65 GitHub repositories, infecting 73 files across 22 accounts. [2]\n\u2022 A GhostAction supply chain attack on GitHub exposed 3,325 secrets, including PyPI tokens, npm tokens, DockerHub tokens, and AWS access keys. [3]\n\u2022 Google's undercover researcher infiltrated a notorious supply chain hacking group, TeamPCP, allowing Google to monitor the hacking spree from the inside and warn breach targets. [4]\n\u2022 TeamPCP, a hacker group, tainted hundreds of open-source programs with malware, stole developer accounts, and released a self-spreading worm to automate the process, breaching over a thousand companies. [4]",
+  "digest_markdown": "\u2022 Up to 18,000 customers installed a malicious Orion update, allowing hackers to access and imitate victims' accounts/users and access system files. [1]\n\u2022 An attacker compromised the GitHub Actions release pipelines of MemTensor, publisher of the widely used MemoryOS and OpenClaw memory-integration tooling, and used stolen publishing tokens to push credential-stealing builds to npm and PyPI. [2]\n\u2022 A supply chain attack, tracked as GHAPPIER, reached 65 GitHub repositories, infecting 73 files across 22 accounts, and involved a legitimate npm package that distributed a malicious loader to users. [3]\n\u2022 A new supply chain attack targeting GitHub repositories, now identified as GhostAction, has been confirmed, exposing 3,325 secrets, including PyPI tokens, npm tokens, DockerHub tokens, and AWS access keys. [4]\n\u2022 The GhostAction campaign compromised at least 817 repositories, with malicious commits deployed across different projects, and raised concerns that malicious or trojanized versions could be released if the exposed secrets are not revoked. [4]",
   "sources": [
     {
       "title": "Worldwide software supply chain attacks tracker (updated daily)",
       "url": "https://www.comparitech.com/software-supply-chain-attacks/"
+    },
+    {
+      "title": "AI Memory, Compromised: The MemTensor Supply Chain Attack",
+      "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-memtensor-supply-chain-sckit-20260925-csa/"
     },
     {
       "title": "GHAPPIER Supply Chain Attack Compromises 65 GitHub Repositories and ...",
@@ -15,10 +19,6 @@
     {
       "title": "GhostAction Supply Chain Attack on GitHub Exposes 3,325 Secrets",
       "url": "https://dailysecurityreview.com/cyber-security/ghostaction-supply-chain-attack-on-github-exposes-3325-secrets/"
-    },
-    {
-      "title": "An undercover Google analyst infiltrated a notorious supply-chain ...",
-      "url": "https://www.wired.com/story/an-undercover-google-analyst-infiltrated-a-notorious-supply-chain-hacking-gang/"
     }
   ]
 }
