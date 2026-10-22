@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-21T12:53:09.686807+00:00",
+  "generated_at": "2026-10-22T12:54:22.052415+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "Here's a summary of the article:\n\n**Compromised MemTensor Packages Deliver sckit Credential Stealer**\n\nTwo legitimate MemTensor packages, one on npm and one on PyPI, have been compromised to deliver a platform-specific Go-based credential-stealing implant called sckit. The malicious releases appeared on September 23, 2026, and affected versions 0.1.21, 0.1.23, and 0.1.25 of the npm package and version 2.0.34 of the PyPI package.\n\n**How it works**\n\nThe sckit implant searches for credentials, tokens, private keys, and other secrets in the user's home directory and related locations. It is launched when the package is imported or registered and used. The implant is compiled for Windows, Linux, and macOS on both x64 and ARM64 systems.\n\n**Targets**\n\nThe implant targets:\n\n* Credentials files (.npmrc, .vault-token, id_ecdsa, credentials.db, access_tokens.json, and stored_tokens)\n* Environment variables that indicate tokens, passwords, API keys, private keys, session cookies, and database or message-broker connection strings\n* AWS access keys, GitHub and GitLab tokens, npm and PyPI tokens, Hugging Face, HashiCorp Vault, Slack, Stripe, and SendGrid keys, and JWTs\n\n**Attack chain**\n\nThe attack chain involves:\n\n1. Package takeover: The threat actors gained control of publishing credentials for the legitimate MemTensor packages.\n2. Supply chain compromise: The compromised packages are installed and used, allowing the sckit implant to launch and steal credentials.\n3. Credential exfiltration: The stolen credentials are exfiltrated to an external server (\"skyleen[.]fr\").\n\n**Recommendations**\n\n* Developers using the affected versions should treat credentials available to the package environment as exposed and review recent publishing activity for packages that may have been reachable with those credentials.\n* Organizations building JavaScript or Python software should treat this as an active incident until proven otherwise.\n* Developers should update their packages to the latest versions and monitor their environments for suspicious activity.\n\n**Technical analysis**\n\nThe attack technique maps cleanly to MITRE ATT&CK T1195.001 (Supply Chain Compromise: Compromise Software Dependencies and Development Tools) and T1555 (Credentials from Password Stores).",
+  "digest_markdown": "Based on the provided sources, here is a summary of the compromised LiteLLM Python package and its impact:\n\n**Compromise:**\n\n* A malicious LiteLLM package (version 1.107.0) was published to PyPI and Docker Hub.\n* The package contained compiled malware that steals cloud credentials, private keys, browser data, and authentication files for AI development tools.\n* The malware was delivered through a credential stealer that called itself \"privcollect\" and a background daemon that checks a GitHub dead drop every hour and runs whatever Python the attacker serves.\n\n**Impact:**\n\n* The compromised package was live for approximately 2 hours (11:39 UTC to 13:23 UTC) before being pulled from PyPI.\n* Docker images v1.107.0, latest, main-latest, and main-stable were compromised from 11:46 UTC to 14:20 UTC.\n* Enterprise Customers running the private enterprise release of LiteLLM were not impacted.\n* Teams using LiteLLM 1.107.0 should stop deploying it and investigate environments where Python ran after installation, including proxy containers and CI runners.\n\n**Investigation:**\n\n* LiteLLM's release pipeline was compromised, and the malicious package was pushed to the docker registry and PyPI.\n* The attack vector is believed to be through stolen GitHub CLI OAuth tokens, which were used to trigger the project-releaser run and approve the malicious release.\n* The investigation is ongoing to trace the original attack vector and identify the mechanism by which the threat actor acquired the relevant tokens.\n\n**Recommendations:**\n\n* Review the recommendations below immediately if you installed or ran any of the affected artifacts:\n\t+ Review the Python startup files and ensure they are not executing any malicious code.\n\t+ Check the container build provenance and ensure it points to a legitimate source repository.\n\t+ Investigate environments where Python ran after installation, including proxy containers and CI runners.\n\n**Static Analysis:**\n\n* Static analysis confirms both a credential stealer and a loader capable of executing remotely supplied Python.\n* The malware is launched by Python even before LiteLLM is imported through a path file (\"cook.pth\").\n\n**Container Users:**\n\n* Upwind's public investigation reports the same payload in a published LiteLLM image.\n* Examination of the image's attached build provenance confirms that the release workflow recorded a source repository named Berri-AI/litellm, differing by one hyphen from the legitimate BerriAI/litellm project.",
   "sources": [
     {
-      "title": "Worldwide software supply chain attacks tracker (updated ...",
+      "title": "Worldwide software supply chain attacks tracker (updated daily)",
       "url": "https://www.comparitech.com/software-supply-chain-attacks/"
     },
     {
@@ -13,12 +13,12 @@
       "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-memtensor-supply-chain-sckit-20260925-csa/"
     },
     {
-      "title": "Open VSX Access Tokens Leaked, Allowing Malicious Extensions ...",
-      "url": "https://dailysecurityreview.com/cyber-security/application-security/open-vsx-access-tokens-leaked-allowing-malicious-extensions-in-supply-chain-threat/"
+      "title": "GhostAction Supply Chain Attack on GitHub Exposes 3,325 Secrets",
+      "url": "https://dailysecurityreview.com/cyber-security/ghostaction-supply-chain-attack-on-github-exposes-3325-secrets/"
     },
     {
-      "title": "GhostAction Supply Chain Attack on GitHub Exposes 3,325 ...",
-      "url": "https://dailysecurityreview.com/cyber-security/ghostaction-supply-chain-attack-on-github-exposes-3325-secrets/"
+      "title": "GhostAction targets 30k GitHub repos in new supply chain wave",
+      "url": "https://bitnewsbot.com/ghostaction-targets-30k-github-repos-in-new/"
     },
     {
       "title": "Tensorlake npm Package Compromised to Spread Shai-Hulud Worm ...",
@@ -29,28 +29,28 @@
       "url": "https://thehackernews.com/2026/10/tensorlake-npm-package-compromised-to.html"
     },
     {
-      "title": "MALFEX npm Malware Hides Executables in PNG Files to Infect ...",
-      "url": "https://cybersecuritynews.com/malfex-npm-malware/"
-    },
-    {
       "title": "TensorLake npm SDK Compromised in ChainDrop Shai-Hulud ...",
       "url": "https://socket.dev/blog/tensorlake-compromise"
     },
     {
-      "title": "MemTensor npm and PyPI Packages Compromised in ... - Socket",
-      "url": "https://socket.dev/blog/memtensor-compromise"
+      "title": "Thousands of Node Developers Compromised by Malware in ...",
+      "url": "https://dailysecurityreview.com/security-spotlight/thousands-of-node-developers-compromised-by-malware-in-popular-npm-packages/"
     },
     {
-      "title": "Compromised MemTensor Packages Deliver sckit Credential ...",
-      "url": "https://thehackernews.com/2026/09/compromised-memtensor-packages-deliver.html"
+      "title": "LiteLLM Compromised - Hackers Injected an Infostealer and RAT ...",
+      "url": "https://cybersecuritynews.com/litellm-compromised/"
     },
     {
-      "title": "Malicious MemTensor packages steal developer credentials ...",
-      "url": "https://www.isec.news/2026/09/24/memtensor-packages-credential-stealing-supply-chain-attack/"
+      "title": "LiteLLM Compromised in Supply Chain Attack Delivering ...",
+      "url": "https://thehackernews.com/2026/10/litellm-compromised-in-supply-chain.html"
     },
     {
-      "title": "Compromised MemTensor npm and PyPI Packages Deliver sckit ...",
-      "url": "https://securityarsenal.com/blog/compromised-memtensor-npm-and-pypi-packages-deliver-sckit-credential-stealer-detection-and-remediation-guide"
+      "title": "Contained: Oct 21, 2026 LiteLLM release v1.107.0 Compromised",
+      "url": "https://docs.litellm.ai/blog/security-incident-oct-21-2026"
+    },
+    {
+      "title": "LiteLLM PyPI Package and Docker Images Compromised to Steal ...",
+      "url": "https://socket.dev/blog/litellm-compromise"
     }
   ]
 }
