@@ -1,56 +1,56 @@
 {
-  "generated_at": "2026-10-23T12:35:11.160573+00:00",
+  "generated_at": "2026-10-24T11:57:58.071685+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "The LiteLLM Python package, version 1.107.0, was compromised and published to PyPI (Python Package Index) on October 21, 2026. The malicious release included a credential stealer and a remote access trojan (RAT) that was injected into the package through a supply chain attack.\n\nHere are the key points about the compromise:\n\n1. **Malicious release**: The compromised version of LiteLLM was published to PyPI as version 1.107.0, which has been downloaded over 92 million times in the past month.\n2. **Supply chain attack**: The attack is believed to have been carried out through a supply chain attack, where an attacker compromised the package's build process to inject malicious code.\n3. **Payload**: The malicious release included three extra files that install straight into the root of site-packages: a .pth hook that runs a credential stealer every time Python starts, and a sitecustomize.py that starts a background loader built to fetch and run remote Python code every hour.\n4. **Credential stealer**: The credential stealer searches for system information, browser data, developer secrets, cloud credentials, and authentication files used by AI tools, including SSH private keys, AWS, Google Cloud, and Azure credentials, browser passwords, and tokens for tools such as Claude and GitHub Copilot.\n5. **Remote access trojan**: The malware also includes a remote access trojan (RAT) that allows attackers to remotely access and control infected systems.\n6. **Quarantine**: PyPI quarantined the version in under two hours, and the maintainers removed the malicious Docker images for the same release by 14:32 UTC.\n7. **Investigation**: LiteLLM is investigating the incident and has identified that the malicious actions were taken through three engineers' GitHub accounts, which were compromised using stolen GitHub CLI OAuth tokens.\n8. **Mitigation**: LiteLLM has removed all but one user from its GitHub organization and updated the public registries to remove any trusted links to its GitHub organization to prevent further publication of malicious packages.\n\nTo mitigate the risk, users are advised to:\n\n* Review the recommendations provided by the maintainers\n* Pin the version to a known good version (e.g., 1.106.2)\n* Use a secure and up-to-date package manager\n* Regularly update and patch their systems\n* Monitor their systems for suspicious activity\n\nIt is essential to note that the malicious release has been removed from PyPI, and the maintainers are working to identify the attack vector and prevent similar incidents in the future.",
+  "digest_markdown": "The LiteLLM project was compromised on October 21, 2026, resulting in the publication of a malicious version (1.107.0) on PyPI and Docker Hub. The compromised version contained compiled malware that stole credentials and loaded remote-code execution tools. Here's a summary of the incident:\n\n**What happened:**\n\n* The LiteLLM release pipeline was compromised, allowing a malicious version (1.107.0) to be published on PyPI and Docker Hub.\n* The compromised version contained compiled malware that stole credentials and loaded remote-code execution tools.\n* The malware was designed to run at Python startup, even when the user never opened LiteLLM directly.\n* The malware searched for system information, browser data, developer secrets, cloud credentials, and authentication files used by AI tools.\n* The collected information was encrypted and sent through an HTTP POST request to an attacker-controlled domain.\n\n**Impact:**\n\n* All seven PyPI wheels for litellm 1.107.0 contained the payload, across macOS, Linux, musl Linux, and Windows targets.\n* The source tarball lacked the malicious payload files, but its pyproject.toml file contained an added setting that indicated the payload was included during normal wheel construction.\n* The Docker Hub images (v1.107.0, latest, main-latest, and main-stable) were compromised, putting developer systems, build runners, and AI services at risk.\n* Enterprise Customers running the private enterprise release of LiteLLM were not impacted.\n\n**Response:**\n\n* PyPI removed the compromised 1.107.0 release.\n* Docker Hub removed the affected image and all affected tags.\n* The incident was contained, and the company published an incident update with the latest status and guidance for affected users.\n\n**Lessons learned:**\n\n* The incident highlights the importance of security controls and monitoring in preventing such attacks.\n* The use of Python startup hooks as a vector for malware delivery is a new and concerning trend.\n* Reviewers who inspect only source code, a Git tag, or an sdist can miss malicious behavior delivered in a platform-specific binary artifact.\n\n**Recommendations:**\n\n* Users who installed the affected release should assume credentials were exposed and take immediate action to secure their systems.\n* Reviewers should inspect the source code, Git tag, and sdist to ensure that the malicious payload is not included.\n* Developers should keep their dependencies up to date and use secure practices to prevent similar incidents in the future.",
   "sources": [
     {
       "title": "Worldwide software supply chain attacks tracker (updated ...",
       "url": "https://www.comparitech.com/software-supply-chain-attacks/"
     },
     {
-      "title": "AI Memory, Compromised: The MemTensor Supply Chain Attack",
-      "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-memtensor-supply-chain-sckit-20260925-csa/"
+      "title": "GhostAction Supply Chain Attack on GitHub Exposes 3,325 ...",
+      "url": "https://dailysecurityreview.com/cyber-security/ghostaction-supply-chain-attack-on-github-exposes-3325-secrets/"
     },
     {
       "title": "Open VSX Access Tokens Leaked, Allowing Malicious Extensions ...",
       "url": "https://dailysecurityreview.com/cyber-security/application-security/open-vsx-access-tokens-leaked-allowing-malicious-extensions-in-supply-chain-threat/"
     },
     {
-      "title": "GhostAction Supply Chain Attack on GitHub Exposes 3,325 ...",
-      "url": "https://dailysecurityreview.com/cyber-security/ghostaction-supply-chain-attack-on-github-exposes-3325-secrets/"
-    },
-    {
-      "title": "Secure npm Packages - 98% Less Malware",
-      "url": "https://www.bing.com/aclick?ld=e8oOzBFiBx1UKdMAfapjYnPTVUCUxW5I4cGeVubrpXABkuXNlDxxm1yXu3oyvYiSZawSLRplpSTqBpe-3dfTd7ab-r-3C019BrkeY8SkK94LqdpySMHf2WnkedfJWLBMaPnuzIdTEI5Xxm6Y3IVv07AfS1fcCUCz2qv1lZfIWiLXrmcF5HGgJtPmZgUhADIxWMuhUAKOGLfBQryuD4BcTBV2IOOPk&u=aHR0cHMlM2ElMmYlMmZ3d3cuY2hhaW5ndWFyZC5kZXYlMmZsaWJyYXJpZXMlMmZqYXZhc2NyaXB0JTNmbXNjbGtpZCUzZGFhOTg1NTFiMDgxNTE4ZjgxZjEwM2ZjMDViZjQ2OGZkJTI2dXRtX3NvdXJjZSUzZGJpbmclMjZ1dG1fbWVkaXVtJTNkY3BjJTI2dXRtX2NhbXBhaWduJTNkYmdfc19hbWVyX2FjcV9nZW5lcmljX2JvZiUyNnV0bV90ZXJtJTNkbWFsd2FyZSUyNTIwbnBtJTI1MjBwYWNrYWdlJTI2dXRtX2NvbnRlbnQlM2RsaWJyYXJpZXNfbnBt&rlid=aa98551b081518f81f103fc05bf468fd"
-    },
-    {
-      "title": "Malware Endpoint Security - Your Endpoints, Our Experts",
-      "url": "https://www.bing.com/aclick?ld=e82_zTOmmTl52KTR0SLFyorjVUCUykhNuEkzAZzrA6l3xgjxVUo62LmCDyxLtlu3enArpBczXXaM_p3jGBetii0JDLmhxMIoMBd3Ml2GbUHvPT4X06ynRbkVBbbWCtF37i9fDbMS1DItqqR0vneTN2cYS_ghXJPpnVS2IbvdbZ5q-pWE7ynMPFqiduSYW5giyC-d4CWQsq1TKVtnAsJm0R8fQO_nY&u=aHR0cHMlM2ElMmYlMmZ3d3cuaHVudHJlc3MuY29tJTJmZWRyLWZyZWUtdHJpYWwlM2Z1dG1fc291cmNlJTNkYmluZyUyNnV0bV9tZWRpdW0lM2RjcGMlMjZ1dG1fY2FtcGFpZ24lM2RCaW5nLUJvRnUtTkEtU2VhcmNoLU5vbkJyYW5kLVBNLUVORy1Db3JlLUVEUiUyNnV0bV90ZXJtJTNkdGhyZWF0JTI1MjBkZXRlY3Rpb24lMjUyMGFuZCUyNTIwcmVtZWRpYXRpb24lMjZjYW1wYWlnbmlkJTNkNTY3OTQ2NzIzJTI2YWRncm91cGlkJTNkMTE3NDI4MDE3MDI1Nzc3OCUyNmFkaWQlM2Q3MzM5Mjc2NjQ2OTcyOSUyNmhzYV9hY2MlM2RmMTA3OXdjYiUyNmhzYV9jYW0lM2Q1Njc5NDY3MjMlMjZoc2FfZ3JwJTNkMTE3NDI4MDE3MDI1Nzc3OCUyNmhzYV9hZCUzZDczMzkyNzY2NDY5NzI5JTI2aHNhX2t3JTNkdGhyZWF0JTI1MjBkZXRlY3Rpb24lMjUyMGFuZCUyNTIwcmVtZWRpYXRpb24lMjZoc2FfbXQlM2RwJTI2aHNhX25ldCUzZEJpbmdBZHMlMjZoc2Ffc3JjJTNkbyUyNmhzYV90Z3QlM2Rrd2QtNzMzOTI5NzEzODQ4ODUlM2Fsb2MtMTkwJTI2aHNhX3ZlciUzZDMlMjZobnQlM2R1dXZic3V4dnljNWQlMjZtc2Nsa2lkJTNkMjk4MTdkYjM0ZjE3MTRkZGI3ZTkxNzY4MWNmNjYyZmI&rlid=29817db34f1714ddb7e917681cf662fb"
-    },
-    {
-      "title": "Malwarebytes.com - Free Malware Check & Removal",
-      "url": "https://www.bing.com/aclick?ld=e8t4HPdWTHXo8f2dChky4lQzVUCUwv2oZszIrR62z9s6vUD0Z8jFCFVljGD5GFHUFBDpaZ270cggfSfmWIwCLFd4jbnjZ8BfteLzYeoqVfT-X4AUpMu3-tZ-3F7neIeZ7hmGwjEQc-Y6FhyBoZGjvp6dPQdRxeurRDdqxuUqcr0Hqy9wKbUouO1BChMKxbs4pNHQYslcxf2Q_AC27b7UBdhtPtaK0&u=aHR0cHMlM2ElMmYlMmZ3d3cubWFsd2FyZWJ5dGVzLmNvbSUyZmxhbmRpbmctcGFnZSUyZmZyZWUtZG93bmxvYWQtbm93JTNmQyUzZDUlMjZtc2Nsa2lkJTNkZDAzZWY3NDc5OTZiMTVjYTc2NWM5ZDljY2E4YTE4NzclMjZ1dG1fc291cmNlJTNkYmluZyUyNnV0bV9tZWRpdW0lM2RjcGMlMjZ1dG1fY2FtcGFpZ24lM2RVUy1FTi1CSU4lMjU3Q1NyY2gtQjJDLU5CLUFudGl2aXJ1cy1NYWx3YXJlJTI2dXRtX3Rlcm0lM2RtYWx3YXJlJTI2dXRtX2NvbnRlbnQlM2ROQiUyNTdDTWFsd2FyZS1NYWx3YXJl&rlid=d03ef747996b15ca765c9d9cca8a1877"
+      "title": "GPT-6 Astra Supply Chain Attacks Warning - CyPro",
+      "url": "https://cypro.co.uk/insights/cyber-bulletins/gpt-6-astra-supply-chain-attacks-warning/"
     },
     {
       "title": "Tensorlake npm Package Compromised to Spread Shai-Hulud Worm ...",
       "url": "https://cybersecuritynews.com/tensorlake-npm-package/"
     },
     {
-      "title": "Contained: Oct 21, 2026 LiteLLM release v1.107.0 Compromised",
-      "url": "https://docs.litellm.ai/blog/security-incident-oct-21-2026"
+      "title": "454,600 Malicious npm Packages: Are You Exposed? [2026]",
+      "url": "https://shattered.io/npm-supply-chain-attacks-2026/"
+    },
+    {
+      "title": "Thousands of Node Developers Compromised by Malware in ...",
+      "url": "https://dailysecurityreview.com/security-spotlight/thousands-of-node-developers-compromised-by-malware-in-popular-npm-packages/"
+    },
+    {
+      "title": "MALFEX npm Malware Hides Executables in PNG Files to Infect ...",
+      "url": "https://cybersecuritynews.com/malfex-npm-malware/"
     },
     {
       "title": "LiteLLM 1.107.0 Compromised: Credential Stealer - mend.io",
       "url": "https://www.mend.io/blog/litellm-1-107-0-compromised/"
     },
     {
+      "title": "Contained: Oct 21, 2026 LiteLLM release v1.107.0 Compromised",
+      "url": "https://docs.litellm.ai/blog/security-incident-oct-21-2026"
+    },
+    {
       "title": "LiteLLM Compromised - Hackers Injected an Infostealer and RAT in the ...",
       "url": "https://cybersecuritynews.com/litellm-compromised/"
     },
     {
-      "title": "LiteLLM Compromised in Supply Chain Attack Delivering Credential ...",
-      "url": "https://thehackernews.com/2026/10/litellm-compromised-in-supply-chain.html"
+      "title": "LiteLLM Hijacked Again: Malicious 1.107.0 Wheels Steal Credentials and ...",
+      "url": "https://research.jfrog.com/post/litellm-hijacked-again/"
     }
   ]
 }
