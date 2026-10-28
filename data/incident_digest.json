@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-10-27T13:06:51.347909+00:00",
+  "generated_at": "2026-10-28T13:59:29.979970+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "\u2022 [1] A supply chain attack on SolarWinds' Orion IT monitoring system, which is used by over 30,000 organizations, was compromised by hackers in September 2019, allowing them to deliver backdoor malware in an Orion software update. [1]\n\u2022 [1] Approximately 18,000 customers installed the malicious Orion update, allowing the hackers to access and imitate victims' accounts/users, and access system files. [1]\n\u2022 [2] A supply chain attack targeting GitHub repositories, known as GhostAction, exposed 3,325 secrets, including tokens and keys across widely used platforms. [2]\n\u2022 [2] The attack was carried out by leveraging compromised maintainer accounts to insert malicious commits into legitimate projects, and exfiltrated sensitive secrets via a curl POST request to a server controlled by the attackers. [2]\n\u2022 [3] A supply chain attack on the Open VSX registry, which exposed access tokens that granted write access to the registry, allowing unidentified threat actors to publish malicious extensions. [3]",
+  "digest_markdown": "**Security Incident: LiteLLM 1.107.0 Compromised on PyPI and Docker**\n\nA malicious release of LiteLLM 1.107.0 was published to PyPI and Docker, compromising the security of users who installed the package. The compromised version contained a credential stealer and a code loader that stole cloud credentials, developer secrets, and AI provider keys.\n\n**Key Findings:**\n\n1. **Malicious Release:** A malicious LiteLLM 1.107.0 package was published to PyPI, which was live for approximately 2 hours (11:39 UTC to 13:23 UTC).\n2. **Compromised Docker Images:** Docker images v1.107.0, latest, main-latest, and main-stable were compromised from 11:46 UTC to 14:20 UTC.\n3. **Credential Stealer:** The compromised package contained a credential stealer that collected cloud credentials, private keys, browser data, and authentication files for AI development tools.\n4. **Code Loader:** The package also contained a code loader capable of executing remotely supplied Python code.\n5. **Attack Path:** The strongest evidence for the delivery path was in the container registry, which recorded a source repository named Berri-AI/litellm, differing by one hyphen from the legitimate BerriAI/litellm project.\n\n**Recommendations:**\n\n1. **Stop Deploying:** Teams using LiteLLM 1.107.0 should stop deploying it and investigate environments where Python ran after installation, including proxy containers and CI runners.\n2. **Pin to a Safe Version:** Pin to a safe version, such as LiteLLM 1.106.2 or another explicit version published before the incident.\n3. **Update to a Safe Version:** Update to a safe version of LiteLLM as soon as possible.\n4. **Monitor for Suspicious Activity:** Monitor for suspicious activity and report any incidents to the relevant authorities.\n\n**Timeline:**\n\n* 11:40 UTC: LiteLLM's release pipeline was compromised and pushed v1.107.0 to the docker registry and PyPI.\n* 11:39:51 UTC: The malicious package was published to PyPI.\n* 11:46:56 UTC: The compromised Docker images were pushed to Docker Hub.\n* 13:23 UTC: The malicious package was pulled from PyPI.\n* 14:20 UTC: The compromised Docker images were removed from Docker Hub.\n* 14:32 UTC: The maintainers removed the malicious Docker images for the same release.\n\n**Note:** This incident highlights the importance of monitoring and verifying the integrity of dependencies and packages, especially in the context of supply chain attacks.",
   "sources": [
     {
       "title": "Worldwide software supply chain attacks tracker (updated daily)",
@@ -19,6 +19,38 @@
     {
       "title": "Inside the LiteLLM 1.107.0 supply chain compromise: Credential theft ...",
       "url": "https://www.microsoft.com/en-us/security/blog/2026/10/23/inside-the-litellm-1-107-0-supply-chain-compromise-credential-theft-through-python-startup-hooks/"
+    },
+    {
+      "title": "MALFEX npm Malware Hides Executables in PNG Files to Infect ...",
+      "url": "https://cybersecuritynews.com/malfex-npm-malware/"
+    },
+    {
+      "title": "Thousands of Node Developers Compromised by Malware in ...",
+      "url": "https://dailysecurityreview.com/security-spotlight/thousands-of-node-developers-compromised-by-malware-in-popular-npm-packages/"
+    },
+    {
+      "title": "MALFEX npm Malware Campaign: Three Payloads And An Adversary ...",
+      "url": "https://checkmarx.com/zero-post/malfex-npm-malware-campaign-three-payloads-and-an-adversary-that-signs-their-work/"
+    },
+    {
+      "title": "Eight Malicious npm Packages Downloaded 40,767 Times Deliver ...",
+      "url": "https://thehackernews.com/2026/10/eight-malicious-npm-packages-downloaded.html"
+    },
+    {
+      "title": "Secure PyPI Packages - CVE-Free PyPI Packages",
+      "url": "https://www.bing.com/aclick?ld=e8paUejPvjKlKblw68uk5WDzVUCUyi5hWvrSqyN6AWsUOT2MGQJlO0xE-S-pCObWxgly9zvANUcYLooeZ3JtvhHeN6hlBRnSGWj7d03DgzisBSGy4OTl-0CpZxpqal6m-039Lcziar4h1nmHsQ1cC-Ya1DKUhd9kMtK3NUvVZKZMPoUOGlSHLEdUw_-EjHGO7sQch-aQ&u=aHR0cHMlM2ElMmYlMmZ3d3cuY2hhaW5ndWFyZC5kZXYlMmZwcm9kdWN0cyUyZmxpYnJhcmllcyUyZnB5dGhvbiUzZm1zY2xraWQlM2QwZGExZWI0YzI2NzUxOTVkOTkwOTgxYWRkOTVmY2YyMSUyNnV0bV9zb3VyY2UlM2RiaW5nJTI2dXRtX21lZGl1bSUzZGNwYyUyNnV0bV9jYW1wYWlnbiUzZGJnX3NfYW1lcl9hY3FfZ2VuZXJpY19ib2YlMjZ1dG1fdGVybSUzZHNlY3VyZSUyNTIwcHlwaSUyNTIwcGFja2FnZXMlMjZ1dG1fY29udGVudCUzZGxpYnJhcmllc19weXBp&rlid=0da1eb4c2675195d990981add95fcf21"
+    },
+    {
+      "title": "Contained: Oct 21, 2026 LiteLLM release v1.107.0 Compromised",
+      "url": "https://docs.litellm.ai/blog/security-incident-oct-21-2026"
+    },
+    {
+      "title": "LiteLLM 1.107.0 Compromised: Credential Stealer - mend.io",
+      "url": "https://www.mend.io/blog/litellm-1-107-0-compromised/"
+    },
+    {
+      "title": "LiteLLM PyPI Package and Docker Images Compromised to Steal ...",
+      "url": "https://socket.dev/blog/litellm-compromise"
     }
   ]
 }
