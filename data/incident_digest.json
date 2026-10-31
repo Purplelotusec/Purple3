@@ -1,24 +1,56 @@
 {
-  "generated_at": "2026-10-30T13:59:01.671536+00:00",
+  "generated_at": "2026-10-31T13:31:52.781077+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "\u2022 Up to 18,000 customers installed a malicious Orion software update, allowing hackers to access and imitate victims' accounts/users, access system files, and work among SolarWinds' legitimate activities. [1]\n\u2022 In 2025, more than 454,600 new malicious open-source packages were logged, with over 99% of 2025's open source malware on npm. [2]\n\u2022 Third-party involvement is now featured in about half of breaches, with 48% of breaches in 2026 involving third-party organizations, a 60% increase on the previous year's dataset. [3]\n\u2022 Suppliers often cannot say how they were breached, with 66% of supply chain attacks in 2021 found that suppliers did not know, or failed to report, how they were compromised. [3]\n\u2022 Supply chain compromise raises breach cost, with supply chain compromise being the largest cost-increasing factor in Canada, adding about CA$367,899 per breach. [3]",
+  "digest_markdown": "The article discusses a security incident involving the LiteLLM library, a Python library and proxy for calling LLM provider APIs. Here are the key points:\n\n**Incident Details**\n\n* A malicious release of LiteLLM 1.107.0 was published to PyPI on October 21, 2026, containing compiled malware that steals credentials and loads remote-code execution tools.\n* The malware was present in all seven compiled wheels of the package, which had over 92 million downloads in the past month.\n* The malicious release was live for approximately 2 hours, from 11:39 UTC to 13:23 UTC, before PyPI quarantined the version.\n* The affected releases were pulled, and the maintainers removed the malicious Docker images.\n\n**How the payload got into the release**\n\n* The v1.107.0 git tag did not contain the payload.\n* The released package matched a legitimate main-branch commit made later that morning, but with edits that introduced the payload files.\n* The edits were made by an attacker who used GitHub's web interface to create commits, which were signed and verified by GitHub.\n* The attacker used a hyphenated lookalike organization name, Berri-AI, instead of the real organization name, BerriAI.\n\n**Impact**\n\n* Enterprise customers running the private enterprise release of LiteLLM were not impacted.\n* The incident highlights the importance of secure software development practices, such as code reviews and testing, to prevent similar incidents.\n\n**Recommendations**\n\n* Users are advised to stop deploying LiteLLM 1.107.0 and investigate environments where Python ran after installation, including proxy containers and CI runners.\n* Users are recommended to pin a previous version of LiteLLM, such as 1.106.2, or use an explicit version published before the incident.\n\nOverall, the incident highlights the importance of secure software development practices and the need for vigilance in monitoring and updating dependencies to prevent similar incidents.",
   "sources": [
     {
       "title": "Worldwide software supply chain attacks tracker (updated daily)",
       "url": "https://www.comparitech.com/software-supply-chain-attacks/"
     },
     {
-      "title": "Software Supply Chain Attack Statistics 2026 | ScanTitan",
-      "url": "https://scantitan.com/research/software-supply-chain-attack-statistics/"
+      "title": "TeamPCP: Attacks, Victims and Latest Activity",
+      "url": "https://breachnews.com/threat-actors/teampcp/"
     },
     {
-      "title": "Supply Chain Attack Statistics 2026: Third Parties, Malware",
-      "url": "https://nhimg.org/supply-chain-attack-statistics-guide"
+      "title": "GhostAction Supply Chain Attack on GitHub Exposes 3,325 Secrets",
+      "url": "https://dailysecurityreview.com/cyber-security/ghostaction-supply-chain-attack-on-github-exposes-3325-secrets/"
     },
     {
-      "title": "npm Supply Chain Attacks: 454,600 Malicious Packages [2026]",
+      "title": "Inside the LiteLLM 1.107.0 supply chain compromise: Credential theft ...",
+      "url": "https://www.microsoft.com/en-us/security/blog/2026/10/23/inside-the-litellm-1-107-0-supply-chain-compromise-credential-theft-through-python-startup-hooks/"
+    },
+    {
+      "title": "MALFEX npm Malware Hides Executables in PNG Files to Infect ...",
+      "url": "https://cybersecuritynews.com/malfex-npm-malware/"
+    },
+    {
+      "title": "454,600 Malicious npm Packages: Are You Exposed? [2026]",
       "url": "https://shattered.io/npm-supply-chain-attacks-2026/"
+    },
+    {
+      "title": "Thousands of Node Developers Compromised by Malware in ...",
+      "url": "https://dailysecurityreview.com/security-spotlight/thousands-of-node-developers-compromised-by-malware-in-popular-npm-packages/"
+    },
+    {
+      "title": "MALFEX npm Malware Campaign: Three Payloads And An Adversary ...",
+      "url": "https://checkmarx.com/zero-post/malfex-npm-malware-campaign-three-payloads-and-an-adversary-that-signs-their-work/"
+    },
+    {
+      "title": "Secure PyPI Packages - Block Malicious PyPI Packages",
+      "url": "https://www.bing.com/aclick?ld=e8mE5as9u0pcFWEf9_Z3KO7jVUCUx4CY2lMYwzKPol3mSNRItWCpJoSCyP15VZGUHsO0Zi0XnGhbngVvBZTPOtlFLGisx5x8iwvlNUqoP8O5NFgMdqs5y2VzXwUuE13b0uX8jeCblJnBCm1hqj8vHOwW9PjvNIEC_kDLmt1ecmBekMIgtw6c0FWU_g8c70GlP2mtmgE2i189g5IT2ZMk8t5ptvbEc&u=aHR0cHMlM2ElMmYlMmZ3d3cuY2hhaW5ndWFyZC5kZXYlMmZwcm9kdWN0cyUyZmxpYnJhcmllcyUyZnB5dGhvbiUzZm1zY2xraWQlM2RkM2RiMGRkZDgxMmIxNTk0NjU2NzY3Mzg2YzY1MTg2MiUyNnV0bV9zb3VyY2UlM2RiaW5nJTI2dXRtX21lZGl1bSUzZGNwYyUyNnV0bV9jYW1wYWlnbiUzZGJnX3NfYW1lcl9hY3FfZ2VuZXJpY19ib2YlMjZ1dG1fdGVybSUzZHNlY3VyZSUyNTIwcHlwaSUyNTIwZGVwZW5kZW5jaWVzJTI2dXRtX2NvbnRlbnQlM2RsaWJyYXJpZXNfcHlwaQ&rlid=d3db0ddd812b1594656767386c651862"
+    },
+    {
+      "title": "LiteLLM PyPI Package and Docker Images Compromised to Steal ...",
+      "url": "https://socket.dev/blog/litellm-compromise"
+    },
+    {
+      "title": "Contained: Oct 21, 2026 LiteLLM release v1.107.0 Compromised",
+      "url": "https://docs.litellm.ai/blog/security-incident-oct-21-2026"
+    },
+    {
+      "title": "LiteLLM 1.107.0 Compromised: Credential Stealer - mend.io",
+      "url": "https://www.mend.io/blog/litellm-1-107-0-compromised/"
     }
   ]
 }
