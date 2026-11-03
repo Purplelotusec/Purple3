@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-11-02T16:59:35.092586+00:00",
+  "generated_at": "2026-11-03T14:58:44.380850+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "\u2022 [1] A supply chain attack on SolarWinds' Orion IT monitoring system, used by over 30,000 organizations, was compromised by hackers, allowing them to deliver backdoor malware in an Orion software update. [1]\n\u2022 [1] A compromised LiteLLM 1.107.0 release was published to the Python Package Index (PyPI) and distributed through official container images, allowing hackers to steal credentials and access sensitive information. [2]\n\u2022 [1] A GhostAction supply chain campaign compromised 3,325 secrets, exposing tokens and keys across widely used platforms including PyPI, npm, DockerHub, GitHub, AWS, and Cloudflare. [3]\n\u2022 [2] A GhostAction supply chain campaign compromised 772 public GitHub repositories, using fake GitHub Actions workflow files to steal credentials from CI/CD environments. [4]\n\u2022 [4] The GhostAction campaign used stolen GitHub account access to add malicious workflows under the victim's own identity, sending stolen data over plain HTTP to an attacker-controlled infrastructure. [4]",
+  "digest_markdown": "**Security Incident Report: LiteLLM Package Compromise**\n\n**Summary:**\n\nOn October 21, 2026, the LiteLLM package was compromised on PyPI and Docker, resulting in the release of a malicious version (1.107.0) that contained a credential stealer and a remote code execution backdoor. The compromised package was live for approximately 2 hours, during which time it was downloaded and installed by thousands of users, potentially exposing sensitive data and compromising AI applications.\n\n**Affected Releases:**\n\n* PyPI: litellm==1.107.0 (all seven wheels)\n* Docker Hub: v1.107.0, latest, main-latest, and main-stable\n* GitHub Container Registry: v1.107.0, latest, main-latest, and main-stable\n\n**Impact:**\n\n* The compromised package contained a credential stealer that collected cloud credentials, private keys, browser data, and authentication files for AI development tools.\n* The package also contained a remote code execution backdoor that allowed the attacker to execute arbitrary code on the compromised system.\n* The incident affected thousands of users who installed the compromised package, potentially exposing sensitive data and compromising AI applications.\n\n**Remediation:**\n\n* The affected releases have been pulled from PyPI and Docker Hub.\n* The GitHub Container Registry has been updated to point to secure sources.\n* Users are advised to stop deploying LiteLLM version 1.107.0 and investigate their environments for potential compromises.\n\n**Prevention:**\n\n* The incident highlights the importance of secure software development practices, including regular security audits and testing.\n* Users are advised to keep their dependencies up to date and to use reputable package managers to ensure the integrity of their dependencies.\n* Organizations should consider implementing additional security measures, such as monitoring their systems for suspicious activity and implementing incident response plans.\n\n**Lessons Learned:**\n\n* The incident demonstrates the importance of secure software development practices and the need for regular security audits and testing.\n* The use of reputable package managers and secure dependencies can help prevent similar incidents in the future.\n* Organizations should prioritize security and take proactive measures to prevent and respond to security incidents.",
   "sources": [
     {
       "title": "Worldwide software supply chain attacks tracker (updated daily)",
@@ -13,12 +13,44 @@
       "url": "https://www.microsoft.com/en-us/security/blog/2026/10/23/inside-the-litellm-1-107-0-supply-chain-compromise-credential-theft-through-python-startup-hooks/"
     },
     {
+      "title": "GhostAction Supply Chain Campaign Uses Malicious GitHub Actions to ...",
+      "url": "https://cybersecuritynews.com/ghostaction-supply-chain-campaign/"
+    },
+    {
       "title": "GhostAction Supply Chain Attack on GitHub Exposes 3,325 Secrets",
       "url": "https://dailysecurityreview.com/cyber-security/ghostaction-supply-chain-attack-on-github-exposes-3325-secrets/"
     },
     {
-      "title": "GhostAction Supply Chain Campaign Uses Malicious GitHub Actions to ...",
-      "url": "https://cybersecuritynews.com/ghostaction-supply-chain-campaign/"
+      "title": "Tensorlake npm Package Compromised to Spread Shai-Hulud Worm ...",
+      "url": "https://cybersecuritynews.com/tensorlake-npm-package/"
+    },
+    {
+      "title": "MALFEX npm Malware Hides Executables in PNG Files to Infect ...",
+      "url": "https://cybersecuritynews.com/malfex-npm-malware/"
+    },
+    {
+      "title": "Thousands of Node Developers Compromised by Malware in ...",
+      "url": "https://dailysecurityreview.com/security-spotlight/thousands-of-node-developers-compromised-by-malware-in-popular-npm-packages/"
+    },
+    {
+      "title": "Tensorlake npm Package Compromised to Deliver Shai-Hulud ...",
+      "url": "https://thehackernews.com/2026/10/tensorlake-npm-package-compromised-to.html"
+    },
+    {
+      "title": "Malware-Free PyPI Packages - CVE-Free PyPI Packages",
+      "url": "https://www.bing.com/aclick?ld=e8RtEb0BpHFEpW42RxcUQ3vjVUCUxx8wBdLVHN5Lzgld4UfgYw1q0jbdstmvRJPuO7IJoLTdIoGiv-O8OFxXTWdoHkksIhkS4wYRceT98wDB0K5Z7IcFuOXJyfWNjYikTaXXAb4_3NEK6x4Q_1j6uFzf3vZ2GEPEFVBc1tyWfm0KJD0wSYJGEjlM6If-fbm8-uWezvKw&u=aHR0cHMlM2ElMmYlMmZ3d3cuY2hhaW5ndWFyZC5kZXYlMmZwcm9kdWN0cyUyZmxpYnJhcmllcyUyZnB5dGhvbiUzZm1zY2xraWQlM2Q3NjRhMTM4OTQ3OGYxOTc1ZDRhMzc5NjBiMWFjYzdlMCUyNnV0bV9zb3VyY2UlM2RiaW5nJTI2dXRtX21lZGl1bSUzZGNwYyUyNnV0bV9jYW1wYWlnbiUzZGJnX3NfYW1lcl9hY3FfZ2VuZXJpY19ib2YlMjZ1dG1fdGVybSUzZHB5cGklMjUyMG1hbHdhcmUlMjZ1dG1fY29udGVudCUzZGxpYnJhcmllc19weXBp&rlid=764a1389478f1975d4a37960b1acc7e0"
+    },
+    {
+      "title": "Contained: Oct 21, 2026 LiteLLM release v1.107.0 Compromised",
+      "url": "https://docs.litellm.ai/blog/security-incident-oct-21-2026"
+    },
+    {
+      "title": "LiteLLM PyPI Package and Docker Images Compromised to Steal ...",
+      "url": "https://socket.dev/blog/litellm-compromise"
+    },
+    {
+      "title": "A Popular AI Package Was Backdoored on PyPI, and It Ran in ...",
+      "url": "https://dev.to/unfiltered_anshul/a-popular-ai-package-was-backdoored-on-pypi-and-it-ran-in-every-python-process-on-your-machine-26i4"
     }
   ]
 }
