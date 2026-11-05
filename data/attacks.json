@@ -1,9 +1,57 @@
 {
-  "generated_at": "2026-11-04T01:33:25.145703+00:00",
+  "generated_at": "2026-11-05T01:36:06.760597+00:00",
   "window_days": 30,
   "source": "GitHub Advisory Database (api.github.com/advisories)",
   "count": 100,
   "advisories": [
+    {
+      "name": "github.com/basekick-labs/arc",
+      "ecosystem": "go",
+      "affected_range": "< 0.0.0-20260610131716-5dc8f53b70a3",
+      "patched_version": "0.0.0-20260610131716-5dc8f53b70a3",
+      "severity": "MEDIUM",
+      "summary": "Arc: DuckDB I/O aliases bypass database RBAC after CVE-2026-47735",
+      "published": "2026-11-04T17:02:37Z",
+      "ghsa_id": "GHSA-93cm-2v4m-c56c",
+      "cve_id": "CVE-2026-55098",
+      "source_url": "https://github.com/advisories/GHSA-93cm-2v4m-c56c"
+    },
+    {
+      "name": "@payloadcms/storage-vercel-blob",
+      "ecosystem": "npm",
+      "affected_range": ">= 3.25.0, < 3.90.0",
+      "patched_version": "3.90.0",
+      "severity": "MEDIUM",
+      "summary": "@payloadcms/storage-vercel-blob has access control bypass of uploads in Vercel Storage adapter",
+      "published": "2026-11-04T17:00:39Z",
+      "ghsa_id": "GHSA-mc8m-rr6c-r5qr",
+      "cve_id": "CVE-2026-93363",
+      "source_url": "https://github.com/advisories/GHSA-mc8m-rr6c-r5qr"
+    },
+    {
+      "name": "@payloadcms/storage-vercel-blob",
+      "ecosystem": "npm",
+      "affected_range": ">= 4.0.0-canary.0, < 4.0.0-canary.34",
+      "patched_version": "4.0.0-canary.34",
+      "severity": "MEDIUM",
+      "summary": "@payloadcms/storage-vercel-blob has access control bypass of uploads in Vercel Storage adapter",
+      "published": "2026-11-04T17:00:39Z",
+      "ghsa_id": "GHSA-mc8m-rr6c-r5qr",
+      "cve_id": "CVE-2026-93363",
+      "source_url": "https://github.com/advisories/GHSA-mc8m-rr6c-r5qr"
+    },
+    {
+      "name": "odf-kit",
+      "ecosystem": "npm",
+      "affected_range": ">= 0.6.0, < 0.14.2",
+      "patched_version": "0.14.2",
+      "severity": "MEDIUM",
+      "summary": "odf-kit: HTML injection leading to XSS in odtToHtml() and odsToHtml() via unescaped style attribute values",
+      "published": "2026-11-04T16:14:34Z",
+      "ghsa_id": "GHSA-3cgg-c5pp-57h6",
+      "cve_id": "CVE-2026-113787",
+      "source_url": "https://github.com/advisories/GHSA-3cgg-c5pp-57h6"
+    },
     {
       "name": "stanza",
       "ecosystem": "pip",
@@ -1146,54 +1194,6 @@
     },
     {
       "name": "Microsoft.NETCore.App.Runtime.linux-arm64",
-      "ecosystem": "nuget",
-      "affected_range": ">= 9.0.0, < 9.0.22",
-      "patched_version": "9.0.22",
-      "severity": "HIGH",
-      "summary": "Microsoft Security Advisory CVE-2026-111497 - .NET Brotli Decoder Out-of-bounds Write Vulnerability",
-      "published": "2026-11-03T17:33:48Z",
-      "ghsa_id": "GHSA-p3jp-9v83-76w9",
-      "cve_id": null,
-      "source_url": "https://github.com/advisories/GHSA-p3jp-9v83-76w9"
-    },
-    {
-      "name": "Microsoft.NETCore.App.Runtime.linux-bionic-arm64",
-      "ecosystem": "nuget",
-      "affected_range": ">= 9.0.0, < 9.0.22",
-      "patched_version": "9.0.22",
-      "severity": "HIGH",
-      "summary": "Microsoft Security Advisory CVE-2026-111497 - .NET Brotli Decoder Out-of-bounds Write Vulnerability",
-      "published": "2026-11-03T17:33:48Z",
-      "ghsa_id": "GHSA-p3jp-9v83-76w9",
-      "cve_id": null,
-      "source_url": "https://github.com/advisories/GHSA-p3jp-9v83-76w9"
-    },
-    {
-      "name": "Microsoft.NETCore.App.Runtime.linux-bionic-x64",
-      "ecosystem": "nuget",
-      "affected_range": ">= 9.0.0, < 9.0.22",
-      "patched_version": "9.0.22",
-      "severity": "HIGH",
-      "summary": "Microsoft Security Advisory CVE-2026-111497 - .NET Brotli Decoder Out-of-bounds Write Vulnerability",
-      "published": "2026-11-03T17:33:48Z",
-      "ghsa_id": "GHSA-p3jp-9v83-76w9",
-      "cve_id": null,
-      "source_url": "https://github.com/advisories/GHSA-p3jp-9v83-76w9"
-    },
-    {
-      "name": "Microsoft.NETCore.App.Runtime.linux-musl-arm",
-      "ecosystem": "nuget",
-      "affected_range": ">= 9.0.0, < 9.0.22",
-      "patched_version": "9.0.22",
-      "severity": "HIGH",
-      "summary": "Microsoft Security Advisory CVE-2026-111497 - .NET Brotli Decoder Out-of-bounds Write Vulnerability",
-      "published": "2026-11-03T17:33:48Z",
-      "ghsa_id": "GHSA-p3jp-9v83-76w9",
-      "cve_id": null,
-      "source_url": "https://github.com/advisories/GHSA-p3jp-9v83-76w9"
-    },
-    {
-      "name": "Microsoft.NETCore.App.Runtime.linux-musl-arm64",
       "ecosystem": "nuget",
       "affected_range": ">= 9.0.0, < 9.0.22",
       "patched_version": "9.0.22",
