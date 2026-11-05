@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-11-04T15:19:29.754201+00:00",
+  "generated_at": "2026-11-05T15:21:00.681034+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "\u2022 A single compromised maintainer account turned axios, one of the most widely used JavaScript libraries, into a malware delivery system, affecting 100 million downloads per week. [1]\n\u2022 Over 454,600 new malicious open-source packages were discovered in 2025, with a 75% increase in the cumulative total of blocked packages compared to the previous year. [1]\n\u2022 PHP developers accused software supply chain security shop Chainguard of revealing critical bugs in the open-source scripting language ahead of a planned official disclosure. [2]\n\u2022 A compromised LiteLLM 1.107.0 release was published to the Python Package Index (PyPI) and distributed through official container images, allowing an attacker to execute code on servers running PHP. [3]\n\u2022 The malicious LiteLLM package added files that Python could execute during normal interpreter initialization, targeting authentication material across developer tools, AI applications, cloud environments, browsers, and infrastructure. [3]",
+  "digest_markdown": "\u2022 [1] A supply chain attack on SolarWinds' Orion IT monitoring system, used by over 30,000 organizations, allowed hackers to deliver backdoor malware in a software update, compromising approximately 18,000 customers. [1]\n\u2022 [1] A GhostAction supply chain attack on GitHub repositories exposed 3,325 secrets, including tokens and keys across widely used platforms, with at least 817 repositories affected. [2]\n\u2022 [1] Chainguard, a software supply chain security company, was accused by PHP developers of revealing critical bugs in the open-source scripting language ahead of a planned official disclosure. [3]\n\u2022 [1] A compromised LiteLLM 1.107.0 release published to PyPI and distributed through official container images allowed hackers to steal developer credentials and alter the release workflow, potentially exposing sensitive information. [4]\n\u2022 [1] [2]",
   "sources": [
     {
       "title": "Worldwide software supply chain attacks tracker (updated daily)",
       "url": "https://www.comparitech.com/software-supply-chain-attacks/"
     },
     {
-      "title": "npm Supply Chain Attacks: 454,600 Malicious Packages [2026]",
-      "url": "https://shattered.io/npm-supply-chain-attacks-2026/"
+      "title": "GhostAction Supply Chain Attack on GitHub Exposes 3,325 Secrets",
+      "url": "https://dailysecurityreview.com/cyber-security/ghostaction-supply-chain-attack-on-github-exposes-3325-secrets/"
     },
     {
       "title": "PHP blames supply chain security biz Chainguard for putting huge chunks ...",
