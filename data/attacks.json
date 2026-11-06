@@ -1,9 +1,57 @@
 {
-  "generated_at": "2026-11-05T01:36:06.760597+00:00",
+  "generated_at": "2026-11-06T01:41:42.116594+00:00",
   "window_days": 30,
   "source": "GitHub Advisory Database (api.github.com/advisories)",
   "count": 100,
   "advisories": [
+    {
+      "name": "filecoin-pin",
+      "ecosystem": "npm",
+      "affected_range": "<= 1.1.0",
+      "patched_version": "1.1.1",
+      "severity": "MEDIUM",
+      "summary": "filecoin-pin: Unbounded DAG pinning can exhaust server resources",
+      "published": "2026-11-05T18:07:30Z",
+      "ghsa_id": "GHSA-m5ph-mmg5-6w5h",
+      "cve_id": "CVE-2026-62300",
+      "source_url": "https://github.com/advisories/GHSA-m5ph-mmg5-6w5h"
+    },
+    {
+      "name": "banks",
+      "ecosystem": "pip",
+      "affected_range": "<= 2.4.2",
+      "patched_version": "2.4.3",
+      "severity": "HIGH",
+      "summary": "Banks: Unsafe importlib.import_module of attacker-controlled Tool.import_path in CompletionExtension allows RCE",
+      "published": "2026-11-05T17:51:02Z",
+      "ghsa_id": "GHSA-64vx-6h2c-rjh7",
+      "cve_id": "CVE-2026-61536",
+      "source_url": "https://github.com/advisories/GHSA-64vx-6h2c-rjh7"
+    },
+    {
+      "name": "github.com/chainguard-dev/kaniko",
+      "ecosystem": "go",
+      "affected_range": "< 1.25.20",
+      "patched_version": "1.25.20",
+      "severity": "CRITICAL",
+      "summary": "kaniko can send the build's Azure (Entra ID) access token to lookalike ACR registry hosts",
+      "published": "2026-11-05T17:48:54Z",
+      "ghsa_id": "GHSA-5q7h-w9jf-cx97",
+      "cve_id": "CVE-2026-105769",
+      "source_url": "https://github.com/advisories/GHSA-5q7h-w9jf-cx97"
+    },
+    {
+      "name": "github.com/canonical/lxd",
+      "ecosystem": "go",
+      "affected_range": ">= 0.0.0-20250721152936-fe86ceb2c3fa, < 0.0.0-20260626085133-7cb96ac80a6d",
+      "patched_version": "0.0.0-20260626085133-7cb96ac80a6d",
+      "severity": "HIGH",
+      "summary": "lxd allows Cross-guest volume hijack via DevLXD device patch",
+      "published": "2026-11-05T17:40:59Z",
+      "ghsa_id": "GHSA-hhf9-qw4v-72xp",
+      "cve_id": "CVE-2026-12411",
+      "source_url": "https://github.com/advisories/GHSA-hhf9-qw4v-72xp"
+    },
     {
       "name": "github.com/basekick-labs/arc",
       "ecosystem": "go",
@@ -1146,54 +1194,6 @@
     },
     {
       "name": "Microsoft.NETCore.App.Runtime.Mono.tvossimulator-arm64",
-      "ecosystem": "nuget",
-      "affected_range": ">= 9.0.0, < 9.0.22",
-      "patched_version": "9.0.22",
-      "severity": "HIGH",
-      "summary": "Microsoft Security Advisory CVE-2026-111497 - .NET Brotli Decoder Out-of-bounds Write Vulnerability",
-      "published": "2026-11-03T17:33:48Z",
-      "ghsa_id": "GHSA-p3jp-9v83-76w9",
-      "cve_id": null,
-      "source_url": "https://github.com/advisories/GHSA-p3jp-9v83-76w9"
-    },
-    {
-      "name": "Microsoft.NETCore.App.Runtime.Mono.tvossimulator-x64",
-      "ecosystem": "nuget",
-      "affected_range": ">= 9.0.0, < 9.0.22",
-      "patched_version": "9.0.22",
-      "severity": "HIGH",
-      "summary": "Microsoft Security Advisory CVE-2026-111497 - .NET Brotli Decoder Out-of-bounds Write Vulnerability",
-      "published": "2026-11-03T17:33:48Z",
-      "ghsa_id": "GHSA-p3jp-9v83-76w9",
-      "cve_id": null,
-      "source_url": "https://github.com/advisories/GHSA-p3jp-9v83-76w9"
-    },
-    {
-      "name": "Microsoft.NETCore.App.Runtime.Mono.wasi-wasm",
-      "ecosystem": "nuget",
-      "affected_range": ">= 9.0.0, < 9.0.22",
-      "patched_version": "9.0.22",
-      "severity": "HIGH",
-      "summary": "Microsoft Security Advisory CVE-2026-111497 - .NET Brotli Decoder Out-of-bounds Write Vulnerability",
-      "published": "2026-11-03T17:33:48Z",
-      "ghsa_id": "GHSA-p3jp-9v83-76w9",
-      "cve_id": null,
-      "source_url": "https://github.com/advisories/GHSA-p3jp-9v83-76w9"
-    },
-    {
-      "name": "Microsoft.NETCore.App.Runtime.linux-arm",
-      "ecosystem": "nuget",
-      "affected_range": ">= 9.0.0, < 9.0.22",
-      "patched_version": "9.0.22",
-      "severity": "HIGH",
-      "summary": "Microsoft Security Advisory CVE-2026-111497 - .NET Brotli Decoder Out-of-bounds Write Vulnerability",
-      "published": "2026-11-03T17:33:48Z",
-      "ghsa_id": "GHSA-p3jp-9v83-76w9",
-      "cve_id": null,
-      "source_url": "https://github.com/advisories/GHSA-p3jp-9v83-76w9"
-    },
-    {
-      "name": "Microsoft.NETCore.App.Runtime.linux-arm64",
       "ecosystem": "nuget",
       "affected_range": ">= 9.0.0, < 9.0.22",
       "patched_version": "9.0.22",
