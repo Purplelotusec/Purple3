@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-11-05T15:21:00.681034+00:00",
+  "generated_at": "2026-11-06T14:56:23.867742+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "\u2022 [1] A supply chain attack on SolarWinds' Orion IT monitoring system, used by over 30,000 organizations, allowed hackers to deliver backdoor malware in a software update, compromising approximately 18,000 customers. [1]\n\u2022 [1] A GhostAction supply chain attack on GitHub repositories exposed 3,325 secrets, including tokens and keys across widely used platforms, with at least 817 repositories affected. [2]\n\u2022 [1] Chainguard, a software supply chain security company, was accused by PHP developers of revealing critical bugs in the open-source scripting language ahead of a planned official disclosure. [3]\n\u2022 [1] A compromised LiteLLM 1.107.0 release published to PyPI and distributed through official container images allowed hackers to steal developer credentials and alter the release workflow, potentially exposing sensitive information. [4]\n\u2022 [1] [2]",
+  "digest_markdown": "The LiteLLM package and its Docker images were compromised, allowing attackers to steal cloud credentials, developer secrets, and AI provider keys. The incident occurred on October 21, 2026, when the LiteLLM release pipeline was compromised and pushed v1.107.0 to the docker registry and PyPI. This version contained compiled malware that stole credentials and loaded remote-code execution tools.\n\nHere are the key details of the incident:\n\n* **Affected Releases**: The following LiteLLM artifacts were impacted:\n\t+ PyPI: litellm==1.107.0: all seven wheels, live from 11:39:51 to 13:23 UTC\n\t+ Docker Hub: v1.107.0, latest, main-latest, and main-stable: pointed to compromised image index sha256:1bbcb1443bc962e45f5aad53fe3d2c30600e0379715fb6c664cdd3ac126c339e from 11:46:56 to 14:20 UTC\n\t+ GHCR: v1.107.0, latest, main-latest, and main-stable: poi\n* **Duration**: The malware was live for approximately 2 hours, from 11:39 UTC to 13:23 UTC.\n* **Impact**: All previous versions of LiteLLM are safe, and the impacted releases have been pulled.\n* **Enterprise Customers**: Enterprise customers running the private enterprise release of LiteLLM were not impacted.\n* **Investigation**: The attack chain that facilitated this attack is still being investigated, and some assumptions and beliefs made during the investigation have been later discovered to be inaccurate or incomplete.\n\nTo mitigate the impact of this incident, users are advised to:\n\n* Stop deploying LiteLLM version 1.107.0 and investigate environments where Python ran after installation, including proxy containers and CI runners.\n* Update to a secure version of LiteLLM.\n* Monitor for any suspicious activity and report any incidents to the LiteLLM team.\n\nThis incident highlights the importance of keeping software up-to-date, using secure dependencies, and monitoring for suspicious activity. It also emphasizes the need for robust security controls and incident response plans to mitigate the impact of supply chain attacks.",
   "sources": [
     {
       "title": "Worldwide software supply chain attacks tracker (updated daily)",
@@ -13,12 +13,44 @@
       "url": "https://dailysecurityreview.com/cyber-security/ghostaction-supply-chain-attack-on-github-exposes-3325-secrets/"
     },
     {
+      "title": "Inside the LiteLLM 1.107.0 supply chain compromise: Credential theft ...",
+      "url": "https://www.microsoft.com/en-us/security/blog/2026/10/23/inside-the-litellm-1-107-0-supply-chain-compromise-credential-theft-through-python-startup-hooks/"
+    },
+    {
       "title": "PHP blames supply chain security biz Chainguard for putting huge chunks ...",
       "url": "https://www.theregister.com/security/2026/10/22/php-blames-supply-chain-security-biz-chainguard-for-putting-huge-chunks-of-the-web-at-risk/5304611"
     },
     {
-      "title": "Inside the LiteLLM 1.107.0 supply chain compromise: Credential theft ...",
-      "url": "https://www.microsoft.com/en-us/security/blog/2026/10/23/inside-the-litellm-1-107-0-supply-chain-compromise-credential-theft-through-python-startup-hooks/"
+      "title": "Thousands of Node Developers Compromised by Malware in ...",
+      "url": "https://dailysecurityreview.com/security-spotlight/thousands-of-node-developers-compromised-by-malware-in-popular-npm-packages/"
+    },
+    {
+      "title": "Hundreds of NPM Packages Compromised in Self-Replicating ...",
+      "url": "https://dailysecurityreview.com/cyber-security/hundreds-of-npm-packages-compromised-in-self-replicating-supply-chain-attack/"
+    },
+    {
+      "title": "MALFEX npm Package 'imgdecode' Hides Shellcode Loader in ...",
+      "url": "https://thehackernews.com/2026/10/malfex-npm-package-imgdecode-hides.html"
+    },
+    {
+      "title": "testmetest npm Campaign Targets GitHub Repositories",
+      "url": "https://socprime.com/active-threats/42-weaponized-github-repositories-reveal-a-hidden-npm-publisher/"
+    },
+    {
+      "title": "Secure PyPI Packages - CVE-Free PyPI Packages",
+      "url": "https://www.bing.com/aclick?ld=e8zakNFqqVrEzmP-0Z_qqA6jVUCUwYTdNlwP9NgdXzQ8-S2jMnXgM1keNU0t7RL1aPTiILl8LVRQRMTAbHN44PP_IhjKRpZEaq_gCHOj6EzEr_iq25JW2EbCs8PAlAwx0ud5PEWigVEoD9UgEkmL7sUSHgvWMGecMzcJVwGdy7zO2vdXa06VetBmkNuvsHacRjt3TLkA&u=aHR0cHMlM2ElMmYlMmZ3d3cuY2hhaW5ndWFyZC5kZXYlMmZwcm9kdWN0cyUyZmxpYnJhcmllcyUyZnB5dGhvbiUzZm1zY2xraWQlM2QwOGY3Nzk4NWMwMDQxYWE5YWMxZDEzNjgyYTMxOTRiZiUyNnV0bV9zb3VyY2UlM2RiaW5nJTI2dXRtX21lZGl1bSUzZGNwYyUyNnV0bV9jYW1wYWlnbiUzZGJnX3NfYW1lcl9hY3FfZ2VuZXJpY19ib2YlMjZ1dG1fdGVybSUzZHNlY3VyZSUyNTIwcHlwaSUyNTIwZGVwZW5kZW5jaWVzJTI2dXRtX2NvbnRlbnQlM2RsaWJyYXJpZXNfcHlwaQ&rlid=08f77985c0041aa9ac1d13682a3194bf"
+    },
+    {
+      "title": "PyPI Vulnerability Fixes - Python Package Security",
+      "url": "https://www.bing.com/aclick?ld=e8TgtLull_kk8TQh5lPubpqTVUCUyCYscQ7f9NvcoexI2T4p7cIVTOqeGauP27DA-_yZUVKDkxX4TB5VfwXPHevYz7qvKKEeDcTX4JQIVQJxEwTPXjlNegLPVSJITBrD5EioSHq2QRqCbwMSwd7BOra1gVj5c461KTVEiUC_vFUM-rIq0-GQUnKW1c9AfhbdakrqfAJQ&u=aHR0cHMlM2ElMmYlMmZhZC5kb3VibGVjbGljay5uZXQlMmZzZWFyY2hhZHMlMmZsaW5rJTJmY2xpY2slM2ZsaWQlM2Q0MzcwMDA4NDM0MTU4MDkzNCUyNmRzX3Nfa3dnaWQlM2Q1ODcwMDAwOTEyNjA4MjEyMSUyNmRzX2FfY2lkJTNkNDA1NTA3ODI5JTI2ZHNfYV9jYWlkJTNkMjQyMTQ3NzMyODclMjZkc19hX2FnaWQlM2QyMDA4ODkxODM5NzglMjZkc19hX2xpZCUzZGt3ZC0yNDgwNTgyNjA1ODczJTI2JTI2ZHNfZV9hZGlkJTNkODEwMjA0MTEwMTQ2MjglMjZkc19lX3RhcmdldF9pZCUzZGt3ZC04MTAyMDY4ODgwNjc4MSUzYWxvYy0xOTAlMjYlMjZkc19lX25ldHdvcmslM2RvJTI2ZHNfdXJsX3YlM2QyJTI2ZHNfZGVzdF91cmwlM2RodHRwcyUzYSUyZiUyZnd3dy5pYm0uY29tJTJmcHJvZHVjdHMlMmZsaWdodHdlbGwlM2Z1dG1fY29udGVudCUzZFNSQ1dXJTI2cDElM2RTZWFyY2glMjZwNCUzZDI0ODA1ODI2MDU4NzMlMjZwNSUzZHAlMjZwOSUzZDIwMDg4OTE4Mzk3OCUyNmdjbGlkJTNkNmQ5MTY4ZmJjMDZhMWM0MWQ5M2MwMjE2MmE1ZmM2ZDglMjZnY2xzcmMlM2QzcC5kcyUyNiUyNm1zY2xraWQlM2Q2ZDkxNjhmYmMwNmExYzQxZDkzYzAyMTYyYTVmYzZkOA&rlid=6d9168fbc06a1c41d93c02162a5fc6d8"
+    },
+    {
+      "title": "LiteLLM PyPI Package and Docker Images Compromised to Steal ...",
+      "url": "https://socket.dev/blog/litellm-compromise"
+    },
+    {
+      "title": "Contained: Oct 21, 2026 LiteLLM release v1.107.0 Compromised",
+      "url": "https://docs.litellm.ai/blog/security-incident-oct-21-2026"
     }
   ]
 }
