@@ -1,7 +1,56 @@
 {
-  "generated_at": "2026-11-09T17:20:02.160212+00:00",
+  "generated_at": "2026-11-10T15:32:00.562955+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "No sources were found in this run \u2014 check back after the next scheduled run.",
-  "sources": []
+  "digest_markdown": "The LiteLLM package, a popular open-source library for large language models, was compromised on October 21, 2026, and released on PyPI and Docker Hub. The compromised version, 1.107.0, contained malware that stole cloud credentials, developer secrets, and AI provider keys.\n\nHere are the key points from the incident:\n\n1. **Compromised release**: The LiteLLM package was compromised and released on PyPI and Docker Hub, with the affected version being 1.107.0.\n2. **Malware**: The compromised release contained a credential stealer and a remote access trojan (RAT) that stole cloud credentials, developer secrets, and AI provider keys.\n3. **Attack vector**: The malware used Python startup hooks to steal credentials, which means that even if the user never opened LiteLLM directly, the malware could still be activated after installation.\n4. **Affected releases**: The compromised release was available on PyPI and Docker Hub for approximately 2 hours, and affected releases include:\n\t* PyPI: litellm==1.107.0: all seven wheels\n\t* Docker Hub: v1.107.0, latest, main-latest, and main-stable\n\t* GHCR: v1.107.0, latest, main-latest, and main-stable\n5. **Container impact**: The compromised release also affected container users, with the same payload found in a published LiteLLM image.\n6. **Release workflow**: The strongest evidence for the delivery path was in the container registry, which recorded a lookalike source repository named Berri-AI/litellm, differing from the legitimate BerriAI/litellm project.\n7. **Recommendations**: Teams using LiteLLM 1.107.0 should stop deploying it and investigate environments where Python ran after installation, including proxy containers and CI runners.\n\nTo mitigate the impact of this incident, it is recommended to:\n\n* Stop deploying LiteLLM 1.107.0 immediately\n* Investigate environments where Python ran after installation\n* Check for any affected releases on PyPI, Docker Hub, and GHCR\n* Update to the latest version of LiteLLM\n* Monitor for any suspicious activity and report any incidents to the relevant authorities.",
+  "sources": [
+    {
+      "title": "Worldwide software supply chain attacks tracker (updated ...",
+      "url": "https://www.comparitech.com/software-supply-chain-attacks/"
+    },
+    {
+      "title": "Inside the LiteLLM 1.107.0 supply chain compromise ...",
+      "url": "https://www.microsoft.com/en-us/security/blog/2026/10/23/inside-the-litellm-1-107-0-supply-chain-compromise-credential-theft-through-python-startup-hooks/"
+    },
+    {
+      "title": "PHP blames supply chain security biz Chainguard for putting ...",
+      "url": "https://www.theregister.com/security/2026/10/22/php-blames-supply-chain-security-biz-chainguard-for-putting-huge-chunks-of-the-web-at-risk/5304611"
+    },
+    {
+      "title": "GhostAction Supply Chain Attack on GitHub Exposes 3,325 ...",
+      "url": "https://dailysecurityreview.com/cyber-security/ghostaction-supply-chain-attack-on-github-exposes-3325-secrets/"
+    },
+    {
+      "title": "Malware Endpoint Security - Your Endpoints, Our Experts",
+      "url": "https://www.bing.com/aclick?ld=e8Au2yqzKHruV12f2uCfoF_jVUCUyezcK9uVZOc-yrsxz3iFy4O44q-0NLGGR6_mQRTWruaDxu5n4cZA3VfeKLJ9r-vR2v0oAxMqIaIV_sKxpaa_moN6h_L8H4iVnJKJcJ-SDsyjqz-PbSZ-rWAl4UGCq59Ljq8auS6n67nmPBFiNEspLM3BU5bdI-8Flb9fu-Kb3-Ug&u=aHR0cHMlM2ElMmYlMmZ3d3cuaHVudHJlc3MuY29tJTJmZWRyLWZyZWUtdHJpYWwlM2Z1dG1fc291cmNlJTNkYmluZyUyNnV0bV9tZWRpdW0lM2RjcGMlMjZ1dG1fY2FtcGFpZ24lM2RCaW5nLUJvRnUtTkEtU2VhcmNoLU5vbkJyYW5kLVBNLUVORy1Db3JlLUVEUiUyNnV0bV90ZXJtJTNkdGhyZWF0JTI1MjBkZXRlY3Rpb24lMjUyMGFuZCUyNTIwcmVtZWRpYXRpb24lMjZjYW1wYWlnbmlkJTNkNTY3OTQ2NzIzJTI2YWRncm91cGlkJTNkMTE3NDI4MDE3MDI1Nzc3OCUyNmFkaWQlM2Q3MzM5Mjc2NjQ2OTcyOSUyNmhzYV9hY2MlM2RmMTA3OXdjYiUyNmhzYV9jYW0lM2Q1Njc5NDY3MjMlMjZoc2FfZ3JwJTNkMTE3NDI4MDE3MDI1Nzc3OCUyNmhzYV9hZCUzZDczMzkyNzY2NDY5NzI5JTI2aHNhX2t3JTNkdGhyZWF0JTI1MjBkZXRlY3Rpb24lMjUyMGFuZCUyNTIwcmVtZWRpYXRpb24lMjZoc2FfbXQlM2RwJTI2aHNhX25ldCUzZEJpbmdBZHMlMjZoc2Ffc3JjJTNkbyUyNmhzYV90Z3QlM2Rrd2QtNzMzOTI5NzEzODQ4ODUlM2Fsb2MtMTkwJTI2aHNhX3ZlciUzZDMlMjZobnQlM2R1dXZic3V4dnljNWQlMjZtc2Nsa2lkJTNkYzA5MTA4NTYzZDBiMTQ2ZDQ4ZmM2MmE1MDU4MjU2YTA&rlid=c09108563d0b146d48fc62a5058256a0"
+    },
+    {
+      "title": "Malware-Free npm Packages - 98% Less Malware",
+      "url": "https://www.bing.com/aclick?ld=e8WAxIVVDGhr0K_nd02_yQ9zVUCUwARf-fLZzz1uNc2a9YUAJeiA1KHx_NYkkGbkPgWjO5BYGW5TSDTuX10Bhae2RxTRAGEJ85mOeBUL5I2ULmQqGdzjyQ4-pnBPzDy7MJGNUwVZi6F8KuimA4iJuOLcYnyUN6KH-oXbdfzzey6ihmcP9p3B13saTVF7aSTkzfv-WpBw&u=aHR0cHMlM2ElMmYlMmZ3d3cuY2hhaW5ndWFyZC5kZXYlMmZwcm9kdWN0cyUyZmxpYnJhcmllcyUyZmphdmFzY3JpcHQlM2Ztc2Nsa2lkJTNkNDNkZGM2YjQ1NTIxMWRjZmY4ODdhYzQ3NmRhODZjNmYlMjZ1dG1fc291cmNlJTNkYmluZyUyNnV0bV9tZWRpdW0lM2RjcGMlMjZ1dG1fY2FtcGFpZ24lM2RiZ19zX2FtZXJfYWNxX2dlbmVyaWNfYm9mJTI2dXRtX3Rlcm0lM2RtYWx3YXJlJTI1MjBmcmVlJTI1MjBucG0lMjUyMGRlcGVuZGVuY2llcyUyNnV0bV9jb250ZW50JTNkbGlicmFyaWVzX25wbQ&rlid=43ddc6b455211dcff887ac476da86c6f"
+    },
+    {
+      "title": "Scan Your Mac For Malware - Free Virus Check And Removal",
+      "url": "https://www.bing.com/aclick?ld=e8bUQP4IEpD-Y5O0FEjXmRZDVUCUzSEnoXN29k1-BavFsH5s0SoBzi82eYr1FbxsPY-1J-nQ4O_V7l-CRFyG4PAo33bWuBHUiOs4dynD6VfQCZYd-TFjG4YuwfWHIWFdQB2FGDstB0CTLZZTVryyat-k1l6jJ7_KV92ox4Q4pdUT6t1YnNsyqZqGBm8Q-rhb6TgsUEoA&u=aHR0cHMlM2ElMmYlMmZyZHQubWFja2VlcGVyLmNvbSUyZjYzMzVkMDA4NzE0OTBkMDAwMWI0MDkzMiUzZnN1YjElM2Q3OTIzMzc0ODkwMjYzNSUyNnN1YjIlM2Q1MDYwMDA0NTglMjZzdWIzJTNkYyUyNnN1YjQlM2QxMjY3NzM3ODQ0MjgyNzQzJTI2c3ViNSUzZHAlMjZ1dG1fY2FtcGFpZ24lM2RyX2Jpbmdfc2VjdXJpdHlfdXMlMjZzdWI3JTNkJTI2c3ViOCUzZG5wbSUyNTIwcGFja2FnZSUyNTIwY29tcHJvbWlzZWQlMjUyMG1hbHdhcmUlMjZzdWI5JTNka3dkLTc5MjM0MTE5NjgzOTg2JTNhbG9jLTE5MCUyNnN1YjEwJTNkeW91ciUyNTIwbWFjJTI1MjBpcyUyNTIwaW5mZWN0ZWQlMjZ1dG1fc291cmNlJTNkYmluZyUyNnV0bV9tZWRpdW0lM2RjcGMlMjZyZWZfaWQlM2RmMTA5MzJhZDg4N2MxZTExN2MyNzU4NWViMGY1NTIyMCUyNm1zY2xraWQlM2RmMTA5MzJhZDg4N2MxZTExN2MyNzU4NWViMGY1NTIyMA&rlid=f10932ad887c1e117c27585eb0f55220"
+    },
+    {
+      "title": "Thousands of Node Developers Compromised by Malware in ...",
+      "url": "https://dailysecurityreview.com/security-spotlight/thousands-of-node-developers-compromised-by-malware-in-popular-npm-packages/"
+    },
+    {
+      "title": "Secure PyPI Packages - CVE-Free PyPI Packages",
+      "url": "https://www.bing.com/aclick?ld=e8elX4lPy-0bF0Xh-xc9YhCjVUCUyLTBv_iGwceMZI_zaaGIgsApnA0nydqPfGwbymVaOSIb_M9SG7DiZQ8L5Q9buFAB42DdNDIDCSAh5YyJbCLexqKTeVYgFzjBZ0s3yGFnwk7YhvEtO1668Pg6mqCiRY3_NVRx5kSuTW_7aKX0t2HurXkIIfqRlMjs1znQzS_Aw9Yg&u=aHR0cHMlM2ElMmYlMmZ3d3cuY2hhaW5ndWFyZC5kZXYlMmZwcm9kdWN0cyUyZmxpYnJhcmllcyUyZnB5dGhvbiUzZm1zY2xraWQlM2QyYzQyZjE3YmQ2YjMxM2RkOWJhYTliODhlZTNjMDVmMSUyNnV0bV9zb3VyY2UlM2RiaW5nJTI2dXRtX21lZGl1bSUzZGNwYyUyNnV0bV9jYW1wYWlnbiUzZGJnX3NfYW1lcl9hY3FfZ2VuZXJpY19ib2YlMjZ1dG1fdGVybSUzZHRydXN0ZWQlMjUyMHB5cGklMjUyMHBhY2thZ2VzJTI2dXRtX2NvbnRlbnQlM2RsaWJyYXJpZXNfcHlwaQ&rlid=2c42f17bd6b313dd9baa9b88ee3c05f1"
+    },
+    {
+      "title": "Contained: Oct 21, 2026 LiteLLM release v1.107.0 Compromised",
+      "url": "https://docs.litellm.ai/blog/security-incident-oct-21-2026"
+    },
+    {
+      "title": "LiteLLM Compromised - Hackers Injected an Infostealer and RAT ...",
+      "url": "https://cybersecuritynews.com/litellm-compromised/"
+    },
+    {
+      "title": "LiteLLM PyPI Package and Docker Images Compromised to Steal ...",
+      "url": "https://socket.dev/blog/litellm-compromise"
+    }
+  ]
 }
