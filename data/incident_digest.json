@@ -1,44 +1,48 @@
 {
-  "generated_at": "2026-11-11T15:03:46.366099+00:00",
+  "generated_at": "2026-11-12T15:56:23.085030+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "The article discusses a software supply chain attack on the popular Python package LiteLLM, which was compromised and released a malicious version that stole credentials and loaded remote-code execution tools. Here are the key points:\n\n**Attack Details**\n\n* The attack occurred on October 21, 2026, when LiteLLM's release pipeline was compromised and pushed a malicious version (1.107.0) to PyPI and Docker Hub.\n* The malicious version contained compiled malware that stole credentials and loaded remote-code execution tools.\n* The attack was discovered by SafeDep, Socket, StepSecurity, and Upwind, and LiteLLM has since quarantined the affected release on PyPI.\n\n**Impact**\n\n* The compromised release affected all seven distributed wheel files and Docker images, putting developer systems, build runners, and AI services at risk.\n* The malware was launched by Python even before LiteLLM was imported through a path file (\"cook.pth\"), which is designed to automatically execute code.\n* The attack used Python startup hooks rather than relying on an application to import LiteLLM.\n\n**Malware Behavior**\n\n* The malware searched for system information, browser data, developer secrets, cloud credentials, and authentication files used by AI tools.\n* Collected information was encrypted and sent through an HTTP POST request to an attacker-controlled destination.\n* The malware also wrote a marker at /tmp/.pc_once_72129118c59f5636c0bb, although that path can fail on Windows.\n\n**Mitigation**\n\n* PyPI removed the affected release, but taking down the package does not remove malware already installed or invalidate secrets attackers may have stolen.\n* LiteLLM has removed all but one user from its GitHub organization as a temporary mitigation.\n* The company has updated the public registries to remove any trusted links to its GitHub organization to prevent further publication of malicious packages.\n\n**Lessons Learned**\n\n* The attack highlights the importance of software supply chain security and the need for robust security controls to prevent such attacks.\n* The use of Python startup hooks by the malware demonstrates the need for careful review of dependencies and the importance of keeping dependencies up to date.\n* The attack also emphasizes the importance of monitoring and detecting malware in the wild, as well as the need for rapid response and mitigation to minimize the impact of such attacks.",
+  "digest_markdown": "The article discusses a supply chain attack on the popular LiteLLM Python package, which was compromised and published to PyPI and Docker Hub. The attack delivered a credential stealer and a backdoor, and the affected versions were pulled from the registries.\n\nHere are the key points:\n\n1. **Supply chain attack**: The attack was carried out through a compromised release pipeline, which pushed a malicious version of LiteLLM to PyPI and Docker Hub.\n2. **Malicious package**: The compromised package contained compiled malware that stole credentials and loaded remote-code execution tools.\n3. **Affected versions**: The following LiteLLM artifacts were impacted:\n\t* PyPI: litellm==1.107.0: all seven wheels, live from 11:39:51 to 13:23 UTC\n\t* Docker Hub: v1.107.0, latest, main-latest, and main-stable: pointed to compromised image index sha256:1bbcb1443bc962e45f5aad53fe3d2c30600e0379715fb6c664cdd3ac126c339e from 11:46:56 to 14:20 UTC\n\t* GHCR: v1.107.0, latest, main-latest, and main-stable: poi\n4. **Investigation**: LiteLLM is investigating the incident and has identified that the malicious actions were taken through three engineers' GitHub accounts, which were compromised using stolen GitHub CLI OAuth tokens.\n5. **Mitigation**: LiteLLM has removed all but one (unaffected) user from its GitHub organization and updated the public registries to remove any trusted links to its GitHub organization to prevent further publication of malicious packages.\n6. **Analysis**: The malicious version of LiteLLM is equipped to collect cloud credentials, private keys, browser data, and authentication files for AI development tools.\n\nThis incident highlights the importance of supply chain security and the need for robust security controls to prevent such attacks.",
   "sources": [
-    {
-      "title": "Worldwide software supply chain attacks tracker (updated ...",
-      "url": "https://www.comparitech.com/software-supply-chain-attacks/"
-    },
     {
       "title": "Software Supply Chain Attack Statistics 2026 | ScanTitan",
       "url": "https://scantitan.com/research/software-supply-chain-attack-statistics/"
-    },
-    {
-      "title": "Inside the LiteLLM 1.107.0 supply chain compromise ...",
-      "url": "https://www.microsoft.com/en-us/security/blog/2026/10/23/inside-the-litellm-1-107-0-supply-chain-compromise-credential-theft-through-python-startup-hooks/"
     },
     {
       "title": "npm Supply Chain Attacks: 454,600 Malicious Packages [2026]",
       "url": "https://shattered.io/npm-supply-chain-attacks-2026/"
     },
     {
-      "title": "Malware Endpoint Security - Your Endpoints, Our Experts",
-      "url": "https://www.bing.com/aclick?ld=e8q34bOroSr_lWZLZTIctbOTVUCUyMWqbhOUQd_Ck_pz3MOdW9eVIcwXotZ3433g6FhdloDTJ0J-i3acckx4-cmpBvA4CgGCudUlnMzriOXDxbWoACsiu1biIoMLE-8ibNDAZhnCXO0mHhWMBpzcyQpCVNm1zh2MqAHt35NFCBUzgPoSiBm3z5r2MnFR5ljdbzGIft5w&u=aHR0cHMlM2ElMmYlMmZ3d3cuaHVudHJlc3MuY29tJTJmZWRyLWZyZWUtdHJpYWwlM2Z1dG1fc291cmNlJTNkYmluZyUyNnV0bV9tZWRpdW0lM2RjcGMlMjZ1dG1fY2FtcGFpZ24lM2RCaW5nLUJvRnUtTkEtU2VhcmNoLU5vbkJyYW5kLVBNLUVORy1Db3JlLUVEUiUyNnV0bV90ZXJtJTNkdGhyZWF0JTI1MjBkZXRlY3Rpb24lMjUyMGFuZCUyNTIwcmVtZWRpYXRpb24lMjZjYW1wYWlnbmlkJTNkNTY3OTQ2NzIzJTI2YWRncm91cGlkJTNkMTE3NDI4MDE3MDI1Nzc3OCUyNmFkaWQlM2Q3MzM5Mjc2NjQ2OTcyOSUyNmhzYV9hY2MlM2RmMTA3OXdjYiUyNmhzYV9jYW0lM2Q1Njc5NDY3MjMlMjZoc2FfZ3JwJTNkMTE3NDI4MDE3MDI1Nzc3OCUyNmhzYV9hZCUzZDczMzkyNzY2NDY5NzI5JTI2aHNhX2t3JTNkdGhyZWF0JTI1MjBkZXRlY3Rpb24lMjUyMGFuZCUyNTIwcmVtZWRpYXRpb24lMjZoc2FfbXQlM2RwJTI2aHNhX25ldCUzZEJpbmdBZHMlMjZoc2Ffc3JjJTNkbyUyNmhzYV90Z3QlM2Rrd2QtNzMzOTI5NzEzODQ4ODUlM2Fsb2MtMTkwJTI2aHNhX3ZlciUzZDMlMjZobnQlM2R1dXZic3V4dnljNWQlMjZtc2Nsa2lkJTNkYzdiODMyZDRhNjczMTVlZDdjYTk1ODIwMjU1OGIxZjE&rlid=c7b832d4a67315ed7ca958202558b1f1"
+      "title": "Worldwide software supply chain attacks tracker (updated ...",
+      "url": "https://www.comparitech.com/software-supply-chain-attacks/"
     },
     {
-      "title": "McAfee\u00ae Official Site - Malware Scan",
-      "url": "https://www.bing.com/aclick?ld=e8gEYhgTnj1EbeUllKMEtBsjVUCUz5Njm3wyBjI7u4UT_GZAqAMNlB1hcnCr51V9BrwPReVSzkSIk0a3kKaaSE5GaJGRsf37u-mH-TTlHjL2N2n-2lFhLV4vTvScp2PPtD0uMMIH0Zuv04Do8ULH15lWVfG3ASzG8_njjnmduHRXRr4PfmsV1dbhOyfz2T-n5YvlFMnQ&u=aHR0cHMlM2ElMmYlMmZhZC5kb3VibGVjbGljay5uZXQlMmZzZWFyY2hhZHMlMmZsaW5rJTJmY2xpY2slM2ZsaWQlM2Q0MzcwMDA4NDM0MDk0MTMxOSUyNmRzX3Nfa3dnaWQlM2Q1ODcwMDAwOTEyNDcxMzk2OSUyNmRzX2FfY2lkJTNkNzk4NTg3NDkwOSUyNmRzX2FfY2FpZCUzZDI0MjA5Njk5MTkzJTI2ZHNfYV9hZ2lkJTNkMjAxNDI1MTI5NjQyJTI2ZHNfYV9saWQlM2Rrd2QtMjYxNDY5NTg3JTI2JTI2ZHNfZV9hZGlkJTNkODMwODIyODg5NDk1OTclMjZkc19lX3RhcmdldF9pZCUzZGt3ZC04MzA4Mzg5MDM1ODY5OCUzYWxvYy0xOTAlMjYlMjZkc19lX25ldHdvcmslM2RvJTI2ZHNfdXJsX3YlM2QyJTI2ZHNfZGVzdF91cmwlM2RodHRwcyUzYSUyZiUyZnd3dy5tY2FmZWUuY29tJTJmY29uc3VtZXIlMmZlbi11cyUyZmxhbmRpbmctcGFnZSUyZmRpcmVjdCUyZnNlbSUyZnNlYXJjaC1jYW1wYWlnbi5odG1sJTNmY2NvZSUzZGRpcmVjdCUyNmNjb2VsMiUzZHNlbSUyNmNzcmMlM2RCaW5nJTI2Y3NyY2wyJTNkdGV4dC1hZCUyNmNjdHlwZSUzZHNlYXJjaCUyNmNjc3R5cGUlM2QlMjZhZmZpZCUzZDE0ODYlMjZwa2dfaWQlM2Q2NjUlMjZ1dG1fc291cmNlJTNkYmluZyUyNnV0bV9tZWRpdW0lM2RwYWlkc2VhcmNoJTI2dXRtX2NhbXBhaWduJTNkJTI1NUJFTi1VUyUyNTVEJTI1NUJTZWFyY2glMjU1RCUyNTVCQmluZyUyNTVEJTI1NUJOQiUyNTVEJTJiUHJvZHVjdHMlMjZ1dG1fY29udGVudCUzZCUyNTVCTkIlMjU1RCUyYk1hbHdhcmUlMjZ1dG1fdGVybSUzZG1hbHdhcmUlMjUyMHNjYW4lMjZtc2Nsa2lkJTNkNzMxM2M3NGFmZTU1MWU0YWU4MGNhZGJlN2Q3ZTU3MmIlMjZnY2xpZCUzZDczMTNjNzRhZmU1NTFlNGFlODBjYWRiZTdkN2U1NzJiJTI2Z2Nsc3JjJTNkM3AuZHMlMjYlMjZtc2Nsa2lkJTNkNzMxM2M3NGFmZTU1MWU0YWU4MGNhZGJlN2Q3ZTU3MmI&rlid=7313c74afe551e4ae80cadbe7d7e572b"
+      "title": "Cyber Security Supply Chain Attacks: 2026 Guide & Prevention ...",
+      "url": "https://panorays.com/blog/cyber-security-supply-chain-attacks/"
+    },
+    {
+      "title": "Malware Endpoint Security - Your Endpoints, Our Experts",
+      "url": "https://www.bing.com/aclick?ld=e86RuZnJRMQKsIxjYDesLa6zVUCUzTarNhLaqhUBgldUHL0ILR1I4yFeGtASBA9VGvuEA0tNbjoWCgVa1kKtOxnb5t3GV3I4b07vTbdyVysvp1ECVefd96Ni2ICHLd_nLuRq-GqLUynhT51WbAlqE0TqZHQl7NPhvkwEbG8PHY5isBfS9XYRbmKnjRYbvQtVDhgq-1Z57BZjXLsEnF6ejLLBFLbbQ&u=aHR0cHMlM2ElMmYlMmZ3d3cuaHVudHJlc3MuY29tJTJmZWRyLWZyZWUtdHJpYWwlM2Z1dG1fc291cmNlJTNkYmluZyUyNnV0bV9tZWRpdW0lM2RjcGMlMjZ1dG1fY2FtcGFpZ24lM2RCaW5nLUJvRnUtTkEtU2VhcmNoLU5vbkJyYW5kLVBNLUVORy1Db3JlLUVEUiUyNnV0bV90ZXJtJTNkdGhyZWF0JTI1MjBkZXRlY3Rpb24lMjUyMGFuZCUyNTIwcmVtZWRpYXRpb24lMjZjYW1wYWlnbmlkJTNkNTY3OTQ2NzIzJTI2YWRncm91cGlkJTNkMTE3NDI4MDE3MDI1Nzc3OCUyNmFkaWQlM2Q3MzM5Mjc2NjQ2OTcyOSUyNmhzYV9hY2MlM2RmMTA3OXdjYiUyNmhzYV9jYW0lM2Q1Njc5NDY3MjMlMjZoc2FfZ3JwJTNkMTE3NDI4MDE3MDI1Nzc3OCUyNmhzYV9hZCUzZDczMzkyNzY2NDY5NzI5JTI2aHNhX2t3JTNkdGhyZWF0JTI1MjBkZXRlY3Rpb24lMjUyMGFuZCUyNTIwcmVtZWRpYXRpb24lMjZoc2FfbXQlM2RwJTI2aHNhX25ldCUzZEJpbmdBZHMlMjZoc2Ffc3JjJTNkbyUyNmhzYV90Z3QlM2Rrd2QtNzMzOTI5NzEzODQ4ODUlM2Fsb2MtMTkwJTI2aHNhX3ZlciUzZDMlMjZobnQlM2R1dXZic3V4dnljNWQlMjZtc2Nsa2lkJTNkNDYzOWU5MWE2OTIzMWNkMGRiYjk4M2VmODgwMDVjNmE&rlid=4639e91a69231cd0dbb983ef88005c6a"
+    },
+    {
+      "title": "npm Dependency Risk - PyPI Vulnerability Fixes",
+      "url": "https://www.bing.com/aclick?ld=e8z77BdsgAE3AtZzr1O7n02jVUCUzo2MNbT_nc1VV4o8OvIwmX7FvjXXXlcma-oHIarhIZrfxDdO6BygVRf54bmtE9in15jDVCmyAbq_8YrSiJIGeaoUaCbFAkjtwb1V8YNQyvgCVGU_-_zwNAL1lDsk3BS-zBP2IKFbPQeSGWgLKGHdtGoLOPFkaxNFmjvOevbkUaWZ83BkpHWU6eQlkip6O-9o4&u=aHR0cHMlM2ElMmYlMmZhZC5kb3VibGVjbGljay5uZXQlMmZzZWFyY2hhZHMlMmZsaW5rJTJmY2xpY2slM2ZsaWQlM2Q0MzcwMDA4NDM0MTU4MDkzNyUyNmRzX3Nfa3dnaWQlM2Q1ODcwMDAwOTEyNjA4MjEyMSUyNmRzX2FfY2lkJTNkNDA1NTA3ODI5JTI2ZHNfYV9jYWlkJTNkMjQyMTQ3NzMyODclMjZkc19hX2FnaWQlM2QyMDA4ODkxODM5NzglMjZkc19hX2xpZCUzZGt3ZC00NzU3NjMzNzI1MzYlMjYlMjZkc19lX2FkaWQlM2Q4MTAyMDQxMTAxNDYyOCUyNmRzX2VfdGFyZ2V0X2lkJTNka3dkLTgxMDIwNjg4ODA2NzgyJTNhbG9jLTE5MCUyNiUyNmRzX2VfbmV0d29yayUzZG8lMjZkc191cmxfdiUzZDIlMjZkc19kZXN0X3VybCUzZGh0dHBzJTNhJTJmJTJmd3d3LmlibS5jb20lMmZwcm9kdWN0cyUyZmxpZ2h0d2VsbCUzZnV0bV9jb250ZW50JTNkU1JDV1clMjZwMSUzZFNlYXJjaCUyNnA0JTNkNDc1NzYzMzcyNTM2JTI2cDUlM2RwJTI2cDklM2QyMDA4ODkxODM5NzglMjZnY2xpZCUzZDM5MDBiMjVlN2Y0NTFmMDY5OGQ5ZDhhYjllNjYwYTIyJTI2Z2Nsc3JjJTNkM3AuZHMlMjYlMjZtc2Nsa2lkJTNkMzkwMGIyNWU3ZjQ1MWYwNjk4ZDlkOGFiOWU2NjBhMjI&rlid=3900b25e7f451f0698d9d8ab9e660a22"
+    },
+    {
+      "title": "Malware-Free npm Packages - Stop npm Malware Attacks",
+      "url": "https://www.bing.com/aclick?ld=e881PZlB0CjqLIkC2YTp5ebjVUCUxs3yuzqslhSBub6F3WFXF_lqodRegUf6DYKle9OpVkpIDXlFvrYibc8FDSvpVigwcupORgY-dZmXxU30o9Ty_lAwLdWTRmIvj80UUZMKrT4ej-qXo-BjVTFX1-n6nKBS9dIEN_69zAfalvyV5ux_F-CdZ-sNIi0MQzvDjruYUzpJ7nXFQy6o4NGA2fqBhFvws&u=aHR0cHMlM2ElMmYlMmZ3d3cuY2hhaW5ndWFyZC5kZXYlMmZwcm9kdWN0cyUyZmxpYnJhcmllcyUyZmphdmFzY3JpcHQlM2Ztc2Nsa2lkJTNkMWM0MTM0NTQ4NmNlMWVhM2E2ODg1ZWExNjdlZDA5NTQlMjZ1dG1fc291cmNlJTNkYmluZyUyNnV0bV9tZWRpdW0lM2RjcGMlMjZ1dG1fY2FtcGFpZ24lM2RiZ19zX2FtZXJfYWNxX2dlbmVyaWNfYm9mJTI2dXRtX3Rlcm0lM2RtYWx3YXJlJTI1MjBucG0lMjUyMHBhY2thZ2UlMjZ1dG1fY29udGVudCUzZGxpYnJhcmllc19ucG0&rlid=1c41345486ce1ea3a6885ea167ed0954"
     },
     {
       "title": "Thousands of Node Developers Compromised by Malware in ...",
       "url": "https://dailysecurityreview.com/security-spotlight/thousands-of-node-developers-compromised-by-malware-in-popular-npm-packages/"
     },
     {
-      "title": "What Is Malicious npm Package? Definition & Examples",
-      "url": "https://nhimg.org/glossary/malicious-npm-package/"
+      "title": "Secure PyPI Packages - CVE-Free PyPI Packages",
+      "url": "https://www.bing.com/aclick?ld=e8_--IT_7FNgJUZ3YQ0AlzoTVUCUzQcy34F2QRJikWUvYnjzfiN8cLI-oGYdY-7zDHhrhPz35z3AOuHN1K6yYhC9o3NOElIamIMniOFZHa9CCwd1hzTQi4PX5kH_ZiFXlKiOnKZfN73bdDgbAIgMAgmAZHVa5nDCgkEfIEOYhlZ_VPwFKg1KuVzB_LQzaawXTrEY6Ef-MrM3sL8Ywx9Uh5LD-Qbjc&u=aHR0cHMlM2ElMmYlMmZ3d3cuY2hhaW5ndWFyZC5kZXYlMmZwcm9kdWN0cyUyZmxpYnJhcmllcyUyZnB5dGhvbiUzZm1zY2xraWQlM2QwMTQ2ODljYTE5NjQxYTk4Yjc1MWUzM2ZmODRjZDM1ZiUyNnV0bV9zb3VyY2UlM2RiaW5nJTI2dXRtX21lZGl1bSUzZGNwYyUyNnV0bV9jYW1wYWlnbiUzZGJnX3NfYW1lcl9hY3FfZ2VuZXJpY19ib2YlMjZ1dG1fdGVybSUzZHRydXN0ZWQlMjUyMHB5cGklMjUyMGRlcGVuZGVuY2llcyUyNnV0bV9jb250ZW50JTNkbGlicmFyaWVzX3B5cGk&rlid=014689ca19641a98b751e33ff84cd35f"
     },
     {
-      "title": "Secure PyPI Packages - CVE-Free PyPI Packages",
-      "url": "https://www.bing.com/aclick?ld=e804ITWWwGaI_rYWQoZc18KzVUCUwweKftw6noFDfB350Kpi5Vxpdpxb9UgGQy7TLjnWAxGgo31Bhx3ccsCMQFIf-u75YxuUEuaD4m1dTcy4-XGzHGjwpEMaI87a3B6GaU-anYgNzsA05T0cOiRo-rLk7LJM315RXQp5zfcunwjz2V72Cl76P8SVWkGKvemdE9HzFo_A&u=aHR0cHMlM2ElMmYlMmZ3d3cuY2hhaW5ndWFyZC5kZXYlMmZwcm9kdWN0cyUyZmxpYnJhcmllcyUyZnB5dGhvbiUzZm1zY2xraWQlM2Q3NjIwNmVlZjgzMGYxNTQ1Y2VmNzA0MWIwMDQxMGJmZSUyNnV0bV9zb3VyY2UlM2RiaW5nJTI2dXRtX21lZGl1bSUzZGNwYyUyNnV0bV9jYW1wYWlnbiUzZGJnX3NfYW1lcl9hY3FfZ2VuZXJpY19ib2YlMjZ1dG1fdGVybSUzZG1hbGljaW91cyUyNTIwcHlwaSUyNTIwcGFja2FnZXMlMjZ1dG1fY29udGVudCUzZGxpYnJhcmllc19weXBp&rlid=76206eef830f1545cef7041b00410bfe"
+      "title": "Malware Database \u2014 npm, PyPI, Go & More | O3 Security",
+      "url": "https://o3.security/malware"
     },
     {
       "title": "Contained: Oct 21, 2026 LiteLLM release v1.107.0 Compromised",
@@ -47,10 +51,6 @@
     {
       "title": "LiteLLM Compromised in Supply Chain Attack Delivering ...",
       "url": "https://thehackernews.com/2026/10/litellm-compromised-in-supply-chain.html"
-    },
-    {
-      "title": "LiteLLM Compromised - Hackers Injected an Infostealer and RAT ...",
-      "url": "https://cybersecuritynews.com/litellm-compromised/"
     }
   ]
 }
