@@ -1,7 +1,24 @@
 {
-  "generated_at": "2026-11-17T16:48:42.386520+00:00",
+  "generated_at": "2026-11-18T16:22:22.245748+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "No sources were found in this run \u2014 check back after the next scheduled run.",
-  "sources": []
+  "digest_markdown": "\u2022 A GitHub Actions supply chain attack targets the trust chain inside CI/CD, compromising workflows, reusable actions, dependencies, or secrets to influence what gets built, signed, published, or deployed. [1]\n\n\u2022 SHA pinning, which involves pinning to a specific commit SHA, has been shown to be vulnerable to bypass attacks, as demonstrated by the Trivy attackers who exploited a gap in operational trust and developer behavior. [2]\n\n\u2022 A malicious workflow component has propagated into tens of thousands of repositories, silently exfiltrating CI/CD secrets during pipeline execution, and organizations that reference the compromised workflow component may have executed attacker-controlled code. [3]\n\n\u2022 The attack chain involves an upstream compromise, automatic propagation, execution in a privileged context, and secret harvesting, with the malicious payload running inside the GitHub runner process and scraping runner process memory for secret material. [3]\n\n\u2022 The attack highlights the need for organizations to assume that any repository referencing the compromised workflow component may have executed attacker-controlled code and to verify their current posture and act on the guidance provided. [3]",
+  "sources": [
+    {
+      "title": "What Is GitHub Actions Supply Chain Attack? Definition",
+      "url": "https://nhimg.org/glossary/github-actions-supply-chain-attack/"
+    },
+    {
+      "title": "GitHub Actions SHA Pinning Bypass: Trivy Supply Chain Attack ...",
+      "url": "https://securityarsenal.com/blog/github-actions-sha-pinning-bypass-trivy-supply-chain-attack-defense-guide"
+    },
+    {
+      "title": "GitHub Actions Supply Chain Attack: Malicious Workflow Hits ...",
+      "url": "https://securityarsenal.com/blog/github-actions-supply-chain-attack-malicious-workflow-hits-tens-of-thousands-of-repos-detection-and-secrets-rotation-guide"
+    },
+    {
+      "title": "Attackers turn GitHub issues into supply chain campaign ...",
+      "url": "https://www.theregister.com/security/2026/10/29/attackers-turn-github-issues-into-supply-chain-campaign-against-61-public-repos-in-less-than-an-hour/5306153"
+    }
+  ]
 }
