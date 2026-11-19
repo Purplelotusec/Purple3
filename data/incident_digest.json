@@ -1,24 +1,56 @@
 {
-  "generated_at": "2026-11-18T16:22:22.245748+00:00",
+  "generated_at": "2026-11-19T16:31:52.882694+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "\u2022 A GitHub Actions supply chain attack targets the trust chain inside CI/CD, compromising workflows, reusable actions, dependencies, or secrets to influence what gets built, signed, published, or deployed. [1]\n\n\u2022 SHA pinning, which involves pinning to a specific commit SHA, has been shown to be vulnerable to bypass attacks, as demonstrated by the Trivy attackers who exploited a gap in operational trust and developer behavior. [2]\n\n\u2022 A malicious workflow component has propagated into tens of thousands of repositories, silently exfiltrating CI/CD secrets during pipeline execution, and organizations that reference the compromised workflow component may have executed attacker-controlled code. [3]\n\n\u2022 The attack chain involves an upstream compromise, automatic propagation, execution in a privileged context, and secret harvesting, with the malicious payload running inside the GitHub runner process and scraping runner process memory for secret material. [3]\n\n\u2022 The attack highlights the need for organizations to assume that any repository referencing the compromised workflow component may have executed attacker-controlled code and to verify their current posture and act on the guidance provided. [3]",
+  "digest_markdown": "Here are 5 bullet points about notable open-source software supply chain attacks or compromises:\n\n* A single compromised maintainer account turned axios, one of the most widely used JavaScript libraries, into a malware delivery system, affecting over 100 million downloads per week. [1]\n* Thousands of Node.js developers have unknowingly installed malware via npm packages, with a highly popular package, \"rand-user-agent,\" containing a sophisticated Remote Access Trojan (RAT). [5]\n* Hackers compromised Microsoft's official Agent Framework package on PyPI, publishing two malicious versions designed to steal cloud credentials, API keys, and other sensitive developer information. [10]\n* Attackers hijacked 10 npm packages to spread PolinRider malware, using the Ethereum blockchain to find a server and download more malware. [6]\n* A malicious GitHub Actions workflow, named \".github/workflows/security-audit.yml,\" was added to hundreds of repositories, stealing credentials from affected repositories and sending them to an external server. [3]",
   "sources": [
     {
-      "title": "What Is GitHub Actions Supply Chain Attack? Definition",
-      "url": "https://nhimg.org/glossary/github-actions-supply-chain-attack/"
+      "title": "Worldwide software supply chain attacks tracker (updated ...",
+      "url": "https://www.comparitech.com/software-supply-chain-attacks/"
     },
     {
-      "title": "GitHub Actions SHA Pinning Bypass: Trivy Supply Chain Attack ...",
-      "url": "https://securityarsenal.com/blog/github-actions-sha-pinning-bypass-trivy-supply-chain-attack-defense-guide"
+      "title": "npm Supply Chain Attacks: 454,600 Malicious Packages [2026]",
+      "url": "https://shattered.io/npm-supply-chain-attacks-2026/"
     },
     {
-      "title": "GitHub Actions Supply Chain Attack: Malicious Workflow Hits ...",
-      "url": "https://securityarsenal.com/blog/github-actions-supply-chain-attack-malicious-workflow-hits-tens-of-thousands-of-repos-detection-and-secrets-rotation-guide"
+      "title": "New Supply Chain Attack Compromises Tens of Thousands of ...",
+      "url": "https://www.infosecurity-magazine.com/news/supply-chain-attack-thousands/"
     },
     {
-      "title": "Attackers turn GitHub issues into supply chain campaign ...",
-      "url": "https://www.theregister.com/security/2026/10/29/attackers-turn-github-issues-into-supply-chain-campaign-against-61-public-repos-in-less-than-an-hour/5306153"
+      "title": "GitHub Supply Chain Attack Exposes Developer Secrets as ...",
+      "url": "https://cyberpress.org/github-attack-exposes-secrets/"
+    },
+    {
+      "title": "Thousands of Node Developers Compromised by Malware in ...",
+      "url": "https://dailysecurityreview.com/security-spotlight/thousands-of-node-developers-compromised-by-malware-in-popular-npm-packages/"
+    },
+    {
+      "title": "Hackers Hijack 10 npm Packages to Spread PolinRider Malware ...",
+      "url": "https://cybersecuritynews.com/hackers-hijack-10-npm-packages-to-spread-polinrider-malware-using-ethereum-blockchain/"
+    },
+    {
+      "title": "What Is npm Malware? Definition & Examples - nhimg.org",
+      "url": "https://nhimg.org/glossary/npm-malware/"
+    },
+    {
+      "title": "What Is Malicious npm Package? Definition & Examples",
+      "url": "https://nhimg.org/glossary/malicious-npm-package/"
+    },
+    {
+      "title": "Microsoft\u2019s Agent Framework PyPI package compromised to steal ...",
+      "url": "https://www.bleepingcomputer.com/news/security/microsofts-agent-framework-pypi-package-compromised-to-steal-credentials/"
+    },
+    {
+      "title": "Microsoft\u2019s Agent Framework PyPI Package Hacked to Steal ...",
+      "url": "https://cybersecuritynews.com/microsofts-agent-framework-pypi-package/"
+    },
+    {
+      "title": "Attackers Compromise Microsoft's Agent Framework PyPI Package ...",
+      "url": "https://thehackernews.com/2026/11/attackers-compromise-microsofts-agent.html"
+    },
+    {
+      "title": "Microsoft Agent Framework Compromised on PyPI in Major Supply ...",
+      "url": "https://windowsreport.com/microsoft-agent-framework-compromised-on-pypi-in-major-supply-chain-attack/"
     }
   ]
 }
