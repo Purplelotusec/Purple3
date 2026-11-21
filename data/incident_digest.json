@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-11-20T16:03:40.820611+00:00",
+  "generated_at": "2026-11-21T15:14:56.725229+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "The article discusses the compromise of Microsoft's Agent Framework package on PyPI, a popular package repository for Python. The malicious versions, 1.26.1 and 1.26.2, were published on November 17, 2026, and were designed to steal credentials and sensitive information from users. The compromised package was able to run a credential stealer on every Python start, even if the package was not explicitly imported.\n\nHere are the key points:\n\n1. **Malicious package published on PyPI**: The malicious versions of the Agent Framework package were published on PyPI, a repository that hosts millions of Python packages.\n2. **Credential stealer**: The compromised package contained a credential stealer that could run on every Python start, even if the package was not explicitly imported.\n3. **Targeted Azure and GitHub credentials**: The stealer targeted Azure CLI data, Azure DevOps agent credentials, Git credential stores, Docker and npm configuration, and application .env files.\n4. **Malicious code executed on startup**: The package dropped a .pth file in the site-packages root directory, which was executed automatically on every interpreter start, causing the credential stealer to run.\n5. **PyPI quarantined the malicious versions**: The malicious versions were quarantined on PyPI, and the repository's administrators have since removed them.\n\nTo protect yourself from this attack, it is recommended to:\n\n1. **Update your Python packages**: Ensure that your Python packages are up-to-date, as the compromised package was removed from PyPI.\n2. **Use a secure package manager**: Consider using a secure package manager, such as Chainguard, to manage your Python dependencies.\n3. **Monitor your system for suspicious activity**: Keep an eye on your system for any suspicious activity, such as unauthorized access to your credentials or sensitive information.\n4. **Implement robust security measures**: Implement robust security measures, such as encryption and secure storage of sensitive information, to protect your data.\n\nBy taking these steps, you can help protect yourself from similar attacks in the future.",
+  "digest_markdown": "The article discusses a malicious npm package that was compromised and published on the Python Package Index (PyPI) by attackers. The package, called \"agent-framework\", is a meta-package for Microsoft Agent Framework, an open-source framework for building and orchestrating artificial intelligence (AI) agents using Python.\n\nThe malicious versions of the package, 1.26.1 and 1.26.2, were published on November 17, 2026, and are designed to run a credential stealer on every Python start. The stealer collects credentials, environment data, and cloud identity tokens, and exfiltrates them to a webhook endpoint.\n\nThe attackers compromised the package by obtaining publishing access, which is unclear. The package's .pth files are executed automatically on every interpreter start, causing the credential stealer to run whenever Python is started in an environment, even if the package is not explicitly imported.\n\nThe malicious package targets Azure identities, GitHub credentials, and secrets used in automated builds. It also searches for environment variables, readable process data, and local files for secrets, including Azure CLI data, Azure DevOps agent credentials, Git credential stores, Docker and npm configuration, and application .env files.\n\nThe article highlights the importance of keeping packages up to date and using reputable sources for package installation. It also emphasizes the need for developers to be cautious when installing packages from unknown sources.\n\nThe compromised package has been quarantined on PyPI, and the latest safe version is 1.26.0.\n\n**Key Takeaways:**\n\n* The malicious package was published on PyPI and compromised the agent-framework package.\n* The package runs a credential stealer on every Python start, collecting credentials, environment data, and cloud identity tokens.\n* The attackers compromised the package by obtaining publishing access, which is unclear.\n* The package targets Azure identities, GitHub credentials, and secrets used in automated builds.\n* The compromised package has been quarantined on PyPI, and the latest safe version is 1.26.0.\n\n**Recommendations:**\n\n* Keep packages up to date and use reputable sources for package installation.\n* Be cautious when installing packages from unknown sources.\n* Use tools like Wiz or Chainguard to monitor package installations and detect potential security threats.\n* Regularly review and update package dependencies to prevent vulnerabilities.\n* Use secure protocols for package installation and deployment.",
   "sources": [
     {
       "title": "Worldwide software supply chain attacks tracker (updated ...",
@@ -13,32 +13,28 @@
       "url": "https://www.servnetuk.com/research/supply-chain-attack-statistics-2026"
     },
     {
-      "title": "The OpenSourceMalware Show",
-      "url": "https://podcast.opensourcemalware.com/"
+      "title": "open source - TechCrunch",
+      "url": "https://techcrunch.com/tag/open-source/"
     },
     {
       "title": "New Supply Chain Attack Compromises Tens of Thousands of ...",
       "url": "https://www.infosecurity-magazine.com/news/supply-chain-attack-thousands/"
     },
     {
-      "title": "Malware Endpoint Security - Your Endpoints, Our Experts",
-      "url": "https://www.bing.com/aclick?ld=e8ycX8IANFvgIqEvUML2TbrDVUCUz7psxmeywtwmE9Z36IMhTqfbFoYOCR4ldae_583ygAF6mBEUJpJU8CngTys_gUPvrPevVin-UT1DfcMHUYWZAk1qdEw91RyOaQuDiRd5mLT5xH2w7x4icrq14wvpi1IVrjCI0qommaCFeStQ7GwwK89tnlj8IeFncq0FaaQMYg2w&u=aHR0cHMlM2ElMmYlMmZ3d3cuaHVudHJlc3MuY29tJTJmZWRyLWZyZWUtdHJpYWwlM2Z1dG1fc291cmNlJTNkYmluZyUyNnV0bV9tZWRpdW0lM2RjcGMlMjZ1dG1fY2FtcGFpZ24lM2RCaW5nLUJvRnUtTkEtU2VhcmNoLU5vbkJyYW5kLVBNLUVORy1Db3JlLUVEUiUyNnV0bV90ZXJtJTNkdGhyZWF0JTI1MjBkZXRlY3Rpb24lMjUyMGFuZCUyNTIwcmVtZWRpYXRpb24lMjZjYW1wYWlnbmlkJTNkNTY3OTQ2NzIzJTI2YWRncm91cGlkJTNkMTE3NDI4MDE3MDI1Nzc3OCUyNmFkaWQlM2Q3MzM5Mjc2NjQ2OTcyOSUyNmhzYV9hY2MlM2RmMTA3OXdjYiUyNmhzYV9jYW0lM2Q1Njc5NDY3MjMlMjZoc2FfZ3JwJTNkMTE3NDI4MDE3MDI1Nzc3OCUyNmhzYV9hZCUzZDczMzkyNzY2NDY5NzI5JTI2aHNhX2t3JTNkdGhyZWF0JTI1MjBkZXRlY3Rpb24lMjUyMGFuZCUyNTIwcmVtZWRpYXRpb24lMjZoc2FfbXQlM2RwJTI2aHNhX25ldCUzZEJpbmdBZHMlMjZoc2Ffc3JjJTNkbyUyNmhzYV90Z3QlM2Rrd2QtNzMzOTI5NzEzODQ4ODUlM2Fsb2MtMTkwJTI2aHNhX3ZlciUzZDMlMjZobnQlM2R1dXZic3V4dnljNWQlMjZtc2Nsa2lkJTNkZDk5MDUwNzc4MDM1MWFjMTU4ZDAzYjc3ZWVlMDU4YjA&rlid=d990507780351ac158d03b77eee058b0"
-    },
-    {
-      "title": "Malware-Free npm Packages - Block Malicious npm Packages",
-      "url": "https://www.bing.com/aclick?ld=e8Y3h56FrCiVpW3BIaONHCYzVUCUyRHa_bxVfHxbcAKGG2eUQTdm_AMnIGQGsWasY7osk1T3D1kYQ7poOXNcm9g17l6VDrBx7R4KL5E7np2h2tj1DyKfo43v3Esvttp07bf-Q_y1tOLJfT7lcdvqKloG46OOXmP3jzg9N-F8SKSkD0ecrwfIPUzNOd8SJakE0E0OjaGA&u=aHR0cHMlM2ElMmYlMmZ3d3cuY2hhaW5ndWFyZC5kZXYlMmZwcm9kdWN0cyUyZmxpYnJhcmllcyUyZmphdmFzY3JpcHQlM2Ztc2Nsa2lkJTNkODE1MTJkNTg0ZDY0MWY3YzIwNGU0NjU4MjNiMWRkYWYlMjZ1dG1fc291cmNlJTNkYmluZyUyNnV0bV9tZWRpdW0lM2RjcGMlMjZ1dG1fY2FtcGFpZ24lM2RiZ19zX2FtZXJfYWNxX2dlbmVyaWNfYm9mJTI2dXRtX3Rlcm0lM2RucG0lMjUyMG1hbHdhcmUlMjUyMGF0dGFjayUyNnV0bV9jb250ZW50JTNkbGlicmFyaWVzX25wbQ&rlid=81512d584d641f7c204e465823b1ddaf"
-    },
-    {
-      "title": "Free Virus & Malware Scan - Free Virus Check And Removal",
-      "url": "https://www.bing.com/aclick?ld=e8UQLtrqP5tnxPKJeoYOf61zVUCUwsGYLEnVSDbx7mytfo-O-HhqinpaarwCLF51H8qALPip6b2L8U8IqtHXA3y6PtCJWu7K3MHEI-7lv17B5IQrtthKitJoaHbtKOjU1BdYCtllzQX8QCPQ9uarqmEmkHO75TXim-_pc1AGufAnUvONvB-u4wApzWEWqBHgOtQJbGGA&u=aHR0cHMlM2ElMmYlMmZyZHQubWFja2VlcGVyLmNvbSUyZjYzMzVkMDA4NzE0OTBkMDAwMWI0MDkzMiUzZnN1YjElM2Q3OTIzMzc0ODkwMjYzNSUyNnN1YjIlM2Q1MDYwMDA0NTglMjZzdWIzJTNkYyUyNnN1YjQlM2QxMjY3NzM3ODQ0MjgyNzQzJTI2c3ViNSUzZHAlMjZ1dG1fY2FtcGFpZ24lM2RyX2Jpbmdfc2VjdXJpdHlfdXMlMjZzdWI3JTNkJTI2c3ViOCUzZG5wbSUyNTIwcGFja2FnZSUyNTIwY29tcHJvbWlzZWQlMjUyMG1hbHdhcmUlMjZzdWI5JTNka3dkLTc5MjM0MTE5NjgzOTg2JTNhbG9jLTE5MCUyNnN1YjEwJTNkeW91ciUyNTIwbWFjJTI1MjBpcyUyNTIwaW5mZWN0ZWQlMjZ1dG1fc291cmNlJTNkYmluZyUyNnV0bV9tZWRpdW0lM2RjcGMlMjZyZWZfaWQlM2Q1YjFiYjZjZmExNDAxZmExZDcwNWRkY2ZjZjk1YTgwYSUyNm1zY2xraWQlM2Q1YjFiYjZjZmExNDAxZmExZDcwNWRkY2ZjZjk1YTgwYQ&rlid=5b1bb6cfa1401fa1d705ddcfcf95a80a"
+      "title": "What Is npm Malware? Definition & Examples - nhimg.org",
+      "url": "https://nhimg.org/glossary/npm-malware/"
     },
     {
       "title": "Thousands of Node Developers Compromised by Malware in ...",
       "url": "https://dailysecurityreview.com/security-spotlight/thousands-of-node-developers-compromised-by-malware-in-popular-npm-packages/"
     },
     {
-      "title": "Malware-Free PyPI Packages - 16K+ Projects From PyPI",
-      "url": "https://www.bing.com/aclick?ld=e840aoX-MpsA41BK4AfHxc7zVUCUzSmqs-a7j-_6IOWaKDM0SoJj19duJc2BPbC9gq02Oer3WSYBzARHi9lPnGKvRvn8kMRUR3aZ0b_WgMbRsOTnARWjqteqg3UKOZIjS2NbkHcsZglnoSkpPdtMDFvMDU8lZqTdzBJtG7MzLLfaddCrq6iO7Kq43BH5hJWOLQlY9HUQ&u=aHR0cHMlM2ElMmYlMmZ3d3cuY2hhaW5ndWFyZC5kZXYlMmZwcm9kdWN0cyUyZmxpYnJhcmllcyUyZnB5dGhvbiUzZm1zY2xraWQlM2Q0YjhjYjNhMjgzZTMxMjgzYzExN2Q4YTJlZDM5MzZhMCUyNnV0bV9zb3VyY2UlM2RiaW5nJTI2dXRtX21lZGl1bSUzZGNwYyUyNnV0bV9jYW1wYWlnbiUzZGJnX3NfYW1lcl9hY3FfZ2VuZXJpY19ib2YlMjZ1dG1fdGVybSUzZG1hbHdhcmUlMjUyMGZyZWUlMjUyMHB5cGklMjUyMGRlcGVuZGVuY2llcyUyNnV0bV9jb250ZW50JTNkbGlicmFyaWVzX3B5cGk&rlid=4b8cb3a283e31283c117d8a2ed3936a0"
+      "title": "Hackers Hijack 10 npm Packages to Spread PolinRider Malware ...",
+      "url": "https://cybersecuritynews.com/hackers-hijack-10-npm-packages-to-spread-polinrider-malware-using-ethereum-blockchain/"
+    },
+    {
+      "title": "What Is Malicious npm Package? Definition & Examples",
+      "url": "https://nhimg.org/glossary/malicious-npm-package/"
     },
     {
       "title": "Microsoft\u2019s Agent Framework PyPI package compromised to steal ...",
@@ -47,6 +43,10 @@
     {
       "title": "Microsoft\u2019s Agent Framework PyPI Package Hacked to Steal ...",
       "url": "https://cybersecuritynews.com/microsofts-agent-framework-pypi-package/"
+    },
+    {
+      "title": "Microsoft agent-framework Compromised: Credential Stealer ...",
+      "url": "https://www.wiz.io/blog/malicious-version-of-microsofts-agent-framework-published-to-pypi"
     },
     {
       "title": "Attackers Compromise Microsoft's Agent Framework PyPI Package ...",
