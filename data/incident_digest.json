@@ -1,56 +1,7 @@
 {
-  "generated_at": "2026-11-21T15:14:56.725229+00:00",
+  "generated_at": "2026-11-22T15:10:26.984208+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "The article discusses a malicious npm package that was compromised and published on the Python Package Index (PyPI) by attackers. The package, called \"agent-framework\", is a meta-package for Microsoft Agent Framework, an open-source framework for building and orchestrating artificial intelligence (AI) agents using Python.\n\nThe malicious versions of the package, 1.26.1 and 1.26.2, were published on November 17, 2026, and are designed to run a credential stealer on every Python start. The stealer collects credentials, environment data, and cloud identity tokens, and exfiltrates them to a webhook endpoint.\n\nThe attackers compromised the package by obtaining publishing access, which is unclear. The package's .pth files are executed automatically on every interpreter start, causing the credential stealer to run whenever Python is started in an environment, even if the package is not explicitly imported.\n\nThe malicious package targets Azure identities, GitHub credentials, and secrets used in automated builds. It also searches for environment variables, readable process data, and local files for secrets, including Azure CLI data, Azure DevOps agent credentials, Git credential stores, Docker and npm configuration, and application .env files.\n\nThe article highlights the importance of keeping packages up to date and using reputable sources for package installation. It also emphasizes the need for developers to be cautious when installing packages from unknown sources.\n\nThe compromised package has been quarantined on PyPI, and the latest safe version is 1.26.0.\n\n**Key Takeaways:**\n\n* The malicious package was published on PyPI and compromised the agent-framework package.\n* The package runs a credential stealer on every Python start, collecting credentials, environment data, and cloud identity tokens.\n* The attackers compromised the package by obtaining publishing access, which is unclear.\n* The package targets Azure identities, GitHub credentials, and secrets used in automated builds.\n* The compromised package has been quarantined on PyPI, and the latest safe version is 1.26.0.\n\n**Recommendations:**\n\n* Keep packages up to date and use reputable sources for package installation.\n* Be cautious when installing packages from unknown sources.\n* Use tools like Wiz or Chainguard to monitor package installations and detect potential security threats.\n* Regularly review and update package dependencies to prevent vulnerabilities.\n* Use secure protocols for package installation and deployment.",
-  "sources": [
-    {
-      "title": "Worldwide software supply chain attacks tracker (updated ...",
-      "url": "https://www.comparitech.com/software-supply-chain-attacks/"
-    },
-    {
-      "title": "Supply Chain Attack Statistics 2026: Incident Dataset",
-      "url": "https://www.servnetuk.com/research/supply-chain-attack-statistics-2026"
-    },
-    {
-      "title": "open source - TechCrunch",
-      "url": "https://techcrunch.com/tag/open-source/"
-    },
-    {
-      "title": "New Supply Chain Attack Compromises Tens of Thousands of ...",
-      "url": "https://www.infosecurity-magazine.com/news/supply-chain-attack-thousands/"
-    },
-    {
-      "title": "What Is npm Malware? Definition & Examples - nhimg.org",
-      "url": "https://nhimg.org/glossary/npm-malware/"
-    },
-    {
-      "title": "Thousands of Node Developers Compromised by Malware in ...",
-      "url": "https://dailysecurityreview.com/security-spotlight/thousands-of-node-developers-compromised-by-malware-in-popular-npm-packages/"
-    },
-    {
-      "title": "Hackers Hijack 10 npm Packages to Spread PolinRider Malware ...",
-      "url": "https://cybersecuritynews.com/hackers-hijack-10-npm-packages-to-spread-polinrider-malware-using-ethereum-blockchain/"
-    },
-    {
-      "title": "What Is Malicious npm Package? Definition & Examples",
-      "url": "https://nhimg.org/glossary/malicious-npm-package/"
-    },
-    {
-      "title": "Microsoft\u2019s Agent Framework PyPI package compromised to steal ...",
-      "url": "https://www.bleepingcomputer.com/news/security/microsofts-agent-framework-pypi-package-compromised-to-steal-credentials/"
-    },
-    {
-      "title": "Microsoft\u2019s Agent Framework PyPI Package Hacked to Steal ...",
-      "url": "https://cybersecuritynews.com/microsofts-agent-framework-pypi-package/"
-    },
-    {
-      "title": "Microsoft agent-framework Compromised: Credential Stealer ...",
-      "url": "https://www.wiz.io/blog/malicious-version-of-microsofts-agent-framework-published-to-pypi"
-    },
-    {
-      "title": "Attackers Compromise Microsoft's Agent Framework PyPI Package ...",
-      "url": "https://thehackernews.com/2026/11/attackers-compromise-microsofts-agent.html"
-    }
-  ]
+  "digest_markdown": "No sources were found in this run \u2014 check back after the next scheduled run.",
+  "sources": []
 }
