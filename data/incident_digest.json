@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-11-25T17:57:06.077412+00:00",
+  "generated_at": "2026-11-26T17:40:59.970508+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "Based on the sources provided, here are the key points about the compromise of Microsoft's Agent Framework PyPI package:\n\n1. **Malicious versions published**: Two malicious versions of Microsoft's Agent Framework package, 1.26.1 and 1.26.2, were published on PyPI on November 17, 2026.\n2. **Credential stealer**: The malicious versions contained a credential stealer that could run during normal Python startup, even if an application never imported Agent Framework.\n3. **Targeted Azure identities, GitHub credentials, and secrets**: The malware targeted Azure identities, GitHub credentials, and secrets used in automated builds.\n4. **.pth files used to execute malicious code**: The malicious versions placed a .pth file in the site-packages directory, which Python processes during normal startup, allowing the credential stealer to run automatically.\n5. **Malicious releases under legitimate publisher**: The malicious releases were published under the legitimate Microsoft-associated PyPI publisher, not under a lookalike name.\n6. **No matching python-1.26.1 tag or release in Microsoft's GitHub repository**: Wiz found no matching python-1.26.1 tag or release in Microsoft's GitHub repository, suggesting that the malicious release may have bypassed the usual build process.\n7. **Compromise highlights supply chain risk**: The compromise highlights the risk of supply chain attacks, where attackers compromise a package or library to steal sensitive information.\n\nOverall, the compromise of Microsoft's Agent Framework PyPI package demonstrates the importance of monitoring and securing software packages, especially those with sensitive access to cloud credentials and other sensitive information.",
+  "digest_markdown": "Here's a summary of the article:\n\n**Attack on Microsoft's Agent Framework PyPI Package**\n\nHackers compromised Microsoft's official Agent Framework Python package on PyPI, publishing two malicious versions designed to steal cloud credentials, API keys, and other sensitive developer information.\n\n**How the Attack Worked**\n\nThe attackers published the malicious versions, 1.26.1 and 1.26.2, on PyPI, which is a repository for Python packages. The malicious versions contained a credential stealer that could run during normal Python startup, even if an application never imported Agent Framework. The stealer targeted Azure identities, GitHub credentials, and secrets used in automated builds.\n\n**Impact**\n\nThe attack had a significant impact on the supply chain, as the compromised package was widely used in container security pipelines, DevSecOps workflows, and CI/CD automation across regulated industries, government agencies, and enterprises of every size.\n\n**SHA Pinning Bypass**\n\nThe attack demonstrated that SHA pinning, which is a widely recommended security measure to mitigate software supply chain risk, is not sufficient on its own. The attackers exploited a gap in operational trust and developer behavior to bypass SHA pinning and compromise the package.\n\n**Recommendations**\n\nTo defend against similar attacks, organizations should:\n\n* Verify their current posture and update their security measures\n* Use a more robust security control, such as a custom-built package or a more secure package manager\n* Implement additional security measures, such as code reviews and vulnerability scanning\n* Educate developers about the risks of supply chain attacks and the importance of secure coding practices\n\n**Other Affected Packages**\n\nThe attack also affected other packages, including:\n\n* Over 30 core @nativescript-community libraries\n* Key Angular ecosystem packages such as ngx-bootstrap and ngx-toastr\n* Dozens of packages under @operato, @ctrl, and @art-ws scopes and other development frameworks\n\n**Vendor Response**\n\nMicrosoft responded quickly to the attack, removing the malicious packages and rotating keys. Other vendors, such as CrowdStrike, also responded to the attack, removing the malicious packages and rotating keys.\n\n**Malware Details**\n\nThe malware used in the attack was a credential stealer that could run during normal Python startup, even if an application never imported Agent Framework. The stealer targeted Azure identities, GitHub credentials, and secrets used in automated builds. The malware also exfiltrated credentials and other sensitive information to a webhook endpoint.",
   "sources": [
     {
       "title": "Worldwide software supply chain attacks tracker (updated ...",
@@ -13,28 +13,24 @@
       "url": "https://techcrunch.com/tag/open-source/"
     },
     {
-      "title": "New Supply Chain Attack Compromises Tens of Thousands of ...",
-      "url": "https://www.infosecurity-magazine.com/news/supply-chain-attack-thousands/"
-    },
-    {
-      "title": "November 2026 Attacks Timeline: Day-by-Day Tracker | Beam",
-      "url": "https://www.agentbeam.com/blog/november-2026-attacks-timeline"
-    },
-    {
-      "title": "Malware Endpoint Security - Your Endpoints, Our Experts",
-      "url": "https://www.bing.com/aclick?ld=e8JEloUpw6M5RzoGCjXzmmOTVUCUyR_lyGuS1iD4lrmHKVgmuEHbQDz9zZNfK6rTimafrqY1cY57FkRP37Do0H3BeeWJj4s4Qhdhw8gEUyqRfdSPWISPuqxBIGPmyDhvUX8HbITRNThXIGjktP-OFtKbSv_YXmC0b8eQfurPrY15M4lTOYXuKC0ixSNYgMCKCQHfqqsq8jWjBlsjueQ0iobFFdeyM&u=aHR0cHMlM2ElMmYlMmZ3d3cuaHVudHJlc3MuY29tJTJmZWRyLWZyZWUtdHJpYWwlM2Z1dG1fc291cmNlJTNkYmluZyUyNnV0bV9tZWRpdW0lM2RjcGMlMjZ1dG1fY2FtcGFpZ24lM2RCaW5nLUJvRnUtTkEtU2VhcmNoLU5vbkJyYW5kLVBNLUVORy1Db3JlLUVEUiUyNnV0bV90ZXJtJTNkdGhyZWF0JTI1MjBkZXRlY3Rpb24lMjUyMGFuZCUyNTIwcmVtZWRpYXRpb24lMjZjYW1wYWlnbmlkJTNkNTY3OTQ2NzIzJTI2YWRncm91cGlkJTNkMTE3NDI4MDE3MDI1Nzc3OCUyNmFkaWQlM2Q3MzM5Mjc2NjQ2OTcyOSUyNmhzYV9hY2MlM2RmMTA3OXdjYiUyNmhzYV9jYW0lM2Q1Njc5NDY3MjMlMjZoc2FfZ3JwJTNkMTE3NDI4MDE3MDI1Nzc3OCUyNmhzYV9hZCUzZDczMzkyNzY2NDY5NzI5JTI2aHNhX2t3JTNkdGhyZWF0JTI1MjBkZXRlY3Rpb24lMjUyMGFuZCUyNTIwcmVtZWRpYXRpb24lMjZoc2FfbXQlM2RwJTI2aHNhX25ldCUzZEJpbmdBZHMlMjZoc2Ffc3JjJTNkbyUyNmhzYV90Z3QlM2Rrd2QtNzMzOTI5NzEzODQ4ODUlM2Fsb2MtMTkwJTI2aHNhX3ZlciUzZDMlMjZobnQlM2R1dXZic3V4dnljNWQlMjZtc2Nsa2lkJTNkODllZThhYmQ5OWVlMTgzOTA3YmVlMWJhYjkxNDljYmQ&rlid=89ee8abd99ee183907bee1bab9149cbd"
-    },
-    {
-      "title": "PyPI Vulnerability Fixes - Lightwell Package Catalog",
-      "url": "https://www.bing.com/aclick?ld=e8jquiE6zhXMY4YNVS_DJpczVUCUww8JbeD3Ot1y_yvMmbR1AGWpRBUegw1vZnscbP3tQp7bNDwS9oEDRkpH9UQ6DvzoqyWOMNt4UZLeJ5NvnqhOPpjRKXiWzQw35j2CBXq-RRPa7Nvg77-j7Q8Bua9MHjLkQYcLbYvnm-Fe0fDl5gss-8FrScZBGjHtaVE3760ajfXnDJyISOKHUeeD7piqNCVko&u=aHR0cHMlM2ElMmYlMmZhZC5kb3VibGVjbGljay5uZXQlMmZzZWFyY2hhZHMlMmZsaW5rJTJmY2xpY2slM2ZsaWQlM2Q0MzcwMDA4NDM0MTU4MDkzNyUyNmRzX3Nfa3dnaWQlM2Q1ODcwMDAwOTEyNjA4MjEyMSUyNmRzX2FfY2lkJTNkNDA1NTA3ODI5JTI2ZHNfYV9jYWlkJTNkMjQyMTQ3NzMyODclMjZkc19hX2FnaWQlM2QyMDA4ODkxODM5NzglMjZkc19hX2xpZCUzZGt3ZC00NzU3NjMzNzI1MzYlMjYlMjZkc19lX2FkaWQlM2Q4MTAyMDQxMTAxNDYyOCUyNmRzX2VfdGFyZ2V0X2lkJTNka3dkLTgxMDIwNjg4ODA2NzgyJTNhbG9jLTE5MCUyNiUyNmRzX2VfbmV0d29yayUzZG8lMjZkc191cmxfdiUzZDIlMjZkc19kZXN0X3VybCUzZGh0dHBzJTNhJTJmJTJmd3d3LmlibS5jb20lMmZwcm9kdWN0cyUyZmxpZ2h0d2VsbCUzZnV0bV9jb250ZW50JTNkU1JDV1clMjZwMSUzZFNlYXJjaCUyNnA0JTNkNDc1NzYzMzcyNTM2JTI2cDUlM2RwJTI2cDklM2QyMDA4ODkxODM5NzglMjZnY2xpZCUzZGQ0MzUzMTNjYzcxZTFlOTQ3ZTA5NWEzYmU3ZTQxNTFlJTI2Z2Nsc3JjJTNkM3AuZHMlMjYlMjZtc2Nsa2lkJTNkZDQzNTMxM2NjNzFlMWU5NDdlMDk1YTNiZTdlNDE1MWU&rlid=d435313cc71e1e947e095a3be7e4151e"
-    },
-    {
-      "title": "10 Anti Malware - 10 Best Antivirus Software",
-      "url": "https://www.bing.com/aclick?ld=e8EFc_WBuU1kegWcuVkv6e0DVUCUyEuyu8uI4HH8oH0mmHSySP7pa9i0218zkUSO696f3tIKlhqTbZ5kTZxS9qbZVTyU_Hu07ww-15JiFKH0JrhdNXEpZXgiI-Fxi6T-1gSOS24jKVk3fLlzyvdW_1NP1hQVwxFl4PFd1biJtFZpi6JfOF2Xv0C-Cx4rGQADi3baqeWw_Uor8-kzUYk-oYoHiOj9k&u=aHR0cHMlM2ElMmYlMmZ3d3cudG9wMTAuY29tJTJmYW50aXZpcnVzJTJmY29tcGFyaXNvbiUzZmJrdyUzZGFudGklMjUyMG1hbHdhcmUlMjZiY2FtcGlkJTNkNDkwNjI2NjAxJTI2YmNhbXAlM2RBViUyNTIwVVMlMjUyMEhpZ2glMjUyMEJpbmclMjZiYWdpZCUzZDExNzc1NzkzOTU5MDg5OTclMjZiYWclM2RBViUyNTIwQmluZyUyNTIwUHJvdGVjdGlvbiUyNTIwLSUyNTIwR2VuZXJhbCUyNmJ0YXJpZCUzZGt3ZC03MzU5OTU3Mjc3NzY4NiUzYWxvYy00MDg0JTI2YmlkbSUzZGJiJTI2Ym5ldCUzZG8lMjZiZCUzZGMlMjZibW9idmFsJTNkMCUyNmJ0JTNkc2VhcmNoJTI2dXRtX3NvdXJjZSUzZGJpbmclMjZ1dG1fbWVkaXVtJTNkY3BjJTI2dXRtX3Rlcm0lM2RucG0lMjUyMHBhY2thZ2UlMjUyMGNvbXByb21pc2VkJTI1MjBtYWx3YXJlJTI2dXRtX2NhbXBhaWduJTNkQmluZyUyYkNQQyUyYkNhbXBhaWduJTI2YyUzZDczNTk4OTQwMTI4MjIzJTI2bSUzZGIlMjZrJTNkNzM1OTk1NzI3Nzc2ODYlMjYlMjZicGh5c2ljYWwlM2Q0Mzg5NiUyNmJmZWVkaWQlM2QlMjZiaW50ZXJlc3QlM2QlMjZhJTNkQjI2Nzg3MzE1MCUyNnRzJTNkJTI2dG9waWMlM2QlMjZuaWNoZSUzZCUyNnVwZiUzZCUyNmN0eXBlJTNkJTI2ZXhwJTNkJTI2cHElM2QlMjZkeW4lM2QlMjZjYW10eXBlJTNkcHMlMjZtc2Nsa2lkJTNkOTljMzk5YTBjN2ZmMTI4MDA1MTdmMmE3ZTcwNTFlNzU&rlid=99c399a0c7ff12800517f2a7e7051e75"
-    },
-    {
       "title": "What 5,400 Malicious npm Packages Reveal about Software ...",
       "url": "https://www.databricks.com/blog/what-5400-malicious-npm-packages-reveal-about-software-supply-chain-risk-2026"
+    },
+    {
+      "title": "Recent Cyber Attacks 2026: Timeline of Confirmed Incidents",
+      "url": "https://www.stingrai.io/blog/recent-cyber-attacks-2026"
+    },
+    {
+      "title": "Thousands of Node Developers Compromised by Malware in ...",
+      "url": "https://dailysecurityreview.com/security-spotlight/thousands-of-node-developers-compromised-by-malware-in-popular-npm-packages/"
+    },
+    {
+      "title": "New npm Malware: How Developers Can Check Lockfiles",
+      "url": "https://www.technetexperts.com/november-2026-npm-malware-check-lockfile/"
+    },
+    {
+      "title": "Hundreds of NPM Packages Compromised in Self-Replicating ...",
+      "url": "https://dailysecurityreview.com/cyber-security/hundreds-of-npm-packages-compromised-in-self-replicating-supply-chain-attack/"
     },
     {
       "title": "Attackers Compromise Microsoft's Agent Framework PyPI Package ...",
@@ -51,6 +47,10 @@
     {
       "title": "Microsoft Agent Framework Compromised on PyPI in Major Supply ...",
       "url": "https://windowsreport.com/microsoft-agent-framework-compromised-on-pypi-in-major-supply-chain-attack/"
+    },
+    {
+      "title": "GitHub Actions SHA Pinning Bypass: Trivy Supply Chain Attack ...",
+      "url": "https://securityarsenal.com/blog/github-actions-sha-pinning-bypass-trivy-supply-chain-attack-defense-guide"
     }
   ]
 }
