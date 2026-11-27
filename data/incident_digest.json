@@ -1,56 +1,56 @@
 {
-  "generated_at": "2026-11-26T17:40:59.970508+00:00",
+  "generated_at": "2026-11-27T17:23:37.750610+00:00",
   "model": "llama3.2:3b",
   "search_backend": "DuckDuckGo via duckduckgo-search (open source, no API key)",
-  "digest_markdown": "Here's a summary of the article:\n\n**Attack on Microsoft's Agent Framework PyPI Package**\n\nHackers compromised Microsoft's official Agent Framework Python package on PyPI, publishing two malicious versions designed to steal cloud credentials, API keys, and other sensitive developer information.\n\n**How the Attack Worked**\n\nThe attackers published the malicious versions, 1.26.1 and 1.26.2, on PyPI, which is a repository for Python packages. The malicious versions contained a credential stealer that could run during normal Python startup, even if an application never imported Agent Framework. The stealer targeted Azure identities, GitHub credentials, and secrets used in automated builds.\n\n**Impact**\n\nThe attack had a significant impact on the supply chain, as the compromised package was widely used in container security pipelines, DevSecOps workflows, and CI/CD automation across regulated industries, government agencies, and enterprises of every size.\n\n**SHA Pinning Bypass**\n\nThe attack demonstrated that SHA pinning, which is a widely recommended security measure to mitigate software supply chain risk, is not sufficient on its own. The attackers exploited a gap in operational trust and developer behavior to bypass SHA pinning and compromise the package.\n\n**Recommendations**\n\nTo defend against similar attacks, organizations should:\n\n* Verify their current posture and update their security measures\n* Use a more robust security control, such as a custom-built package or a more secure package manager\n* Implement additional security measures, such as code reviews and vulnerability scanning\n* Educate developers about the risks of supply chain attacks and the importance of secure coding practices\n\n**Other Affected Packages**\n\nThe attack also affected other packages, including:\n\n* Over 30 core @nativescript-community libraries\n* Key Angular ecosystem packages such as ngx-bootstrap and ngx-toastr\n* Dozens of packages under @operato, @ctrl, and @art-ws scopes and other development frameworks\n\n**Vendor Response**\n\nMicrosoft responded quickly to the attack, removing the malicious packages and rotating keys. Other vendors, such as CrowdStrike, also responded to the attack, removing the malicious packages and rotating keys.\n\n**Malware Details**\n\nThe malware used in the attack was a credential stealer that could run during normal Python startup, even if an application never imported Agent Framework. The stealer targeted Azure identities, GitHub credentials, and secrets used in automated builds. The malware also exfiltrated credentials and other sensitive information to a webhook endpoint.",
+  "digest_markdown": "The article discusses several security incidents involving Python packages on PyPI, the Python Package Index. Here are the key points:\n\n1. **Microsoft agent-framework package compromised**: A malicious version of the Microsoft agent-framework package was published on PyPI, containing a credential stealer that could steal Azure and CI pipeline credentials. The malicious versions were published on November 17, 2026, and were quickly removed.\n2. **Chainguard Libraries for Python compromised**: Chainguard, a library that provides secure dependencies for Python applications, was also compromised. Attackers published a malicious version of the library that could steal sensitive data.\n3. **GitHub Action supply chain attack**: A supply chain attack targeting the GitHub Action tj-actions/changed-files package exposed CI/CD secrets from thousands of repositories. The attack involved a malicious commit that dumped CI/CD secrets into the repositories of affected projects.\n4. **PyPI token stolen**: Another incident involved the theft of a PyPI token, which was used to compromise the durabletask package.\n\nThese incidents highlight the importance of keeping dependencies up to date and using secure practices to protect against supply chain attacks. They also demonstrate the need for robust security measures, such as signed SBOMs and provenance, to ensure the integrity of dependencies.\n\nIn response to these incidents, GitHub recommends pinning GitHub Actions to specific commit hashes instead of version numbers, and users are advised to rotate secrets, review workflows, and update references to compromised commits.\n\nThe Chainguard Libraries for Python can help mitigate these risks by providing secure dependencies and ensuring that all Python packages are built with security in mind.",
   "sources": [
     {
       "title": "Worldwide software supply chain attacks tracker (updated ...",
       "url": "https://www.comparitech.com/software-supply-chain-attacks/"
     },
     {
-      "title": "open source - TechCrunch",
-      "url": "https://techcrunch.com/tag/open-source/"
-    },
-    {
       "title": "What 5,400 Malicious npm Packages Reveal about Software ...",
       "url": "https://www.databricks.com/blog/what-5400-malicious-npm-packages-reveal-about-software-supply-chain-risk-2026"
     },
     {
-      "title": "Recent Cyber Attacks 2026: Timeline of Confirmed Incidents",
-      "url": "https://www.stingrai.io/blog/recent-cyber-attacks-2026"
+      "title": "New Supply Chain Attack Compromises Tens of Thousands of ...",
+      "url": "https://www.infosecurity-magazine.com/news/supply-chain-attack-thousands/"
+    },
+    {
+      "title": "open source - TechCrunch",
+      "url": "https://techcrunch.com/tag/open-source/"
     },
     {
       "title": "Thousands of Node Developers Compromised by Malware in ...",
       "url": "https://dailysecurityreview.com/security-spotlight/thousands-of-node-developers-compromised-by-malware-in-popular-npm-packages/"
     },
     {
-      "title": "New npm Malware: How Developers Can Check Lockfiles",
-      "url": "https://www.technetexperts.com/november-2026-npm-malware-check-lockfile/"
+      "title": "What Is Malicious npm Package? Definition & Examples",
+      "url": "https://nhimg.org/glossary/malicious-npm-package/"
     },
     {
-      "title": "Hundreds of NPM Packages Compromised in Self-Replicating ...",
-      "url": "https://dailysecurityreview.com/cyber-security/hundreds-of-npm-packages-compromised-in-self-replicating-supply-chain-attack/"
+      "title": "IronWorm Rust Malware Hits 36 npm Packages in Supply Chain ...",
+      "url": "https://dailysecurityreview.com/cyber-security/ironworm-rust-malware-hits-36-npm-packages-in-supply-chain-attack/"
+    },
+    {
+      "title": "PyPI Vulnerability Fixes - Python Package Security",
+      "url": "https://www.bing.com/aclick?ld=e88IeXfJQgo89MYRlMK0gPRDVUCUxyz0jRLi2MVuLLtPbeiqWiWws54_uGtxgAGjLKPdZTM7vfF5_jDNEvutuOmPOxgx7PJyCPgLce0g2sYwmpa5nh0h77DZm5h3JPF2toam6mtbpdqKDnMcxlXYJdBYPcfow42uBY-oWO6XVnIrmSyQgBB-uHrX3PErqOFZ138gNou78A1jApqobVgMNzILzqfFc&u=aHR0cHMlM2ElMmYlMmZhZC5kb3VibGVjbGljay5uZXQlMmZzZWFyY2hhZHMlMmZsaW5rJTJmY2xpY2slM2ZsaWQlM2Q0MzcwMDA4NDM0MTU4MDkzNCUyNmRzX3Nfa3dnaWQlM2Q1ODcwMDAwOTEyNjA4MjEyMSUyNmRzX2FfY2lkJTNkNDA1NTA3ODI5JTI2ZHNfYV9jYWlkJTNkMjQyMTQ3NzMyODclMjZkc19hX2FnaWQlM2QyMDA4ODkxODM5NzglMjZkc19hX2xpZCUzZGt3ZC0yNDgwNTgyNjA1ODczJTI2JTI2ZHNfZV9hZGlkJTNkODEwMjA0MTEwMTQ2MjglMjZkc19lX3RhcmdldF9pZCUzZGt3ZC04MTAyMDY4ODgwNjc4MSUzYWxvYy0xOTAlMjYlMjZkc19lX25ldHdvcmslM2RvJTI2ZHNfdXJsX3YlM2QyJTI2ZHNfZGVzdF91cmwlM2RodHRwcyUzYSUyZiUyZnd3dy5pYm0uY29tJTJmcHJvZHVjdHMlMmZsaWdodHdlbGwlM2Z1dG1fY29udGVudCUzZFNSQ1dXJTI2cDElM2RTZWFyY2glMjZwNCUzZDI0ODA1ODI2MDU4NzMlMjZwNSUzZHAlMjZwOSUzZDIwMDg4OTE4Mzk3OCUyNmdjbGlkJTNkNmY0ZWQ0MTQzOGQ1MWQ4OWQ3ODliZjFkODRiMTZjNTUlMjZnY2xzcmMlM2QzcC5kcyUyNiUyNm1zY2xraWQlM2Q2ZjRlZDQxNDM4ZDUxZDg5ZDc4OWJmMWQ4NGIxNmM1NQ&rlid=6f4ed41438d51d89d789bf1d84b16c55"
+    },
+    {
+      "title": "Malware-Free PyPI Packages - Block Malicious PyPI Packages",
+      "url": "https://www.bing.com/aclick?ld=e8wgd9biRuegfrHQhYHjGgGzVUCUx8l4hC4I2Z2GNemOSA4g8e8IiZdrN2UzlKeq5zmMtjkthivv_cDe4IcjnWBSb0khDmRsIyphNQifl2Gfg8_gmqxYiyp90zAvk3nWa1TD3_hYEsWemqfa6ovNtSWsTV4zr7wCw2t4TkiWMI4SeKt2CMMFG75JS0xCCCv14Nd3uUOTChu9G-pFvPS2cXaQTNIp0&u=aHR0cHMlM2ElMmYlMmZ3d3cuY2hhaW5ndWFyZC5kZXYlMmZwcm9kdWN0cyUyZmxpYnJhcmllcyUyZnB5dGhvbiUzZm1zY2xraWQlM2RmNDhhMDU5ZGY0NjExNjdkNzY0ZjZlOTQ0ODA1YjBmNCUyNnV0bV9zb3VyY2UlM2RiaW5nJTI2dXRtX21lZGl1bSUzZGNwYyUyNnV0bV9jYW1wYWlnbiUzZGJnX3NfYW1lcl9hY3FfZ2VuZXJpY19ib2YlMjZ1dG1fdGVybSUzZG1hbGljaW91cyUyNTIwcHlwaSUyNTIwcGFja2FnZXMlMjZ1dG1fY29udGVudCUzZGxpYnJhcmllc19weXBp&rlid=f48a059df461167d764f6e944805b0f4"
     },
     {
       "title": "Attackers Compromise Microsoft's Agent Framework PyPI Package ...",
       "url": "https://thehackernews.com/2026/11/attackers-compromise-microsofts-agent.html"
     },
     {
-      "title": "Microsoft\u2019s Agent Framework PyPI Package Hacked to Steal ...",
-      "url": "https://cybersecuritynews.com/microsofts-agent-framework-pypi-package/"
+      "title": "Microsoft agent-framework Compromised: Credential Stealer ...",
+      "url": "https://www.wiz.io/blog/malicious-version-of-microsofts-agent-framework-published-to-pypi"
     },
     {
-      "title": "Microsoft\u2019s Agent Framework PyPI package compromised to steal ...",
-      "url": "https://www.bleepingcomputer.com/news/security/microsofts-agent-framework-pypi-package-compromised-to-steal-credentials/"
-    },
-    {
-      "title": "Microsoft Agent Framework Compromised on PyPI in Major Supply ...",
-      "url": "https://windowsreport.com/microsoft-agent-framework-compromised-on-pypi-in-major-supply-chain-attack/"
-    },
-    {
-      "title": "GitHub Actions SHA Pinning Bypass: Trivy Supply Chain Attack ...",
-      "url": "https://securityarsenal.com/blog/github-actions-sha-pinning-bypass-trivy-supply-chain-attack-defense-guide"
+      "title": "GitHub Action Supply Chain Attack Exposes CI/CD Secrets",
+      "url": "https://dailysecurityreview.com/security-spotlight/github-action-supply-chain-attack-exposes-ci-cd-secrets/"
     }
   ]
 }
